@@ -1,6 +1,7 @@
 ---
-title: Contact
+title: Kontakt
 ---
 
-I live in a small hut in the mountains of Kumano Kodō on Kii Hantō and would not
-like to be contacted.
+Profesor [Igor Dejanović](http://www.igordejanovic.net/)
+
+[Novak Boškov](https://novakboskov.github.io/)
