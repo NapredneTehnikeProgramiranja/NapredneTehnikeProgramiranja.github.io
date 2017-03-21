@@ -1,6 +1,6 @@
 #+TITLE: Napredne tehnike programiranja - Clojure
 #+LANGUAGE: sr
-#+SETUPFILE: /media/novak/Storage/Emacs/org-html-themes/setup/theme-bigblow.setup
+#+SETUPFILE: org-html-themes/setup/theme-bigblow.setup
 #+PROPERTY: header-args:python :session osnove_programiranja :results output :exports both
 #+TAGS: za_radoznale
 

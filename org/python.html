@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="sr" xml:lang="sr">
 <head>
-<!-- 2017-03-20 пон 23:21 -->
+<!-- 2017-03-22 сре 00:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Napredne tehnike programiranja - Python</title>
@@ -244,21 +244,21 @@ for the JavaScript code in this tag.
 <h2>Sadr&#382;aj</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgdabd31f">1. Teorija</a></li>
-<li><a href="#org185f9f2">2. Napredni Python</a>
+<li><a href="#orge8e2afe">1. Teorija</a></li>
+<li><a href="#org8140599">2. Napredni Python</a>
 <ul>
-<li><a href="#org312a468">2.1. <i>virtualenv</i> i <i>pip</i></a></li>
-<li><a href="#orgf2ea5f4">2.2. Iteratori i generatori</a></li>
-<li><a href="#orgbfc9bd5">2.3. Ostale specijalne metode</a></li>
-<li><a href="#orgbf7b799">2.4. Deskriptiori</a></li>
-<li><a href="#org2dfd73d">2.5. Dekoratori</a></li>
-<li><a href="#org6c2c0f4">2.6. <code>functools</code></a></li>
-<li><a href="#orgcfe2ae7">2.7. <code>itertools</code></a></li>
-<li><a href="#org10fb63f">2.8. <i>High performance</i> kolekcije</a></li>
-<li><a href="#org71b75a2">2.9. Višestruko nasleđivanje</a></li>
-<li><a href="#org90cfbc3">2.10. Meta klase</a></li>
-<li><a href="#org21cf445">2.11. Zadaci</a></li>
-<li><a href="#org5a4e363">2.12. Rešenja</a></li>
+<li><a href="#orgffb9819">2.1. <i>virtualenv</i> i <i>pip</i></a></li>
+<li><a href="#org5677005">2.2. Iteratori i generatori</a></li>
+<li><a href="#org1170f3a">2.3. Ostale specijalne metode</a></li>
+<li><a href="#org5a62e5e">2.4. Deskriptiori</a></li>
+<li><a href="#orgd37e6ab">2.5. Dekoratori</a></li>
+<li><a href="#org1c0d355">2.6. <code>functools</code></a></li>
+<li><a href="#orgc20df38">2.7. <code>itertools</code></a></li>
+<li><a href="#orgffc73a3">2.8. <i>High performance</i> kolekcije</a></li>
+<li><a href="#org95600fa">2.9. Višestruko nasleđivanje</a></li>
+<li><a href="#org4bb7e0c">2.10. Meta klase</a></li>
+<li><a href="#orga76bd3e">2.11. Zadaci</a></li>
+<li><a href="#orgb61bc56">2.12. Rešenja</a></li>
 </ul>
 </li>
 </ul>
@@ -277,8 +277,8 @@ integrate systems more effectively.
 </p>
 </blockquote>
 
-<div id="outline-container-orgdabd31f" class="outline-2">
-<h2 id="orgdabd31f"><span class="section-number-2">1</span> Teorija</h2>
+<div id="outline-container-orge8e2afe" class="outline-2">
+<h2 id="orge8e2afe"><span class="section-number-2">1</span> Teorija</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Svi teorijski materijali nalaze se na <a href="http://www.igordejanovic.net/courses/ntp.html">sajtu profesora</a>.
@@ -286,11 +286,11 @@ Svi teorijski materijali nalaze se na <a href="http://www.igordejanovic.net/cour
 </div>
 </div>
 
-<div id="outline-container-org185f9f2" class="outline-2">
-<h2 id="org185f9f2"><span class="section-number-2">2</span> Napredni Python</h2>
+<div id="outline-container-org8140599" class="outline-2">
+<h2 id="org8140599"><span class="section-number-2">2</span> Napredni Python</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-org312a468" class="outline-3">
-<h3 id="org312a468"><span class="section-number-3">2.1</span> <i>virtualenv</i> i <i>pip</i></h3>
+</div><div id="outline-container-orgffb9819" class="outline-3">
+<h3 id="orgffb9819"><span class="section-number-3">2.1</span> <i>virtualenv</i> i <i>pip</i></h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Ako Vam koncept <i>virtualenv</i>-a nije poznat pogledajte <a href="https://virtualenv.pypa.io/en/stable/">ovde</a>. Kratak
@@ -299,8 +299,8 @@ podsetnik možete naći <a href="http://docs.python-guide.org/en/latest/dev/virt
 </div>
 </div>
 
-<div id="outline-container-orgf2ea5f4" class="outline-3">
-<h3 id="orgf2ea5f4"><span class="section-number-3">2.2</span> Iteratori i generatori</h3>
+<div id="outline-container-org5677005" class="outline-3">
+<h3 id="org5677005"><span class="section-number-3">2.2</span> Iteratori i generatori</h3>
 <div class="outline-text-3" id="text-2-2">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">generator_foo</span>(n):
@@ -459,8 +459,8 @@ Z
 </div>
 </div>
 
-<div id="outline-container-orgbfc9bd5" class="outline-3">
-<h3 id="orgbfc9bd5"><span class="section-number-3">2.3</span> Ostale specijalne metode</h3>
+<div id="outline-container-org1170f3a" class="outline-3">
+<h3 id="org1170f3a"><span class="section-number-3">2.3</span> Ostale specijalne metode</h3>
 <div class="outline-text-3" id="text-2-3">
 <ul class="org-ul">
 <li><code>__contains__</code> (in)</li>
@@ -470,12 +470,12 @@ Z
 </div>
 </div>
 
-<div id="outline-container-orgbf7b799" class="outline-3">
-<h3 id="orgbf7b799"><span class="section-number-3">2.4</span> Deskriptiori</h3>
+<div id="outline-container-org5a62e5e" class="outline-3">
+<h3 id="org5a62e5e"><span class="section-number-3">2.4</span> Deskriptiori</h3>
 </div>
 
-<div id="outline-container-org2dfd73d" class="outline-3">
-<h3 id="org2dfd73d"><span class="section-number-3">2.5</span> Dekoratori</h3>
+<div id="outline-container-orgd37e6ab" class="outline-3">
+<h3 id="orgd37e6ab"><span class="section-number-3">2.5</span> Dekoratori</h3>
 <div class="outline-text-3" id="text-2-5">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">greet</span>(func):
@@ -551,8 +551,8 @@ from dec: 1
 </div>
 </div>
 
-<div id="outline-container-org6c2c0f4" class="outline-3">
-<h3 id="org6c2c0f4"><span class="section-number-3">2.6</span> <code>functools</code></h3>
+<div id="outline-container-org1c0d355" class="outline-3">
+<h3 id="org1c0d355"><span class="section-number-3">2.6</span> <code>functools</code></h3>
 <div class="outline-text-3" id="text-2-6">
 <ul class="org-ul">
 <li><code>partial</code></li>
@@ -579,7 +579,7 @@ rečnik:
 </div>
 
 <pre class="example">
-&gt;&gt;&gt; &gt;&gt;&gt; &gt;&gt;&gt; {'d': 4, 'a': 1, 'b': 2, 'c': 3}
+&gt;&gt;&gt; &gt;&gt;&gt; &gt;&gt;&gt; {'b': 2, 'c': 3, 'd': 4, 'a': 1}
 &gt;&gt;&gt; &gt;&gt;&gt; {1: 'a', 2: 'b', 3: 'c', 4: 'd'}
 </pre></li>
 
@@ -588,8 +588,8 @@ rečnik:
 </div>
 </div>
 
-<div id="outline-container-orgcfe2ae7" class="outline-3">
-<h3 id="orgcfe2ae7"><span class="section-number-3">2.7</span> <code>itertools</code></h3>
+<div id="outline-container-orgc20df38" class="outline-3">
+<h3 id="orgc20df38"><span class="section-number-3">2.7</span> <code>itertools</code></h3>
 <div class="outline-text-3" id="text-2-7">
 <ul class="org-ul">
 <li><code>chain</code></li>
@@ -666,8 +666,8 @@ Z
 </div>
 </div>
 
-<div id="outline-container-org10fb63f" class="outline-3">
-<h3 id="org10fb63f"><span class="section-number-3">2.8</span> <i>High performance</i> kolekcije</h3>
+<div id="outline-container-orgffc73a3" class="outline-3">
+<h3 id="orgffc73a3"><span class="section-number-3">2.8</span> <i>High performance</i> kolekcije</h3>
 <div class="outline-text-3" id="text-2-8">
 <ul class="org-ul">
 <li><p>
@@ -725,16 +725,16 @@ time elapsed : 1.1920928955078125e-06
 </div>
 </div>
 
-<div id="outline-container-org71b75a2" class="outline-3">
-<h3 id="org71b75a2"><span class="section-number-3">2.9</span> Višestruko nasleđivanje</h3>
+<div id="outline-container-org95600fa" class="outline-3">
+<h3 id="org95600fa"><span class="section-number-3">2.9</span> Višestruko nasleđivanje</h3>
 </div>
 
-<div id="outline-container-org90cfbc3" class="outline-3">
-<h3 id="org90cfbc3"><span class="section-number-3">2.10</span> Meta klase</h3>
+<div id="outline-container-org4bb7e0c" class="outline-3">
+<h3 id="org4bb7e0c"><span class="section-number-3">2.10</span> Meta klase</h3>
 </div>
 
-<div id="outline-container-org21cf445" class="outline-3">
-<h3 id="org21cf445"><span class="section-number-3">2.11</span> Zadaci</h3>
+<div id="outline-container-orga76bd3e" class="outline-3">
+<h3 id="orga76bd3e"><span class="section-number-3">2.11</span> Zadaci</h3>
 <div class="outline-text-3" id="text-2-11">
 <ol class="org-ol">
 <li>Napraviti klasu <code>GithubUser</code> čiji svaki objekat pri konstrukciji
@@ -769,8 +769,8 @@ koristeći njegovu <code>self.__iter__</code> metodu.</li>
 </div>
 </div>
 
-<div id="outline-container-org5a4e363" class="outline-3">
-<h3 id="org5a4e363"><span class="section-number-3">2.12</span> Rešenja</h3>
+<div id="outline-container-orgb61bc56" class="outline-3">
+<h3 id="orgb61bc56"><span class="section-number-3">2.12</span> Rešenja</h3>
 <div class="outline-text-3" id="text-2-12">
 <ol class="org-ol">
 <li><p>
@@ -851,7 +851,7 @@ defunkt/coffee-mode
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Novak Boškov</p>
-<p class="date">Created: 2017-03-20 пон 23:21</p>
+<p class="date">Created: 2017-03-22 сре 00:03</p>
 <p class="validation"></p>
 </div>
 </body>

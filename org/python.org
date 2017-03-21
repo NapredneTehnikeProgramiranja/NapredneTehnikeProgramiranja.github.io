@@ -1,6 +1,6 @@
 #+TITLE: Napredne tehnike programiranja - Python
 #+LANGUAGE: sr
-#+SETUPFILE: /media/novak/Storage/Emacs/org-html-themes/setup/theme-bigblow.setup
+#+SETUPFILE: org-html-themes/setup/theme-bigblow.setup
 #+PROPERTY: header-args:python :session ntp :results output :exports both
 #+TAGS: za_radoznale
 
