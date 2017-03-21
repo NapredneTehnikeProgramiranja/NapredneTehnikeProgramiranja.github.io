@@ -1,0 +1,1327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="sr" xml:lang="sr">
+<head>
+<!-- 2017-03-17 пет 15:29 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Napredne tehnike programiranja - Haskell</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Novak Boškov" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/bigblow.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/hideshow.css"/>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.zclip.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/bigblow.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/hideshow.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Napredne tehnike programiranja - Haskell</h1>
+<div id="table-of-contents">
+<h2>Sadr&#382;aj</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org6dfe4cd">1. Uvod</a>
+<ul>
+<li><a href="#org4e77934">1.1. Elementi jezika</a>
+<ul>
+<li><a href="#org22915e3">1.1.1. Pragme</a></li>
+</ul>
+</li>
+<li><a href="#org2b3dc39">1.2. Kompajler (GHC)</a>
+<ul>
+<li><a href="#orgc7d45e2">1.2.1. <i>Type inference</i></a></li>
+<li><a href="#org6144361">1.2.2. Sugestije kompajlera</a></li>
+</ul>
+</li>
+<li><a href="#orgaeeb150">1.3. GHCi</a></li>
+<li><a href="#orgb9620a3">1.4. IDE</a>
+<ul>
+<li><a href="#org52d8e51">1.4.1. Hoogle</a></li>
+<li><a href="#org942324e">1.4.2. Stack &amp; Stackage</a></li>
+</ul>
+</li>
+<li><a href="#orgdf087d9">1.5. Ograničenja GHC kompajlera&#xa0;&#xa0;&#xa0;<span class="tag"><span class="za_radoznale">za_radoznale</span></span></a>
+<ul>
+<li><a href="#org6ddb69f">1.5.1. Monomorfizam restrikcija</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgf262070">2. Funkcije</a></li>
+<li><a href="#org50d06c3">3. Tipovi</a>
+<ul>
+<li><a href="#org2214c8e">3.1. <code>nešto :: tip</code>, sve ima tip</a></li>
+<li><a href="#org9da95c0">3.2. Kinds</a></li>
+</ul>
+</li>
+<li><a href="#org72034c8">4. Data deklaracije</a>
+<ul>
+<li><a href="#orgbb2c400">4.1. Data konstruktor &amp; value konstruktor</a>
+<ul>
+<li><a href="#orge673814">4.1.1. Records sintaksa</a></li>
+</ul>
+</li>
+<li><a href="#org50a1670">4.2. <code>newtype</code></a></li>
+<li><a href="#org503ec47">4.3. <code>type</code></a></li>
+</ul>
+</li>
+<li><a href="#orgabc0630">5. Haskell &#x2014; lazy by default</a>
+<ul>
+<li><a href="#orgba420d7">5.1. <i>Strict evaluation vs. lazy evaluation</i></a>
+<ul>
+<li><a href="#org06832e0">5.1.1. Cena <i>strict</i> izračunavanja</a></li>
+<li><a href="#orgd2b7e3e">5.1.2. Cena <i>lazy</i> izračunavanja</a></li>
+</ul>
+</li>
+<li><a href="#orgb530fae">5.2. Haskell <i>laziness look and feel</i> vs. Java <i>Supliers</i> ("<i>type level laziness</i>")</a></li>
+</ul>
+</li>
+<li><a href="#org836ce59">6. Polimorfizam</a></li>
+<li><a href="#orgfd5a68f">7. Type Classes</a>
+<ul>
+<li><a href="#org0a2ecc5">7.1. Automatsko instanciranje sa <code>deriving</code></a></li>
+<li><a href="#orgad8e986">7.2. <code>class</code> NIJE <code>class</code> iz Pythona i Jave</a></li>
+<li><a href="#org291a6d4">7.3. <i>fundeps</i> (Functional Dependencies)</a></li>
+</ul>
+</li>
+<li><a href="#org0b09f7e">8. Monoidi i Funktori</a></li>
+<li><a href="#org74f8335">9. Monade</a>
+<ul>
+<li><a href="#org5b11af5">9.1. IO</a></li>
+</ul>
+</li>
+<li><a href="#org7bc61c9">10. Profiling</a>
+<ul>
+<li><a href="#orgfb6a221">10.1. Primitivni profiling samo sa Unix <code>time</code></a></li>
+<li><a href="#orgbdefbe0">10.2. GHC podrška za profiling</a>
+<ul>
+<li><a href="#orgdead724">10.2.1. Još neke <i>RTS</i> (<i>Run Time System</i>) opcije</a></li>
+<li><a href="#orgde90d8c">10.2.2. Potrošnja memorije kroz vreme</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org8095104">11. Haskell Core&#xa0;&#xa0;&#xa0;<span class="tag"><span class="za_radoznale">za_radoznale</span></span></a></li>
+<li><a href="#orgd52481d">12. Literatura</a></li>
+</ul>
+</div>
+</div>
+
+<div class="figure">
+<p><img src="images/haskell_logo.png" alt="haskell_logo.png" width="400px" />
+</p>
+</div>
+
+<blockquote>
+<p>
+An advanced, purely functional, statically typed, lazy programming
+language.
+</p>
+</blockquote>
+
+<div id="outline-container-org6dfe4cd" class="outline-2">
+<h2 id="org6dfe4cd"><span class="section-number-2">1</span> Uvod</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-org4e77934" class="outline-3">
+<h3 id="org4e77934"><span class="section-number-3">1.1</span> Elementi jezika</h3>
+<div class="outline-text-3" id="text-1-1">
+</div><div id="outline-container-org22915e3" class="outline-4">
+<h4 id="org22915e3"><span class="section-number-4">1.1.1</span> Pragme</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p>
+{-# LANGUAGE #-} {-# OPTIONS<sub>GHC</sub> #-} {-# INCLUDE #-} {-# INFIX #-}
+{-# DEPRECATED #-} {-# WARNING #-}
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org2b3dc39" class="outline-3">
+<h3 id="org2b3dc39"><span class="section-number-3">1.2</span> Kompajler (GHC)</h3>
+<div class="outline-text-3" id="text-1-2">
+</div><div id="outline-container-orgc7d45e2" class="outline-4">
+<h4 id="orgc7d45e2"><span class="section-number-4">1.2.1</span> <i>Type inference</i></h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+Haskell je implicitno tipiziran jezik (<i>implicitly-typed</i>) za
+razliku od C/C++, Java, C#, Go i dr. koji su eksplicitno
+tipizirani (explicitly-typed).
+</p>
+</div>
+</div>
+<div id="outline-container-org6144361" class="outline-4">
+<h4 id="org6144361"><span class="section-number-4">1.2.2</span> Sugestije kompajlera</h4>
+</div>
+</div>
+<div id="outline-container-orgaeeb150" class="outline-3">
+<h3 id="orgaeeb150"><span class="section-number-3">1.3</span> GHCi</h3>
+</div>
+<div id="outline-container-orgb9620a3" class="outline-3">
+<h3 id="orgb9620a3"><span class="section-number-3">1.4</span> IDE</h3>
+<div class="outline-text-3" id="text-1-4">
+</div><div id="outline-container-org52d8e51" class="outline-4">
+<h4 id="org52d8e51"><span class="section-number-4">1.4.1</span> Hoogle</h4>
+</div>
+<div id="outline-container-org942324e" class="outline-4">
+<h4 id="org942324e"><span class="section-number-4">1.4.2</span> Stack &amp; Stackage</h4>
+</div>
+</div>
+<div id="outline-container-orgdf087d9" class="outline-3">
+<h3 id="orgdf087d9"><span class="section-number-3">1.5</span> Ograničenja GHC kompajlera&#xa0;&#xa0;&#xa0;<span class="tag"><span class="za_radoznale">za_radoznale</span></span></h3>
+<div class="outline-text-3" id="text-1-5">
+</div><div id="outline-container-org6ddb69f" class="outline-4">
+<h4 id="org6ddb69f"><span class="section-number-4">1.5.1</span> Monomorfizam restrikcija</h4>
+<div class="outline-text-4" id="text-1-5-1">
+<p>
+<a href="https://wiki.haskell.org/Monomorphism_restriction">https://wiki.haskell.org/Monomorphism_restriction</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf262070" class="outline-2">
+<h2 id="orgf262070"><span class="section-number-2">2</span> Funkcije</h2>
+</div>
+<div id="outline-container-org50d06c3" class="outline-2">
+<h2 id="org50d06c3"><span class="section-number-2">3</span> Tipovi</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-org2214c8e" class="outline-3">
+<h3 id="org2214c8e"><span class="section-number-3">3.1</span> <code>nešto :: tip</code>, sve ima tip</h3>
+</div>
+<div id="outline-container-org9da95c0" class="outline-3">
+<h3 id="org9da95c0"><span class="section-number-3">3.2</span> Kinds</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+<a href="https://jeltsch.wordpress.com/2013/02/09/some-interesting-features-of-haskells-type-system/">https://jeltsch.wordpress.com/2013/02/09/some-interesting-features-of-haskells-type-system/</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org72034c8" class="outline-2">
+<h2 id="org72034c8"><span class="section-number-2">4</span> Data deklaracije</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-orgbb2c400" class="outline-3">
+<h3 id="orgbb2c400"><span class="section-number-3">4.1</span> Data konstruktor &amp; value konstruktor</h3>
+<div class="outline-text-3" id="text-4-1">
+</div><div id="outline-container-orge673814" class="outline-4">
+<h4 id="orge673814"><span class="section-number-4">4.1.1</span> Records sintaksa</h4>
+</div>
+</div>
+<div id="outline-container-org50a1670" class="outline-3">
+<h3 id="org50a1670"><span class="section-number-3">4.2</span> <code>newtype</code></h3>
+</div>
+<div id="outline-container-org503ec47" class="outline-3">
+<h3 id="org503ec47"><span class="section-number-3">4.3</span> <code>type</code></h3>
+</div>
+</div>
+
+<div id="outline-container-orgabc0630" class="outline-2">
+<h2 id="orgabc0630"><span class="section-number-2">5</span> Haskell &#x2014; lazy by default</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-orgba420d7" class="outline-3">
+<h3 id="orgba420d7"><span class="section-number-3">5.1</span> <i>Strict evaluation vs. lazy evaluation</i></h3>
+<div class="outline-text-3" id="text-5-1">
+</div><div id="outline-container-org06832e0" class="outline-4">
+<h4 id="org06832e0"><span class="section-number-4">5.1.1</span> Cena <i>strict</i> izračunavanja</h4>
+</div>
+
+<div id="outline-container-orgd2b7e3e" class="outline-4">
+<h4 id="orgd2b7e3e"><span class="section-number-4">5.1.2</span> Cena <i>lazy</i> izračunavanja</h4>
+</div>
+</div>
+
+<div id="outline-container-orgb530fae" class="outline-3">
+<h3 id="orgb530fae"><span class="section-number-3">5.2</span> Haskell <i>laziness look and feel</i> vs. Java <i>Supliers</i> ("<i>type level laziness</i>")</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+Java je na <a href="https://www.sitepoint.com/java-in-praise-of-laziness/">SitePoint-u</a>. Haskell je na <a href="http://www.seas.upenn.edu/~cis194/spring13/lectures/06-laziness.html">CIS-u</a>.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org836ce59" class="outline-2">
+<h2 id="org836ce59"><span class="section-number-2">6</span> Polimorfizam</h2>
+</div>
+<div id="outline-container-orgfd5a68f" class="outline-2">
+<h2 id="orgfd5a68f"><span class="section-number-2">7</span> Type Classes</h2>
+<div class="outline-text-2" id="text-7">
+</div><div id="outline-container-org0a2ecc5" class="outline-3">
+<h3 id="org0a2ecc5"><span class="section-number-3">7.1</span> Automatsko instanciranje sa <code>deriving</code></h3>
+</div>
+
+<div id="outline-container-orgad8e986" class="outline-3">
+<h3 id="orgad8e986"><span class="section-number-3">7.2</span> <code>class</code> NIJE <code>class</code> iz Pythona i Jave</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+Ono što je <code>type class</code> u Haskell-u to je sličnije abstraktnim
+klasama u Javi i Pythonu.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name"><span class="listing-number">Listing 1: </span>haskellNTP/showcase/src/Hierarchies.hs</label><pre class="src src-haskell"><span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">Novi tipovi</span>
+<span style="color: #F0DFAF; font-weight: bold;">data</span> <span style="color: #7CB8BB;">UnderGStudent</span> <span style="color: #DFAF8F;">=</span> <span style="color: #7CB8BB;">UnderGStudent</span>
+  { uGHunamInfo   <span style="color: #DFAF8F;">::</span> <span style="color: #7CB8BB;">HumanInfo</span>
+  , uGStudentInfo <span style="color: #DFAF8F;">::</span> <span style="color: #7CB8BB;">StudentInfo</span>
+  } <span style="color: #F0DFAF; font-weight: bold;">deriving</span> (<span style="color: #7CB8BB;">Show</span>)
+
+<span style="color: #F0DFAF; font-weight: bold;">data</span> <span style="color: #7CB8BB;">PhDStudent</span> <span style="color: #DFAF8F;">=</span> <span style="color: #7CB8BB;">PhDStudent</span>
+  { phDHumanInfo   <span style="color: #DFAF8F;">::</span> <span style="color: #7CB8BB;">HumanInfo</span>
+  , phDStudentInfo <span style="color: #DFAF8F;">::</span> <span style="color: #7CB8BB;">StudentInfo</span>
+  , thesis         <span style="color: #DFAF8F;">::</span> <span style="color: #7CB8BB;">String</span>
+  } <span style="color: #F0DFAF; font-weight: bold;">deriving</span> (<span style="color: #7CB8BB;">Show</span>)
+
+<span style="color: #F0DFAF; font-weight: bold;">data</span> <span style="color: #7CB8BB;">StudentInfo</span> <span style="color: #DFAF8F;">=</span> <span style="color: #7CB8BB;">StudentInfo</span>
+  { index <span style="color: #DFAF8F;">::</span> <span style="color: #7CB8BB;">Int</span>
+  } <span style="color: #F0DFAF; font-weight: bold;">deriving</span> (<span style="color: #7CB8BB;">Show</span>)
+
+<span style="color: #F0DFAF; font-weight: bold;">data</span> <span style="color: #7CB8BB;">HumanInfo</span> <span style="color: #DFAF8F;">=</span> <span style="color: #7CB8BB;">HumanInfo</span>
+  { name      <span style="color: #DFAF8F;">::</span> <span style="color: #7CB8BB;">String</span>
+  , surname   <span style="color: #DFAF8F;">::</span> <span style="color: #7CB8BB;">String</span>
+  , birthYear <span style="color: #DFAF8F;">::</span> <span style="color: #7CB8BB;">Int</span>
+  } <span style="color: #F0DFAF; font-weight: bold;">deriving</span> (<span style="color: #7CB8BB;">Show</span>)
+
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">Ljudi su ljudi jer se mu&#269;e, to ih &#269;ini ljudima</span>
+<span style="color: #F0DFAF; font-weight: bold;">class</span> <span style="color: #7CB8BB;">Human</span> a <span style="color: #F0DFAF; font-weight: bold;">where</span>
+  struggle <span style="color: #DFAF8F;">::</span> a <span style="color: #DFAF8F;">-&gt;</span> <span style="color: #7CB8BB;">String</span>
+  <span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">Podrazumevana implementacija</span>
+  struggle <span style="color: #DFAF8F;">=</span> const <span style="color: #CC9393;">"A poor man is struggling."</span>
+
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">Predava&#269;i su pre svega ljudi, a potom moraju znati i da se</span>
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">predstave</span>
+<span style="color: #F0DFAF; font-weight: bold;">class</span> <span style="color: #7CB8BB;">Human</span> a <span style="color: #DFAF8F;">=&gt;</span> <span style="color: #7CB8BB;">Lecturer</span> a <span style="color: #F0DFAF; font-weight: bold;">where</span>
+  introduce <span style="color: #DFAF8F;">::</span> a <span style="color: #DFAF8F;">-&gt;</span> <span style="color: #7CB8BB;">String</span>
+
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">UnderGStudent instanca &#269;oveka, UnderGStudent je &#269;ovek</span>
+<span style="color: #F0DFAF; font-weight: bold;">instance</span> <span style="color: #7CB8BB;">Human</span> <span style="color: #7CB8BB;">UnderGStudent</span> <span style="color: #F0DFAF; font-weight: bold;">where</span>
+  struggle (<span style="color: #7CB8BB;">UnderGStudent</span> (<span style="color: #7CB8BB;">HumanInfo</span> n <span style="color: #F0DFAF; font-weight: bold;">_</span> <span style="color: #F0DFAF; font-weight: bold;">_</span>) <span style="color: #F0DFAF; font-weight: bold;">_</span>) <span style="color: #DFAF8F;">=</span> n <span style="color: #DFAF8F;">++</span> <span style="color: #CC9393;">" is gravely struggling."</span>
+
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">PhDStudent instanca &#269;oveka, PhDStudent je &#269;ovek</span>
+<span style="color: #F0DFAF; font-weight: bold;">instance</span> <span style="color: #7CB8BB;">Human</span> <span style="color: #7CB8BB;">PhDStudent</span>
+
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">PhdStudent instanca predava&#269;a</span>
+<span style="color: #F0DFAF; font-weight: bold;">instance</span> <span style="color: #7CB8BB;">Lecturer</span> <span style="color: #7CB8BB;">PhDStudent</span> <span style="color: #F0DFAF; font-weight: bold;">where</span>
+  introduce (<span style="color: #7CB8BB;">PhDStudent</span> (<span style="color: #7CB8BB;">HumanInfo</span> n <span style="color: #F0DFAF; font-weight: bold;">_</span> <span style="color: #F0DFAF; font-weight: bold;">_</span>) <span style="color: #F0DFAF; font-weight: bold;">_</span> t) <span style="color: #DFAF8F;">=</span>
+    <span style="color: #CC9393;">"I am "</span> <span style="color: #DFAF8F;">++</span> n <span style="color: #DFAF8F;">++</span> <span style="color: #CC9393;">" and my research is directed towards "</span> <span style="color: #DFAF8F;">++</span> t <span style="color: #DFAF8F;">++</span> <span style="color: #CC9393;">"."</span>
+
+<span style="color: #5F7F5F;">--</span><span style="color: #7F9F7F;">------------------------------------------------------------------------------</span>
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">Primeri:</span>
+
+<span style="color: #93E0E3;">pera</span> <span style="color: #DFAF8F;">=</span> <span style="color: #7CB8BB;">UnderGStudent</span> (<span style="color: #7CB8BB;">HumanInfo</span> <span style="color: #CC9393;">"Petar"</span> <span style="color: #CC9393;">"Petrovic"</span> 1987) (<span style="color: #7CB8BB;">StudentInfo</span> 8791)
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">&#955;&gt; name . uGHunamInfo $ pera</span>
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">"Petar"</span>
+<span style="color: #5F7F5F;">--</span>
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">&#955;&gt; struggle pera</span>
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">"Petar is gravely struggling."</span>
+
+<span style="color: #93E0E3;">zika</span> <span style="color: #DFAF8F;">=</span>
+  <span style="color: #7CB8BB;">PhDStudent</span>
+    (<span style="color: #7CB8BB;">HumanInfo</span> <span style="color: #CC9393;">"Zika"</span> <span style="color: #CC9393;">"Zikic"</span> 1983)
+    (<span style="color: #7CB8BB;">StudentInfo</span> 123)
+    <span style="color: #CC9393;">"functional programming"</span>
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">&#955;&gt; name . phDHumanInfo $ zika</span>
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">"Zika"</span>
+<span style="color: #5F7F5F;">--</span>
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">&#955;&gt; thesis zika</span>
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">"functional programming"</span>
+<span style="color: #5F7F5F;">--</span>
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">PhDStudent koristi default-nu implementaciju struggle funkcije</span>
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">&#955;&gt; struggle zika</span>
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">"A poor man is struggling."</span>
+<span style="color: #5F7F5F;">--</span>
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">&#955;&gt; introduce zika</span>
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">"I am Zika and my research is directed towards functional programming."</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org291a6d4" class="outline-3">
+<h3 id="org291a6d4"><span class="section-number-3">7.3</span> <i>fundeps</i> (Functional Dependencies)</h3>
+<div class="outline-text-3" id="text-7-3">
+<p>
+<a href="https://wiki.haskell.org/Functional_dependencies"><i>Fundeps</i></a> se koriste da daju dodatna međusobna ograničenja
+parametara klasa. U klasama sa više parametara daju mogućnost da se
+tipovi parametara zaključuju na osnovu tipova drugih parametara.
+</p>
+
+<p>
+Jedan naivan prikaz problema kog rešavaju <i>fundeps</i>:
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name"><span class="listing-number">Listing 2: </span>haskellNTP/showcase/src/FunDeps.hs</label><pre class="src src-haskell"><span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">Abstrakcija raspakivanja</span>
+<span style="color: #F0DFAF; font-weight: bold;">class</span> <span style="color: #7CB8BB;">Unpack</span> packaging content  <span style="color: #F0DFAF; font-weight: bold;">where</span>
+  unpack <span style="color: #DFAF8F;">::</span> packaging <span style="color: #DFAF8F;">-&gt;</span> content
+
+<span style="color: #F0DFAF; font-weight: bold;">data</span> <span style="color: #7CB8BB;">Carton</span> <span style="color: #DFAF8F;">=</span> <span style="color: #7CB8BB;">Carton</span>
+  { volume <span style="color: #DFAF8F;">::</span> <span style="color: #7CB8BB;">Double</span>
+  } <span style="color: #F0DFAF; font-weight: bold;">deriving</span> (<span style="color: #7CB8BB;">Eq</span>, <span style="color: #7CB8BB;">Show</span>)
+
+<span style="color: #F0DFAF; font-weight: bold;">data</span> <span style="color: #7CB8BB;">Milk</span> <span style="color: #DFAF8F;">=</span> <span style="color: #7CB8BB;">Milk</span>
+  { kind <span style="color: #DFAF8F;">::</span> <span style="color: #7CB8BB;">String</span>
+  , desc <span style="color: #DFAF8F;">::</span> <span style="color: #7CB8BB;">String</span>
+  } <span style="color: #F0DFAF; font-weight: bold;">deriving</span> (<span style="color: #7CB8BB;">Show</span>)
+
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">Carton i Milk instanca raspakivanja, kada se raspakuje mpleko iz</span>
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">kartona</span>
+<span style="color: #F0DFAF; font-weight: bold;">instance</span> <span style="color: #7CB8BB;">Unpack</span> <span style="color: #7CB8BB;">Carton</span> <span style="color: #7CB8BB;">Milk</span> <span style="color: #F0DFAF; font-weight: bold;">where</span>
+  unpack p <span style="color: #DFAF8F;">=</span> <span style="color: #7CB8BB;">Milk</span> <span style="color: #CC9393;">"cow milk"</span> <span style="color: #DFAF8F;">$</span> <span style="color: #CC9393;">"carton of "</span> <span style="color: #DFAF8F;">++</span> (show <span style="color: #DFAF8F;">.</span> volume <span style="color: #DFAF8F;">$</span> p) <span style="color: #DFAF8F;">++</span> <span style="color: #CC9393;">" volume."</span>
+
+<span style="color: #93E0E3;">c</span> <span style="color: #DFAF8F;">::</span> <span style="color: #7CB8BB;">Carton</span>
+<span style="color: #93E0E3;">c</span> <span style="color: #DFAF8F;">=</span> <span style="color: #7CB8BB;">Carton</span> 500
+
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">try = unpack c</span>
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">src/FunDeps.hs:25:7-14: error: &#8230;</span>
+<span style="color: #5F7F5F;">--     </span><span style="color: #7F9F7F;">&#8226; Ambiguous type variable &#8216;content0&#8217; arising from a use of &#8216;unpack&#8217;</span>
+<span style="color: #5F7F5F;">--       </span><span style="color: #7F9F7F;">prevents the constraint &#8216;(Unpack</span>
+<span style="color: #5F7F5F;">--                                   </span><span style="color: #7F9F7F;">Carton content0)&#8217; from being solved.</span>
+<span style="color: #5F7F5F;">--       </span><span style="color: #7F9F7F;">Relevant bindings include</span>
+<span style="color: #5F7F5F;">--         </span><span style="color: #7F9F7F;">try :: content0</span>
+<span style="color: #5F7F5F;">--           </span><span style="color: #7F9F7F;">(bound at haskellNTP/showcase/src/FunDeps.hs:25:1)</span>
+<span style="color: #5F7F5F;">--       </span><span style="color: #7F9F7F;">Probable fix: use a type annotation to specify what &#8216;content0&#8217; should b</span><span style="color: #DC8CC3; background-color: #3F3F3F;">e.</span>
+<span style="color: #5F7F5F;">--       </span><span style="color: #7F9F7F;">These potential instance exist:</span>
+<span style="color: #5F7F5F;">--         </span><span style="color: #7F9F7F;">instance Unpack Carton Milk</span>
+<span style="color: #5F7F5F;">--           </span><span style="color: #7F9F7F;">-- Defined at haskellNTP/showcase/src/FunDeps.hs:19:10</span>
+<span style="color: #5F7F5F;">--     </span><span style="color: #7F9F7F;">&#8226; In the expression: unpack c</span>
+<span style="color: #5F7F5F;">--       </span><span style="color: #7F9F7F;">In an equation for &#8216;try&#8217;: try = unpack c</span>
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">Compilation failed.</span>
+</pre>
+</div>
+
+<p>
+Kompajler prosto ne može da zna kog je tipa izraz <code>unpack c</code>.
+</p>
+
+<p>
+<b>Zašto?</b>
+</p>
+
+<p>
+Pokušajmo da reprodukujemo kako kompajler "razmišlja" na osnovu
+greške koju nam je dao.
+</p>
+
+<p>
+Prvo nam kaže da smo bili dvosmisleni pri korišćenju <code>unpack</code>
+funkcije jer on ne može da repreodukuje kako <b>tačno</b> izgleda klasa
+te funkcije. Jasno mu je da je ta klasa nešto nalik <code>(Unpack Carton
+   content0)</code> ali ga muči taj <code>content0</code> jer za njega ne ume da kaže
+kog je tipa:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">src/FunDeps.hs:25:7-14: error: &#8230;</span>
+<span style="color: #5F7F5F;">--     </span><span style="color: #7F9F7F;">&#8226; Ambiguous type variable &#8216;content0&#8217; arising from a use of &#8216;unpack&#8217;</span>
+<span style="color: #5F7F5F;">--       </span><span style="color: #7F9F7F;">prevents the constraint &#8216;(Unpack</span>
+<span style="color: #5F7F5F;">--                                   </span><span style="color: #7F9F7F;">Carton content0)&#8217; from being solved.</span>
+</pre>
+</div>
+
+<p>
+I onda traži od nas da mu pomognemo. Kaže da bismo mi možda mogli
+da mu pomognemo tako što ćemo reći kog je tipa izraz <code>unpack c</code> pa
+će on onda umeti da shvati kako tačno izgleda klasa iz koje je ta
+funkcija:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #5F7F5F;">--       </span><span style="color: #7F9F7F;">Probable fix: use a type annotation to specify what &#8216;content0&#8217; should b</span><span style="color: #DC8CC3; background-color: #3F3F3F;">e.</span>
+</pre>
+</div>
+
+<p>
+I na kraju nam još pokazuje kako razmišlja tako što nam kaže da je
+tražio <b>sve moguće instance</b> te sumnjive klase <code>Unpack</code> (i našao je
+jednu).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #5F7F5F;">--       </span><span style="color: #7F9F7F;">These potential instance exist:</span>
+<span style="color: #5F7F5F;">--         </span><span style="color: #7F9F7F;">instance Unpack Carton Milk</span>
+<span style="color: #5F7F5F;">--           </span><span style="color: #7F9F7F;">-- Defined at haskellNTP/showcase/src/FunDeps.hs:19:10</span>
+</pre>
+</div>
+
+<p>
+Možda bismo se mogli <span class="underline">izleteti</span> i uzviknuti:
+</p>
+
+<p>
+<b>Pa eto mu odgovora. Piše u toj instanci kog je tipa <code>unpack c</code>
+(naravno da je <code>Milk</code>)!</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #F0DFAF; font-weight: bold;">instance</span> <span style="color: #7CB8BB;">Unpack</span> <span style="color: #7CB8BB;">Carton</span> <span style="color: #7CB8BB;">Milk</span> <span style="color: #F0DFAF; font-weight: bold;">where</span>
+  unpack p <span style="color: #DFAF8F;">=</span> <span style="color: #7CB8BB;">Milk</span> <span style="color: #CC9393;">"cow milk"</span> <span style="color: #DFAF8F;">$</span> <span style="color: #CC9393;">"carton of "</span> <span style="color: #DFAF8F;">++</span> (show <span style="color: #DFAF8F;">.</span> volume <span style="color: #DFAF8F;">$</span> p) <span style="color: #DFAF8F;">++</span> <span style="color: #CC9393;">" volume."</span>
+</pre>
+</div>
+
+<p>
+Međutim pogrešili bismo ( <span class="underline">naravno</span> ).
+</p>
+
+<p>
+<b>Zašto?</b>
+</p>
+
+<p>
+Zato što se naknadno može dodati nova instanca <code>Unpack</code> klase. ♦
+</p>
+
+<p>
+Na primer:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #F0DFAF; font-weight: bold;">data</span> <span style="color: #7CB8BB;">Yogurt</span> <span style="color: #DFAF8F;">=</span> <span style="color: #7CB8BB;">Yogurt</span>
+  { density <span style="color: #DFAF8F;">::</span> <span style="color: #7CB8BB;">String</span>
+  } <span style="color: #F0DFAF; font-weight: bold;">deriving</span> (<span style="color: #7CB8BB;">Show</span>)
+
+<span style="color: #F0DFAF; font-weight: bold;">instance</span> <span style="color: #7CB8BB;">Unpack</span> <span style="color: #7CB8BB;">Carton</span> <span style="color: #7CB8BB;">Yogurt</span> <span style="color: #F0DFAF; font-weight: bold;">where</span>
+  unpack c <span style="color: #DFAF8F;">=</span> <span style="color: #7CB8BB;">Yogurt</span> <span style="color: #DFAF8F;">$</span> <span style="color: #CC9393;">"rare yogurt in carton of "</span> <span style="color: #DFAF8F;">++</span> (show <span style="color: #DFAF8F;">.</span> volume <span style="color: #DFAF8F;">$</span> c) <span style="color: #DFAF8F;">++</span> <span style="color: #CC9393;">"."</span>
+</pre>
+</div>
+
+<p>
+<b>Rešenje:</b>
+</p>
+
+<p>
+Možemo poslušati kompjler i eksplicitno dati tip izrazu:
+</p>
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">&#955;&gt; unpack c :: Yogurt</span>
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">Yogurt {density = "rare yogurt in carton of 500.0."}</span>
+</pre>
+</div>
+
+<p>
+Možemo iskoristiti <a href="https://prime.haskell.org/wiki/FlexibleInstances">FlexibleInstances</a> dodatak jeziku:
+</p>
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">&#955;&gt; :set -XFlexibleContexts</span>
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">&#955;&gt; unpack c</span>
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">unpack c :: Unpack Carton content =&gt; content</span>
+</pre>
+</div>
+
+<p>
+I možemo koristi <i>fundeps</i>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #F0DFAF; font-weight: bold;">class</span> <span style="color: #7CB8BB;">Unpack'</span> packaging content  <span style="color: #DFAF8F;">|</span> packaging <span style="color: #DFAF8F;">-&gt;</span> content <span style="color: #F0DFAF; font-weight: bold;">where</span>
+  unpack' <span style="color: #DFAF8F;">::</span> packaging <span style="color: #DFAF8F;">-&gt;</span> content
+
+<span style="color: #F0DFAF; font-weight: bold;">instance</span> <span style="color: #7CB8BB;">Unpack'</span> <span style="color: #7CB8BB;">Carton</span> <span style="color: #7CB8BB;">Milk</span> <span style="color: #F0DFAF; font-weight: bold;">where</span>
+  unpack' p <span style="color: #DFAF8F;">=</span>
+    <span style="color: #7CB8BB;">Milk</span> <span style="color: #CC9393;">"cow milk"</span> <span style="color: #DFAF8F;">$</span> <span style="color: #CC9393;">"carton of "</span> <span style="color: #DFAF8F;">++</span> (show <span style="color: #DFAF8F;">.</span> volume <span style="color: #DFAF8F;">$</span> p) <span style="color: #DFAF8F;">++</span> <span style="color: #CC9393;">" volume."</span>
+
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">&#955;&gt; unpack' c</span>
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">Milk {kind = "cow milk", desc = "carton of 500.0 volume."}</span>
+</pre>
+</div>
+
+<p>
+Sada smo u zaglavlju klase <code>Unpack'</code> rekli da:
+</p>
+
+<p>
+<b>Za jedan <code>packaging</code> tip može biti samo jedan <code>content</code> tip</b>.
+</p>
+
+<p>
+I nema nikakve dileme kog je tipa <code>unpack' c</code> jer <b>ne može</b>
+postojati još jedna instanca klase <code>Unpack'</code> koja bi pravila
+problem:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #F0DFAF; font-weight: bold;">data</span> <span style="color: #7CB8BB;">EnergyDrink</span> <span style="color: #DFAF8F;">=</span> <span style="color: #7CB8BB;">EnergyDrink</span>
+  { caffeineRate <span style="color: #DFAF8F;">::</span> <span style="color: #7CB8BB;">Int</span>
+  } <span style="color: #F0DFAF; font-weight: bold;">deriving</span> (<span style="color: #7CB8BB;">Show</span>)
+
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">instance Unpack' GlassBottle EnergyDrink where</span>
+<span style="color: #5F7F5F;">--   </span><span style="color: #7F9F7F;">unpack' p = EnergyDrink 12</span>
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">src/FunDeps.hs:78:10-33: error: &#8230;</span>
+<span style="color: #5F7F5F;">--     </span><span style="color: #7F9F7F;">Functional dependencies conflict between instance declarations:</span>
+<span style="color: #5F7F5F;">--       </span><span style="color: #7F9F7F;">instance Unpack' GlassBottle Beer</span>
+<span style="color: #5F7F5F;">--         </span><span style="color: #7F9F7F;">-- Defined at /home/novak/haskell/haskellNTP/showcase/src/FunDeps.hs:</span><span style="color: #DC8CC3; background-color: #3F3F3F;">78:10</span>
+<span style="color: #5F7F5F;">--       </span><span style="color: #7F9F7F;">instance Unpack' GlassBottle EnergyDrink</span>
+<span style="color: #5F7F5F;">--         </span><span style="color: #7F9F7F;">-- Defined at /home/novak/haskell/haskellNTP/showcase/src/FunDeps.hs:</span><span style="color: #DC8CC3; background-color: #3F3F3F;">90:10</span>
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">Compilation failed.</span>
+</pre>
+</div>
+
+<p>
+Naravno, u neku drugu ambalažu se može bez problema pakovati nešto
+drugo, to svakako neće praviti problem:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #F0DFAF; font-weight: bold;">data</span> <span style="color: #7CB8BB;">GlassBottle</span> <span style="color: #DFAF8F;">=</span> <span style="color: #7CB8BB;">GlassBottle</span>
+  { shape <span style="color: #DFAF8F;">::</span> <span style="color: #7CB8BB;">String</span>
+  } <span style="color: #F0DFAF; font-weight: bold;">deriving</span> (<span style="color: #7CB8BB;">Show</span>)
+
+<span style="color: #F0DFAF; font-weight: bold;">data</span> <span style="color: #7CB8BB;">Beer</span> <span style="color: #DFAF8F;">=</span> <span style="color: #7CB8BB;">Beer</span>
+  { feel <span style="color: #DFAF8F;">::</span> <span style="color: #7CB8BB;">String</span>
+  } <span style="color: #F0DFAF; font-weight: bold;">deriving</span> (<span style="color: #7CB8BB;">Show</span>)
+
+<span style="color: #F0DFAF; font-weight: bold;">instance</span> <span style="color: #7CB8BB;">Unpack'</span> <span style="color: #7CB8BB;">GlassBottle</span> <span style="color: #7CB8BB;">Beer</span> <span style="color: #F0DFAF; font-weight: bold;">where</span>
+  unpack' p <span style="color: #DFAF8F;">=</span> <span style="color: #7CB8BB;">Beer</span> <span style="color: #DFAF8F;">$</span> <span style="color: #CC9393;">"Fresh bear from the "</span> <span style="color: #DFAF8F;">++</span> shape p <span style="color: #DFAF8F;">++</span> <span style="color: #CC9393;">"."</span>
+
+<span style="color: #93E0E3;">b</span> <span style="color: #DFAF8F;">=</span> <span style="color: #7CB8BB;">GlassBottle</span> <span style="color: #CC9393;">"curvy bottle"</span>
+
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">&#955;&gt; unpack' b</span>
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">Beer {feel = "Fresh bear from the curvy bottle."}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0b09f7e" class="outline-2">
+<h2 id="org0b09f7e"><span class="section-number-2">8</span> Monoidi i Funktori</h2>
+</div>
+<div id="outline-container-org74f8335" class="outline-2">
+<h2 id="org74f8335"><span class="section-number-2">9</span> Monade</h2>
+<div class="outline-text-2" id="text-9">
+</div><div id="outline-container-org5b11af5" class="outline-3">
+<h3 id="org5b11af5"><span class="section-number-3">9.1</span> IO</h3>
+</div>
+</div>
+<div id="outline-container-org7bc61c9" class="outline-2">
+<h2 id="org7bc61c9"><span class="section-number-2">10</span> Profiling</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+<b>Zašto je ovaj program spor?</b>
+</p>
+
+<p>
+<b>Zašto ovaj program koristi ovoliko memorije?</b>
+</p>
+
+<p>
+<a href="https://en.wikipedia.org/wiki/Profiling_(computer_programming)">Profiling</a> je dinamička ili statička analiza programa koja služi da
+izmeri koliko i kako program troši resurse. Informacije koje daju
+profiler-i koriste se za optimizaciju.
+</p>
+
+<p>
+Kod funkcionalnih jezika osnovni nivo profiling-a odnosi se na
+merenje potrošnje resursa koju program pravi pri pozivu pojedinih
+funkcija.
+</p>
+
+<p>
+<b>Haskell funkcija A koristi funkciju A1</b> <br />
+<b>Haskell funkcija A1 koristi funkciju A2</b> <br />
+<b>Haskell funkcija B koristi funkciju B1</b> <br />
+<b>Haskell funkcija B1 koristi funkciju B2</b> <br />
+<b>Haskell funkcija A1 je spora i troši previše memorije. Šta nam
+garantuje da to nije zbog B1?</b>
+</p>
+</div>
+
+<div id="outline-container-orgfb6a221" class="outline-3">
+<h3 id="orgfb6a221"><span class="section-number-3">10.1</span> Primitivni profiling samo sa Unix <code>time</code></h3>
+</div>
+<div id="outline-container-orgbdefbe0" class="outline-3">
+<h3 id="orgbdefbe0"><span class="section-number-3">10.2</span> GHC podrška za profiling</h3>
+<div class="outline-text-3" id="text-10-2">
+<p>
+Izvodi se u tri koraka:
+</p>
+
+<ol class="org-ol">
+<li><p>
+Kompajliranje programa za profiling
+</p>
+
+<p>
+GHC ubaci delove koda koji nam omogućavaju da u vreme
+izvršavanja dobijamo informacije za profiling. To se mora
+naglasiti posebnim opcijama koje se daju kompajleru (pun spisak
+opcija potražiti <a href="https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/profiling.html">ovde</a>):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">ghc -prof -fprof-auto-top -rtsopts Modul.hs
+</pre>
+</div>
+
+<p>
+Moguće je ubaciti odgovarajuću pragmu (<i>cost centre annotation</i>)
+na mesta u porgramu koja posebno želimo da "merimo":
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #94BFF3;">{-# SCC ime_za_merenje #-}</span>
+</pre>
+</div>
+
+<p>
+Primer programa koji koristi eksplicitne <i>cost</i> centre je dat u
+nastavku:
+</p>
+
+<p>
+<a id="org8cb218c"></a>
+</p>
+<div class="org-src-container">
+<label class="org-src-name"><span class="listing-number">Listing 3: </span>haskellNTP/profiling/src/ExplicitCostCenters.hs</label><pre class="src src-haskell"><span style="color: #93E0E3;">explicitCostCenters</span> <span style="color: #DFAF8F;">::</span> <span style="color: #7CB8BB;">IO</span> <span style="color: #7CB8BB;">()</span>
+<span style="color: #93E0E3;">explicitCostCenters</span> <span style="color: #DFAF8F;">=</span> <span style="color: #F0DFAF; font-weight: bold;">do</span> print <span style="color: #DFAF8F;">$</span> <span style="color: #94BFF3;">{-# SCC last_xs #-}</span> last xs
+                         print <span style="color: #DFAF8F;">$</span> <span style="color: #94BFF3;">{-# SCC last_init_xs #-}</span> last <span style="color: #DFAF8F;">$</span> init xs
+                         print <span style="color: #DFAF8F;">$</span> <span style="color: #94BFF3;">{-# SCC last_ys #-}</span> last ys
+                         print <span style="color: #DFAF8F;">$</span> <span style="color: #94BFF3;">{-# SCC last_init_ys #-}</span> last <span style="color: #DFAF8F;">$</span> init ys
+                           <span style="color: #F0DFAF; font-weight: bold;">where</span> xs <span style="color: #DFAF8F;">=</span> [1<span style="color: #DFAF8F;">..</span>1000000]
+                                 ys <span style="color: #DFAF8F;">=</span> [1<span style="color: #DFAF8F;">..</span>2000000]
+</pre>
+</div>
+
+<p>
+Kako bi ovakva mesta u programu bila merena potrebno je da pri
+kompajliranju <a href="https://downloads.haskell.org/~ghc/7.8.2/docs/html/users_guide/prof-compiler-options.html">bude omogućena opcija <code>-prof</code></a>.
+</p>
+
+<p>
+Ako projekat koristi <i>stack</i> sličan efekat komandi gore se može
+postići na sledeći način (imajte u vidu da <code>Stack</code> koristi
+<code>Cabal</code> a tek <code>Cabal</code> prosleđuje opcije GHC-u, pogledati <a href="https://github.com/commercialhaskell/stack/blob/master/doc/GUIDE.md#debugging">ovde</a>):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">stack build --library-profiling --executable-profiling <span style="color: #CC9393;">\</span>
+      --ghc-options=<span style="color: #CC9393;">"-fno-prof-cafs -rtsopts"</span>
+</pre>
+</div></li>
+
+<li><p>
+Pokretanje programa sa omogućenim opcijama za profiling
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">./projekat-exe +RTS -p
+</pre>
+</div>
+
+<p>
+Pun spisak <i>RTS</i> opcija možete pogledati <a href="https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/profiling.html#time-and-allocation-profiling">ovde</a>.
+</p>
+
+<p>
+Ako koristite <i>stack</i>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">stack exec -- projekat-exe +RTS -p
+</pre>
+</div></li>
+
+<li><p>
+Analiza rezultata
+</p>
+
+<p>
+Ako ste program izvršili sa RTS opcijom <code>-p</code> onda ste dobili
+fajl <code>program.prof</code> u kome se nalaze rezultati za analizu.
+</p>
+
+<p>
+Ako izvršimo prethodna dva koraka sa programom datim <a href="#org8cb218c">ranije</a> naš
+<code>.prof</code> file će ličiti na:
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name"><span class="listing-number">Listing 4: </span>haskellNTP/profiling/profiling-exe-manual-CAFS.prof</label><pre class="src src-fundamental">        Mon Mar  6 14:59 2017 Time and Allocation Profiling Report  (Final)
+
+           profiling-exe +RTS -N -p -RTS
+
+        total time  =        0.16 secs   (163 ticks @ 1000 us, 1 processor)
+        total alloc = 384,079,344 bytes  (excludes profiling overheads)
+
+COST CENTRE  MODULE SRC                   %time %alloc
+
+main.ys      Main   app/Main.hs:28:17-33   42.3   37.5
+last_init_ys Main   app/Main.hs:26:44-57   20.9   29.2
+main.xs      Main   app/Main.hs:27:17-33   18.4   18.7
+last_init_xs Main   app/Main.hs:24:44-57   11.0   14.6
+last_ys      Main   app/Main.hs:25:39-45    3.7    0.0
+last_xs      Main   app/Main.hs:23:39-45    3.1    0.0
+
+
+                                                                                    individual      inherited
+COST CENTRE     MODULE                SRC                        no.     entries  %time %alloc   %time %alloc
+
+MAIN            MAIN                  &lt;built-in&gt;                  46          0    0.6    0.0   100.0  100.0
+ CAF            Main                  &lt;entire-module&gt;             91          0    0.0    0.0    99.4  100.0
+  main          Main                  app/Main.hs:(23,1)-(28,33)  92          1    0.0    0.0    99.4  100.0
+   last_init_xs Main                  app/Main.hs:24:44-57        96          1   11.0   14.6    11.0   14.6
+   last_init_ys Main                  app/Main.hs:26:44-57        99          1   20.9   29.2    20.9   29.2
+   last_xs      Main                  app/Main.hs:23:39-45        94          1    3.1    0.0     3.1    0.0
+   last_ys      Main                  app/Main.hs:25:39-45        97          1    3.7    0.0     3.7    0.0
+   main.xs      Main                  app/Main.hs:27:17-33        95          1   18.4   18.7    18.4   18.7
+   main.ys      Main                  app/Main.hs:28:17-33        98          1   42.3   37.5    42.3   37.5
+ CAF            GHC.IO.Handle.FD      &lt;entire-module&gt;             88          0    0.0    0.0     0.0    0.0
+ CAF            GHC.Event.Thread      &lt;entire-module&gt;             86          0    0.0    0.0     0.0    0.0
+ CAF            GHC.IO.Encoding       &lt;entire-module&gt;             85          0    0.0    0.0     0.0    0.0
+ CAF            GHC.IO.Handle.Text    &lt;entire-module&gt;             84          0    0.0    0.0     0.0    0.0
+ CAF            GHC.Conc.Signal       &lt;entire-module&gt;             81          0    0.0    0.0     0.0    0.0
+ CAF            GHC.Event.Poll        &lt;entire-module&gt;             74          0    0.0    0.0     0.0    0.0
+ CAF            GHC.IO.Encoding.Iconv &lt;entire-module&gt;             70          0    0.0    0.0     0.0    0.0
+ CAF            GHC.Event.EPoll       &lt;entire-module&gt;             64          0    0.0    0.0     0.0    0.0
+ main           Main                  app/Main.hs:(23,1)-(28,33)  93          0    0.0    0.0     0.0    0.0
+</pre>
+</div></li>
+</ol>
+</div>
+
+<div id="outline-container-orgdead724" class="outline-4">
+<h4 id="orgdead724"><span class="section-number-4">10.2.1</span> Još neke <i>RTS</i> (<i>Run Time System</i>) opcije</h4>
+<div class="outline-text-4" id="text-10-2-1">
+<p>
+Ako programu od <a href="#org8cb218c">ranije</a> pro pokretanju prosledimo opciju <code>-pa</code>
+dobićemo širi izveštaj o korišćenju resursa koji će obuhvatati i
+podatke o alokaciji memorije:
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name"><span class="listing-number">Listing 5: </span>haskellNTP/profiling/profiling-exe-pa.prof</label><pre class="src src-fundamental">        Mon Mar  6 15:27 2017 Time and Allocation Profiling Report  (Final)
+
+           profiling-exe +RTS -N -pa -RTS
+
+        total time  =        0.58 secs   (577 ticks @ 1000 us, 1 processor)
+        total alloc = 384,115,072 bytes  (excludes profiling overheads)
+
+COST CENTRE  MODULE                  SRC                         %time %alloc  ticks     bytes
+
+GC           GC                      &lt;built-in&gt;                   72.3    0.0    417         0
+main.ys      Main                    app/Main.hs:28:17-33          9.4   37.5     54 144000016
+last_init_ys Main                    app/Main.hs:26:44-57          6.4   29.2     37 111999960
+main.xs      Main                    app/Main.hs:27:17-33          5.4   18.7     31  72000016
+last_init_xs Main                    app/Main.hs:24:44-57          3.6   14.6     21  55999960
+last_ys      Main                    app/Main.hs:25:39-45          1.0    0.0      6        16
+last_xs      Main                    app/Main.hs:23:39-45          1.0    0.0      6        16
+SYSTEM       SYSTEM                  &lt;built-in&gt;                    0.9    0.0      5     35728
+IDLE         IDLE                    &lt;built-in&gt;                    0.0    0.0      0         0
+PINNED       SYSTEM                  &lt;built-in&gt;                    0.0    0.0      0         0
+DONT_CARE    MAIN                    &lt;built-in&gt;                    0.0    0.0      0         0
+OVERHEAD_of  PROFILING               &lt;built-in&gt;                    0.0    0.0      0         0
+MAIN         MAIN                    &lt;built-in&gt;                    0.0    0.0      0     22824
+CAF          GHC.Integer.Type        &lt;entire-module&gt;               0.0    0.0      0         0
+CAF          GHC.Err                 &lt;entire-module&gt;               0.0    0.0      0         0
+CAF          GHC.Enum                &lt;entire-module&gt;               0.0    0.0      0         0
+CAF          Foreign.Marshal.Alloc   &lt;entire-module&gt;               0.0    0.0      0         0
+CAF          GHC.Event.PSQ           &lt;entire-module&gt;               0.0    0.0      0         0
+CAF          GHC.Event.Manager       &lt;entire-module&gt;               0.0    0.0      0         0
+CAF          GHC.Event.Array         &lt;entire-module&gt;               0.0    0.0      0         0
+CAF          GHC.Stack.CCS           &lt;entire-module&gt;               0.0    0.0      0         0
+CAF          GHC.IO.Encoding.UTF32   &lt;entire-module&gt;               0.0    0.0      0         0
+CAF          GHC.IO.Encoding.Latin1  &lt;entire-module&gt;               0.0    0.0      0         0
+CAF          GHC.Event.TimerManager  &lt;entire-module&gt;               0.0    0.0      0         0
+CAF          GHC.Event.EPoll         &lt;entire-module&gt;               0.0    0.0      0        48
+CAF          GHC.Show                &lt;entire-module&gt;               0.0    0.0      0         0
+CAF          GHC.IO.Handle.Types     &lt;entire-module&gt;               0.0    0.0      0         0
+CAF          GHC.IO.FD               &lt;entire-module&gt;               0.0    0.0      0         0
+CAF          GHC.IO.Encoding.UTF8    &lt;entire-module&gt;               0.0    0.0      0         0
+CAF          GHC.IO.Encoding.UTF16   &lt;entire-module&gt;               0.0    0.0      0         0
+CAF          GHC.IO.Encoding.Iconv   &lt;entire-module&gt;               0.0    0.0      0       232
+CAF          GHC.IO.Encoding.Failure &lt;entire-module&gt;               0.0    0.0      0         0
+CAF          GHC.Exception           &lt;entire-module&gt;               0.0    0.0      0         0
+CAF          GHC.Arr                 &lt;entire-module&gt;               0.0    0.0      0         0
+CAF          GHC.Event.Poll          &lt;entire-module&gt;               0.0    0.0      0        96
+CAF          GHC.Event.Internal      &lt;entire-module&gt;               0.0    0.0      0         0
+CAF          System.Posix.Internals  &lt;entire-module&gt;               0.0    0.0      0         0
+CAF          GHC.IO.Handle.Internals &lt;entire-module&gt;               0.0    0.0      0         0
+CAF          GHC.IO.Handle           &lt;entire-module&gt;               0.0    0.0      0         0
+CAF          GHC.ForeignPtr          &lt;entire-module&gt;               0.0    0.0      0         0
+CAF          GHC.Conc.Sync           &lt;entire-module&gt;               0.0    0.0      0         0
+CAF          GHC.Conc.Signal         &lt;entire-module&gt;               0.0    0.0      0       640
+CAF          GHC.Event.Control       &lt;entire-module&gt;               0.0    0.0      0         0
+CAF          GHC.List                &lt;entire-module&gt;               0.0    0.0      0         0
+CAF          GHC.IO.Handle.Text      &lt;entire-module&gt;               0.0    0.0      0        88
+CAF          GHC.IO.Encoding         &lt;entire-module&gt;               0.0    0.0      0      2872
+CAF          GHC.Event.Thread        &lt;entire-module&gt;               0.0    0.0      0      1232
+CAF          GHC.TopHandler          &lt;entire-module&gt;               0.0    0.0      0         0
+CAF          GHC.IO.Handle.FD        &lt;entire-module&gt;               0.0    0.0      0     34512
+CAF          GHC.IO.Exception        &lt;entire-module&gt;               0.0    0.0      0         0
+CAF          Control.Exception.Base  &lt;entire-module&gt;               0.0    0.0      0         0
+main         Main                    app/Main.hs:(23,1)-(28,33)    0.0    0.0      0     16800
+CAF          Main                    &lt;entire-module&gt;               0.0    0.0      0        16
+
+
+                                                                                      individual      inherited
+COST CENTRE     MODULE                  SRC                        no.     entries  %time %alloc   %time %alloc  ticks     bytes
+
+MAIN            MAIN                    &lt;built-in&gt;                  46          0    0.0    0.0   100.0  100.0      0     22824
+ CAF            Main                    &lt;entire-module&gt;             91          0    0.0    0.0    26.9  100.0      0        16
+  main          Main                    app/Main.hs:(23,1)-(28,33)  92          1    0.0    0.0    26.9  100.0      0      1208
+   last_init_xs Main                    app/Main.hs:24:44-57        96          1    3.6   14.6     3.6   14.6     21  55999960
+   last_init_ys Main                    app/Main.hs:26:44-57        99          1    6.4   29.2     6.4   29.2     37 111999960
+   last_xs      Main                    app/Main.hs:23:39-45        94          1    1.0    0.0     1.0    0.0      6        16
+   last_ys      Main                    app/Main.hs:25:39-45        97          1    1.0    0.0     1.0    0.0      6        16
+   main.xs      Main                    app/Main.hs:27:17-33        95          1    5.4   18.7     5.4   18.7     31  72000016
+   main.ys      Main                    app/Main.hs:28:17-33        98          1    9.4   37.5     9.4   37.5     54 144000016
+ CAF            Control.Exception.Base  &lt;entire-module&gt;             90          0    0.0    0.0     0.0    0.0      0         0
+ CAF            GHC.IO.Exception        &lt;entire-module&gt;             89          0    0.0    0.0     0.0    0.0      0         0
+ CAF            GHC.IO.Handle.FD        &lt;entire-module&gt;             88          0    0.0    0.0     0.0    0.0      0     34512
+ CAF            GHC.TopHandler          &lt;entire-module&gt;             87          0    0.0    0.0     0.0    0.0      0         0
+ CAF            GHC.Event.Thread        &lt;entire-module&gt;             86          0    0.0    0.0     0.0    0.0      0      1232
+ CAF            GHC.IO.Encoding         &lt;entire-module&gt;             85          0    0.0    0.0     0.0    0.0      0      2872
+ CAF            GHC.IO.Handle.Text      &lt;entire-module&gt;             84          0    0.0    0.0     0.0    0.0      0        88
+ CAF            GHC.List                &lt;entire-module&gt;             83          0    0.0    0.0     0.0    0.0      0         0
+ CAF            GHC.Event.Control       &lt;entire-module&gt;             82          0    0.0    0.0     0.0    0.0      0         0
+ CAF            GHC.Conc.Signal         &lt;entire-module&gt;             81          0    0.0    0.0     0.0    0.0      0       640
+ CAF            GHC.Conc.Sync           &lt;entire-module&gt;             80          0    0.0    0.0     0.0    0.0      0         0
+ CAF            GHC.ForeignPtr          &lt;entire-module&gt;             79          0    0.0    0.0     0.0    0.0      0         0
+ CAF            GHC.IO.Handle           &lt;entire-module&gt;             78          0    0.0    0.0     0.0    0.0      0         0
+ CAF            GHC.IO.Handle.Internals &lt;entire-module&gt;             77          0    0.0    0.0     0.0    0.0      0         0
+ CAF            System.Posix.Internals  &lt;entire-module&gt;             76          0    0.0    0.0     0.0    0.0      0         0
+ CAF            GHC.Event.Internal      &lt;entire-module&gt;             75          0    0.0    0.0     0.0    0.0      0         0
+ CAF            GHC.Event.Poll          &lt;entire-module&gt;             74          0    0.0    0.0     0.0    0.0      0        96
+ CAF            GHC.Arr                 &lt;entire-module&gt;             73          0    0.0    0.0     0.0    0.0      0         0
+ CAF            GHC.Exception           &lt;entire-module&gt;             72          0    0.0    0.0     0.0    0.0      0         0
+ CAF            GHC.IO.Encoding.Failure &lt;entire-module&gt;             71          0    0.0    0.0     0.0    0.0      0         0
+ CAF            GHC.IO.Encoding.Iconv   &lt;entire-module&gt;             70          0    0.0    0.0     0.0    0.0      0       232
+ CAF            GHC.IO.Encoding.UTF16   &lt;entire-module&gt;             69          0    0.0    0.0     0.0    0.0      0         0
+ CAF            GHC.IO.Encoding.UTF8    &lt;entire-module&gt;             68          0    0.0    0.0     0.0    0.0      0         0
+ CAF            GHC.IO.FD               &lt;entire-module&gt;             67          0    0.0    0.0     0.0    0.0      0         0
+ CAF            GHC.IO.Handle.Types     &lt;entire-module&gt;             66          0    0.0    0.0     0.0    0.0      0         0
+ CAF            GHC.Show                &lt;entire-module&gt;             65          0    0.0    0.0     0.0    0.0      0         0
+ CAF            GHC.Event.EPoll         &lt;entire-module&gt;             64          0    0.0    0.0     0.0    0.0      0        48
+ CAF            GHC.Event.TimerManager  &lt;entire-module&gt;             63          0    0.0    0.0     0.0    0.0      0         0
+ CAF            GHC.IO.Encoding.Latin1  &lt;entire-module&gt;             62          0    0.0    0.0     0.0    0.0      0         0
+ CAF            GHC.IO.Encoding.UTF32   &lt;entire-module&gt;             61          0    0.0    0.0     0.0    0.0      0         0
+ CAF            GHC.Stack.CCS           &lt;entire-module&gt;             60          0    0.0    0.0     0.0    0.0      0         0
+ CAF            GHC.Event.Array         &lt;entire-module&gt;             59          0    0.0    0.0     0.0    0.0      0         0
+ CAF            GHC.Event.Manager       &lt;entire-module&gt;             58          0    0.0    0.0     0.0    0.0      0         0
+ CAF            GHC.Event.PSQ           &lt;entire-module&gt;             57          0    0.0    0.0     0.0    0.0      0         0
+ CAF            Foreign.Marshal.Alloc   &lt;entire-module&gt;             56          0    0.0    0.0     0.0    0.0      0         0
+ CAF            GHC.Enum                &lt;entire-module&gt;             55          0    0.0    0.0     0.0    0.0      0         0
+ CAF            GHC.Err                 &lt;entire-module&gt;             54          0    0.0    0.0     0.0    0.0      0         0
+ CAF            GHC.Integer.Type        &lt;entire-module&gt;             53          0    0.0    0.0     0.0    0.0      0         0
+ DONT_CARE      MAIN                    &lt;built-in&gt;                  49          0    0.0    0.0     0.0    0.0      0         0
+ GC             GC                      &lt;built-in&gt;                  51          0   72.3    0.0    72.3    0.0    417         0
+ IDLE           IDLE                    &lt;built-in&gt;                  47          0    0.0    0.0     0.0    0.0      0         0
+ OVERHEAD_of    PROFILING               &lt;built-in&gt;                  50          0    0.0    0.0     0.0    0.0      0         0
+ PINNED         SYSTEM                  &lt;built-in&gt;                  48          0    0.0    0.0     0.0    0.0      0         0
+ SYSTEM         SYSTEM                  &lt;built-in&gt;                  52          0    0.9    0.0     0.9    0.0      5     35728
+ main           Main                    app/Main.hs:(23,1)-(28,33)  93          0    0.0    0.0     0.0    0.0      0     15592
+</pre>
+</div>
+
+<p>
+Listu ostalih opcija možete pogledati <a href="https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/profiling.html#time-and-allocation-profiling">ovde</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgde90d8c" class="outline-4">
+<h4 id="orgde90d8c"><span class="section-number-4">10.2.2</span> Potrošnja memorije kroz vreme</h4>
+<div class="outline-text-4" id="text-10-2-2">
+<p>
+Ponekada je korisno pratiti i potrošnju memorije kroz
+vreme. Ovakvi izveštaji mogu lepo pokazati kojom dinamikom dolazi
+do <i>out of memory</i> grešaka i zašto.
+</p>
+
+<p>
+Kako bismo pokrenuli program tako da dobijemo <i>heap</i> profil
+potrebno je da koristimo <i>RTS</i> opciju <code>-h</code> (ili neku drugu opciju
+koja nam omogućuje inspekciju korišćenja <i>heap</i>-a, a puna lista je
+data <a href="https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/profiling.html#rts-options-for-heap-profiling">ovde</a>). I nakon toga dobijamo fajl <code>program.hp</code> u kome se
+nalaze merenja koja liče na:
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name"><span class="listing-number">Listing 6: </span>haskellNTP/profiling/profiling-exe-basic.hp</label><pre class="src src-fundamental">JOB <span style="color: #CC9393;">"profiling-exe +RTS -N -h"</span>
+DATE <span style="color: #CC9393;">"Mon Mar  6 15:38 2017"</span>
+SAMPLE_UNIT <span style="color: #CC9393;">"seconds"</span>
+VALUE_UNIT <span style="color: #CC9393;">"bytes"</span>
+BEGIN_SAMPLE 0.000000
+END_SAMPLE 0.000000
+BEGIN_SAMPLE 0.200000
+(48)PINNED      32720
+(81)GHC.Conc.Signal.CAF 640
+(88)GHC.IO.Handle.FD.CAF        680
+(84)GHC.IO.Handle.Text.CAF      24
+(93)main        144
+(91)Main.CAF    48
+MAIN    9960
+(74)GHC.Event.Poll.CAF  24
+(86)GHC.Event.Thread.CAF        560
+(70)GHC.IO.Encoding.Iconv.CAF   120
+(85)GHC.IO.Encoding.CAF 1168
+(98)main.ys/main/Main.CAF       56795872
+END_SAMPLE 0.200000
+BEGIN_SAMPLE 0.272000
+END_SAMPLE 0.272000
+</pre>
+</div>
+
+<p>
+za vizualizaciju ovih rezultata može se koristiti program <code>hp2ps</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">stack exec -- hp2ps -d program-exe.hp
+</pre>
+</div>
+
+<p>
+Za program:
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name"><span class="listing-number">Listing 7: </span>haskellNTP/profiling/src/Mean.hs</label><pre class="src src-haskell"><span style="color: #F0DFAF; font-weight: bold;">import</span>           <span style="color: #7CB8BB;">System.Environment</span>
+<span style="color: #F0DFAF; font-weight: bold;">import</span>           <span style="color: #7CB8BB;">Text.Printf</span>
+
+<span style="color: #93E0E3;">meanMain</span> <span style="color: #DFAF8F;">=</span> <span style="color: #F0DFAF; font-weight: bold;">do</span> [d] <span style="color: #DFAF8F;">&lt;-</span> map read <span style="color: #DFAF8F;">`fmap`</span> getArgs
+              printf <span style="color: #CC9393;">"%f\n"</span> (mean [1 <span style="color: #DFAF8F;">..</span> d])
+
+<span style="color: #93E0E3;">mean</span> <span style="color: #DFAF8F;">::</span> [<span style="color: #7CB8BB;">Double</span>] <span style="color: #DFAF8F;">-&gt;</span> <span style="color: #7CB8BB;">Double</span>
+<span style="color: #93E0E3;">mean</span> xs <span style="color: #DFAF8F;">=</span> sum xs <span style="color: #DFAF8F;">/</span> fromIntegral (length xs)
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="haskellNTP/profiling/profiling-exe-mean.jpg" alt="profiling-exe-mean.jpg" width="600px" />
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8095104" class="outline-2">
+<h2 id="org8095104"><span class="section-number-2">11</span> Haskell Core&#xa0;&#xa0;&#xa0;<span class="tag"><span class="za_radoznale">za_radoznale</span></span></h2>
+<div class="outline-text-2" id="text-11">
+<p>
+Kada <i>profiling</i> ne daje dovoljno dobar uvid u to šta program radi
+na niskim nivoima onda možda razumevanja <i>Haskell Core-a</i> može da
+pomogne.
+</p>
+
+<p>
+<a href="https://ghc.haskell.org/trac/ghc/wiki/Commentary/Compiler/CoreSynType"><i>Haskell Core</i></a> je "jednostavan funkcionalan jezik" koji <i>GHC</i>
+koristi kao <i>intermediate</i> reprezentaciju programa. <i>GHC</i> optimizuje
+programe tako što ih sukcesivno transformiše u sve efikasnije
+forme. <i>Core</i> predstavlja poslednji nivo na kome se očuvavaju
+pravila funkcionalnog programiranja pre prevođenja na imperativni -
+kod niskog nivoa (za šta se kod <i>GHC</i>-a koriste <a href="https://ghc.haskell.org/trac/ghc/wiki/Commentary/Compiler/GeneratedCode"><i>STG</i></a> i <i>C--</i>).
+</p>
+
+<p>
+<i>Core</i> je za razliku od Haskell-a veoma jednostavan jezik. Njegova
+sintaksa se može opisati u 20-ak linija, eksplicitno je tipiziran. I
+<i>sve konstrukcije u Haskell-u mogu se predstaviti pomoću Core
+jezika</i>.
+</p>
+
+<p>
+Kako bismo od kompajlera tržili da nam pokaže <i>Core</i> verziju našeg
+programa treba da mu prosledimo opciju <code>-ddump-simpl</code> ili da
+koristimo <code>ghc-core</code> alat koji to (uz još par stvari) uradi za
+nas. Ako projekat koristi <i>Stack</i> onda se to može uratiti na sledeći
+način:
+</p>
+
+<p>
+Instalirati <code>ghc-core</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">stack install ghc-core
+</pre>
+</div>
+
+<p>
+<i>Stack</i> će možda upozoriti da nema specificiranih verzija
+<i>dependencies</i>-a ali će dati i predlog šta treba uraditi, npr:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-fundamental">Recommended action: try adding the following to your extra-deps in
+/.../haskellNTP/profiling/stack.yaml:
+- colorize-haskell-1.0.1
+</pre>
+</div>
+
+<p>
+Poslušaćemo predlog i izmeniti odgovarajuću liniju u <code>stack.yaml</code>
+projekta na:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-yaml"><span style="color: #DFAF8F;">extra-deps</span>: [colorize-haskell-1.0.1]
+</pre>
+</div>
+
+<p>
+Nakon toga možemo ponovo pokrenuti instalaciju i posle toga:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">stack exec -- ghc-core app/Main.hs
+</pre>
+</div>
+
+<p>
+Što će na terminal ispisati sve transformacije našeg programa pa
+tako možemo ispratiti šta tačno radi kompajler.
+</p>
+
+<p>
+<i>GHC</i> nam omogućuje da ispitujemo sve njegove nivoe kompajliranja pa
+tako i sam asembler na kraju. O tome možete čitati na kraju <a href="http://book.realworldhaskell.org/read/profiling-and-optimization.html">ovog</a>
+poglavlja <i>Real World Haskell</i>-a.
+</p>
+</div>
+</div>
+<div id="outline-container-orgd52481d" class="outline-2">
+<h2 id="orgd52481d"><span class="section-number-2">12</span> Literatura</h2>
+<div class="outline-text-2" id="text-12">
+<ul class="org-ul">
+<li><a href="http://learnyouahaskell.com/">Learn Some Haskell For The Great Good</a></li>
+<li><a href="https://wiki.haskell.org/Introduction">Haskell wiki</a></li>
+<li><a href="http://book.realworldhaskell.org/">Real World Haskell</a> (odlična knjiga ali nije davno ažurirana)</li>
+<li><a href="http://www.seas.upenn.edu/~cis194/">Kursevi na Pensilvanija univerzitetu</a> (<i>spring13</i>, <i>fall16</i> ili
+bilo koji drugi po izboru.)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Novak Boškov</p>
+<p class="date">Created: 2017-03-17 пет 15:29</p>
+<p class="validation"></p>
+</div>
+</body>
+</html>
