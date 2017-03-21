@@ -1,0 +1,103 @@
+#+TITLE: Napredne tehnike programiranja - plan rada
+#+AUTHOR: Igor Dejanović, Novak Boškov
+#+OPTIONS: toc:nil num:nil
+#+LANGUAGE: sr
+
+* Plan nastave
+
+  #+ATTR_HTML: :border 2 :frame border
+  | nedelja | tema predavanja | datum predavanja | tema vežbi | utorak           | četvrtak         | petak            |
+  |---------+-----------------+------------------+------------+------------------+------------------+------------------|
+  |       1 | [[*predavanja 1][Uvod u predmet]]  | <2017-03-01 Wed> |            |                  |                  |                  |
+  |       2 | [[*predavanja 2][Python 1]]        | <2017-03-08 Wed> |            |                  |                  |                  |
+  |       3 | *ICIST*         |                  |            |                  |                  |                  |
+  |       4 | [[*predavanja 3][Python 2]]        | <2017-03-22 Wed> | [[*vežbe 1][v1]]         | <2017-03-21 Tue> | <2017-03-23 Thu> | <2017-03-24 Fri> |
+  |       5 | [[*predavanja 4][Python 3]]        | <2017-03-29 Wed> | [[*vežbe 2][v2]]         | <2017-03-28 Tue> | <2017-03-30 Thu> | <2017-03-31 Fri> |
+  |---------+-----------------+------------------+------------+------------------+------------------+------------------|
+  |       6 | [[*predavanja 5][Clojure 1]]       | <2017-04-05 Wed> | [[*vežbe 3][v3]]         | <2017-04-04 Tue> | <2017-04-06 Thu> | <2017-04-07 Fri> |
+  |       7 | [[*predavanja 6][Clojure 2]]       | <2017-04-12 Wed> | [[*vežbe 4][v4]]         | <2017-04-11 Tue> | <2017-04-13 Thu> | <2017-04-28 Fri> |
+  |       8 | [[*predavanja 7][Clojure 3]]       | <2017-04-26 Wed> | [[*vežbe 5][v5]]         | <2017-04-25 Tue> | <2017-04-27 Thu> | <2017-05-05 Fri> |
+  |       9 | [[*predavanja 8][Clojure 4]]       | <2017-05-03 Wed> | [[*vežbe 6][v6]]         | <2017-05-09 Tue> | <2017-05-04 Thu> | <2017-05-12 Fri> |
+  |---------+-----------------+------------------+------------+------------------+------------------+------------------|
+  |      10 | [[*predavanja 9][Go 1]]            | <2017-05-10 Wed> | [[*vežbe 7][v7]]         | <2017-05-16 Tue> | <2017-05-11 Thu> | <2017-05-19 Fri> |
+  |      11 | [[*predavanja 10][Go 2]]            | <2017-05-17 Wed> | [[*vežbe 8][v8]]         | <2017-05-23 Tue> | <2017-05-18 Thu> | <2017-05-26 Fri> |
+  |---------+-----------------+------------------+------------+------------------+------------------+------------------|
+  |      12 | [[*predavanja 11][Haskell 1]]       | <2017-05-24 Wed> | [[*vežbe 9][v9]]         | <2017-05-30 Tue> | <2017-05-25 Thu> | <2017-06-02 Fri> |
+  |      13 | [[*predavanja 12][Haskell 2]]       | <2017-05-31 Wed> | [[*vežbe 10][v10]]        | <2017-06-06 Tue> | <2017-06-01 Thu> | <2017-06-09 Fri> |
+  |      14 | [[*predavanja 13][Haskell 3]]       | <2017-06-07 Wed> | [[*vežbe 11][v11]]        | <2017-06-13 Tue> | <2017-06-08 Thu> | <2017-06-14 Wed> |
+  #+TBLFM: $1=@# - 1
+
+  # Poglavlja ispod treba da sadrže kratak opis predavanja i vežbi, na
+  # njih gađaju linkovi iz tabele
+
+** predavanja 1
+   - Kratak pregled oblasti
+   - Način polaganja - kolokvijumi ili mini projekat
+** predavanja 2
+   - functools
+   - itertools
+   - collections
+   - eval
+   - generators
+   - cooroutines
+** predavanja 3
+   - meta-classes, multiple inheritance, special methods, overriding operators
+   - Static types checking. New type hinting syntax. mypy
+   - Transpilers - Cython & Co. - Make Python programs run faster
+** predavanja 4
+   - Parsing & code generators - DSL basics (mali uvod u JSD predmet)
+** predavanja 5
+   - [[file:clojure.org::*Uvod][Uvod]]
+   - [[file:clojure.org::*Elementi%20jezika][Elementi jezika]]
+   - [[file:clojure.org::*REPL%20i%20IDE][REPL i IDE]]
+** predavanja 6
+   - [[file:clojure.org::*Read,%20evaluate%20vrtlog%20i%20makroi][Read, evaluate vrtlog i makroi]]
+** predavanja 7
+   - [[file:clojure.org::*Konkurentno%20i%20paralelno%20programiranje][Konkurentno i paralelno programiranje]]
+** predavanja 8
+   - [[file:clojure.org::*Interakcija%20sa%20platformom][Interakcija sa platformom]]
+   - [[file:clojure.org::*Abstrakcije][Abstrakcije]]
+   Ako ostane vremena:
+   - [[file:clojure.org::*ClojureScript][ClojureScript]]
+   - [[file:clojure.org::*Reader%20conditionals%20(.cljc)][Reader conditionals (.cljc)]]
+** predavanja 9
+   - Introduction
+   - goroutines and concurent programming
+** predavanja 10
+   - I/O and network programming
+   - Go best practices
+** predavanja 11
+** predavanja 12
+** predavanja 13
+
+** vežbe 1
+** vežbe 2
+** vežbe 3
+** vežbe 4
+** vežbe 5
+** vežbe 6
+** vežbe 7
+** vežbe 8
+** vežbe 9
+** vežbe 10
+** vežbe 11
+
+* Način ocenjivanja
+
+** Kolokvijumi u toku semestra
+   | predmet ocenjivanja | udeo bodova (%) |
+   |---------------------+-----------------|
+   | kolokvijum 1        |              25 |
+   | kolokvijum 2        |              25 |
+   | kolokvijum 3        |              25 |
+   | kolokvijum 4        |              25 |
+   |---------------------+-----------------|
+   | ukupno              |             100 |
+   #+TBLFM: @>$2=vsum(@<<..@>>)
+
+   - Ko nije zadovoljan ocenom nakon kolokvijuma može da uzme projekat
+     i time nadoknadi bodove. *Maksimalna ocena 10*
+
+*** Test za one koji imaju <55 na kolokvijumima i ne žele projekat
+
+    Osnovne stvari iz svih delova. *Maksimalna ocena 6*.

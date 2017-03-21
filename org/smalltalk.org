@@ -1,0 +1,28 @@
+* [[https://medium.com/smalltalk-talk/getting-the-message-667d77ff78d#.jjsy4iv4g][Getting The Message]]
+
+Stated concisely, the symmetry, the uniformity, the consistency and the
+simplicity of Smalltalk lie in the following: all values are objects, all
+behavior is invoked by sending messages, and almost nothing is done by syntax
+when it can instead be done by sending messages to objects.
+
+Smalltalk is also fun because defining and using domain specific languages isn’t
+an afterthought, it’s the only way Smalltalk works at all. As a result,
+Smalltalk code lets both the reader and the writer focus on the problem domain,
+using language and notation that is natural to that domain.
+
+Strong typing requires that type errors be detected and prevented — it does not
+require that type errors must be detected and prevented statically by a
+compiler, using syntactic analysis of source code.
+
+You can add your own control structures — and they will not only work just like
+any other control structures, they will look like them, too.
+
+* Links
+https://techbeacon.com/how-learning-smalltalk-can-make-you-better-developer
+http://amber-lang.net/
+http://amber-lang.net/learn.html
+[[https://www.youtube.com/watch?v=rszDKuEuAvg][Amber #Smalltalk Kickstart Screencast]]
+http://www.redline.st/
+http://worrydream.com/EarlyHistoryOfSmalltalk/
+http://themoosebook.org/
+http://gtoolkit.org/

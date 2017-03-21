@@ -1,0 +1,505 @@
+#+TITLE: Napredne tehnike programiranja - Python
+#+LANGUAGE: sr
+#+SETUPFILE: /media/novak/Storage/Emacs/org-html-themes/setup/theme-bigblow.setup
+#+PROPERTY: header-args:python :session ntp :results output :exports both
+#+TAGS: za_radoznale
+
+#+ATTR_HTML: :width 400px
+[[file:images/python.png]]
+
+#+BEGIN_QUOTE
+Python is a programming language that lets you work quickly and
+integrate systems more effectively.
+#+END_QUOTE
+
+* Teorija
+  Svi teorijski materijali nalaze se na [[http://www.igordejanovic.net/courses/ntp.html][sajtu profesora]].
+
+* Napredni Python
+
+** /virtualenv/ i /pip/
+
+   Ako Vam koncept /virtualenv/-a nije poznat pogledajte [[https://virtualenv.pypa.io/en/stable/][ovde]]. Kratak
+   podsetnik možete naći [[http://docs.python-guide.org/en/latest/dev/virtualenvs/][ovde]].
+
+** Iteratori i generatori
+
+   #+BEGIN_SRC python
+     def generator_foo(n):
+         if n < 65 or n > 90:
+             yield "Unsupported alphabetical argument"
+             return
+         else:
+             letter = n
+             while letter <= 90:
+                 yield chr(letter)
+                 letter += 1
+   #+END_SRC
+
+   #+RESULTS:
+
+   #+BEGIN_SRC python
+     ge = generator_foo(15)
+     ge.__next__()
+     ge.__next__()
+   #+END_SRC
+
+   #+RESULTS:
+   :
+   : 'Unsupported alphabetical argument'
+   : Traceback (most recent call last):
+   :   File "<stdin>", line 1, in <module>
+   : StopIteration
+
+   #+BEGIN_SRC python
+     g1 = generator_foo(70)
+   #+END_SRC
+
+
+   #+RESULTS:
+
+   #+BEGIN_SRC python
+     g1.__next__()
+     g1.__next__()
+     g1.__next__()
+     g1.__next__()
+   #+END_SRC
+
+   #+RESULTS:
+   : 'F'
+   : 'G'
+   : 'H'
+   : 'I'
+
+   #+BEGIN_SRC python
+     g2 = generator_foo(88)
+     g2.__next__()
+     g2.__next__()
+     g2.__next__()
+     g2.__next__()
+     g2.__next__()
+   #+END_SRC
+
+   #+RESULTS:
+   #+begin_example
+
+   'X'
+   'Y'
+   'Z'
+   Traceback (most recent call last):
+     File "<stdin>", line 1, in <module>
+   StopIteration
+   Traceback (most recent call last):
+     File "<stdin>", line 1, in <module>
+   StopIteration
+   #+end_example
+
+   #+BEGIN_SRC python
+     g3 = generator_foo(80)
+
+     for l in g3:
+         print(l)
+   #+END_SRC
+
+   #+RESULTS:
+   #+begin_example
+
+   >>> ... ... P
+   Q
+   R
+   S
+   T
+   U
+   V
+   W
+   X
+   Y
+   Z
+   #+end_example
+
+   A to bi bilo zapravo:
+
+   #+BEGIN_SRC python
+     g3 = generator_foo(80)
+
+     iterator_od_g3 = g3.__iter__()
+     for l in iterator_od_g3:
+         print(l)
+   #+END_SRC
+
+   #+RESULTS:
+   #+begin_example
+
+   >>> >>> ... ... P
+   Q
+   R
+   S
+   T
+   U
+   V
+   W
+   X
+   Y
+   Z
+   #+end_example
+
+   Tako ako hoćemo da implementiramo svoju generatorsku klasu možemo:
+
+   #+BEGIN_SRC python
+     class Alphabet:
+           def __init__(self, num):
+               self.letter = chr(num)
+               self.num = num
+           def __iter__(self):
+               if self.num < 65 or self.num > 90:
+                   yield Exception
+                   return
+               else:
+                   for l in range(self.num, 91):
+                       yield Alphabet(l)
+   #+END_SRC
+
+   #+RESULTS:
+
+   #+BEGIN_SRC python
+     a = Alphabet(85)
+
+     for l in a:
+         print(l.letter)
+   #+END_SRC
+
+   #+RESULTS:
+   :
+   : >>> ... ... U
+   : V
+   : W
+   : X
+   : Y
+   : Z
+
+** Ostale specijalne metode
+
+   - =__contains__= (in)
+   - =__getitem__= ([])
+   - =__getattr__= i =__getattribute__=
+
+** Deskriptiori
+
+** Dekoratori
+
+   #+BEGIN_SRC python
+     def greet(func):
+         def wrapper(arg):
+             return "Hello " + func(arg)
+         return wrapper
+
+     @greet
+     def id(a):
+         return a
+
+     def greet_side_effect(func):
+         def wrapper(arg):
+             print("Hello!")
+             return func(arg)
+         return wrapper
+
+     @greet_side_effect
+     def id_side(a):
+         return a + " students"
+   #+END_SRC
+
+   #+RESULTS:
+
+   #+BEGIN_SRC python
+     id("all of you!")
+   #+END_SRC
+
+   #+RESULTS:
+   : 'Hello all of you!'
+
+   #+BEGIN_SRC python
+     id_side("Our")
+   #+END_SRC
+
+   #+RESULTS:
+   : Hello!
+   : 'Our students'
+
+   Mogu se dekorisati i metode:
+
+   #+BEGIN_SRC python
+     def dec(f):
+         def w(s, arg):
+             print("from dec: %d" % s.a)
+             return f(s, arg)
+         return w
+
+     class A:
+         def __init__(self, a):
+             self.a = a
+         @dec
+         def do_something(self, arg):
+             return self.a + arg
+   #+END_SRC
+
+   #+RESULTS:
+
+   #+BEGIN_SRC python
+     a = A(1)
+     a.do_something(2)
+   #+END_SRC
+
+   #+RESULTS:
+   :
+   : from dec: 1
+   : 3
+
+** =functools=
+
+   - =partial=
+   - =reduce=
+   - =zip=
+
+     Zip može npr. biti koristan ako od dve liste želimo da napravimo
+     rečnik:
+
+     #+BEGIN_SRC python
+       a = ['a', 'b', 'c', 'd']
+       b = [1, 2, 3, 4]
+
+       d = dict(zip(a, b))
+       print(d)
+
+       d2 = dict(zip(b,a))
+       print(d2)
+     #+END_SRC
+
+     #+RESULTS:
+     :
+     : >>> >>> >>> {'a': 1, 'b': 2, 'd': 4, 'c': 3}
+     : >>> >>> {1: 'a', 2: 'b', 3: 'c', 4: 'd'}
+
+   - =map=
+
+** =itertools=
+
+   - =chain=
+
+   #+BEGIN_SRC python
+     import itertools as it
+
+     a = "abc"
+     i = [1, 2, 3]
+
+     for e in it.chain(a, i):
+         print(e)
+   #+END_SRC
+
+   #+RESULTS:
+   :
+   : >>> >>> >>> >>> ... ... a
+   : b
+   : c
+   : 1
+   : 2
+   : 3
+
+   - =takewhile=
+
+     #+BEGIN_SRC python
+       import itertools as it
+
+       for i in it.takewhile(lambda x: x < 10, range(1, 20)):
+           print(i)
+     #+END_SRC
+
+     #+RESULTS:
+     #+begin_example
+
+     >>> ... ... 1
+     2
+     3
+     4
+     5
+     6
+     7
+     8
+     9
+     #+end_example
+
+   - =dropwhile= je komplemet od =takewhile=
+
+     #+BEGIN_SRC python
+       d = it.dropwhile(lambda l: l < 'U', [chr(i) for i in range(65, 91)])
+
+       for i in d:
+           print(i)
+     #+END_SRC
+
+     #+RESULTS:
+     :
+     : >>> ... ... U
+     : V
+     : W
+     : X
+     : Y
+     : Z
+
+   - =groupby=
+
+** /High performance/ kolekcije
+
+   - =deque=
+     #+BEGIN_SRC python :eval no
+       from time import time
+       from collections import deque
+
+       def timed(f):
+           def w():
+               bg = time()
+               f()
+               en = time()
+               print("time elapsed : " + str(en - bg))
+           return w
+
+       small = 10
+       large = int(10e6)
+       l_small = list(range(small))
+       l_large = list(range(large))
+       d_small = deque(range(small))
+       d_large = deque(range(large))
+
+       @timed
+       def a_list():
+           l_small.pop()
+
+       @timed
+       def a_larger_list():
+           l_large.pop()
+
+       @timed
+       def a_deque():
+           d_small.pop()
+
+       @timed
+       def a_larger_deque():
+           d_large.pop()
+
+       a_list()
+       a_larger_list()
+       a_deque()
+       a_larger_deque()
+     #+END_SRC
+
+     #+RESULTS:
+     :
+     : time elapsed : 2.384185791015625e-06
+     : time elapsed : 1.6689300537109375e-06
+     : time elapsed : 1.1920928955078125e-06
+     : time elapsed : 1.1920928955078125e-06
+
+** Višestruko nasleđivanje
+
+** Meta klase
+
+** Zadaci
+
+   1. Napraviti klasu =GithubUser= čiji svaki objekat pri konstrukciji
+      dobija ime, prezime i login podatke za /GitHub/. Iteriranjem
+      kroz korisnika se dobijaju korisnici koje dati korisnik
+      prati. Koristite [[https://github.com/PyGithub/PyGithub][pygithub]] za komunikaciju sa /GitHub/-om.
+   2. Neka klasa ima i metodu =peek= koja vraća generator kroz koji
+      kada iteriramo dobijamo jedno po jedno ime repozitorijuma koje
+      je =GithubUser= označio zvezdicom.
+   3. Dodati =GithubUser= klasi polje =more_info= koje je rečnik sa
+      podacima =nf_follower= (ime prvog pratioca), =nf_watched= (ime
+      prvog /watched/ repozitorijuma). Omogućiti da se imenu prvog
+      repozitorijuma pristupa sa =gu.nf_watched=.
+   4. Implementirati poređenje =GithubUser=-a tako da je "veći" onaj
+      koji ima više pratilaca.
+   5. Dekorisati metodu =peek= dekoratorom koji loguje(ispisuje) email
+      =GithubUser=-a u fajl.
+   6. Koristeći funkciju =reduce= napravite string oblika ="p1, p2, p3
+      ..."= gde su =p= imena svih pratilaca =GithubUser=.
+   7. Koristeći funkciju =filter= napraviti metodu =GithubUser=-a koja
+      vraća imena repozitorijuma označenih zvezdicom koji su napisani
+      u Python-u (napisanim u Python-u se smatraju svi repozitorijumi
+      koji u =repo.get_languages()= imaju ključ "Python").
+   8. Koristeći funkciju =map= napraviti metodu =plain_repos=
+      =GithubUsere=-a koja vraća listu imena svih njegovih
+      repozitorijuma ali bez korisničkog imena na
+      početku(repozitorijumi su inače oblika =user_name/repo_name=).
+   9. Napraviti metodu =endless_repos= =GithubUser=-a koja vraća
+      beskrajni iterator na sve repozitorijume koje korisnik prati
+      koristeći njegovu =self.__iter__= metodu.
+
+** Rešenja
+   1. =get_followers=
+
+      #+BEGIN_SRC python
+        from github import Github
+
+        class GithubUser:
+            def __init__(self, name, surname, username, paswd=None):
+                self.name = name
+                self.surname = surname
+                self.username = username
+                self.paswd = paswd
+                self.gh_user = Github(username, paswd or self.get_pass()).get_user()
+            def __iter__(self):
+                for fl in self.gh_user.get_followers():
+                    yield fl
+            def get_pass(self):
+                with open('/home/novak/Desktop/pass.github', 'r') as f:
+                    return f.readline().strip()
+            def peek(self):
+                for repo in self.gh_user.get_starred():
+                    yield repo.full_name
+      #+END_SRC
+
+      #+RESULTS:
+
+      #+BEGIN_SRC python :eval no
+        [u.login for u in GithubUser('Novak', 'Boskov', 'novakboskov')]
+      #+END_SRC
+
+      #+RESULTS:
+      : ['MihailoIsakov', 'danielkupco', 'cusspvz', 'angusshire', 'mbejn', 'igordejanovic', 'amittendulkar', 'coka', 'strika', 'MilosSimic', 'AleksandarRakic', 'nikoladakic', 'C0mpy', 'Mijura', 'stefanplazic', 'yalu']
+
+      #+BEGIN_SRC python :eval no
+        for r in GithubUser('Novak', 'Boskov', 'novakboskov').peek():
+            print(r)
+      #+END_SRC
+
+      #+RESULTS:
+      #+begin_example
+
+            ... bscarlet/llvm-general
+            commercialhaskell/stack
+            alwx/luno-react-native
+            status-im/status-react
+            diagrams/diagrams-lib
+            adamgundry/ghc-proposals
+            mrkkrp/ebal
+            haskell/cabal
+            ghc/ghc
+            davidbrewer/xmonad-ubuntu-conf
+            vicfryzel/xmonad-config
+            haskell/ThreadScope
+            dmatveev/shampoo-emacs
+            facebook/Haxl
+            haskell/c2hs
+            agda/agda
+            cisco/ChezScheme
+            emacsfodder/move-text
+            Wilfred/remacs
+            clash-lang/clash-compiler
+            retro/graphql-builder
+            vermiculus/magithub
+            skeeto/emacsql
+            defunkt/coffee-mode
+            ...
+      #+end_example
+
+   6. =reduce(lambda a, n: a + str(n.name) + ",", nb.get_followers(), "")=
+   9. =itertools.cycle=

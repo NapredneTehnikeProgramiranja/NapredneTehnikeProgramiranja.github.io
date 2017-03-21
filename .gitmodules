@@ -1,0 +1,3 @@
+[submodule "haskellNTP"]
+	path = org/haskellNTP
+	url = git@github.com:NapredneTehnikeProgramiranja/haskellNTP.git
