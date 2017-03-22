@@ -77,7 +77,7 @@ system that ensure clean, correct, multithreaded designs.
 
 * Interakcija sa platformom
 
-* Abstrakcije
+* Apstrakcije
 
 ** Multimethods
 
