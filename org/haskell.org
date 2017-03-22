@@ -276,7 +276,7 @@ language.
     #+INCLUDE: "haskellNTP/profiling/src/Mean.hs" src haskell :lines "5-"
 
     #+ATTR_HTML: :width 600px
-    [[file:haskellNTP/profiling/profiling-exe-mean.jpg]]
+    [[file:images/profiling-exe-mean.jpg]]
 
 * Haskell Core                                                 :za_radoznale:
 
