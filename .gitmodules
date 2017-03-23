@@ -4,7 +4,3 @@
 [submodule "org/org-html-themes"]
 	path = org/org-html-themes
 	url = git@github.com:fniessen/org-html-themes.git
-[submodule "_site"]
-	path = _site
-	url = git@github.com:NapredneTehnikeProgramiranja/NapredneTehnikeProgramiranja.github.io.git
-	ignore = all
