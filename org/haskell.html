@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="sr" xml:lang="sr">
 <head>
-<!-- 2017-03-22 сре 15:12 -->
+<!-- 2017-03-22 сре 23:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Napredne tehnike programiranja - Haskell</title>
@@ -244,89 +244,89 @@ for the JavaScript code in this tag.
 <h2>Sadr&#382;aj</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org23910d4">1. Uvod</a>
+<li><a href="#org84f871a">1. Uvod</a>
 <ul>
-<li><a href="#org4e3cf6f">1.1. Elementi jezika</a>
+<li><a href="#org5707e99">1.1. Elementi jezika</a>
 <ul>
-<li><a href="#orgc4d5bdf">1.1.1. Pragme</a></li>
+<li><a href="#org5107e9d">1.1.1. Pragme</a></li>
 </ul>
 </li>
-<li><a href="#org8ea3170">1.2. Kompajler (GHC)</a>
+<li><a href="#org01cae7e">1.2. Kompajler (GHC)</a>
 <ul>
-<li><a href="#org37be157">1.2.1. <i>Type inference</i></a></li>
-<li><a href="#orgb8ad1bf">1.2.2. Sugestije kompajlera</a></li>
+<li><a href="#orgbc386b8">1.2.1. <i>Type inference</i></a></li>
+<li><a href="#org164de3e">1.2.2. Sugestije kompajlera</a></li>
 </ul>
 </li>
-<li><a href="#org88f69a7">1.3. GHCi</a></li>
-<li><a href="#org1ec4e35">1.4. IDE</a>
+<li><a href="#org71056be">1.3. GHCi</a></li>
+<li><a href="#org458f5ef">1.4. IDE</a>
 <ul>
-<li><a href="#org40ecd09">1.4.1. Hoogle</a></li>
-<li><a href="#orgc739562">1.4.2. Stack &amp; Stackage</a></li>
+<li><a href="#org2435438">1.4.1. Hoogle</a></li>
+<li><a href="#org6f293de">1.4.2. Stack &amp; Stackage</a></li>
 </ul>
 </li>
-<li><a href="#org548a4f3">1.5. Ograničenja GHC kompajlera&#xa0;&#xa0;&#xa0;<span class="tag"><span class="za_radoznale">za_radoznale</span></span></a>
+<li><a href="#org2b9a9b1">1.5. Ograničenja GHC kompajlera&#xa0;&#xa0;&#xa0;<span class="tag"><span class="za_radoznale">za_radoznale</span></span></a>
 <ul>
-<li><a href="#org819989f">1.5.1. Monomorfizam restrikcija</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#orge684113">2. Funkcije</a></li>
-<li><a href="#org7ea4099">3. Tipovi</a>
-<ul>
-<li><a href="#orgdeef9f6">3.1. <code>nešto :: tip</code>, sve ima tip</a></li>
-<li><a href="#org53ffe02">3.2. Kinds</a></li>
-</ul>
-</li>
-<li><a href="#org3944792">4. Data deklaracije</a>
-<ul>
-<li><a href="#orgd03c51b">4.1. Data konstruktor &amp; value konstruktor</a>
-<ul>
-<li><a href="#orgf78444e">4.1.1. Records sintaksa</a></li>
-</ul>
-</li>
-<li><a href="#orgd03f663">4.2. <code>newtype</code></a></li>
-<li><a href="#org282f0a1">4.3. <code>type</code></a></li>
-</ul>
-</li>
-<li><a href="#orgaedd54d">5. Haskell &#x2014; lazy by default</a>
-<ul>
-<li><a href="#org39f484d">5.1. <i>Strict evaluation vs. lazy evaluation</i></a>
-<ul>
-<li><a href="#org5adb9d8">5.1.1. Cena <i>strict</i> izračunavanja</a></li>
-<li><a href="#orga9a99b1">5.1.2. Cena <i>lazy</i> izračunavanja</a></li>
-</ul>
-</li>
-<li><a href="#org8db2662">5.2. Haskell <i>laziness look and feel</i> vs. Java <i>Supliers</i> ("<i>type level laziness</i>")</a></li>
-</ul>
-</li>
-<li><a href="#org2f2ad61">6. Polimorfizam</a></li>
-<li><a href="#org22fc677">7. Type Classes</a>
-<ul>
-<li><a href="#org3c6e541">7.1. Automatsko instanciranje sa <code>deriving</code></a></li>
-<li><a href="#org506c7fa">7.2. <code>class</code> NIJE <code>class</code> iz Pythona i Jave</a></li>
-<li><a href="#orgc10eecf">7.3. <i>fundeps</i> (Functional Dependencies)</a></li>
-</ul>
-</li>
-<li><a href="#org5f0979f">8. Monoidi i Funktori</a></li>
-<li><a href="#org6b7237d">9. Monade</a>
-<ul>
-<li><a href="#orgc257f65">9.1. IO</a></li>
-</ul>
-</li>
-<li><a href="#org642499e">10. Profiling</a>
-<ul>
-<li><a href="#orgbb1bb16">10.1. Primitivni profiling samo sa Unix <code>time</code></a></li>
-<li><a href="#org81c9ba9">10.2. GHC podrška za profiling</a>
-<ul>
-<li><a href="#orge2f3b38">10.2.1. Još neke <i>RTS</i> (<i>Run Time System</i>) opcije</a></li>
-<li><a href="#orgef7a11b">10.2.2. Potrošnja memorije kroz vreme</a></li>
+<li><a href="#orge7590f5">1.5.1. Monomorfizam restrikcija</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgedee915">11. Haskell Core&#xa0;&#xa0;&#xa0;<span class="tag"><span class="za_radoznale">za_radoznale</span></span></a></li>
-<li><a href="#orga295978">12. Literatura</a></li>
+<li><a href="#orge91980e">2. Funkcije</a></li>
+<li><a href="#orgca85c00">3. Tipovi</a>
+<ul>
+<li><a href="#org92e8767">3.1. <code>nešto :: tip</code>, sve ima tip</a></li>
+<li><a href="#org7f9aa36">3.2. Kinds</a></li>
+</ul>
+</li>
+<li><a href="#orge3f5f83">4. Data deklaracije</a>
+<ul>
+<li><a href="#orgc9931af">4.1. Data konstruktor &amp; value konstruktor</a>
+<ul>
+<li><a href="#orgc955332">4.1.1. Records sintaksa</a></li>
+</ul>
+</li>
+<li><a href="#orga35dd72">4.2. <code>newtype</code></a></li>
+<li><a href="#org9e9c31c">4.3. <code>type</code></a></li>
+</ul>
+</li>
+<li><a href="#orgbff9c5b">5. Haskell &#x2014; lazy by default</a>
+<ul>
+<li><a href="#orga24cc34">5.1. <i>Strict evaluation vs. lazy evaluation</i></a>
+<ul>
+<li><a href="#orgf1d4a3c">5.1.1. Cena <i>strict</i> izračunavanja</a></li>
+<li><a href="#org66ece86">5.1.2. Cena <i>lazy</i> izračunavanja</a></li>
+</ul>
+</li>
+<li><a href="#org314cf5d">5.2. Haskell <i>laziness look and feel</i> vs. Java <i>Supliers</i> ("<i>type level laziness</i>")</a></li>
+</ul>
+</li>
+<li><a href="#org882cb1b">6. Polimorfizam</a></li>
+<li><a href="#org201e751">7. Type Classes</a>
+<ul>
+<li><a href="#org9a058bf">7.1. Automatsko instanciranje sa <code>deriving</code></a></li>
+<li><a href="#orgedfc04b">7.2. <code>class</code> NIJE <code>class</code> iz Pythona i Jave</a></li>
+<li><a href="#org2d8eb7c">7.3. <i>fundeps</i> (Functional Dependencies)</a></li>
+</ul>
+</li>
+<li><a href="#org15aea27">8. Monoidi i Funktori</a></li>
+<li><a href="#org3ee388d">9. Monade</a>
+<ul>
+<li><a href="#orge39cc8c">9.1. IO</a></li>
+</ul>
+</li>
+<li><a href="#org57c892b">10. Profiling</a>
+<ul>
+<li><a href="#org9095760">10.1. Primitivni profiling samo sa Unix <code>time</code></a></li>
+<li><a href="#org20197dd">10.2. GHC podrška za profiling</a>
+<ul>
+<li><a href="#org4fad70e">10.2.1. Još neke <i>RTS</i> (<i>Run Time System</i>) opcije</a></li>
+<li><a href="#orgd9e3a1d">10.2.2. Potrošnja memorije kroz vreme</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgb8a0e9b">11. Haskell Core&#xa0;&#xa0;&#xa0;<span class="tag"><span class="za_radoznale">za_radoznale</span></span></a></li>
+<li><a href="#org7ee620f">12. Literatura</a></li>
 </ul>
 </div>
 </div>
@@ -343,14 +343,14 @@ language.
 </p>
 </blockquote>
 
-<div id="outline-container-org23910d4" class="outline-2">
-<h2 id="org23910d4"><span class="section-number-2">1</span> Uvod</h2>
+<div id="outline-container-org84f871a" class="outline-2">
+<h2 id="org84f871a"><span class="section-number-2">1</span> Uvod</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-org4e3cf6f" class="outline-3">
-<h3 id="org4e3cf6f"><span class="section-number-3">1.1</span> Elementi jezika</h3>
+</div><div id="outline-container-org5707e99" class="outline-3">
+<h3 id="org5707e99"><span class="section-number-3">1.1</span> Elementi jezika</h3>
 <div class="outline-text-3" id="text-1-1">
-</div><div id="outline-container-orgc4d5bdf" class="outline-4">
-<h4 id="orgc4d5bdf"><span class="section-number-4">1.1.1</span> Pragme</h4>
+</div><div id="outline-container-org5107e9d" class="outline-4">
+<h4 id="org5107e9d"><span class="section-number-4">1.1.1</span> Pragme</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 {-# LANGUAGE #-} {-# OPTIONS<sub>GHC</sub> #-} {-# INCLUDE #-} {-# INFIX #-}
@@ -359,11 +359,11 @@ language.
 </div>
 </div>
 </div>
-<div id="outline-container-org8ea3170" class="outline-3">
-<h3 id="org8ea3170"><span class="section-number-3">1.2</span> Kompajler (GHC)</h3>
+<div id="outline-container-org01cae7e" class="outline-3">
+<h3 id="org01cae7e"><span class="section-number-3">1.2</span> Kompajler (GHC)</h3>
 <div class="outline-text-3" id="text-1-2">
-</div><div id="outline-container-org37be157" class="outline-4">
-<h4 id="org37be157"><span class="section-number-4">1.2.1</span> <i>Type inference</i></h4>
+</div><div id="outline-container-orgbc386b8" class="outline-4">
+<h4 id="orgbc386b8"><span class="section-number-4">1.2.1</span> <i>Type inference</i></h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 Haskell je implicitno tipiziran jezik (<i>implicitly-typed</i>) za
@@ -372,28 +372,28 @@ tipizirani (explicitly-typed).
 </p>
 </div>
 </div>
-<div id="outline-container-orgb8ad1bf" class="outline-4">
-<h4 id="orgb8ad1bf"><span class="section-number-4">1.2.2</span> Sugestije kompajlera</h4>
+<div id="outline-container-org164de3e" class="outline-4">
+<h4 id="org164de3e"><span class="section-number-4">1.2.2</span> Sugestije kompajlera</h4>
 </div>
 </div>
-<div id="outline-container-org88f69a7" class="outline-3">
-<h3 id="org88f69a7"><span class="section-number-3">1.3</span> GHCi</h3>
+<div id="outline-container-org71056be" class="outline-3">
+<h3 id="org71056be"><span class="section-number-3">1.3</span> GHCi</h3>
 </div>
-<div id="outline-container-org1ec4e35" class="outline-3">
-<h3 id="org1ec4e35"><span class="section-number-3">1.4</span> IDE</h3>
+<div id="outline-container-org458f5ef" class="outline-3">
+<h3 id="org458f5ef"><span class="section-number-3">1.4</span> IDE</h3>
 <div class="outline-text-3" id="text-1-4">
-</div><div id="outline-container-org40ecd09" class="outline-4">
-<h4 id="org40ecd09"><span class="section-number-4">1.4.1</span> Hoogle</h4>
+</div><div id="outline-container-org2435438" class="outline-4">
+<h4 id="org2435438"><span class="section-number-4">1.4.1</span> Hoogle</h4>
 </div>
-<div id="outline-container-orgc739562" class="outline-4">
-<h4 id="orgc739562"><span class="section-number-4">1.4.2</span> Stack &amp; Stackage</h4>
+<div id="outline-container-org6f293de" class="outline-4">
+<h4 id="org6f293de"><span class="section-number-4">1.4.2</span> Stack &amp; Stackage</h4>
 </div>
 </div>
-<div id="outline-container-org548a4f3" class="outline-3">
-<h3 id="org548a4f3"><span class="section-number-3">1.5</span> Ograničenja GHC kompajlera&#xa0;&#xa0;&#xa0;<span class="tag"><span class="za_radoznale">za_radoznale</span></span></h3>
+<div id="outline-container-org2b9a9b1" class="outline-3">
+<h3 id="org2b9a9b1"><span class="section-number-3">1.5</span> Ograničenja GHC kompajlera&#xa0;&#xa0;&#xa0;<span class="tag"><span class="za_radoznale">za_radoznale</span></span></h3>
 <div class="outline-text-3" id="text-1-5">
-</div><div id="outline-container-org819989f" class="outline-4">
-<h4 id="org819989f"><span class="section-number-4">1.5.1</span> Monomorfizam restrikcija</h4>
+</div><div id="outline-container-orge7590f5" class="outline-4">
+<h4 id="orge7590f5"><span class="section-number-4">1.5.1</span> Monomorfizam restrikcija</h4>
 <div class="outline-text-4" id="text-1-5-1">
 <p>
 <a href="https://wiki.haskell.org/Monomorphism_restriction">https://wiki.haskell.org/Monomorphism_restriction</a>
@@ -402,17 +402,17 @@ tipizirani (explicitly-typed).
 </div>
 </div>
 </div>
-<div id="outline-container-orge684113" class="outline-2">
-<h2 id="orge684113"><span class="section-number-2">2</span> Funkcije</h2>
+<div id="outline-container-orge91980e" class="outline-2">
+<h2 id="orge91980e"><span class="section-number-2">2</span> Funkcije</h2>
 </div>
-<div id="outline-container-org7ea4099" class="outline-2">
-<h2 id="org7ea4099"><span class="section-number-2">3</span> Tipovi</h2>
+<div id="outline-container-orgca85c00" class="outline-2">
+<h2 id="orgca85c00"><span class="section-number-2">3</span> Tipovi</h2>
 <div class="outline-text-2" id="text-3">
-</div><div id="outline-container-orgdeef9f6" class="outline-3">
-<h3 id="orgdeef9f6"><span class="section-number-3">3.1</span> <code>nešto :: tip</code>, sve ima tip</h3>
+</div><div id="outline-container-org92e8767" class="outline-3">
+<h3 id="org92e8767"><span class="section-number-3">3.1</span> <code>nešto :: tip</code>, sve ima tip</h3>
 </div>
-<div id="outline-container-org53ffe02" class="outline-3">
-<h3 id="org53ffe02"><span class="section-number-3">3.2</span> Kinds</h3>
+<div id="outline-container-org7f9aa36" class="outline-3">
+<h3 id="org7f9aa36"><span class="section-number-3">3.2</span> Kinds</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 <a href="https://jeltsch.wordpress.com/2013/02/09/some-interesting-features-of-haskells-type-system/">https://jeltsch.wordpress.com/2013/02/09/some-interesting-features-of-haskells-type-system/</a>
@@ -421,41 +421,41 @@ tipizirani (explicitly-typed).
 </div>
 </div>
 
-<div id="outline-container-org3944792" class="outline-2">
-<h2 id="org3944792"><span class="section-number-2">4</span> Data deklaracije</h2>
+<div id="outline-container-orge3f5f83" class="outline-2">
+<h2 id="orge3f5f83"><span class="section-number-2">4</span> Data deklaracije</h2>
 <div class="outline-text-2" id="text-4">
-</div><div id="outline-container-orgd03c51b" class="outline-3">
-<h3 id="orgd03c51b"><span class="section-number-3">4.1</span> Data konstruktor &amp; value konstruktor</h3>
+</div><div id="outline-container-orgc9931af" class="outline-3">
+<h3 id="orgc9931af"><span class="section-number-3">4.1</span> Data konstruktor &amp; value konstruktor</h3>
 <div class="outline-text-3" id="text-4-1">
-</div><div id="outline-container-orgf78444e" class="outline-4">
-<h4 id="orgf78444e"><span class="section-number-4">4.1.1</span> Records sintaksa</h4>
+</div><div id="outline-container-orgc955332" class="outline-4">
+<h4 id="orgc955332"><span class="section-number-4">4.1.1</span> Records sintaksa</h4>
 </div>
 </div>
-<div id="outline-container-orgd03f663" class="outline-3">
-<h3 id="orgd03f663"><span class="section-number-3">4.2</span> <code>newtype</code></h3>
+<div id="outline-container-orga35dd72" class="outline-3">
+<h3 id="orga35dd72"><span class="section-number-3">4.2</span> <code>newtype</code></h3>
 </div>
-<div id="outline-container-org282f0a1" class="outline-3">
-<h3 id="org282f0a1"><span class="section-number-3">4.3</span> <code>type</code></h3>
+<div id="outline-container-org9e9c31c" class="outline-3">
+<h3 id="org9e9c31c"><span class="section-number-3">4.3</span> <code>type</code></h3>
 </div>
 </div>
 
-<div id="outline-container-orgaedd54d" class="outline-2">
-<h2 id="orgaedd54d"><span class="section-number-2">5</span> Haskell &#x2014; lazy by default</h2>
+<div id="outline-container-orgbff9c5b" class="outline-2">
+<h2 id="orgbff9c5b"><span class="section-number-2">5</span> Haskell &#x2014; lazy by default</h2>
 <div class="outline-text-2" id="text-5">
-</div><div id="outline-container-org39f484d" class="outline-3">
-<h3 id="org39f484d"><span class="section-number-3">5.1</span> <i>Strict evaluation vs. lazy evaluation</i></h3>
+</div><div id="outline-container-orga24cc34" class="outline-3">
+<h3 id="orga24cc34"><span class="section-number-3">5.1</span> <i>Strict evaluation vs. lazy evaluation</i></h3>
 <div class="outline-text-3" id="text-5-1">
-</div><div id="outline-container-org5adb9d8" class="outline-4">
-<h4 id="org5adb9d8"><span class="section-number-4">5.1.1</span> Cena <i>strict</i> izračunavanja</h4>
+</div><div id="outline-container-orgf1d4a3c" class="outline-4">
+<h4 id="orgf1d4a3c"><span class="section-number-4">5.1.1</span> Cena <i>strict</i> izračunavanja</h4>
 </div>
 
-<div id="outline-container-orga9a99b1" class="outline-4">
-<h4 id="orga9a99b1"><span class="section-number-4">5.1.2</span> Cena <i>lazy</i> izračunavanja</h4>
+<div id="outline-container-org66ece86" class="outline-4">
+<h4 id="org66ece86"><span class="section-number-4">5.1.2</span> Cena <i>lazy</i> izračunavanja</h4>
 </div>
 </div>
 
-<div id="outline-container-org8db2662" class="outline-3">
-<h3 id="org8db2662"><span class="section-number-3">5.2</span> Haskell <i>laziness look and feel</i> vs. Java <i>Supliers</i> ("<i>type level laziness</i>")</h3>
+<div id="outline-container-org314cf5d" class="outline-3">
+<h3 id="org314cf5d"><span class="section-number-3">5.2</span> Haskell <i>laziness look and feel</i> vs. Java <i>Supliers</i> ("<i>type level laziness</i>")</h3>
 <div class="outline-text-3" id="text-5-2">
 <p>
 Java je na <a href="https://www.sitepoint.com/java-in-praise-of-laziness/">SitePoint-u</a>. Haskell je na <a href="http://www.seas.upenn.edu/~cis194/spring13/lectures/06-laziness.html">CIS-u</a>.
@@ -464,18 +464,18 @@ Java je na <a href="https://www.sitepoint.com/java-in-praise-of-laziness/">SiteP
 </div>
 </div>
 
-<div id="outline-container-org2f2ad61" class="outline-2">
-<h2 id="org2f2ad61"><span class="section-number-2">6</span> Polimorfizam</h2>
+<div id="outline-container-org882cb1b" class="outline-2">
+<h2 id="org882cb1b"><span class="section-number-2">6</span> Polimorfizam</h2>
 </div>
-<div id="outline-container-org22fc677" class="outline-2">
-<h2 id="org22fc677"><span class="section-number-2">7</span> Type Classes</h2>
+<div id="outline-container-org201e751" class="outline-2">
+<h2 id="org201e751"><span class="section-number-2">7</span> Type Classes</h2>
 <div class="outline-text-2" id="text-7">
-</div><div id="outline-container-org3c6e541" class="outline-3">
-<h3 id="org3c6e541"><span class="section-number-3">7.1</span> Automatsko instanciranje sa <code>deriving</code></h3>
+</div><div id="outline-container-org9a058bf" class="outline-3">
+<h3 id="org9a058bf"><span class="section-number-3">7.1</span> Automatsko instanciranje sa <code>deriving</code></h3>
 </div>
 
-<div id="outline-container-org506c7fa" class="outline-3">
-<h3 id="org506c7fa"><span class="section-number-3">7.2</span> <code>class</code> NIJE <code>class</code> iz Pythona i Jave</h3>
+<div id="outline-container-orgedfc04b" class="outline-3">
+<h3 id="orgedfc04b"><span class="section-number-3">7.2</span> <code>class</code> NIJE <code>class</code> iz Pythona i Jave</h3>
 <div class="outline-text-3" id="text-7-2">
 <p>
 Ono što je <code>type class</code> u Haskell-u to je sličnije abstraktnim
@@ -560,8 +560,8 @@ klasama u Javi i Pythonu.
 </div>
 </div>
 
-<div id="outline-container-orgc10eecf" class="outline-3">
-<h3 id="orgc10eecf"><span class="section-number-3">7.3</span> <i>fundeps</i> (Functional Dependencies)</h3>
+<div id="outline-container-org2d8eb7c" class="outline-3">
+<h3 id="org2d8eb7c"><span class="section-number-3">7.3</span> <i>fundeps</i> (Functional Dependencies)</h3>
 <div class="outline-text-3" id="text-7-3">
 <p>
 <a href="https://wiki.haskell.org/Functional_dependencies"><i>Fundeps</i></a> se koriste da daju dodatna međusobna ograničenja
@@ -587,7 +587,7 @@ Jedan naivan prikaz problema kog rešavaju <i>fundeps</i>:
   , desc <span style="color: #DFAF8F;">::</span> <span style="color: #7CB8BB;">String</span>
   } <span style="color: #F0DFAF; font-weight: bold;">deriving</span> (<span style="color: #7CB8BB;">Show</span>)
 
-<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">Carton i Milk instanca raspakivanja, kada se raspakuje mpleko iz</span>
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">Carton i Milk instanca raspakivanja, kada se raspakuje mleko iz</span>
 <span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">kartona</span>
 <span style="color: #F0DFAF; font-weight: bold;">instance</span> <span style="color: #7CB8BB;">Unpack</span> <span style="color: #7CB8BB;">Carton</span> <span style="color: #7CB8BB;">Milk</span> <span style="color: #F0DFAF; font-weight: bold;">where</span>
   unpack p <span style="color: #DFAF8F;">=</span> <span style="color: #7CB8BB;">Milk</span> <span style="color: #CC9393;">"cow milk"</span> <span style="color: #DFAF8F;">$</span> <span style="color: #CC9393;">"carton of "</span> <span style="color: #DFAF8F;">++</span> (show <span style="color: #DFAF8F;">.</span> volume <span style="color: #DFAF8F;">$</span> p) <span style="color: #DFAF8F;">++</span> <span style="color: #CC9393;">" volume."</span>
@@ -806,18 +806,18 @@ drugo, to svakako neće praviti problem:
 </div>
 </div>
 
-<div id="outline-container-org5f0979f" class="outline-2">
-<h2 id="org5f0979f"><span class="section-number-2">8</span> Monoidi i Funktori</h2>
+<div id="outline-container-org15aea27" class="outline-2">
+<h2 id="org15aea27"><span class="section-number-2">8</span> Monoidi i Funktori</h2>
 </div>
-<div id="outline-container-org6b7237d" class="outline-2">
-<h2 id="org6b7237d"><span class="section-number-2">9</span> Monade</h2>
+<div id="outline-container-org3ee388d" class="outline-2">
+<h2 id="org3ee388d"><span class="section-number-2">9</span> Monade</h2>
 <div class="outline-text-2" id="text-9">
-</div><div id="outline-container-orgc257f65" class="outline-3">
-<h3 id="orgc257f65"><span class="section-number-3">9.1</span> IO</h3>
+</div><div id="outline-container-orge39cc8c" class="outline-3">
+<h3 id="orge39cc8c"><span class="section-number-3">9.1</span> IO</h3>
 </div>
 </div>
-<div id="outline-container-org642499e" class="outline-2">
-<h2 id="org642499e"><span class="section-number-2">10</span> Profiling</h2>
+<div id="outline-container-org57c892b" class="outline-2">
+<h2 id="org57c892b"><span class="section-number-2">10</span> Profiling</h2>
 <div class="outline-text-2" id="text-10">
 <p>
 <b>Zašto je ovaj program spor?</b>
@@ -849,11 +849,11 @@ garantuje da to nije zbog B1?</b>
 </p>
 </div>
 
-<div id="outline-container-orgbb1bb16" class="outline-3">
-<h3 id="orgbb1bb16"><span class="section-number-3">10.1</span> Primitivni profiling samo sa Unix <code>time</code></h3>
+<div id="outline-container-org9095760" class="outline-3">
+<h3 id="org9095760"><span class="section-number-3">10.1</span> Primitivni profiling samo sa Unix <code>time</code></h3>
 </div>
-<div id="outline-container-org81c9ba9" class="outline-3">
-<h3 id="org81c9ba9"><span class="section-number-3">10.2</span> GHC podrška za profiling</h3>
+<div id="outline-container-org20197dd" class="outline-3">
+<h3 id="org20197dd"><span class="section-number-3">10.2</span> GHC podrška za profiling</h3>
 <div class="outline-text-3" id="text-10-2">
 <p>
 Izvodi se u tri koraka:
@@ -892,7 +892,7 @@ nastavku:
 </p>
 
 <p>
-<a id="orgd81b5f6"></a>
+<a id="org64abf37"></a>
 </p>
 <div class="org-src-container">
 <label class="org-src-name"><span class="listing-number">Listing 3: </span>haskellNTP/profiling/src/ExplicitCostCenters.hs</label><pre class="src src-haskell"><span style="color: #93E0E3;">explicitCostCenters</span> <span style="color: #DFAF8F;">::</span> <span style="color: #7CB8BB;">IO</span> <span style="color: #7CB8BB;">()</span>
@@ -954,7 +954,7 @@ fajl <code>program.prof</code> u kome se nalaze rezultati za analizu.
 </p>
 
 <p>
-Ako izvršimo prethodna dva koraka sa programom datim <a href="#orgd81b5f6">ranije</a> naš
+Ako izvršimo prethodna dva koraka sa programom datim <a href="#org64abf37">ranije</a> naš
 <code>.prof</code> file će ličiti na:
 </p>
 
@@ -1002,11 +1002,11 @@ MAIN            MAIN                  &lt;built-in&gt;                  46      
 </ol>
 </div>
 
-<div id="outline-container-orge2f3b38" class="outline-4">
-<h4 id="orge2f3b38"><span class="section-number-4">10.2.1</span> Još neke <i>RTS</i> (<i>Run Time System</i>) opcije</h4>
+<div id="outline-container-org4fad70e" class="outline-4">
+<h4 id="org4fad70e"><span class="section-number-4">10.2.1</span> Još neke <i>RTS</i> (<i>Run Time System</i>) opcije</h4>
 <div class="outline-text-4" id="text-10-2-1">
 <p>
-Ako programu od <a href="#orgd81b5f6">ranije</a> pro pokretanju prosledimo opciju <code>-pa</code>
+Ako programu od <a href="#org64abf37">ranije</a> pro pokretanju prosledimo opciju <code>-pa</code>
 dobićemo širi izveštaj o korišćenju resursa koji će obuhvatati i
 podatke o alokaciji memorije:
 </p>
@@ -1142,8 +1142,8 @@ Listu ostalih opcija možete pogledati <a href="https://downloads.haskell.org/~g
 </div>
 </div>
 
-<div id="outline-container-orgef7a11b" class="outline-4">
-<h4 id="orgef7a11b"><span class="section-number-4">10.2.2</span> Potrošnja memorije kroz vreme</h4>
+<div id="outline-container-orgd9e3a1d" class="outline-4">
+<h4 id="orgd9e3a1d"><span class="section-number-4">10.2.2</span> Potrošnja memorije kroz vreme</h4>
 <div class="outline-text-4" id="text-10-2-2">
 <p>
 Ponekada je korisno pratiti i potrošnju memorije kroz
@@ -1220,8 +1220,8 @@ Za program:
 </div>
 </div>
 
-<div id="outline-container-orgedee915" class="outline-2">
-<h2 id="orgedee915"><span class="section-number-2">11</span> Haskell Core&#xa0;&#xa0;&#xa0;<span class="tag"><span class="za_radoznale">za_radoznale</span></span></h2>
+<div id="outline-container-orgb8a0e9b" class="outline-2">
+<h2 id="orgb8a0e9b"><span class="section-number-2">11</span> Haskell Core&#xa0;&#xa0;&#xa0;<span class="tag"><span class="za_radoznale">za_radoznale</span></span></h2>
 <div class="outline-text-2" id="text-11">
 <p>
 Kada <i>profiling</i> ne daje dovoljno dobar uvid u to šta program radi
@@ -1305,8 +1305,8 @@ poglavlja <i>Real World Haskell</i>-a.
 </p>
 </div>
 </div>
-<div id="outline-container-orga295978" class="outline-2">
-<h2 id="orga295978"><span class="section-number-2">12</span> Literatura</h2>
+<div id="outline-container-org7ee620f" class="outline-2">
+<h2 id="org7ee620f"><span class="section-number-2">12</span> Literatura</h2>
 <div class="outline-text-2" id="text-12">
 <ul class="org-ul">
 <li><a href="http://learnyouahaskell.com/">Learn Some Haskell For The Great Good</a></li>
@@ -1320,7 +1320,7 @@ bilo koji drugi po izboru.)</li>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Novak Boškov</p>
-<p class="date">Created: 2017-03-22 сре 15:12</p>
+<p class="date">Created: 2017-03-22 сре 23:56</p>
 <p class="validation"></p>
 </div>
 </body>
