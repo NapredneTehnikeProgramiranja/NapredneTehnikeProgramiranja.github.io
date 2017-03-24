@@ -285,24 +285,24 @@ integrate systems more effectively.
 
    - =chain=
 
-   #+BEGIN_SRC python
-     import itertools as it
+     #+BEGIN_SRC python
+       import itertools as it
 
-     a = "abc"
-     i = [1, 2, 3]
+       a = "abc"
+       i = [1, 2, 3]
 
-     for e in it.chain(a, i):
-         print(e)
-   #+END_SRC
+       for e in it.chain(a, i):
+           print(e)
+     #+END_SRC
 
-   #+RESULTS:
-   :
-   : >>> >>> >>> >>> ... ... a
-   : b
-   : c
-   : 1
-   : 2
-   : 3
+     #+RESULTS:
+     :
+     : >>> >>> >>> >>> ... ... a
+     : b
+     : c
+     : 1
+     : 2
+     : 3
 
    - =takewhile=
 
