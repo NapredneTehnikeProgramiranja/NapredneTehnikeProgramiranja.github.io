@@ -1,8 +1,36 @@
 <div class="info">
     Postavljeno $date$
     $if(author)$
-        od strane $author$
+    od strane $author$
     $endif$
 </div>
 
 $body$
+
+<div id="disqus_thread"></div>
+<script>
+ function getRandomInt(min, max) {
+     min = Math.ceil(min);
+     max = Math.floor(max);
+     return Math.floor(Math.random() * (max - min)) + min;
+ }
+
+ /**
+  *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+  *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+  */
+ var disqus_config = function () {
+     this.page.url = "http://naprednetehnikeprogramiranja.tk/";  // Replace PAGE_URL with your page's canonical URL variable
+     this.page.identifier = "$date$-" + getRandomInt(1, 1000); // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+ };
+ /
+ (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+     var d = document, s = d.createElement('script');
+
+     s.src = '//forint.disqus.com/embed.js';  // IMPORTANT: Replace EXAMPLE with your forum shortname!
+
+     s.setAttribute('data-timestamp', +new Date());
+     (d.head || d.body).appendChild(s);
+ })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
