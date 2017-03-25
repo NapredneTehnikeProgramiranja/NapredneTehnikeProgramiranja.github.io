@@ -53,6 +53,7 @@ language.
    Java je na [[https://www.sitepoint.com/java-in-praise-of-laziness/][SitePoint-u]]. Haskell je na [[http://www.seas.upenn.edu/~cis194/spring13/lectures/06-laziness.html][CIS-u]].
 
 * Polimorfizam
+* GADTs
 * Type Classes
 
 ** Automatsko instanciranje sa =deriving=
@@ -147,7 +148,9 @@ language.
 
    #+INCLUDE: "haskellNTP/showcase/src/FunDeps.hs" src haskell :lines "74-89"
 
-* Monoidi i Funktori
+* Monoidi
+* Funktori
+* Aplikativni funktori
 * Monade
 ** IO
 * Profiling

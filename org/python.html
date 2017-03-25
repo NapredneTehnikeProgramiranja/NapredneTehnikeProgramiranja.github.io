@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="sr" xml:lang="sr">
 <head>
-<!-- 2017-03-24 пет 08:04 -->
+<!-- 2017-03-25 суб 20:05 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Napredne tehnike programiranja - Python</title>
@@ -244,20 +244,21 @@ for the JavaScript code in this tag.
 <h2>Sadr&#382;aj</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orga84c79e">1. Teorija</a></li>
-<li><a href="#org21c3ff9">2. Napredni Python</a>
+<li><a href="#orgcf74a0d">1. Teorija</a></li>
+<li><a href="#orga003857">2. Napredni Python</a>
 <ul>
-<li><a href="#org5f7b2f3">2.1. <i>virtualenv</i> i <i>pip</i></a></li>
-<li><a href="#org6ade88b">2.2. Iteratori i generatori</a></li>
-<li><a href="#orgb2dda21">2.3. Ostale specijalne metode</a></li>
-<li><a href="#org5312d43">2.4. Deskriptiori</a></li>
-<li><a href="#orgfac3d54">2.5. Dekoratori</a></li>
-<li><a href="#org6f892cb">2.6. <code>functools</code></a></li>
-<li><a href="#org7a26b3b">2.7. <code>itertools</code></a></li>
-<li><a href="#org3d3db43">2.8. <i>High performance</i> kolekcije</a></li>
-<li><a href="#org2b94a50">2.9. Višestruko nasleđivanje</a></li>
-<li><a href="#orgf841a24">2.10. Meta klase</a></li>
-<li><a href="#orgd75b5e1">2.11. Zadaci</a></li>
+<li><a href="#org8a0dcbf">2.1. <i>virtualenv</i> i <i>pip</i></a></li>
+<li><a href="#orgec00d0d">2.2. Iteratori i generatori</a></li>
+<li><a href="#orgdde4455">2.3. Ostale specijalne metode</a></li>
+<li><a href="#org2f6dd79">2.4. Deskriptiori</a></li>
+<li><a href="#orgd995dc4">2.5. Dekoratori</a></li>
+<li><a href="#org03429ec">2.6. <code>functools</code></a></li>
+<li><a href="#org21a9355">2.7. <code>itertools</code></a></li>
+<li><a href="#org85cec0d">2.8. <i>High performance</i> kolekcije</a></li>
+<li><a href="#orga164fc7">2.9. Višestruko nasleđivanje</a></li>
+<li><a href="#org99de993">2.10. Meta klase</a></li>
+<li><a href="#org9c8cb61">2.11. Zadaci</a></li>
+<li><a href="#org42f69c6">2.12. Rešenja</a></li>
 </ul>
 </li>
 </ul>
@@ -276,8 +277,8 @@ integrate systems more effectively.
 </p>
 </blockquote>
 
-<div id="outline-container-orga84c79e" class="outline-2">
-<h2 id="orga84c79e"><span class="section-number-2">1</span> Teorija</h2>
+<div id="outline-container-orgcf74a0d" class="outline-2">
+<h2 id="orgcf74a0d"><span class="section-number-2">1</span> Teorija</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Svi teorijski materijali nalaze se na <a href="http://www.igordejanovic.net/courses/ntp.html">sajtu profesora</a>.
@@ -285,11 +286,11 @@ Svi teorijski materijali nalaze se na <a href="http://www.igordejanovic.net/cour
 </div>
 </div>
 
-<div id="outline-container-org21c3ff9" class="outline-2">
-<h2 id="org21c3ff9"><span class="section-number-2">2</span> Napredni Python</h2>
+<div id="outline-container-orga003857" class="outline-2">
+<h2 id="orga003857"><span class="section-number-2">2</span> Napredni Python</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-org5f7b2f3" class="outline-3">
-<h3 id="org5f7b2f3"><span class="section-number-3">2.1</span> <i>virtualenv</i> i <i>pip</i></h3>
+</div><div id="outline-container-org8a0dcbf" class="outline-3">
+<h3 id="org8a0dcbf"><span class="section-number-3">2.1</span> <i>virtualenv</i> i <i>pip</i></h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Ako Vam koncept <i>virtualenv</i>-a nije poznat pogledajte <a href="https://virtualenv.pypa.io/en/stable/">ovde</a>. Kratak
@@ -298,8 +299,8 @@ podsetnik možete naći <a href="http://docs.python-guide.org/en/latest/dev/virt
 </div>
 </div>
 
-<div id="outline-container-org6ade88b" class="outline-3">
-<h3 id="org6ade88b"><span class="section-number-3">2.2</span> Iteratori i generatori</h3>
+<div id="outline-container-orgec00d0d" class="outline-3">
+<h3 id="orgec00d0d"><span class="section-number-3">2.2</span> Iteratori i generatori</h3>
 <div class="outline-text-3" id="text-2-2">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">generator_foo</span>(n):
@@ -458,8 +459,8 @@ Z
 </div>
 </div>
 
-<div id="outline-container-orgb2dda21" class="outline-3">
-<h3 id="orgb2dda21"><span class="section-number-3">2.3</span> Ostale specijalne metode</h3>
+<div id="outline-container-orgdde4455" class="outline-3">
+<h3 id="orgdde4455"><span class="section-number-3">2.3</span> Ostale specijalne metode</h3>
 <div class="outline-text-3" id="text-2-3">
 <ul class="org-ul">
 <li><code>__contains__</code> (in)</li>
@@ -469,12 +470,12 @@ Z
 </div>
 </div>
 
-<div id="outline-container-org5312d43" class="outline-3">
-<h3 id="org5312d43"><span class="section-number-3">2.4</span> Deskriptiori</h3>
+<div id="outline-container-org2f6dd79" class="outline-3">
+<h3 id="org2f6dd79"><span class="section-number-3">2.4</span> Deskriptiori</h3>
 </div>
 
-<div id="outline-container-orgfac3d54" class="outline-3">
-<h3 id="orgfac3d54"><span class="section-number-3">2.5</span> Dekoratori</h3>
+<div id="outline-container-orgd995dc4" class="outline-3">
+<h3 id="orgd995dc4"><span class="section-number-3">2.5</span> Dekoratori</h3>
 <div class="outline-text-3" id="text-2-5">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">greet</span>(func):
@@ -550,8 +551,8 @@ from dec: 1
 </div>
 </div>
 
-<div id="outline-container-org6f892cb" class="outline-3">
-<h3 id="org6f892cb"><span class="section-number-3">2.6</span> <code>functools</code></h3>
+<div id="outline-container-org03429ec" class="outline-3">
+<h3 id="org03429ec"><span class="section-number-3">2.6</span> <code>functools</code></h3>
 <div class="outline-text-3" id="text-2-6">
 <ul class="org-ul">
 <li><code>partial</code></li>
@@ -578,7 +579,7 @@ rečnik:
 </div>
 
 <pre class="example">
-&gt;&gt;&gt; &gt;&gt;&gt; &gt;&gt;&gt; {'b': 2, 'd': 4, 'a': 1, 'c': 3}
+&gt;&gt;&gt; &gt;&gt;&gt; &gt;&gt;&gt; {'d': 4, 'b': 2, 'a': 1, 'c': 3}
 &gt;&gt;&gt; &gt;&gt;&gt; {1: 'a', 2: 'b', 3: 'c', 4: 'd'}
 </pre></li>
 
@@ -587,8 +588,8 @@ rečnik:
 </div>
 </div>
 
-<div id="outline-container-org7a26b3b" class="outline-3">
-<h3 id="org7a26b3b"><span class="section-number-3">2.7</span> <code>itertools</code></h3>
+<div id="outline-container-org21a9355" class="outline-3">
+<h3 id="org21a9355"><span class="section-number-3">2.7</span> <code>itertools</code></h3>
 <div class="outline-text-3" id="text-2-7">
 <ul class="org-ul">
 <li><p>
@@ -665,8 +666,8 @@ Z
 </div>
 </div>
 
-<div id="outline-container-org3d3db43" class="outline-3">
-<h3 id="org3d3db43"><span class="section-number-3">2.8</span> <i>High performance</i> kolekcije</h3>
+<div id="outline-container-org85cec0d" class="outline-3">
+<h3 id="org85cec0d"><span class="section-number-3">2.8</span> <i>High performance</i> kolekcije</h3>
 <div class="outline-text-3" id="text-2-8">
 <ul class="org-ul">
 <li><p>
@@ -724,16 +725,16 @@ time elapsed : 1.1920928955078125e-06
 </div>
 </div>
 
-<div id="outline-container-org2b94a50" class="outline-3">
-<h3 id="org2b94a50"><span class="section-number-3">2.9</span> Višestruko nasleđivanje</h3>
+<div id="outline-container-orga164fc7" class="outline-3">
+<h3 id="orga164fc7"><span class="section-number-3">2.9</span> Višestruko nasleđivanje</h3>
 </div>
 
-<div id="outline-container-orgf841a24" class="outline-3">
-<h3 id="orgf841a24"><span class="section-number-3">2.10</span> Meta klase</h3>
+<div id="outline-container-org99de993" class="outline-3">
+<h3 id="org99de993"><span class="section-number-3">2.10</span> Meta klase</h3>
 </div>
 
-<div id="outline-container-orgd75b5e1" class="outline-3">
-<h3 id="orgd75b5e1"><span class="section-number-3">2.11</span> Zadaci</h3>
+<div id="outline-container-org9c8cb61" class="outline-3">
+<h3 id="org9c8cb61"><span class="section-number-3">2.11</span> Zadaci</h3>
 <div class="outline-text-3" id="text-2-11">
 <ol class="org-ol">
 <li>Napraviti klasu <code>GithubUser</code> čiji svaki objekat pri konstrukciji
@@ -767,11 +768,90 @@ koristeći njegovu <code>self.__iter__</code> metodu.</li>
 </ol>
 </div>
 </div>
+
+<div id="outline-container-org42f69c6" class="outline-3">
+<h3 id="org42f69c6"><span class="section-number-3">2.12</span> Rešenja</h3>
+<div class="outline-text-3" id="text-2-12">
+<ol class="org-ol">
+<li><p>
+<code>get_followers</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">from</span> github <span style="color: #F0DFAF; font-weight: bold;">import</span> Github
+
+<span style="color: #F0DFAF; font-weight: bold;">class</span> <span style="color: #7CB8BB;">GithubUser</span>:
+    <span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">__init__</span>(<span style="color: #F0DFAF; font-weight: bold;">self</span>, name, surname, username, paswd=<span style="color: #BFEBBF;">None</span>):
+        <span style="color: #F0DFAF; font-weight: bold;">self</span>.name = name
+        <span style="color: #F0DFAF; font-weight: bold;">self</span>.surname = surname
+        <span style="color: #F0DFAF; font-weight: bold;">self</span>.username = username
+        <span style="color: #F0DFAF; font-weight: bold;">self</span>.paswd = paswd
+        <span style="color: #F0DFAF; font-weight: bold;">self</span>.gh_user = Github(username, paswd <span style="color: #F0DFAF; font-weight: bold;">or</span> <span style="color: #F0DFAF; font-weight: bold;">self</span>.get_pass()).get_user()
+    <span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">__iter__</span>(<span style="color: #F0DFAF; font-weight: bold;">self</span>):
+        <span style="color: #F0DFAF; font-weight: bold;">for</span> fl <span style="color: #F0DFAF; font-weight: bold;">in</span> <span style="color: #F0DFAF; font-weight: bold;">self</span>.gh_user.get_followers():
+            <span style="color: #F0DFAF; font-weight: bold;">yield</span> fl
+    <span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">get_pass</span>(<span style="color: #F0DFAF; font-weight: bold;">self</span>):
+        <span style="color: #F0DFAF; font-weight: bold;">with</span> <span style="color: #DCDCCC; font-weight: bold;">open</span>(<span style="color: #CC9393;">'/home/novak/Desktop/pass.github'</span>, <span style="color: #CC9393;">'r'</span>) <span style="color: #F0DFAF; font-weight: bold;">as</span> f:
+            <span style="color: #F0DFAF; font-weight: bold;">return</span> f.readline().strip()
+    <span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">peek</span>(<span style="color: #F0DFAF; font-weight: bold;">self</span>):
+        <span style="color: #F0DFAF; font-weight: bold;">for</span> repo <span style="color: #F0DFAF; font-weight: bold;">in</span> <span style="color: #F0DFAF; font-weight: bold;">self</span>.gh_user.get_starred():
+            <span style="color: #F0DFAF; font-weight: bold;">yield</span> repo.full_name
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-python">[u.login <span style="color: #F0DFAF; font-weight: bold;">for</span> u <span style="color: #F0DFAF; font-weight: bold;">in</span> GithubUser(<span style="color: #CC9393;">'Novak'</span>, <span style="color: #CC9393;">'Boskov'</span>, <span style="color: #CC9393;">'novakboskov'</span>)]
+</pre>
+</div>
+
+<pre class="example">
+['MihailoIsakov', 'danielkupco', 'cusspvz', 'angusshire', 'mbejn', 'igordejanovic', 'amittendulkar', 'coka', 'strika', 'MilosSimic', 'AleksandarRakic', 'nikoladakic', 'C0mpy', 'Mijura', 'stefanplazic', 'yalu']
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">for</span> r <span style="color: #F0DFAF; font-weight: bold;">in</span> GithubUser(<span style="color: #CC9393;">'Novak'</span>, <span style="color: #CC9393;">'Boskov'</span>, <span style="color: #CC9393;">'novakboskov'</span>).peek():
+    <span style="color: #F0DFAF; font-weight: bold;">print</span>(r)
+</pre>
+</div>
+
+<pre class="example">
+... bscarlet/llvm-general
+commercialhaskell/stack
+alwx/luno-react-native
+status-im/status-react
+diagrams/diagrams-lib
+adamgundry/ghc-proposals
+mrkkrp/ebal
+haskell/cabal
+ghc/ghc
+davidbrewer/xmonad-ubuntu-conf
+vicfryzel/xmonad-config
+haskell/ThreadScope
+dmatveev/shampoo-emacs
+facebook/Haxl
+haskell/c2hs
+agda/agda
+cisco/ChezScheme
+emacsfodder/move-text
+Wilfred/remacs
+clash-lang/clash-compiler
+retro/graphql-builder
+vermiculus/magithub
+skeeto/emacsql
+defunkt/coffee-mode
+...
+</pre></li>
+
+<li><code>reduce(lambda a, n: a + str(n.name) + ",", nb.get_followers(), "")</code></li>
+<li><code>itertools.cycle</code></li>
+</ol>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Novak Boškov</p>
-<p class="date">Created: 2017-03-24 пет 08:04</p>
+<p class="date">Created: 2017-03-25 суб 20:05</p>
 <p class="validation"></p>
 </div>
 </body>

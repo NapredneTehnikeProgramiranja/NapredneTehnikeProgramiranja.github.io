@@ -433,7 +433,7 @@ integrate systems more effectively.
       beskrajni iterator na sve repozitorijume koje korisnik prati
       koristeći njegovu =self.__iter__= metodu.
 
-** COMMENT Rešenja
+** Rešenja
    1. =get_followers=
 
       #+BEGIN_SRC python
