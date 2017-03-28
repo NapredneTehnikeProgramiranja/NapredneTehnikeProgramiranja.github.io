@@ -503,3 +503,44 @@ integrate systems more effectively.
 
    6. =reduce(lambda a, n: a + str(n.name) + ",", nb.get_followers(), "")=
    9. =itertools.cycle=
+
+* Parsiranje
+  [[https://en.wikipedia.org/wiki/Parsing][Parsiranje]] je proces analize teksta (jezika) prema formalnim
+  pravilima (gramatikama) koje za rezultat ima jedno ili više [[https://en.wikipedia.org/wiki/Parse_tree][stabala
+  parsiranja]] koja predstavljaju sintaktičke strukture analiziranog
+  teksta.
+
+  [[file:images/parser.jpg]]
+
+** TextX
+   [[https://github.com/igordejanovic/textX][TextX]] je Python meta jezik za definisanje jezika inspirisan
+   [[http://www.eclipse.org/Xtext/][XText]]-om.
+
+** COMMENT Zadaci
+
+   *ParenPy*
+
+   #+BEGIN_SRC python :eval no
+     (def hello_number (a b)
+       (print "Hello " (+ a b)))
+
+     (hello_number 43 23)
+   #+END_SRC
+
+   #+RESULTS:
+   #+begin_example
+   Hello 66
+   #+end_example
+
+   Gramatika
+
+   #+BEGIN_SRC textx
+     Program: expressions*=Expression;
+     Expression: '(' (PrintExpression | AssignmentStatement) ')';
+     PrintStatement: '(' 'print' to_print=Value ')';
+     AssignmentStatement: var=ID '=' expr=Expression;
+     Expression: Sum;
+     Sum: Product (('+'|'-') Product)*;
+     Product: Value ('*' Value)*;
+     Value: ID | INT | ('(' Expression ')');
+   #+END_SRC
