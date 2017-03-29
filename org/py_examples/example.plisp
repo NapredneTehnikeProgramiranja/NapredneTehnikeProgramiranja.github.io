@@ -1,0 +1,16 @@
+(def hello_number (a b)
+  (let [v (* a b)]
+       (print "Hello " (+ a b))))
+
+(apply hello_number 1 2)
+
+(def say_hello_to_hello ()
+  "Ay yo!")
+
+(apply say_say_hello_to_hello)
+
+(apply hello_number
+       (let [a (apply say_hello_to_hello)
+             b "it's also able to hell o!"]
+             (+ a b))
+       2)

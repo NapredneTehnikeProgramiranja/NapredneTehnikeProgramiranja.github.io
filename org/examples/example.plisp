@@ -1,3 +1,0 @@
-(def hello_number (a b)
-  (let [v (* a b)]
-       (print "Hello " (+ a b))))

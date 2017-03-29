@@ -513,17 +513,37 @@ integrate systems more effectively.
   [[file:images/parser.jpg]]
 
 ** TextX
-   [[https://github.com/igordejanovic/textX][TextX]] je Python meta jezik za definisanje jezika inspirisan
-   [[http://www.eclipse.org/Xtext/][XText]]-om.
+   [[https://github.com/igordejanovic/textX][TextX]] (pogledati primire) je Python meta jezik za definisanje
+   jezika inspirisan [[http://www.eclipse.org/Xtext/][XText]]-om.
 
 ** Zadaci
 
    *ParenPy*
 
-   #+INCLUDE: "examples/example.plisp" src python :eval no
+   #+INCLUDE: "py_examples/example.plisp" src python :eval no
+
+** Rešenja
 
    Gramatika
 
-   #+INCLUDE: "examples/plisp.tx" src textx
+   #+INCLUDE: "py_examples/plisp.tx" src textx
 
-   #+INCLUDE: "examples/plisp.py" src python :eval no
+   #+BEGIN_SRC shell :eval no
+     $ textx visualize plisp.tx
+     ...
+     $ dot -Tpng -O plisp.tx.dot
+   #+END_SRC
+
+   #+ATTR_HTML: :width 700px
+   [[file:images/plisp.tx.dot.png]]
+
+   #+INCLUDE: "py_examples/plisp.py" src python :eval no
+
+   #+BEGIN_SRC shell :eval no
+     $ textx visualize plisp.tx example.plisp
+     ...
+     $ dot -Tpng -O example.plisp.dot
+   #+END_SRC
+
+   #+ATTR_HTML: :width 700px
+   [[file:images/example.plisp.dot.png]]
