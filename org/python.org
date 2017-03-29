@@ -522,7 +522,7 @@ integrate systems more effectively.
 
    #+INCLUDE: "py_examples/example.plisp" src python :eval no
 
-** Rešenja
+** COMMENT Rešenja
 
    Gramatika
 
