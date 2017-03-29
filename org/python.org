@@ -516,31 +516,14 @@ integrate systems more effectively.
    [[https://github.com/igordejanovic/textX][TextX]] je Python meta jezik za definisanje jezika inspirisan
    [[http://www.eclipse.org/Xtext/][XText]]-om.
 
-** COMMENT Zadaci
+** Zadaci
 
    *ParenPy*
 
-   #+BEGIN_SRC python :eval no
-     (def hello_number (a b)
-       (print "Hello " (+ a b)))
-
-     (hello_number 43 23)
-   #+END_SRC
-
-   #+RESULTS:
-   #+begin_example
-   Hello 66
-   #+end_example
+   #+INCLUDE: "examples/example.plisp" src python :eval no
 
    Gramatika
 
-   #+BEGIN_SRC textx
-     Program: expressions*=Expression;
-     Expression: '(' (PrintExpression | AssignmentStatement) ')';
-     PrintStatement: '(' 'print' to_print=Value ')';
-     AssignmentStatement: var=ID '=' expr=Expression;
-     Expression: Sum;
-     Sum: Product (('+'|'-') Product)*;
-     Product: Value ('*' Value)*;
-     Value: ID | INT | ('(' Expression ')');
-   #+END_SRC
+   #+INCLUDE: "examples/plisp.tx" src textx
+
+   #+INCLUDE: "examples/plisp.py" src python :eval no
