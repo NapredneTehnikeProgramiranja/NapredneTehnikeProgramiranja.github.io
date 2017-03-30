@@ -12,5 +12,10 @@
 (apply hello_number
        (let [a (apply say_hello_to_hello)
              b "it's also able to hell o!"]
-             (+ a b))
+             (let [s (* a b)]
+                  (+ a b s)))
        2)
+
+"Po ovoj gramatici može i ovo:"
+43
+23.0

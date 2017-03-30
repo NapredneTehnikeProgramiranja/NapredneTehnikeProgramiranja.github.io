@@ -518,7 +518,7 @@ integrate systems more effectively.
 
 ** Zadaci
 
-   *ParenPy*
+   *Plisp*
 
    #+INCLUDE: "py_examples/example.plisp" src python :eval no
 
@@ -537,8 +537,6 @@ integrate systems more effectively.
    #+ATTR_HTML: :width 700px
    [[file:images/plisp.tx.dot.png]]
 
-   #+INCLUDE: "py_examples/plisp.py" src python :eval no
-
    #+BEGIN_SRC shell :eval no
      $ textx visualize plisp.tx example.plisp
      ...
@@ -547,3 +545,5 @@ integrate systems more effectively.
 
    #+ATTR_HTML: :width 700px
    [[file:images/example.plisp.dot.png]]
+
+   #+INCLUDE: "py_examples/plisp.py" src python :eval no
