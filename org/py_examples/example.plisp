@@ -1,5 +1,7 @@
 (def hello_number (a b)
-  (let [v (* a b)]
+  (let [v (* (let [a b]
+                  c)
+             12)]
        (print "Hello " (+ a b))))
 
 (apply hello_number 1 2)
@@ -16,6 +18,14 @@
                   (+ a b s)))
        2)
 
+(def sum_two (f s)
+  (+ f s))
+
+(let [m 12
+      n 18]
+     (apply sum_two m n))
+
 "Po ovoj gramatici može i ovo:"
 43
 23.0
+0

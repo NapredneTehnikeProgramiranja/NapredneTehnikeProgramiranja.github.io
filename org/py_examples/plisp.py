@@ -1,4 +1,6 @@
 from textx.metamodel import metamodel_from_file
+from collections import Iterable
+from functools import reduce
 
 mm = metamodel_from_file("plisp.tx")
 m = mm.model_from_file("example.plisp")
@@ -8,12 +10,12 @@ def gn_Basic_Expression(e): return None
 def gn_S_Expression(e): return e.exp
 def gn_BindForm(e): return e.exp
 
-gn_options = {mm._current_namespace['Basic_Expression']: gn_Basic_Expression,
-              mm._current_namespace['S_Expression']: gn_S_Expression}
+gn_options = {'Basic_Expression': gn_Basic_Expression,
+              'S_Expression':     gn_S_Expression}
 
 def gn_LetExpression(e):
     bfs = [gn_BindForm(bf) for bf in e.bind_form]
-    exs = [gn_options[type(ex)](ex) for ex in e.exp]
+    exs = [gn_options[ex.__class__.__name__](ex) for ex in e.exp]
     return bfs + exs
 
 def gn_PrintExpression(e): return e.to_print
@@ -22,37 +24,45 @@ def gn_ApplyExp(e): return e.f_params
 def gn_Sum(e): return e.exp
 def gn_Product(e): return e.exp
 
-gn_options.update({mm._current_namespace['Program']:          gn_Program,
-                   mm._current_namespace['LetExpression']:    gn_LetExpression,
-                   mm._current_namespace['BindForm']:         gn_BindForm,
-                   mm._current_namespace['PrintExpression']:  gn_PrintExpression,
-                   mm._current_namespace['DefExpression']:    gn_DefExpression,
-                   mm._current_namespace['ApplyExp']:         gn_ApplyExp,
-                   mm._current_namespace['Sum']:              gn_Sum,
-                   mm._current_namespace['Product']:          gn_Product})
+gn_options.update({'Program':          gn_Program,
+                   'LetExpression':    gn_LetExpression,
+                   'BindForm':         gn_BindForm,
+                   'PrintExpression':  gn_PrintExpression,
+                   'DefExpression':    gn_DefExpression,
+                   'ApplyExp':         gn_ApplyExp,
+                   'Sum':              gn_Sum,
+                   'Product':          gn_Product})
 
-def get_next_exprs(e):
+def get_next_exps(e):
     """Return all successor expressions of a given expression."""
-    return gn_options[type(e)](e)
+    return gn_options[e.__class__.__name__](e)
 
 def is_let(exp):
-    return mm._current_namespace['LetExpression'] == type(exp)
+    return exp.__class__.__name__ == 'LetExpression'
 
 def get_all_let_bindings(l):
     """Extract all bindings from let."""
     return [b.name for b in l.bind_form]
 
-def spot_lets(e, lets=[]):
-    """Spot all the let expressions. Returning list of tuple
-       (bind_variables, position_of_let_expression)."""
+def spot_lets_single_exp(e, lets=[]):
 
     if not e: return lets
 
     if is_let(e):
         pos =  mm.parser.pos_to_linecol(e._tx_position)
-        spot_lets(get_next_expressions(e), \
-                  lets.append((get_all_let_bindings(e), pos)))
+        return spot_lets(get_next_exps(e), \
+                         lets + [(get_all_let_bindings(e), pos)])
     else:
-        spot_lets(get_next_expressions(e), lets)
+        return spot_lets(get_next_exps(e), lets)
 
-l = m.expressions[4].exp.f_params[0].exp
+def spot_lets(e, lets=[]):
+    """Spot all the let expressions in the program. Return list of tuples
+       ([bind_variable+], position_of_let_expression). """
+
+    def reducer(ls, ex):
+        return ls + (spot_lets_single_exp(ex) or [])
+
+    if isinstance(e, Iterable):
+        return reduce(reducer, e, lets)
+    else:
+        return spot_lets_single_exp(e, lets)

@@ -1,0 +1,82 @@
+
+    digraph xtext {
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    node[
+        shape=record,
+        style=filled,
+        fillcolor=aliceblue
+    ]
+    nodesep = 0.3
+    edge[dir=black,arrowtail=empty]
+
+
+27943000[ label="{*Exp|}"]
+27943000 -> 27961384 [dir=back]
+27943000 -> 27953560 [dir=back]
+27943000 -> 27958120 [dir=back]
+27943000 -> 27945640 [dir=back]
+27943000 -> 27969112 [dir=back]
+
+27945640 -> 27948568[arrowtail=diamond, dir=both, headlabel="bind_form 1..*"]
+27945640 -> 27937528[arrowtail=diamond, dir=both, headlabel="exp 0..*"]
+27945640[ label="{LetExpression|}"]
+
+27941176 -> 27943000[arrowtail=diamond, dir=both, headlabel="exp "]
+27941176[ label="{S_Expression|}"]
+
+27983752 -> 27937528[arrowtail=diamond, dir=both, headlabel="exp 1..*"]
+27983752[ label="{Product|}"]
+
+27939352[ label="{Basic_Expression|+val:BASETYPE\l}"]
+
+27937528[ label="{*Expression|}"]
+27937528 -> 27939352 [dir=back]
+27937528 -> 27941176 [dir=back]
+
+27948568 -> 27937528[arrowtail=diamond, dir=both, headlabel="exp "]
+27948568[ label="{BindForm|+name:ID\l}"]
+
+27958120[ label="{*ArithExpression|}"]
+27958120 -> 27977512 [dir=back]
+27958120 -> 27983752 [dir=back]
+
+27935704 -> 27937528[arrowtail=diamond, dir=both, headlabel="expressions 0..*"]
+27935704[ label="{Program|}"]
+
+27977512 -> 27937528[arrowtail=diamond, dir=both, headlabel="exp 1..*"]
+27977512[ label="{Sum|}"]
+
+27961384 -> 27937528[arrowtail=diamond, dir=both, headlabel="body 0..*"]
+27961384[ label="{DefExpression|+name:ID\largs:list[Arg]\l}"]
+
+27974440[ label="{Arg|ID}"]
+
+27969112 -> 27937528[arrowtail=diamond, dir=both, headlabel="f_params 0..*"]
+27969112[ label="{ApplyExp|+f_name:ID\l}"]
+
+27953560 -> 27937528[arrowtail=diamond, dir=both, headlabel="to_print 1..*"]
+27953560[ label="{PrintExpression|}"]
+
+27703336[ label="{BASETYPE|}"]
+27703336 -> 27699976 [dir=back]
+27703336 -> 27691768 [dir=back]
+27703336 -> 27685512 [dir=back]
+27703336 -> 27689032 [dir=back]
+
+27694504[ label="{INT|}"]
+
+27691768[ label="{BOOL|}"]
+
+27699976[ label="{NUMBER|}"]
+27699976 -> 27697240 [dir=back]
+27699976 -> 27694504 [dir=back]
+
+27689032[ label="{STRING|}"]
+
+27697240[ label="{FLOAT|}"]
+
+27685512[ label="{ID|}"]
+
+
+}

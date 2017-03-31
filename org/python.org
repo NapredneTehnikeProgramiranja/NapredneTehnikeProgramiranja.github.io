@@ -518,15 +518,50 @@ integrate systems more effectively.
 
 ** Zadaci
 
-   *Plisp*
+   Dato je parče koda u čudnom programskom jeziku *Plisp*.
 
+   <<ref:grammar>>
    #+INCLUDE: "py_examples/example.plisp" src python :eval no
 
-** COMMENT Rešenja
+   U istom tom programskom jeziku napisan je i program koji na
+   internetu ume da pronađe besplatne kupone za doživotnu kućnu
+   dostavu /Index sendviča/\trade.
 
-   Gramatika
+   Svi vole /Index sendviče/\trade.
+
+   Međutim, tu je i jedan problem. Program je procureo u javnost u
+   nedovršenoj verziji i Vi treba da ga dovršite.
+
+   Međutim i tu ima jedan problem. Program je toliko poverljiv da čak
+   ne postoji ni /tooling/ za njegov programski jezik. Kako biste
+   počeli da radite na programu prvo morate sebi da napravite razvojno
+   okruženje. Za početak će biti dovoljna statička analiza.
+
+   Napišite parser za *Plisp* koristeći [[*TextX][TextX]], a potom napravite
+   Python program sa funkcijom =spot_lets= kojoj prosledite [[*TextX][TextX]]
+   model programa a on Vam vrati listu koja ukazuje na kojim
+   pozicijama u programu se nalaze =let= izrazi. Funkcija =spot_lets=
+   za program [[ref:grammar][gore]] treba da vrati:
+
+   #+BEGIN_SRC python :eval no
+     [(['v'], (2, 4)),
+      (['a'], (2, 15)),
+      (['a', 'b'], (15, 9)),
+      (['s'], (17, 15)),
+      (['m', 'n'], (24, 2))]
+   #+END_SRC
+
+   Što znači da program ima dve =let= naredbe na liniji 2, koloni 4 (i
+   u tom =let=-u /binding/ za simbol =v=) i po jednu na linijama 15,
+   17, 24.
+
+** Rešenja
+
+   Gramatika jezika je data sa:
 
    #+INCLUDE: "py_examples/plisp.tx" src textx
+
+   Ovo možemo vizualizovati korišćenjem TextX-a i [[http://www.graphviz.org/][GraphViz]]-a:
 
    #+BEGIN_SRC shell :eval no
      $ textx visualize plisp.tx
@@ -537,6 +572,8 @@ integrate systems more effectively.
    #+ATTR_HTML: :width 700px
    [[file:images/plisp.tx.dot.png]]
 
+   Takođe možemo vizualizovati i [[http://www.graphviz.org/][mogram]]:
+
    #+BEGIN_SRC shell :eval no
      $ textx visualize plisp.tx example.plisp
      ...
@@ -546,4 +583,18 @@ integrate systems more effectively.
    #+ATTR_HTML: :width 700px
    [[file:images/example.plisp.dot.png]]
 
+   U nastavku je data jedna implementacija funkcije =spot_lets=. S
+   obzirom da je gramatika "rekurzivna" i ovaj problem je opisan
+   rekurzivno. Pogledajte kako funkcija =spot_lets_single_exp= poziva
+   =spot_lets= i obrnuto, ovo ze naziva [[https://en.wikipedia.org/wiki/Mutual_recursion][međusobna rekurzija]] (što je
+   vrsta [[https://en.wikipedia.org/wiki/Recursion_(computer_science)#Indirect_recursion][indirektne rekurzije]]).
+
    #+INCLUDE: "py_examples/plisp.py" src python :eval no
+
+   Python "nije baš srećan sa rekurzijom" i za to postoji [[http://stackoverflow.com/questions/26873627/why-does-python-have-a-maximum-recursion-depth][više razloga]]
+   a jedan od njih je što nema podržan [[https://en.wikipedia.org/wiki/Tail_call][tail call optimization]] (na ovom
+   kursu ćete upoznati i programske jezike u kojima je rekurzija
+   poželjna i podržana).
+
+   Ali bez brige, sam TextX ima mehanizam kojim možemo vrlo elegantno
+   da rešimo problem iz ovog zadatka i njemu slične.
