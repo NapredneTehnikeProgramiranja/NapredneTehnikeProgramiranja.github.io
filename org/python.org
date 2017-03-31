@@ -598,3 +598,21 @@ integrate systems more effectively.
 
    Ali bez brige, sam TextX ima mehanizam kojim možemo vrlo elegantno
    da rešimo problem iz ovog zadatka i njemu slične.
+
+   Mehanizam koji nam je ovde od interesa u TextX-u se zove [[http://www.igordejanovic.net/textX/metamodel/#object-processors][object
+   processori]]. Funkcije koje registrujete za /object processore/ se
+   pozivaju u vreme kada TextX instancira klase pravila iz gramatike
+   (a to se desi kada se u tekstu naiđe na pravilo). Dakle, sve se ovo
+   dešava "u letu" tj. za pronalaženje =let= izraza se koristi
+   TextX-ov prolaz parsiranja za razliku od prethodnog rešenja u kome
+   mi "ručno" obilazimo stablo nakon što ga je TextX već jednom
+   obišao.
+
+   #+INCLUDE: "py_examples/plisp_o_proc.py" src python :eval no
+
+   Redosled u rezultujućoj listi zavisi od redosleda obilaska stabla a
+   to je različito u dva predstavljena rešenja.
+
+   Ovo je svakako način na koji biste ovaj zadatak rešili ako biste
+   imali TextX na raspolaganju. Rešenje sa "ručnim obilaskom" stabla
+   ilustruje opšti pristup.

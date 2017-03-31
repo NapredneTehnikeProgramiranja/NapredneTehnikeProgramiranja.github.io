@@ -66,3 +66,10 @@ def spot_lets(e, lets=[]):
         return reduce(reducer, e, lets)
     else:
         return spot_lets_single_exp(e, lets)
+
+print(spot_lets(m))
+# [(['v'], (2, 4)),
+#  (['a'], (2, 15)),
+#  (['a', 'b'], (15, 9)),
+#  (['s'], (17, 15)),
+#  (['m', 'n'], (24, 2))]
