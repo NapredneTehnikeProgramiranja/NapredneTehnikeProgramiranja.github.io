@@ -572,7 +572,7 @@ integrate systems more effectively.
    #+ATTR_HTML: :width 700px
    [[file:images/plisp.tx.dot.png]]
 
-   Takođe možemo vizualizovati i [[http://www.graphviz.org/][mogram]]:
+   Takođe možemo vizualizovati i [[http://www.igordejanovic.net/textX/tutorials/robot/#interpreting-model][mogram]]:
 
    #+BEGIN_SRC shell :eval no
      $ textx visualize plisp.tx example.plisp
@@ -584,7 +584,7 @@ integrate systems more effectively.
    [[file:images/example.plisp.dot.png]]
 
    U nastavku je data jedna implementacija funkcije =spot_lets=. S
-   obzirom da je gramatika "rekurzivna" i ovaj problem je opisan
+   obzirom da je gramatika rekurzivna i ovaj problem je opisan
    rekurzivno. Pogledajte kako funkcija =spot_lets_single_exp= poziva
    =spot_lets= i obrnuto, ovo ze naziva [[https://en.wikipedia.org/wiki/Mutual_recursion][međusobna rekurzija]] (što je
    vrsta [[https://en.wikipedia.org/wiki/Recursion_(computer_science)#Indirect_recursion][indirektne rekurzije]]).
