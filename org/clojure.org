@@ -215,7 +215,18 @@ system that ensure clean, correct, multithreaded designs.
    smatraju tankom apstrakcijom oko "gole" memorije). Ovo je veoma
    moćan koncept jer kada prestanete da razmišljate o objektima i
    memoriji onda konkurentno programiranje postaje manje više
-   trivijalan posao
+   trivijalan posao.
+
+   U objektno orijentisanom programiranju takođe imamo potrebu i za
+   skrivanjem informacija (/information hiding/) i ograničavanjem
+   pristupa delovima objekta kroz /enkapsulaciju/. Clojure otklanja tu
+   potrebu jer barata samim vrednostima, podaci su *semantički
+   transparentni*. Ovaj nivo transparentnosti omogućava bolju osnovu
+   za rezonovanje o kodu. Uprošćavanje kompleksnih funkcija *uvek*
+   može biti izvedeno prostom supstitucijom. Evo jednog naivnog
+   primera koji to ilustruje:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/core.clj" :src clojure :lines "15-22"
 
 ** Clojure u standardnim OO problemima
 
