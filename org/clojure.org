@@ -74,13 +74,57 @@ system that ensure clean, correct, multithreaded designs.
    pogledajte [[../resources/perzistencija_clojure.pdf][ovde]] (poglavlja 1.1, 1.2 i 1.3).
 
    Pored /Clojure/ dijalekta kojim ćemo se baviti na ovom kursu tu je
-   još pregršt drugih dijalekata raznih vrsta i prednosti:
+   još pregršt drugih dijalekata sa raznim osobinama:
+
+   - [[https://common-lisp.net/][Commnon Lisp]]
+   - [[https://en.wikipedia.org/wiki/Scheme_(programming_language)][Scheme]]
+   - [[https://www.gnu.org/software/emacs/][Emacs Lisp]]
+   - [[https://en.wikipedia.org/wiki/AutoLISP][AutoLisp]]
+   - [[http://www.paulgraham.com/arc.html][Arc]]
+   - [[http://lfe.io/][Lisp Flovered Erlang]]
+     ...
 
 *** Scheme
 
+    *Scheme* je jedan od najznačajnijih dijalekata Lisp-a. Dizajniran
+    je od početka sa idejom funkcionalnog programiranja i minimalizma
+    sa veoma moćnim mehanizmima za proširenje jezika. Prvi je
+    dijalekat koji usled naglašavanja funkcionalnog programiranja
+    uvodi [[https://en.wikipedia.org/wiki/Tail_call][tail call optimizaciju]]. Takođe jedan je od prvih programskih
+    jezika koji imaju podržanu [[https://en.wikipedia.org/wiki/Continuation][kontinuaciju]].
+
+    Neke od "biblija" računarske nauke i programiranja generalno su
+    kao jezik-primer uzimale upravo Scheme. Jedna takva knjiga je i
+    [[http://deptinfo.unice.fr/~roy/sicp.pdf][Structure and Interpretation of Computer Programs]].
+
+    Postoji mnogo raznih dijalekata Scheme-a a ovde će biti navedena
+    samo dva.
+
 **** Chez Scheme (Cisco)
 
+     [[https://github.com/cisco/ChezScheme][*Chez*]] je [[http://www.r6rs.org/][Scheme implementacija]] zajedno sa (moćnim) kompajlerom,
+     /run time/ sistemom i bibliotekama. Koristi je kompanije Cisco a
+     od skoro je /open source/.
+
+     Ako danas želite da probate Scheme da njime rešite problem na
+     kome radite a fokus Vam je na performansama, IO, konkurentnom
+     programiranju ili Vam treba dobra mogućnost korišćenja postojećih
+     C biblioteka onda nije loše da počnete sa *Chez*-om.
+
 **** Racket lang
+
+     [[https://racket-lang.org/][Racket lang]] je takođe implementacija Schema-a ali sa potpuno
+     drugim ciljevima pri dizajnu. Racket je po svom dizajnu sistem za
+     pravljenje programskih jezika (i/ili [[https://en.wikipedia.org/wiki/Domain-specific_language][DSL]]-ova). Ima veoma dobar
+     ekosistem biblioteka (u formi jezika) za razne standardne (WEB
+     serveri, GUI ...) i manje standardne zadatke. Sve njegove
+     biblioteke su veoma dobro dokumentovane. Racket ima i svoje
+     razvojno okruženje (IDE) DrRacket koje sadrži sve na šta ste
+     navikli od jednog IDE-a (uključujući i grafički debugger). Ako je
+     dizajn DSL-ova način na koji razmišljate pri rešavanju problema
+     onda će Racket lang i njegovo okruženje biti odlično društvo od
+     kojeg možete mnogo da naučite.
+
 ** Imperativno vs funckionalno programiranje
 
 ** Funkcionalni način razmišljanja
