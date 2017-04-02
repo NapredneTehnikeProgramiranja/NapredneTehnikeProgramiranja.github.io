@@ -125,9 +125,97 @@ system that ensure clean, correct, multithreaded designs.
      onda će Racket lang i njegovo okruženje biti odlično društvo od
      kojeg možete mnogo da naučite.
 
+** Clojure - funkcionalni način razmišljanja
+
+   Danas postoji mnogo programskih jezika i zaista se (pre)veliki deo
+   njih međusobno razlikuje skoro isključivo po sintaksi. Tako da
+   danas nije nikakav problem nazivati se *polyglot* programerom -
+   samo naučite par sintaktičkih pravila i /Voila!/ znate još jedan
+   programski jezik (nezaboravite da osvežite svoj CV).
+
+   *Clojure* ipak nije jedan od jezika koji su Vam od ranije
+   poznati. Čak ni na prvi pogled (za šta je zaslužna /S-expression/
+   prefiksna notacija). Stoga, kako biste ga naučili morate primeniti
+   neku drugu strategiju u odnosu na onu navedenu iznad.
+
+   Evo jednog predloženog pristupa:
+
+   #+BEGIN_QUOTE
+   Zaboravite sve što znate o programiranju. *Pristupite učenju
+   Clojure-a kao da Vam je to prvi programski jezik* . U suprotnom
+   ćete Clojure shvatiti samo kao /prefiksnu notaciju sa zagradama
+   okolo koja Vam ne dozvoljava da pišete kod onako kako ste navikli!/
+
+   *Umesto da pokušavate svoje znanje od ranije da preslikate na*
+   *Clojure dozvolite ovom Lispu da obogati način na koji pišete*
+   *ostale programske jezike.*
+   #+END_QUOTE
+
 ** Imperativno vs funckionalno programiranje
 
-** Funkcionalni način razmišljanja
+   C, C++, C#, Java, Python svi ovi (i drugi) programski jezici imaju
+   veoma sličnu sintaksu i svi koriste veoma slične programske
+   konstrukcije sa akcentom na imperativno programiranje.
+
+   #+BEGIN_QUOTE
+   U kompjuterskoj nauci imperativnim programiranjem je paradigma
+   programiranja koja koristi naredbe u cilju menjanja stanja
+   programa.
+   #+END_QUOTE
+
+   Ova paradigma programiranja se savršeno uklapa u [[https://en.wikipedia.org/wiki/Von_Neumann_architecture][von Neumann-ov
+   model izračunavanja]] na računaru. Tačnije, ona je dizajnirana kako
+   bi oslikala pomenuti model izračunavanja.
+
+   Na primer, C je dominirao softverom veliki broj godina jer se
+   odlično uklapa u ovu dominantnu paradigmu hardverske
+   arhitekture. Programi napisani u C-u su veoma efikasni i u stanju
+   su da vrše veoma efikasno upravljanje memorijom koja je do skora
+   bila veliki problem. Ova efikasnost je plaćena cenom izraženom u
+   kompleksnijoj semantici i sintaksi samog jezika i sa porastom
+   programskog koda dramatično opada sposobnost programera da
+   iskontroliše konstruktorsku kompleksnost u takvim programima što
+   dovodi do češćih defekata u radu programa (*program radi brzo ali
+   ne i ono što želimo --- korektno*). Ova kompleksnost potiče od toga
+   što kod imperativnog programiranja posao koji naredbe obavljaju
+   snažno zavisi od stanja memorije u tom momentu. To čini
+   *konkurentno* programiranje veoma komplikovanim i stoga podložnim
+   greškama.
+
+   #+BEGIN_QUOTE
+   Danas kada je memorija veoma brza i jeftina a kada višeprocesorske
+   arhitekture svi nosimo u džepovima ili pametnim satovima
+   imperativno programiranje počinje da pokazuje ozbiljne znake
+   starenja.
+   #+END_QUOTE
+
+   Funkcionalno programiranje se zasniva više na stabilnim
+   matematičkim konceptima nego na bilo kom modelu izračunavanja na
+   mašini. Clojure kao funkcionalan programski jezik ima snažan fokus
+   na [[https://en.wikipedia.org/wiki/Immutable_object][nepromenljivosti podataka]] (u daljem tekstu mutabilnost). To mu
+   omogućava veoma čiste i jednostavne apstrakcije za konkurentno
+   programiranje koje su svakako korektnije i manje podložno greškama
+   od eksplicitnog zaključavanja delova memorije na koje smo usmereni
+   u imperativnom programiranju.
+
+   Clojure (kao Lisp) je zapravo zasnovan na jednom veoma konciznom
+   matematičkom modelu kakav je Lambda račun pa tako i njegova
+   sintaksa barata sa svega nekoliko raznih konstrukcija što je čini
+   veoma prostom. /Uviđanje ove jednostavnosti dolazi uz malo vežbe./
+
+** Clojure kao /value oriented/ jezik
+
+   Clojure promoviše stil programiranja koji se zove /value-oriented
+   programming/ i nije jedini jezik koji to radi. *Rich Hickey* je
+   ovaj koncept vrlo lepo objasnio u svom [[https://www.youtube.com/watch?v=-6BsiVyC1kM][izlaganju]] na /Jax
+   Conf/-u 2012. godine.
+
+   Ideja je da se programer koncentriše na vrednosti u njegovom
+   programu a ne na mutabilne objekte i njihovo stanje (objekti se
+   smatraju tankom apstrakcijom oko "gole" memorije). Ovo je veoma
+   moćan koncept jer kada prestanete da razmišljate o objektima i
+   memoriji onda konkurentno programiranje postaje manje više
+   trivijalan posao
 
 ** Clojure u standardnim OO problemima
 
