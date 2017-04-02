@@ -38,6 +38,44 @@ system that ensure clean, correct, multithreaded designs.
 
 ** Lisp
 
+   *Lisp* ili *LISP* je porodica programskih jezika sa dugom
+   istorijom. Na prvi pogled ga karakteriše prefiksna notacija i
+   izrazi u zagradama. Prvobitno je specificiran 1956. godine od
+   strane [[https://en.wikipedia.org/wiki/John_McCarthy_(computer_scientist)][John McCarthy]]-a za potrebe njegovih istraživanja u oblasti
+   veštačke inteligencije (/McCarthy/ je inače i smislio naziv
+   /artificial intelligence/ - /AI/). Lisp je drugi najstariji
+   programski jezik visokog nivoa, samo je /Fortran/ jednu godinu
+   stariji, a poređenja radi:
+   - [[https://en.wikipedia.org/wiki/C_(programming_language)][C]] se pojavio 1972.
+   - [[https://en.wikipedia.org/wiki/C%252B%252B][C++]] 1983.
+   - [[https://en.wikipedia.org/wiki/Python_(programming_language)][Python]] 1991 (kada i [[https://en.wikipedia.org/wiki/Visual_Basic][Visual Basic]]).
+   - [[https://en.wikipedia.org/wiki/Java_(programming_language)][Java]] 1995.
+   - [[https://en.wikipedia.org/wiki/C_Sharp_(programming_language)][C#]] 2000.
+
+   Lisp je konstruisan kao matematička notacija za kompjuterske
+   programe inspirisana [[https://en.wikipedia.org/wiki/Lambda_calculus][Lambda računom]]([[https://en.wikipedia.org/wiki/Alonzo_Church][Alonzo Church]]). Ovaj način
+   predstave programa doneo je mnoge ideje u kompjuterske nauke:
+   - strukture tipa stabla
+   - automatsko upravljanje memorijom (garbage collector)
+   - /dynamic typing/
+   - kondicionale (grananje)
+   - funkcije višeg reda
+   - rekurziju i rekurzivan opis podataka
+   - self-hosting kompajler
+   - REPL itd.
+
+   Veliki broj navedenih stvari inspirisao je programske jezike koji
+   su nastali nakon Lisp-a (tj. skoro sve programske jezike) ali neki
+   od korisnih koncepata iz Lisp-a se i dan dans smatraju naprednim i
+   još uvek nisu podržani u pojedinim jezicima koji se intenzivno
+   koriste.
+
+   Matematičku formulaciju Lisp-a i koncepata koje ona donosi nadalje
+   pogledajte [[../resources/perzistencija_clojure.pdf][ovde]] (poglavlja 1.1, 1.2 i 1.3).
+
+   Pored /Clojure/ dijalekta kojim ćemo se baviti na ovom kursu tu je
+   još pregršt drugih dijalekata raznih vrsta i prednosti:
+
 *** Scheme
 
 **** Chez Scheme (Cisco)
