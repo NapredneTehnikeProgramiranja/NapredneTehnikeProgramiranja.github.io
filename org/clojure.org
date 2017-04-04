@@ -93,9 +93,9 @@ system that ensure clean, correct, multithreaded designs.
     uvodi [[https://en.wikipedia.org/wiki/Tail_call][tail call optimizaciju]]. Takođe jedan je od prvih programskih
     jezika koji imaju podržanu [[https://en.wikipedia.org/wiki/Continuation][kontinuaciju]].
 
-    Neke od "biblija" računarske nauke i programiranja generalno su
-    kao jezik-primer uzimale upravo Scheme. Jedna takva knjiga je i
-    [[http://deptinfo.unice.fr/~roy/sicp.pdf][Structure and Interpretation of Computer Programs]].
+    Neke od "biblija" računarske nauke su kao jezik-primer uzimale
+    upravo Scheme. Jedna, vrlo značajna, takva knjiga je i [[http://deptinfo.unice.fr/~roy/sicp.pdf][Structure
+    and Interpretation of Computer Programs]].
 
     Postoji mnogo raznih dijalekata Scheme-a a ovde će biti navedena
     samo dva.
@@ -119,11 +119,11 @@ system that ensure clean, correct, multithreaded designs.
      ekosistem biblioteka (u formi jezika) za razne standardne (WEB
      serveri, GUI ...) i manje standardne zadatke. Sve njegove
      biblioteke su veoma dobro dokumentovane. Racket ima i svoje
-     razvojno okruženje (IDE) DrRacket koje sadrži sve na šta ste
-     navikli od jednog IDE-a (uključujući i grafički debugger). Ako je
-     dizajn DSL-ova način na koji razmišljate pri rešavanju problema
-     onda će Racket lang i njegovo okruženje biti odlično društvo od
-     kojeg možete mnogo da naučite.
+     razvojno okruženje (/IDE/) DrRacket koje sadrži sve na šta ste
+     navikli od jednog /IDE/-a (uključujući i grafički
+     /debugger/). Ako je dizajn DSL-ova način na koji razmišljate pri
+     rešavanju problema onda će Racket lang i njegovo okruženje biti
+     odlično društvo od kojeg možete mnogo da naučite.
 
 ** Clojure - funkcionalni način razmišljanja
 
@@ -133,10 +133,11 @@ system that ensure clean, correct, multithreaded designs.
    samo naučite par sintaktičkih pravila i /Voila!/ znate još jedan
    programski jezik (nezaboravite da osvežite svoj CV).
 
-   *Clojure* ipak nije jedan od jezika koji su Vam od ranije
-   poznati. Čak ni na prvi pogled (za šta je zaslužna /S-expression/
-   prefiksna notacija). Stoga, kako biste ga naučili morate primeniti
-   neku drugu strategiju u odnosu na onu navedenu iznad.
+   *Clojure* ipak nije jedan od jezika koji se početniku čini od
+   ranije poznatim. Čak ni na prvi pogled (za šta je zaslužna
+   /S-expression/ prefiksna notacija). Stoga, kako biste ga naučili
+   morate primeniti neku drugu strategiju u odnosu na onu navedenu
+   iznad.
 
    Evo jednog predloženog pristupa:
 
@@ -144,10 +145,10 @@ system that ensure clean, correct, multithreaded designs.
    Zaboravite sve što znate o programiranju. *Pristupite učenju
    Clojure-a kao da Vam je to prvi programski jezik* . U suprotnom
    ćete Clojure shvatiti samo kao /prefiksnu notaciju sa zagradama
-   okolo koja Vam ne dozvoljava da pišete kod onako kako ste navikli!/
+   koja Vam ne dozvoljava da pišete kod onako kako ste navikli!/
 
    *Umesto da pokušavate svoje znanje od ranije da preslikate na*
-   *Clojure dozvolite ovom Lispu da obogati način na koji pišete*
+   *Clojure, dozvolite ovom Lispu da obogati način na koji pišete*
    *ostale programske jezike.*
    #+END_QUOTE
 
@@ -158,29 +159,28 @@ system that ensure clean, correct, multithreaded designs.
    konstrukcije sa akcentom na imperativno programiranje.
 
    #+BEGIN_QUOTE
-   U kompjuterskoj nauci imperativnim programiranjem je paradigma
+   U kompjuterskoj nauci imperativno programiranje je paradigma
    programiranja koja koristi naredbe u cilju menjanja stanja
    programa.
    #+END_QUOTE
 
-   Ova paradigma programiranja se savršeno uklapa u [[https://en.wikipedia.org/wiki/Von_Neumann_architecture][von Neumann-ov
-   model izračunavanja]] na računaru. Tačnije, ona je dizajnirana kako
+   Ova paradigma programiranja se savršeno uklapa u [[https://en.wikipedia.org/wiki/Von_Neumann_architecture][von Neumann-ov]]
+   model izračunavanja na računaru. Tačnije, ona je dizajnirana kako
    bi oslikala pomenuti model izračunavanja.
 
    Na primer, C je dominirao softverom veliki broj godina jer se
    odlično uklapa u ovu dominantnu paradigmu hardverske
    arhitekture. Programi napisani u C-u su veoma efikasni i u stanju
-   su da vrše veoma efikasno upravljanje memorijom koja je do skora
+   su da vrše veoma efikasno upravljanje memorijom koja je /do skora/
    bila veliki problem. Ova efikasnost je plaćena cenom izraženom u
-   kompleksnijoj semantici i sintaksi samog jezika i sa porastom
+   kompleksnijoj semantici i sintaksi samog jezika pa sa porastom
    programskog koda dramatično opada sposobnost programera da
-   iskontroliše konstruktorsku kompleksnost u takvim programima što
-   dovodi do češćih defekata u radu programa (*program radi brzo ali
-   ne i ono što želimo --- korektno*). Ova kompleksnost potiče od toga
-   što kod imperativnog programiranja posao koji naredbe obavljaju
-   snažno zavisi od stanja memorije u tom momentu. To čini
-   *konkurentno* programiranje veoma komplikovanim i stoga podložnim
-   greškama.
+   iskontroliše konstruktorsku kompleksnost što dovodi do češćih
+   defekata u radu programa (*program radi brzo ali ne i ono što
+   želimo --- korektno*). Ova kompleksnost potiče od toga što kod
+   imperativnog programiranja posao koji naredbe obavljaju snažno
+   zavisi od stanja memorije u tom momentu. To čini *konkurentno*
+   programiranje veoma komplikovanim i stoga podložnim greškama.
 
    #+BEGIN_QUOTE
    Danas kada je memorija veoma brza i jeftina a kada višeprocesorske
@@ -192,7 +192,7 @@ system that ensure clean, correct, multithreaded designs.
    Funkcionalno programiranje se zasniva više na stabilnim
    matematičkim konceptima nego na bilo kom modelu izračunavanja na
    mašini. Clojure kao funkcionalan programski jezik ima snažan fokus
-   na [[https://en.wikipedia.org/wiki/Immutable_object][nepromenljivosti podataka]] (u daljem tekstu mutabilnost). To mu
+   na [[https://en.wikipedia.org/wiki/Immutable_object][nepromenljivosti podataka]] (u daljem tekstu imutabilnost). To mu
    omogućava veoma čiste i jednostavne apstrakcije za konkurentno
    programiranje koje su svakako korektnije i manje podložno greškama
    od eksplicitnog zaključavanja delova memorije na koje smo usmereni
@@ -214,7 +214,7 @@ system that ensure clean, correct, multithreaded designs.
    programu a ne na mutabilne objekte i njihovo stanje (objekti se
    smatraju tankom apstrakcijom oko "gole" memorije). Ovo je veoma
    moćan koncept jer kada prestanete da razmišljate o objektima i
-   memoriji onda konkurentno programiranje postaje manje više
+   memoriji onda konkurentno programiranje postaje manje-više
    trivijalan posao.
 
    U objektno orijentisanom programiranju takođe imamo potrebu i za
