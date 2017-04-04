@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="sr" xml:lang="sr">
 <head>
-<!-- 2017-04-01 суб 17:17 -->
+<!-- 2017-04-04 уто 12:48 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Napredne tehnike programiranja - Python</title>
@@ -244,28 +244,29 @@ for the JavaScript code in this tag.
 <h2>Sadr&#382;aj</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgee11c92">1. Teorija</a></li>
-<li><a href="#orgae246e9">2. Napredni Python</a>
+<li><a href="#org9d31acf">1. Teorija</a></li>
+<li><a href="#org94f5135">2. Napredni Python</a>
 <ul>
-<li><a href="#orgb15d364">2.1. <i>virtualenv</i> i <i>pip</i></a></li>
-<li><a href="#org1e47d99">2.2. Iteratori i generatori</a></li>
-<li><a href="#org0e090d5">2.3. Ostale specijalne metode</a></li>
-<li><a href="#org4f872d9">2.4. Deskriptiori</a></li>
-<li><a href="#org21e458b">2.5. Dekoratori</a></li>
-<li><a href="#org465e442">2.6. <code>functools</code></a></li>
-<li><a href="#orgec81744">2.7. <code>itertools</code></a></li>
-<li><a href="#org24480bc">2.8. <i>High performance</i> kolekcije</a></li>
-<li><a href="#org3d213bb">2.9. Višestruko nasleđivanje</a></li>
-<li><a href="#org25f65d6">2.10. Meta klase</a></li>
-<li><a href="#org98db442">2.11. Zadaci</a></li>
-<li><a href="#org2bdc2d5">2.12. Rešenja</a></li>
+<li><a href="#org3df874e">2.1. <i>virtualenv</i> i <i>pip</i></a></li>
+<li><a href="#orgfb1b98d">2.2. Iteratori i generatori</a></li>
+<li><a href="#org36fa020">2.3. Ostale specijalne metode</a></li>
+<li><a href="#org5b33370">2.4. Deskriptiori</a></li>
+<li><a href="#orgda4586f">2.5. Dekoratori</a></li>
+<li><a href="#orgd4f5070">2.6. <code>functools</code></a></li>
+<li><a href="#orga518759">2.7. <code>itertools</code></a></li>
+<li><a href="#org26524fd">2.8. <i>High performance</i> kolekcije</a></li>
+<li><a href="#org18af981">2.9. Višestruko nasleđivanje</a></li>
+<li><a href="#org99c1e1b">2.10. Meta klase</a></li>
+<li><a href="#org22cc7ef">2.11. Anotacije funkcija</a></li>
+<li><a href="#org2cc8249">2.12. Zadaci</a></li>
+<li><a href="#org94ed3aa">2.13. Rešenja</a></li>
 </ul>
 </li>
-<li><a href="#org12459fc">3. Parsiranje</a>
+<li><a href="#org63e2d34">3. Parsiranje</a>
 <ul>
-<li><a href="#org315eb28">3.1. TextX</a></li>
-<li><a href="#orgfb09240">3.2. Zadaci</a></li>
-<li><a href="#org556f19d">3.3. Rešenja</a></li>
+<li><a href="#orgeb84f23">3.1. TextX</a></li>
+<li><a href="#orgd22bb5b">3.2. Zadaci</a></li>
+<li><a href="#org505d0de">3.3. Rešenja</a></li>
 </ul>
 </li>
 </ul>
@@ -284,8 +285,8 @@ integrate systems more effectively.
 </p>
 </blockquote>
 
-<div id="outline-container-orgee11c92" class="outline-2">
-<h2 id="orgee11c92"><span class="section-number-2">1</span> Teorija</h2>
+<div id="outline-container-org9d31acf" class="outline-2">
+<h2 id="org9d31acf"><span class="section-number-2">1</span> Teorija</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Svi teorijski materijali nalaze se na <a href="http://www.igordejanovic.net/courses/ntp.html">sajtu profesora</a>.
@@ -293,11 +294,11 @@ Svi teorijski materijali nalaze se na <a href="http://www.igordejanovic.net/cour
 </div>
 </div>
 
-<div id="outline-container-orgae246e9" class="outline-2">
-<h2 id="orgae246e9"><span class="section-number-2">2</span> Napredni Python</h2>
+<div id="outline-container-org94f5135" class="outline-2">
+<h2 id="org94f5135"><span class="section-number-2">2</span> Napredni Python</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-orgb15d364" class="outline-3">
-<h3 id="orgb15d364"><span class="section-number-3">2.1</span> <i>virtualenv</i> i <i>pip</i></h3>
+</div><div id="outline-container-org3df874e" class="outline-3">
+<h3 id="org3df874e"><span class="section-number-3">2.1</span> <i>virtualenv</i> i <i>pip</i></h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Ako Vam koncept <i>virtualenv</i>-a nije poznat pogledajte <a href="https://virtualenv.pypa.io/en/stable/">ovde</a>. Kratak
@@ -306,8 +307,8 @@ podsetnik možete naći <a href="http://docs.python-guide.org/en/latest/dev/virt
 </div>
 </div>
 
-<div id="outline-container-org1e47d99" class="outline-3">
-<h3 id="org1e47d99"><span class="section-number-3">2.2</span> Iteratori i generatori</h3>
+<div id="outline-container-orgfb1b98d" class="outline-3">
+<h3 id="orgfb1b98d"><span class="section-number-3">2.2</span> Iteratori i generatori</h3>
 <div class="outline-text-3" id="text-2-2">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">generator_foo</span>(n):
@@ -466,8 +467,8 @@ Z
 </div>
 </div>
 
-<div id="outline-container-org0e090d5" class="outline-3">
-<h3 id="org0e090d5"><span class="section-number-3">2.3</span> Ostale specijalne metode</h3>
+<div id="outline-container-org36fa020" class="outline-3">
+<h3 id="org36fa020"><span class="section-number-3">2.3</span> Ostale specijalne metode</h3>
 <div class="outline-text-3" id="text-2-3">
 <ul class="org-ul">
 <li><code>__contains__</code> (in)</li>
@@ -477,12 +478,12 @@ Z
 </div>
 </div>
 
-<div id="outline-container-org4f872d9" class="outline-3">
-<h3 id="org4f872d9"><span class="section-number-3">2.4</span> Deskriptiori</h3>
+<div id="outline-container-org5b33370" class="outline-3">
+<h3 id="org5b33370"><span class="section-number-3">2.4</span> Deskriptiori</h3>
 </div>
 
-<div id="outline-container-org21e458b" class="outline-3">
-<h3 id="org21e458b"><span class="section-number-3">2.5</span> Dekoratori</h3>
+<div id="outline-container-orgda4586f" class="outline-3">
+<h3 id="orgda4586f"><span class="section-number-3">2.5</span> Dekoratori</h3>
 <div class="outline-text-3" id="text-2-5">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">greet</span>(func):
@@ -558,8 +559,8 @@ from dec: 1
 </div>
 </div>
 
-<div id="outline-container-org465e442" class="outline-3">
-<h3 id="org465e442"><span class="section-number-3">2.6</span> <code>functools</code></h3>
+<div id="outline-container-orgd4f5070" class="outline-3">
+<h3 id="orgd4f5070"><span class="section-number-3">2.6</span> <code>functools</code></h3>
 <div class="outline-text-3" id="text-2-6">
 <ul class="org-ul">
 <li><code>partial</code></li>
@@ -586,7 +587,7 @@ rečnik:
 </div>
 
 <pre class="example">
-&gt;&gt;&gt; &gt;&gt;&gt; &gt;&gt;&gt; {'c': 3, 'd': 4, 'b': 2, 'a': 1}
+&gt;&gt;&gt; &gt;&gt;&gt; &gt;&gt;&gt; {'b': 2, 'c': 3, 'd': 4, 'a': 1}
 &gt;&gt;&gt; &gt;&gt;&gt; {1: 'a', 2: 'b', 3: 'c', 4: 'd'}
 </pre></li>
 
@@ -595,8 +596,8 @@ rečnik:
 </div>
 </div>
 
-<div id="outline-container-orgec81744" class="outline-3">
-<h3 id="orgec81744"><span class="section-number-3">2.7</span> <code>itertools</code></h3>
+<div id="outline-container-orga518759" class="outline-3">
+<h3 id="orga518759"><span class="section-number-3">2.7</span> <code>itertools</code></h3>
 <div class="outline-text-3" id="text-2-7">
 <ul class="org-ul">
 <li><p>
@@ -673,8 +674,8 @@ Z
 </div>
 </div>
 
-<div id="outline-container-org24480bc" class="outline-3">
-<h3 id="org24480bc"><span class="section-number-3">2.8</span> <i>High performance</i> kolekcije</h3>
+<div id="outline-container-org26524fd" class="outline-3">
+<h3 id="org26524fd"><span class="section-number-3">2.8</span> <i>High performance</i> kolekcije</h3>
 <div class="outline-text-3" id="text-2-8">
 <ul class="org-ul">
 <li><p>
@@ -732,17 +733,72 @@ time elapsed : 1.1920928955078125e-06
 </div>
 </div>
 
-<div id="outline-container-org3d213bb" class="outline-3">
-<h3 id="org3d213bb"><span class="section-number-3">2.9</span> Višestruko nasleđivanje</h3>
+<div id="outline-container-org18af981" class="outline-3">
+<h3 id="org18af981"><span class="section-number-3">2.9</span> Višestruko nasleđivanje</h3>
 </div>
 
-<div id="outline-container-org25f65d6" class="outline-3">
-<h3 id="org25f65d6"><span class="section-number-3">2.10</span> Meta klase</h3>
+<div id="outline-container-org99c1e1b" class="outline-3">
+<h3 id="org99c1e1b"><span class="section-number-3">2.10</span> Meta klase</h3>
 </div>
 
-<div id="outline-container-org98db442" class="outline-3">
-<h3 id="org98db442"><span class="section-number-3">2.11</span> Zadaci</h3>
+<div id="outline-container-org22cc7ef" class="outline-3">
+<h3 id="org22cc7ef"><span class="section-number-3">2.11</span> Anotacije funkcija</h3>
 <div class="outline-text-3" id="text-2-11">
+<p>
+Funkcijama u Python-u <b>&gt;=3</b> se mogu davati opcione <a href="https://www.python.org/dev/peps/pep-3107/">anotacije</a> za
+parametre i povratne vrednosti. Anotacije su izrazi koji se
+izvršavaju u <i>compile time</i>-u. Ti izrazi nemaju nikakvu unapred
+određenu ulogu već njihovo značenje može da dopuni neka biblioteka.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">annot_foo</span>(a: 1 + 2, b: <span style="color: #CC9393;">"this "</span> + <span style="color: #CC9393;">"is b."</span>) -&gt; <span style="color: #DCDCCC; font-weight: bold;">len</span>([1, 2, 3]):
+    <span style="color: #F0DFAF; font-weight: bold;">pass</span>
+</pre>
+</div>
+
+<p>
+Pošto kao anotacije možete da stavite bilo kakav izraz to znači da
+u vreme kompajliranja funkcije (učitavanja u Python interpreter)
+možete da izazovete sporedni efekat:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #DFAF8F;">a</span> = 1
+
+<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">mutator</span>():
+    <span style="color: #F0DFAF; font-weight: bold;">global</span> a
+    <span style="color: #DFAF8F;">a</span> += 1
+
+<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">foo</span>(a: mutator()):
+    <span style="color: #F0DFAF; font-weight: bold;">pass</span>
+
+<span style="color: #F0DFAF; font-weight: bold;">print</span>(a)
+</pre>
+</div>
+
+<pre class="example">
+&gt;&gt;&gt; ... ... ... &gt;&gt;&gt; ... ... &gt;&gt;&gt; 2
+</pre>
+
+<p>
+Anotacije su dostupne kroz objekat funkcije kao mutabilan rečnik:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">annot_foo.__annotations__
+</pre>
+</div>
+
+<pre class="example">
+{'b': 'this is b.', 'return': 3, 'a': 3}
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org2cc8249" class="outline-3">
+<h3 id="org2cc8249"><span class="section-number-3">2.12</span> Zadaci</h3>
+<div class="outline-text-3" id="text-2-12">
 <ol class="org-ol">
 <li>Napraviti klasu <code>GithubUser</code> čiji svaki objekat pri konstrukciji
 dobija ime, prezime i login podatke za <i>GitHub</i>. Iteriranjem
@@ -776,9 +832,9 @@ koristeći njegovu <code>self.__iter__</code> metodu.</li>
 </div>
 </div>
 
-<div id="outline-container-org2bdc2d5" class="outline-3">
-<h3 id="org2bdc2d5"><span class="section-number-3">2.12</span> Rešenja</h3>
-<div class="outline-text-3" id="text-2-12">
+<div id="outline-container-org94ed3aa" class="outline-3">
+<h3 id="org94ed3aa"><span class="section-number-3">2.13</span> Rešenja</h3>
+<div class="outline-text-3" id="text-2-13">
 <ol class="org-ol">
 <li><p>
 <code>get_followers</code>
@@ -856,8 +912,8 @@ defunkt/coffee-mode
 </div>
 </div>
 
-<div id="outline-container-org12459fc" class="outline-2">
-<h2 id="org12459fc"><span class="section-number-2">3</span> Parsiranje</h2>
+<div id="outline-container-org63e2d34" class="outline-2">
+<h2 id="org63e2d34"><span class="section-number-2">3</span> Parsiranje</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 <a href="https://en.wikipedia.org/wiki/Parsing">Parsiranje</a> je proces analize teksta (jezika) prema formalnim
@@ -873,8 +929,8 @@ teksta.
 </div>
 </div>
 
-<div id="outline-container-org315eb28" class="outline-3">
-<h3 id="org315eb28"><span class="section-number-3">3.1</span> TextX</h3>
+<div id="outline-container-orgeb84f23" class="outline-3">
+<h3 id="orgeb84f23"><span class="section-number-3">3.1</span> TextX</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 <a href="https://github.com/igordejanovic/textX">TextX</a> (pogledati primire) je Python meta jezik za definisanje
@@ -883,15 +939,15 @@ jezika inspirisan <a href="http://www.eclipse.org/Xtext/">XText</a>-om.
 </div>
 </div>
 
-<div id="outline-container-orgfb09240" class="outline-3">
-<h3 id="orgfb09240"><span class="section-number-3">3.2</span> Zadaci</h3>
+<div id="outline-container-orgd22bb5b" class="outline-3">
+<h3 id="orgd22bb5b"><span class="section-number-3">3.2</span> Zadaci</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Dato je parče koda u čudnom programskom jeziku <b>Plisp</b>.
 </p>
 
 <p>
-<a id="org5b0c919"></a>
+<a id="orgec32f69"></a>
 </p>
 <div class="org-src-container">
 <pre class="src src-python">(<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">hello_number</span> (a b)
@@ -905,7 +961,7 @@ Dato je parče koda u čudnom programskom jeziku <b>Plisp</b>.
 (<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">say_hello_to_hello</span> ()
   <span style="color: #CC9393;">"Ay yo!"</span>)
 
-(<span style="color: #DCDCCC; font-weight: bold;">apply</span> say_say_hello_to_hello)
+(<span style="color: #DCDCCC; font-weight: bold;">apply</span> say_hello_to_hello)
 
 (<span style="color: #DCDCCC; font-weight: bold;">apply</span> hello_number
        (let [a (<span style="color: #DCDCCC; font-weight: bold;">apply</span> say_hello_to_hello)
@@ -951,11 +1007,11 @@ okruženje. Za početak će biti dovoljna statička analiza.
 </p>
 
 <p>
-Napišite parser za <b>Plisp</b> koristeći <a href="#org315eb28">TextX</a>, a potom napravite
-Python program sa funkcijom <code>spot_lets</code> kojoj prosledite <a href="#org315eb28">TextX</a>
+Napišite parser za <b>Plisp</b> koristeći <a href="#orgeb84f23">TextX</a>, a potom napravite
+Python program sa funkcijom <code>spot_lets</code> kojoj prosledite <a href="#orgeb84f23">TextX</a>
 model programa a on Vam vrati listu koja ukazuje na kojim
 pozicijama u programu se nalaze <code>let</code> izrazi. Funkcija <code>spot_lets</code>
-za program <a href="#org5b0c919">gore</a> treba da vrati:
+za program <a href="#orgec32f69">gore</a> treba da vrati:
 </p>
 
 <div class="org-src-container">
@@ -975,8 +1031,8 @@ u tom <code>let</code>-u <i>binding</i> za simbol <code>v</code>) i po jednu na 
 </div>
 </div>
 
-<div id="outline-container-org556f19d" class="outline-3">
-<h3 id="org556f19d"><span class="section-number-3">3.3</span> Rešenja</h3>
+<div id="outline-container-org505d0de" class="outline-3">
+<h3 id="org505d0de"><span class="section-number-3">3.3</span> Rešenja</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 Gramatika jezika je data sa:
@@ -1187,7 +1243,7 @@ ilustruje opšti pristup.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Novak Boškov</p>
-<p class="date">Created: 2017-04-01 суб 17:17</p>
+<p class="date">Created: 2017-04-04 уто 12:48</p>
 <p class="validation"></p>
 </div>
 </body>

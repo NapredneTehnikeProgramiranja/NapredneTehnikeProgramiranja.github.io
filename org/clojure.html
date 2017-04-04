@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="sr" xml:lang="sr">
 <head>
-<!-- 2017-04-03 пон 00:06 -->
+<!-- 2017-04-04 уто 13:06 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Napredne tehnike programiranja - Clojure</title>
@@ -244,45 +244,45 @@ for the JavaScript code in this tag.
 <h2>Sadr&#382;aj</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org46a83e9">1. Uvod</a>
+<li><a href="#org55987dd">1. Uvod</a>
 <ul>
-<li><a href="#org98a71fa">1.1. Lisp</a>
+<li><a href="#org4047964">1.1. Lisp</a>
 <ul>
-<li><a href="#org5c0ae18">1.1.1. Scheme</a></li>
+<li><a href="#org4978ec7">1.1.1. Scheme</a></li>
 </ul>
 </li>
-<li><a href="#org3520e9f">1.2. Clojure - funkcionalni način razmišljanja</a></li>
-<li><a href="#org1d6b971">1.3. Imperativno vs funckionalno programiranje</a></li>
-<li><a href="#orgfe18089">1.4. Clojure kao <i>value oriented</i> jezik</a></li>
-<li><a href="#org3a4c142">1.5. Clojure u standardnim OO problemima</a></li>
+<li><a href="#org9743db9">1.2. Clojure - funkcionalni način razmišljanja</a></li>
+<li><a href="#org8d8f684">1.3. Imperativno vs funckionalno programiranje</a></li>
+<li><a href="#org2cd317a">1.4. Clojure kao <i>value oriented</i> jezik</a></li>
+<li><a href="#org1e8c908">1.5. Clojure u standardnim OO problemima</a></li>
 </ul>
 </li>
-<li><a href="#org776fdb9">2. Elementi jezika</a>
+<li><a href="#orgef0b431">2. Elementi jezika</a>
 <ul>
-<li><a href="#org5b22c9e">2.1. <i>Homoiconicy</i> &#x2014; "istoizglednost"</a></li>
+<li><a href="#orgc46dcea">2.1. <i>Homoiconicy</i> &#x2014; "istoizglednost"</a></li>
 </ul>
 </li>
-<li><a href="#org50b0d3a">3. REPL i IDE</a></li>
-<li><a href="#org34b5505">4. Read, evaluate vrtlog i makroi</a></li>
-<li><a href="#org4f0f0a7">5. Konkurentno i paralelno programiranje</a>
+<li><a href="#org347bd37">3. REPL i IDE</a></li>
+<li><a href="#org508b801">4. Read, evaluate vrtlog i makroi</a></li>
+<li><a href="#org2a1d96c">5. Konkurentno i paralelno programiranje</a>
 <ul>
-<li><a href="#orge2085ad">5.1. Reference</a></li>
-<li><a href="#org7fc5aa8">5.2. core.async</a></li>
+<li><a href="#org39ca17a">5.1. Reference</a></li>
+<li><a href="#org1594223">5.2. core.async</a></li>
 </ul>
 </li>
-<li><a href="#orgec23761">6. Interakcija sa platformom</a></li>
-<li><a href="#orga56c4f9">7. Apstrakcije</a>
+<li><a href="#org55194c9">6. Interakcija sa platformom</a></li>
+<li><a href="#org06a3b35">7. Apstrakcije</a>
 <ul>
-<li><a href="#org4eee987">7.1. Multimethods</a></li>
-<li><a href="#org00b39f1">7.2. Protocols</a></li>
-<li><a href="#org2aaa813">7.3. Records</a></li>
-<li><a href="#orgf74b848">7.4. clojure.spec</a></li>
+<li><a href="#org7354718">7.1. Multimethods</a></li>
+<li><a href="#org9f586fe">7.2. Protocols</a></li>
+<li><a href="#orgfcba8db">7.3. Records</a></li>
+<li><a href="#orge9644f4">7.4. clojure.spec</a></li>
 </ul>
 </li>
-<li><a href="#orgd35cc5d">8. ClojureScript</a></li>
-<li><a href="#orgb403478">9. Reader conditionals (.cljc)</a></li>
-<li><a href="#org5e066ad">10. ClojureCLR</a></li>
-<li><a href="#org95b40a2">11. Literatura</a></li>
+<li><a href="#org13db0f5">8. ClojureScript</a></li>
+<li><a href="#org11048af">9. Reader conditionals (.cljc)</a></li>
+<li><a href="#orgc708c7c">10. ClojureCLR</a></li>
+<li><a href="#org714097e">11. Literatura</a></li>
 </ul>
 </div>
 </div>
@@ -318,8 +318,8 @@ system that ensure clean, correct, multithreaded designs.
 </p>
 </blockquote>
 
-<div id="outline-container-org46a83e9" class="outline-2">
-<h2 id="org46a83e9"><span class="section-number-2">1</span> Uvod</h2>
+<div id="outline-container-org55987dd" class="outline-2">
+<h2 id="org55987dd"><span class="section-number-2">1</span> Uvod</h2>
 <div class="outline-text-2" id="text-1">
 <blockquote>
 <p>
@@ -334,8 +334,8 @@ in the expert's mind there are few.
 </blockquote>
 </div>
 
-<div id="outline-container-org98a71fa" class="outline-3">
-<h3 id="org98a71fa"><span class="section-number-3">1.1</span> Lisp</h3>
+<div id="outline-container-org4047964" class="outline-3">
+<h3 id="org4047964"><span class="section-number-3">1.1</span> Lisp</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 <b>Lisp</b> ili <b>LISP</b> je porodica programskih jezika sa dugom
@@ -400,8 +400,8 @@ još pregršt drugih dijalekata sa raznim osobinama:
 </ul>
 </div>
 
-<div id="outline-container-org5c0ae18" class="outline-4">
-<h4 id="org5c0ae18"><span class="section-number-4">1.1.1</span> Scheme</h4>
+<div id="outline-container-org4978ec7" class="outline-4">
+<h4 id="org4978ec7"><span class="section-number-4">1.1.1</span> Scheme</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 <b>Scheme</b> je jedan od najznačajnijih dijalekata Lisp-a. Dizajniran
@@ -413,9 +413,9 @@ jezika koji imaju podržanu <a href="https://en.wikipedia.org/wiki/Continuation"
 </p>
 
 <p>
-Neke od "biblija" računarske nauke i programiranja generalno su
-kao jezik-primer uzimale upravo Scheme. Jedna takva knjiga je i
-<a href="http://deptinfo.unice.fr/~roy/sicp.pdf">Structure and Interpretation of Computer Programs</a>.
+Neke od "biblija" računarske nauke su kao jezik-primer uzimale
+upravo Scheme. Jedna, vrlo značajna, takva knjiga je i <a href="http://deptinfo.unice.fr/~roy/sicp.pdf">Structure
+and Interpretation of Computer Programs</a>.
 </p>
 
 <p>
@@ -424,7 +424,7 @@ samo dva.
 </p>
 </div>
 
-<ol class="org-ol"><li><a id="org762106a"></a>Chez Scheme (Cisco)<br /><div class="outline-text-5" id="text-1-1-1-1">
+<ol class="org-ol"><li><a id="orgd87683e"></a>Chez Scheme (Cisco)<br /><div class="outline-text-5" id="text-1-1-1-1">
 <p>
 <a href="https://github.com/cisco/ChezScheme"><b>Chez</b></a> je <a href="http://www.r6rs.org/">Scheme implementacija</a> zajedno sa (moćnim) kompajlerom,
 <i>run time</i> sistemom i bibliotekama. Koristi je kompanije Cisco a
@@ -439,7 +439,7 @@ C biblioteka onda nije loše da počnete sa <b>Chez</b>-om.
 </p>
 </div></li>
 
-<li><a id="orgc31e961"></a>Racket lang<br /><div class="outline-text-5" id="text-1-1-1-2">
+<li><a id="org384bc3b"></a>Racket lang<br /><div class="outline-text-5" id="text-1-1-1-2">
 <p>
 <a href="https://racket-lang.org/">Racket lang</a> je takođe implementacija Schema-a ali sa potpuno
 drugim ciljevima pri dizajnu. Racket je po svom dizajnu sistem za
@@ -447,18 +447,18 @@ pravljenje programskih jezika (i/ili <a href="https://en.wikipedia.org/wiki/Doma
 ekosistem biblioteka (u formi jezika) za razne standardne (WEB
 serveri, GUI &#x2026;) i manje standardne zadatke. Sve njegove
 biblioteke su veoma dobro dokumentovane. Racket ima i svoje
-razvojno okruženje (IDE) DrRacket koje sadrži sve na šta ste
-navikli od jednog IDE-a (uključujući i grafički debugger). Ako je
-dizajn DSL-ova način na koji razmišljate pri rešavanju problema
-onda će Racket lang i njegovo okruženje biti odlično društvo od
-kojeg možete mnogo da naučite.
+razvojno okruženje (<i>IDE</i>) DrRacket koje sadrži sve na šta ste
+navikli od jednog <i>IDE</i>-a (uključujući i grafički
+<i>debugger</i>). Ako je dizajn DSL-ova način na koji razmišljate pri
+rešavanju problema onda će Racket lang i njegovo okruženje biti
+odlično društvo od kojeg možete mnogo da naučite.
 </p>
 </div></li></ol>
 </div>
 </div>
 
-<div id="outline-container-org3520e9f" class="outline-3">
-<h3 id="org3520e9f"><span class="section-number-3">1.2</span> Clojure - funkcionalni način razmišljanja</h3>
+<div id="outline-container-org9743db9" class="outline-3">
+<h3 id="org9743db9"><span class="section-number-3">1.2</span> Clojure - funkcionalni način razmišljanja</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Danas postoji mnogo programskih jezika i zaista se (pre)veliki deo
@@ -469,10 +469,11 @@ programski jezik (nezaboravite da osvežite svoj CV).
 </p>
 
 <p>
-<b>Clojure</b> ipak nije jedan od jezika koji su Vam od ranije
-poznati. Čak ni na prvi pogled (za šta je zaslužna <i>S-expression</i>
-prefiksna notacija). Stoga, kako biste ga naučili morate primeniti
-neku drugu strategiju u odnosu na onu navedenu iznad.
+<b>Clojure</b> ipak nije jedan od jezika koji se početniku čini od
+ranije poznatim. Čak ni na prvi pogled (za šta je zaslužna
+<i>S-expression</i> prefiksna notacija). Stoga, kako biste ga naučili
+morate primeniti neku drugu strategiju u odnosu na onu navedenu
+iznad.
 </p>
 
 <p>
@@ -484,20 +485,20 @@ Evo jednog predloženog pristupa:
 Zaboravite sve što znate o programiranju. <b>Pristupite učenju
 Clojure-a kao da Vam je to prvi programski jezik</b> . U suprotnom
 ćete Clojure shvatiti samo kao <i>prefiksnu notaciju sa zagradama
-okolo koja Vam ne dozvoljava da pišete kod onako kako ste navikli!</i>
+koja Vam ne dozvoljava da pišete kod onako kako ste navikli!</i>
 </p>
 
 <p>
 <b>Umesto da pokušavate svoje znanje od ranije da preslikate na</b>
-<b>Clojure dozvolite ovom Lispu da obogati način na koji pišete</b>
+<b>Clojure, dozvolite ovom Lispu da obogati način na koji pišete</b>
 <b>ostale programske jezike.</b>
 </p>
 </blockquote>
 </div>
 </div>
 
-<div id="outline-container-org1d6b971" class="outline-3">
-<h3 id="org1d6b971"><span class="section-number-3">1.3</span> Imperativno vs funckionalno programiranje</h3>
+<div id="outline-container-org8d8f684" class="outline-3">
+<h3 id="org8d8f684"><span class="section-number-3">1.3</span> Imperativno vs funckionalno programiranje</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 C, C++, C#, Java, Python svi ovi (i drugi) programski jezici imaju
@@ -507,15 +508,15 @@ konstrukcije sa akcentom na imperativno programiranje.
 
 <blockquote>
 <p>
-U kompjuterskoj nauci imperativnim programiranjem je paradigma
+U kompjuterskoj nauci imperativno programiranje je paradigma
 programiranja koja koristi naredbe u cilju menjanja stanja
 programa.
 </p>
 </blockquote>
 
 <p>
-Ova paradigma programiranja se savršeno uklapa u <a href="https://en.wikipedia.org/wiki/Von_Neumann_architecture">von Neumann-ov
-model izračunavanja</a> na računaru. Tačnije, ona je dizajnirana kako
+Ova paradigma programiranja se savršeno uklapa u <a href="https://en.wikipedia.org/wiki/Von_Neumann_architecture">von Neumann-ov</a>
+model izračunavanja na računaru. Tačnije, ona je dizajnirana kako
 bi oslikala pomenuti model izračunavanja.
 </p>
 
@@ -523,17 +524,16 @@ bi oslikala pomenuti model izračunavanja.
 Na primer, C je dominirao softverom veliki broj godina jer se
 odlično uklapa u ovu dominantnu paradigmu hardverske
 arhitekture. Programi napisani u C-u su veoma efikasni i u stanju
-su da vrše veoma efikasno upravljanje memorijom koja je do skora
+su da vrše veoma efikasno upravljanje memorijom koja je <i>do skora</i>
 bila veliki problem. Ova efikasnost je plaćena cenom izraženom u
-kompleksnijoj semantici i sintaksi samog jezika i sa porastom
+kompleksnijoj semantici i sintaksi samog jezika pa sa porastom
 programskog koda dramatično opada sposobnost programera da
-iskontroliše konstruktorsku kompleksnost u takvim programima što
-dovodi do češćih defekata u radu programa (<b>program radi brzo ali
-ne i ono što želimo &#x2014; korektno</b>). Ova kompleksnost potiče od toga
-što kod imperativnog programiranja posao koji naredbe obavljaju
-snažno zavisi od stanja memorije u tom momentu. To čini
-<b>konkurentno</b> programiranje veoma komplikovanim i stoga podložnim
-greškama.
+iskontroliše konstruktorsku kompleksnost što dovodi do češćih
+defekata u radu programa (<b>program radi brzo ali ne i ono što
+želimo &#x2014; korektno</b>). Ova kompleksnost potiče od toga što kod
+imperativnog programiranja posao koji naredbe obavljaju snažno
+zavisi od stanja memorije u tom momentu. To čini <b>konkurentno</b>
+programiranje veoma komplikovanim i stoga podložnim greškama.
 </p>
 
 <blockquote>
@@ -549,7 +549,7 @@ starenja.
 Funkcionalno programiranje se zasniva više na stabilnim
 matematičkim konceptima nego na bilo kom modelu izračunavanja na
 mašini. Clojure kao funkcionalan programski jezik ima snažan fokus
-na <a href="https://en.wikipedia.org/wiki/Immutable_object">nepromenljivosti podataka</a> (u daljem tekstu mutabilnost). To mu
+na <a href="https://en.wikipedia.org/wiki/Immutable_object">nepromenljivosti podataka</a> (u daljem tekstu imutabilnost). To mu
 omogućava veoma čiste i jednostavne apstrakcije za konkurentno
 programiranje koje su svakako korektnije i manje podložno greškama
 od eksplicitnog zaključavanja delova memorije na koje smo usmereni
@@ -565,8 +565,8 @@ veoma prostom. <i>Uviđanje ove jednostavnosti dolazi uz malo vežbe.</i>
 </div>
 </div>
 
-<div id="outline-container-orgfe18089" class="outline-3">
-<h3 id="orgfe18089"><span class="section-number-3">1.4</span> Clojure kao <i>value oriented</i> jezik</h3>
+<div id="outline-container-org2cd317a" class="outline-3">
+<h3 id="org2cd317a"><span class="section-number-3">1.4</span> Clojure kao <i>value oriented</i> jezik</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 Clojure promoviše stil programiranja koji se zove <i>value-oriented
@@ -580,7 +580,7 @@ Ideja je da se programer koncentriše na vrednosti u njegovom
 programu a ne na mutabilne objekte i njihovo stanje (objekti se
 smatraju tankom apstrakcijom oko "gole" memorije). Ovo je veoma
 moćan koncept jer kada prestanete da razmišljate o objektima i
-memoriji onda konkurentno programiranje postaje manje više
+memoriji onda konkurentno programiranje postaje manje-više
 trivijalan posao.
 </p>
 
@@ -608,16 +608,16 @@ primera koji to ilustruje:
 </div>
 </div>
 
-<div id="outline-container-org3a4c142" class="outline-3">
-<h3 id="org3a4c142"><span class="section-number-3">1.5</span> Clojure u standardnim OO problemima</h3>
+<div id="outline-container-org1e8c908" class="outline-3">
+<h3 id="org1e8c908"><span class="section-number-3">1.5</span> Clojure u standardnim OO problemima</h3>
 </div>
 </div>
 
-<div id="outline-container-org776fdb9" class="outline-2">
-<h2 id="org776fdb9"><span class="section-number-2">2</span> Elementi jezika</h2>
+<div id="outline-container-orgef0b431" class="outline-2">
+<h2 id="orgef0b431"><span class="section-number-2">2</span> Elementi jezika</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-org5b22c9e" class="outline-3">
-<h3 id="org5b22c9e"><span class="section-number-3">2.1</span> <i>Homoiconicy</i> &#x2014; "istoizglednost"</h3>
+</div><div id="outline-container-orgc46dcea" class="outline-3">
+<h3 id="orgc46dcea"><span class="section-number-3">2.1</span> <i>Homoiconicy</i> &#x2014; "istoizglednost"</h3>
 <div class="outline-text-3" id="text-2-1">
 
 <div class="figure">
@@ -643,64 +643,64 @@ zamišljamo.
 </div>
 </div>
 
-<div id="outline-container-org50b0d3a" class="outline-2">
-<h2 id="org50b0d3a"><span class="section-number-2">3</span> REPL i IDE</h2>
+<div id="outline-container-org347bd37" class="outline-2">
+<h2 id="org347bd37"><span class="section-number-2">3</span> REPL i IDE</h2>
 </div>
 
-<div id="outline-container-org34b5505" class="outline-2">
-<h2 id="org34b5505"><span class="section-number-2">4</span> Read, evaluate vrtlog i makroi</h2>
+<div id="outline-container-org508b801" class="outline-2">
+<h2 id="org508b801"><span class="section-number-2">4</span> Read, evaluate vrtlog i makroi</h2>
 </div>
 
-<div id="outline-container-org4f0f0a7" class="outline-2">
-<h2 id="org4f0f0a7"><span class="section-number-2">5</span> Konkurentno i paralelno programiranje</h2>
+<div id="outline-container-org2a1d96c" class="outline-2">
+<h2 id="org2a1d96c"><span class="section-number-2">5</span> Konkurentno i paralelno programiranje</h2>
 <div class="outline-text-2" id="text-5">
-</div><div id="outline-container-orge2085ad" class="outline-3">
-<h3 id="orge2085ad"><span class="section-number-3">5.1</span> Reference</h3>
+</div><div id="outline-container-org39ca17a" class="outline-3">
+<h3 id="org39ca17a"><span class="section-number-3">5.1</span> Reference</h3>
 </div>
 
-<div id="outline-container-org7fc5aa8" class="outline-3">
-<h3 id="org7fc5aa8"><span class="section-number-3">5.2</span> core.async</h3>
+<div id="outline-container-org1594223" class="outline-3">
+<h3 id="org1594223"><span class="section-number-3">5.2</span> core.async</h3>
 </div>
 </div>
 
-<div id="outline-container-orgec23761" class="outline-2">
-<h2 id="orgec23761"><span class="section-number-2">6</span> Interakcija sa platformom</h2>
+<div id="outline-container-org55194c9" class="outline-2">
+<h2 id="org55194c9"><span class="section-number-2">6</span> Interakcija sa platformom</h2>
 </div>
 
-<div id="outline-container-orga56c4f9" class="outline-2">
-<h2 id="orga56c4f9"><span class="section-number-2">7</span> Apstrakcije</h2>
+<div id="outline-container-org06a3b35" class="outline-2">
+<h2 id="org06a3b35"><span class="section-number-2">7</span> Apstrakcije</h2>
 <div class="outline-text-2" id="text-7">
-</div><div id="outline-container-org4eee987" class="outline-3">
-<h3 id="org4eee987"><span class="section-number-3">7.1</span> Multimethods</h3>
+</div><div id="outline-container-org7354718" class="outline-3">
+<h3 id="org7354718"><span class="section-number-3">7.1</span> Multimethods</h3>
 </div>
 
-<div id="outline-container-org00b39f1" class="outline-3">
-<h3 id="org00b39f1"><span class="section-number-3">7.2</span> Protocols</h3>
+<div id="outline-container-org9f586fe" class="outline-3">
+<h3 id="org9f586fe"><span class="section-number-3">7.2</span> Protocols</h3>
 </div>
 
-<div id="outline-container-org2aaa813" class="outline-3">
-<h3 id="org2aaa813"><span class="section-number-3">7.3</span> Records</h3>
+<div id="outline-container-orgfcba8db" class="outline-3">
+<h3 id="orgfcba8db"><span class="section-number-3">7.3</span> Records</h3>
 </div>
 
-<div id="outline-container-orgf74b848" class="outline-3">
-<h3 id="orgf74b848"><span class="section-number-3">7.4</span> clojure.spec</h3>
+<div id="outline-container-orge9644f4" class="outline-3">
+<h3 id="orge9644f4"><span class="section-number-3">7.4</span> clojure.spec</h3>
 </div>
 </div>
 
-<div id="outline-container-orgd35cc5d" class="outline-2">
-<h2 id="orgd35cc5d"><span class="section-number-2">8</span> ClojureScript</h2>
+<div id="outline-container-org13db0f5" class="outline-2">
+<h2 id="org13db0f5"><span class="section-number-2">8</span> ClojureScript</h2>
 </div>
 
-<div id="outline-container-orgb403478" class="outline-2">
-<h2 id="orgb403478"><span class="section-number-2">9</span> Reader conditionals (.cljc)</h2>
+<div id="outline-container-org11048af" class="outline-2">
+<h2 id="org11048af"><span class="section-number-2">9</span> Reader conditionals (.cljc)</h2>
 </div>
 
-<div id="outline-container-org5e066ad" class="outline-2">
-<h2 id="org5e066ad"><span class="section-number-2">10</span> ClojureCLR</h2>
+<div id="outline-container-orgc708c7c" class="outline-2">
+<h2 id="orgc708c7c"><span class="section-number-2">10</span> ClojureCLR</h2>
 </div>
 
-<div id="outline-container-org95b40a2" class="outline-2">
-<h2 id="org95b40a2"><span class="section-number-2">11</span> Literatura</h2>
+<div id="outline-container-org714097e" class="outline-2">
+<h2 id="org714097e"><span class="section-number-2">11</span> Literatura</h2>
 <div class="outline-text-2" id="text-11">
 <ul class="org-ul">
 <li><a href="http://www.braveclojure.com/">Clojure For The Brave and True</a> &#x2014; Daniel Higginbotham</li>
@@ -715,7 +715,7 @@ Abelson, Gerald Jay Sussman with Julie Sussman (sa video
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Novak Boškov</p>
-<p class="date">Created: 2017-04-03 пон 00:06</p>
+<p class="date">Created: 2017-04-04 уто 13:06</p>
 <p class="validation"></p>
 </div>
 </body>
