@@ -1,0 +1,11 @@
+* Grupa 3
+
+  | br. indeksa | ime     | prezime       | <2017-04-04 уто> |
+  |-------------+---------+---------------+------------------|
+  | sw60/2014   | Nemanja | Žunić         |                1 |
+  | sw61/2015   | Stefan  | Plazić        |                1 |
+  | sw93/2016   | Novica  | Nikolić       |                1 |
+  | sw7/2013    | Đorđe   | Marjanović    |                1 |
+  | sw26/2013   | Predrag | Kaljević      |                1 |
+  | sw53/2013   | Predrag | Falčić        |                1 |
+  | sw51/2013   | Nemanja | Milosavljević |                1 |

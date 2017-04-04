@@ -1,7 +1,6 @@
 #+TITLE: Napredne tehnike programiranja - Clojure
 #+LANGUAGE: sr
 #+SETUPFILE: org-html-themes/setup/theme-bigblow.setup
-#+PROPERTY: header-args:python :session osnove_programiranja :results output :exports both
 #+TAGS: za_radoznale
 
 [[file:images/clojure_logo.png]]
@@ -226,7 +225,142 @@ system that ensure clean, correct, multithreaded designs.
    može biti izvedeno prostom supstitucijom. Evo jednog naivnog
    primera koji to ilustruje:
 
-   #+INCLUDE: "clojure-ntp/src/clojure_ntp/core.clj" :src clojure :lines "15-22"
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/core.clj" src clojure :lines "15-22"
+
+** Referencijalna transparentnost i memoizacija
+
+   Funkcije za koje uvek po njihovim parametrima možete da kažete sa
+   čim bi ste ih zamenili su [[https://en.wikipedia.org/wiki/Referential_transparency][referencijalno transparentne]]. Da li su
+   funkcije koje pišete u matematici referencijalno transparentne? Da
+   li je $x^2$ uvek isto za isto $x$?
+
+   *Ako je kvadrat broja 4323 uvek 18688329 da li ga ima smisla uvek
+   iznova računati?*
+
+   Optimizaciona tehnika koja nam omogućuje da programski jezik
+   zapamti vrednosti referencijalno transparentnih funkcija za
+   parametre zove se [[https://en.wikipedia.org/wiki/Memoization][memoizacija]].
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/core.clj" :src clojure :lines "23-57"
+
+   Kada se memoizovana funkcija poziva prvi put ona troši vreme kao i
+   njena obična verzija ali se svaki sledeći put kada bude pozvana
+   *uštedi jedno vreme izvršavanja*.
+
+** Misliti rekurzivno
+
+   Iz razloga koji su opisani [[*Imperativno vs funckionalno programiranje][ranije]] imperativni programski jezici ne
+   stavljaju previše akcenat na rekurziju. Funcionalno programiranje
+   rekurziju koristi kao osnovni alat. Tamo gde imperativno
+   programiranje koristi petlje funkcionalno programiranje koristi
+   razne vidove rekurzije.
+
+   #+BEGIN_QUOTE
+   Rekurzija je kada rešenje problem opisujete rešavanjem manje
+   porcije tog istog problema.
+
+   Rekurzija je jedna od centralnih ideja kompjuterske nauke.
+   #+END_QUOTE
+
+   [[file:images/First_matryoshka_museum_doll_open.jpg]]
+
+   [[file:images/RecursiveTree.jpg]]
+
+   Imperativno programiranje problem faktorijela posmatra ovako:
+
+   #+BEGIN_SRC python
+     def factorial(n):
+         acc = 1
+
+         for i in range(1, n + 1):
+             acc *= i
+
+         return acc
+   #+END_SRC
+
+   Clojure kao funkcionalan [[*Clojure kao /value oriented/ jezik][value oriented]] jezik ne podržava mutiranje
+   pa tako:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/core.clj" :src clojure :lines "58-62"
+
+   Ako ispratimo izvršavanje ove rekurzije videćemo da "clojure" mora
+   svaku operaciju da stavi na stek kako =n= raste. To za veliko =n=
+   može izazvati /stack overflow/:
+
+   #+BEGIN_SRC clojure
+     (factorial 6)
+     (* 6 (factorial 5))
+     (* 6 (* 5 (factorial 4)))
+     (* 6 (* 5 (* 4 (factorial 3))))
+     (* 6 (* 5 (* 4 (* 3 (factorial 2)))))
+     (* 6 (* 5 (* 4 (* 3 (* 2 (factorial 1))))))
+     (* 6 (* 5 (* 4 (* 3 (* 2 1)))))
+     (* 6 (* 5 (* 4 (* 3 2))))
+     (* 6 (* 5 (* 4 6)))
+     (* 6 (* 5 24))
+     (* 6 120)
+     720
+   #+END_SRC
+
+   Ovakva rekurzija se naziva još i *linearna rekurzija*.
+
+   U opštem slučaju ovaj problem se rešava [[https://en.wikipedia.org/wiki/Tail_call][tail call optimizacijom]].
+
+   Međutim, pošto je Clojure *hosted* programski jezik, a /JVM/ ne
+   podržava ovu optimizaciju onda se Clojure koristi jednim trikom ---
+   =recur=
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/core.clj" :src clojure :lines "63-75"
+
+   Naš =factorial= koristeći =recur= možemo napisati na sledeći način:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/core.clj" :src clojure :lines "76-81"
+
+   =loop= konstrukcija je zapravo anonimna - /lambda/ funkcija sa
+   početnim /binding/-om.
+
+   #+BEGIN_QUOTE
+   /Binding/ u kompjuterskoj nauci znači asocijaciju nekog imena i nekog izraza.
+   #+END_QUOTE
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/core.clj" :src clojure :lines "82-94"
+
+   Primetite da *sada imamo poziv recur kao poslednji izraz u
+   funkciji* (u repu - /tail call/) pa tako nema potrebe za čuvanjem
+   na steku. Funkcija se izvršava ovako:
+
+   #+BEGIN_SRC clojure
+     (factorial-recur 6)
+     (loop 6 1)
+     (loop 5 6)
+     (loop 4 30)
+     (loop 3 120)
+     (loop 2 360)
+     (loop 1 720)
+     720
+   #+END_SRC
+
+   Šta ako imamo potrebu za međusobnom rekurzijom (pogledajte zadatak
+   sa parsiranjem iz Python dela ovog kursa)?
+
+   Za potrebe ilustracije ovog koncepta implementirajmo svoju funckiju
+   za određivanje da li je broj paran ili ne na sledeći način:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/core.clj" :src clojure :lines "95-120"
+
+   Međutim, ovaj pristup opet ima problem sa alokacijom steka. Pa
+   definišimo to na malo drugačiji način:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/core.clj" :src clojure :lines "121-140"
+
+   Međutim, korisnik naše funkcije sada mora da zna da treba da je
+   pozove sa =trampoline=. To nije baš divno. Pa preformulišimo to još
+   malo:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/core.clj" :src clojure :lines "141-172"
+
+   Sada je već bolje. A najbolje je što sada *nema nepotrebnih
+   alokacija steka*.
 
 ** Clojure u standardnim OO problemima
 
