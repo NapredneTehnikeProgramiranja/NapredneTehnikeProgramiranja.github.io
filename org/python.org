@@ -402,6 +402,50 @@ integrate systems more effectively.
 
 ** Meta klase
 
+** Anotacije funkcija
+
+   Funkcijama u Python-u *>=3* se mogu davati opcione [[https://www.python.org/dev/peps/pep-3107/][anotacije]] za
+   parametre i povratne vrednosti. Anotacije su izrazi koji se
+   izvršavaju u /compile time/-u. Ti izrazi nemaju nikakvu unapred
+   određenu ulogu već njihovo značenje može da dopuni neka biblioteka.
+
+   #+BEGIN_SRC python
+     def annot_foo(a: 1 + 2, b: "this " + "is b.") -> len([1, 2, 3]):
+         pass
+   #+END_SRC
+
+   #+RESULTS:
+
+   Pošto kao anotacije možete da stavite bilo kakav izraz to znači da
+   u vreme kompajliranja funkcije (učitavanja u Python interpreter)
+   možete da izazovete sporedni efekat:
+
+   #+BEGIN_SRC python
+     a = 1
+
+     def mutator():
+         global a
+         a += 1
+
+     def foo(a: mutator()):
+         pass
+
+     print(a)
+   #+END_SRC
+
+   #+RESULTS:
+   :
+   : >>> ... ... ... >>> ... ... >>> 2
+
+   Anotacije su dostupne kroz objekat funkcije kao mutabilan rečnik:
+
+   #+BEGIN_SRC python
+     annot_foo.__annotations__
+   #+END_SRC
+
+   #+RESULTS:
+   : {'b': 'this is b.', 'return': 3, 'a': 3}
+
 ** Zadaci
 
    1. Napraviti klasu =GithubUser= čiji svaki objekat pri konstrukciji
