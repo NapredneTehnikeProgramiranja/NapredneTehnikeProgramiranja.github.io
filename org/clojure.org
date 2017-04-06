@@ -362,10 +362,32 @@ system that ensure clean, correct, multithreaded designs.
    Sada je već bolje. A najbolje je što sada *nema nepotrebnih
    alokacija steka*.
 
-** Clojure u standardnim OO problemima
-
+* REPL i IDE
 * Elementi jezika
+  Ovaj kurs nema deo posvećen upoznavanju sa elementima jezika iz par razloga:
 
+  1. jer bi autor ovog teksta to sigurno uradio lošije nego što je urađeno:
+     - u knjizi /Clojure For The Brave And True/ [[http://www.braveclojure.com/do-things/][ovde]].
+     - na sajtu [[https://kimh.github.io/clojure-by-example/#require][Clojure By Example]].
+  2. jer su elementi jezika vrlo unificirani (kao i kod svakog Lisp-a).
+  3. jer se proste stvari najbrže uče individualno (tada je najmanja
+     šansa da Vam neko proste stvari zakomplikuje svojim lošim
+     objašnjenjem)
+
+** Vežbanje 1
+  Ideje zadataka uglavnom preuzete sa [[https://www.4clojure.com][4Clojure]].
+
+  1. Napisati funkciju =say-hello= koja prima parametar =name= i vraća
+     tekst =Hello to <name>=.
+  2. Napisati funkciju =get-the-caps= koja prima string engleskih
+     slova a vraća samo njegova velika slova.
+  3. Napisati funkciju =drop-nth= koja prima dva parametra od kojih je
+     prvo vektor elemenata a drugo =n=. Funkcija vraća listu bez
+     svakog =n=-tog elementa.
+
+* Perzistentne strukture podataka
+* Clojure u standardnim OO problemima
+* Read, evaluate vrtlog i makroi
 ** /Homoiconicy/ --- "istoizglednost"
 
    #+ATTR_HTML: :width 700
@@ -379,10 +401,6 @@ system that ensure clean, correct, multithreaded designs.
    Dok kod jezika koji su /homoikonični/ situacija nije tako
    striktna. Kod u koji gledamo su zapravo podaci, ne moramo da ih
    zamišljamo.
-
-* REPL i IDE
-
-* Read, evaluate vrtlog i makroi
 
 * Konkurentno i paralelno programiranje
 
