@@ -3,7 +3,7 @@ title: Novi Sad - kolokvijum iz Pythona i prve vežbe Clojure
 author: Novak Boškov
 ---
 
-# Kolokvijum iz Pythona
+# Kolokvijum iz Python-a
 
 Ko želi da radi kolokvijum iz Python programiranja u subotu 8. aprila
 **mora** da se prijavi
@@ -15,7 +15,8 @@ Kolokvijum će se održati **u 9h u učionici 102 Jugodrvo**.
 
 # Prve vežbe iz Clojure-a
 
-Za prve vežbe iz Clojure potrebno je da na vašim radnim računarima imate instalirano:
+Za prve vežbe iz Clojure-a potrebno je da na vašim radnim računarima
+imate instalirano:
 
 - JVM 1.8
 - [Leiningen build tool](https://leiningen.org/)
