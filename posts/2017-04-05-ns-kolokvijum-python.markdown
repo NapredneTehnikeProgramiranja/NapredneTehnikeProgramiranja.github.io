@@ -13,6 +13,10 @@ petka 7. aprila u 18h**.
 
 Kolokvijum će se održati **u 9h u učionici 102 Jugodrvo**.
 
+## Raspored
+
+Raspored dolazaka na kolokvijum možete naći [ovde](../resources/raspored_kol_1.pdf).
+
 # Prve vežbe iz Clojure-a
 
 Za prve vežbe iz Clojure-a potrebno je da na vašim radnim računarima
