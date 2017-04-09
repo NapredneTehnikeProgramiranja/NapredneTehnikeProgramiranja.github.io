@@ -364,12 +364,14 @@ system that ensure clean, correct, multithreaded designs.
 
 * REPL i IDE
 * Elementi jezika
-  Ovaj kurs nema deo posvećen upoznavanju sa elementima jezika iz par razloga:
+  Ovaj kurs nema deo posvećen upoznavanju sa bazičnim elementima
+  jezika iz par razloga:
 
   1. jer bi autor ovog teksta to sigurno uradio lošije nego što je urađeno:
      - u knjizi /Clojure For The Brave And True/ [[http://www.braveclojure.com/do-things/][ovde]].
      - na sajtu [[https://kimh.github.io/clojure-by-example/#require][Clojure By Example]].
-  2. jer su elementi jezika vrlo unificirani (kao i kod svakog Lisp-a).
+  2. jer su bazični elementi jezika vrlo unificirani (kao i kod svakog
+     Lisp-a).
   3. jer se proste stvari najbrže uče individualno (tada je najmanja
      šansa da Vam neko proste stvari zakomplikuje svojim lošim
      objašnjenjem)
@@ -385,8 +387,71 @@ system that ensure clean, correct, multithreaded designs.
      prvo vektor elemenata a drugo =n=. Funkcija vraća listu bez
      svakog =n=-tog elementa.
 
-* Perzistentne strukture podataka
-* Clojure u standardnim OO problemima
+** Funkcije višeg reda
+   [[https://en.wikipedia.org/wiki/Higher-order_function][Funkcije višeg]] reda su funkcije koje primaju funkcije kao parametre
+   i/ili vraćaju funkcije.
+
+   Neke funkcije višeg reda kao što su =map=, =filter=, =reduce= su
+   Vam poznate od ranije iz drugih programskih jezika.
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/higher_order_functions.clj" src clojure :lines "4-15"
+
+   Sećate li se objektnog programiranja i [[https://en.wikipedia.org/wiki/Command_pattern][Command pattern]]-a iz Jave?
+
+   #+BEGIN_SRC java
+     // Command is an interface defining method execute() for its execution
+
+     public void wrapInTransaction(Command c) throws Exception {
+         setupDataInfrastructure();
+         try {
+             c.execute();
+             completeTransaction();
+         } catch (Exception condition) {
+             rollbackTransaction();
+             throw condition;
+         } finally {
+             cleanUp();
+         }
+     }
+
+     public void addOrderFrom(final ShoppingCart cart, final String userName,
+                              final Order order) throws Exception {
+         wrapInTransaction(new Command() {
+                 public void execute() {
+                     add(order, userKeyBassedOn(username));
+                     addLineItemsFrom(cart, order.getOrderKey());
+                 }
+             });
+     }
+   #+END_SRC
+
+   Nije li funkcija odličan način za modelovanje neke funkcije
+   (komande) sistema? :)
+
+   Verovatno jeste. Problem objektnog programiranja u Javi je što ako
+   posao modelujemo funkcijom onda posao ne možemo poslati nekoj
+   metodi na izvršavanje jer nemamo na raspolaganju funkcije višeg
+   reda. U Clojure-u je to prirodna stvar:
+
+   #+BEGIN_SRC clojure
+     (defn wrapInTransaction [f]
+       (do
+         (startTransaction)
+         (f)
+         (completeTransaction)))
+
+     (wrapInTransaction #(do
+                           (add order user)
+                           (addLineItemsFrom cart orderKey)))
+   #+END_SRC
+
+   Ruku na srce, Java od verzije 1.8 ima podršku za funkcije višeg
+   reda. Najbolji način da uvidite koliko su funkcije višeg reda
+   prirodne za Clojure je da ih probate u npr. Javi.
+
+** Clojure u standardnim OO problemima
+** Perzistentne strukture podataka
+
 * Read, evaluate vrtlog i makroi
 ** /Homoiconicy/ --- "istoizglednost"
 
