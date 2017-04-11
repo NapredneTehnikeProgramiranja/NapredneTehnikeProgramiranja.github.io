@@ -337,6 +337,7 @@ system that ensure clean, correct, multithreaded designs.
      (loop 3 120)
      (loop 2 360)
      (loop 1 720)
+     (loop 0 720)
      720
    #+END_SRC
 
@@ -449,6 +450,7 @@ system that ensure clean, correct, multithreaded designs.
    reda. Najbolji način da uvidite koliko su funkcije višeg reda
    prirodne za Clojure je da ih probate u npr. Javi.
 
+*** Parcijalne funkcije
 ** Clojure u standardnim OO problemima
 ** Perzistentne strukture podataka
 
