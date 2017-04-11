@@ -381,7 +381,7 @@ system that ensure clean, correct, multithreaded designs.
    Kako biste počeli da koristite /lein/ potrebno je da pročitate
    /[[https://github.com/technomancy/leiningen/blob/stable/doc/TUTORIAL.md#creating-a-project][Creating a Project]]/ poglavlje iz totorijala.
 
-** IDE - integrisana razvojna okruženja
+** /IDE/ - integrisana razvojna okruženja
    Podešavanje za rad u Clojure-u nije teško pronaći bez obzira na to
    koji je Vaš omiljeni način rada i sviđaju li Vam se više
    tradicionalni editori ili tradicionalna razvojna okruženja. Evo par
@@ -483,6 +483,140 @@ system that ensure clean, correct, multithreaded designs.
    prirodne za Clojure je da ih probate u npr. Javi.
 
 *** Parcijalne funkcije
+    Kada smo radili napredno Python programiranje videli smo šta su i
+    kako se mogu koristiti parcijalne funkcije. Pogledajmo u ovom
+    odeljku za šta se one mogu koristiti.
+
+    U objektnom programiranju postoji način da izgradimo neki objekat
+    u nizu koraka. Pošto objektno programiranje prethodno ustanovljene
+    prakse zove šablonima onda se šablon o kome ovde govorimo zove
+    [[https://en.wikipedia.org/wiki/Builder_pattern][/Builder Pattern/]]. Takođe postoji i jedan prilično sličan šablon
+    koji služi da za proizvodnju sličnih objekata - [[https://en.wikipedia.org/wiki/Abstract_factory_pattern][/Abstract Factory
+    Pattern/]].
+
+    Sa druge strane, osnovni metod apstrakcije funkcionalnih
+    programskih jezika su funkcije, a koncept koji nam omogućuje da od
+    postojećih funkcija sa već datim delom parametara pravimo nove
+    funkcije su *parcijalne funkcije*.
+
+    Pogledajmo sada osnovno korišćenje parcijalnih funkcija u
+    Cljure-u:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "4-18"
+
+   Sada možemo dati neke primere Clojure-a iz realnog sveta koji
+   pokazuju kako se mogu koristiti parcijalne funkcije tamo gde se u
+   objektnom programiranju koriste gorepomenuti šabloni:
+
+   Za ovaj primer nam je potrebna biblioteka [[https://github.com/clojure/java.jdbc][=clojure.java.jdbc=]].
+
+   I recimo da želimo da pravimo upite na našu bazu podataka koristeći
+   samo =clojure.java.jdbc=. To u praksi možemo uradi ovako:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "32-46"
+
+   U objektnom programiranju ne biste pisali specifikaciju konekcije
+   na bazu u svakom upitu već biste se već nekako odlučili da pravite
+   /builder/ (razmisliti šta to sve tačno obuhvata). Ovde biste
+   takav efekat postigli mnogo direktnije:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "47-64"
+
+   Naravno, kao i svim široko korišćenim programskim jezicima i u
+   Clojure-u postoji čitav spektar gotovih biblioteka koje Vam daju
+   apstrakciju nad osnovnim drajverom baze podataka (u ovom slučaju
+   nad /jdbc/-om).
+
+   Drugi primer iz /real world/ Clojure koda gde se koriste parcijalne
+   funkcije je kada imate funkciju višeg reda kojoj želite da
+   prosledite neku funkciju koja prima više parametara. Npr. funkcija
+   =*= nema previše smisla za jedan argument.
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "65-70"
+
+   Prokomentarišite sledeći rezultat?
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "71-76"
+
+   Nedostatak parcijalnih funkcija formulisanih na način kako je to
+   urađeno u Clojure-u što se parametri funkcije parcijalizuju *samo*
+   sa početka. Na primer funkciju =-= ne možemo *samo* koristeći
+   =partial= parcijalizovati drugim parametrom već samo prvim.
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "78-80"
+
+   Ali možemo postići taj efekat uvodeći jednu prostu =lambdu=:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "81-83"
+
+** Kompozicija funkcija
+   Još jednom, Clojure svoje korene vuče iz matematike pa tako ima još
+   jedan veoma moćan koncept apstrakcije - *kompoziciju funkcija*.
+
+   #+BEGIN_QUOTE
+   Kompozicija funkcija je primena funkcije na rezultate druge
+   funkcije u cilju dobijanja treće funkcije.
+
+   $f \circ g (x) = f(g(x))$
+   #+END_QUOTE
+
+   Ili za one kojima je poznavanje /Unix-a/ trenutno ispred poznavanja
+   matematike - "to je ako pipe (|) u /shell-u/":
+
+   #+BEGIN_SRC shell
+     ls | grep "clojure-ntp"
+   #+END_SRC
+
+   U svrhu ilustracije zamislimo da imamo neki JavaScript kod i da
+   želimo da ga minificiramo tj. da pročitamo JavaScript fajl kao
+   tekst i da iz tog teksta izbacimo sve nove redove i druge
+   nepotrebne karaktere kako bi se manje podataka prenosilo mrežom. Za
+   to vrlo elegantno možemo da iskoristimo kompoziciju funkcija koje
+   već postoje u Clojure-u:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "84-91"
+
+   Primetimo da se poslednja navedena funkcija poziva prva tj. primena
+   funkcija ide "iznutra ka spolja". To možda može izgledati čudno
+   (iako je baš tako i u matematičkoj notaciji) pa onda Clojure pruža
+   drugi način da se ovo zapiše korišćenjem /threading macro/-a (o
+   makroima će biti reči [[*Read, evaluate vrtlog i makroi][u nastavku]]):
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "92-99"
+
+** Clojure naglašava svoju lenjost
+   Clojure se ne smatra lenjim jezikom u smislu u kome se to misli
+   kada se govori o Haskell-u (o tome u nastavku kursa) ali naglašava
+   lenje izvršavanje na mnogim mestima.
+
+   Mnoge ugrađene funkcije vraćaju lenje sekvence. Takve su =map=,
+   =reduce=, =filter= i druge. To se može jednostavno videti na
+   primeru:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "100-109"
+
+   Da Clojure nije lenj tačke bi se ispisivale na ekran odmah pri
+   definisanju =result=-a. Ovako je ispisivanje na ekran pozvano tek
+   kada smo zatražili da se =result= isprinta.
+
+   Još jedna stvar za koju lenje sekvence mogu biti od koristi je i
+   predstava beskonačnih struktura. Npr, ako imamo lenje sekvence i
+   skup realnih brojeva onda fibonačijevu sekvencu možemo da
+   predstavimo na sledeći način:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "110-138"
+
+   Kada smo radili napredni Python upoznali smo se sa metodama koje
+   nam omogućuju da beskonačno kružimo kroz konačne strukture. Ovde je
+   dat još jedan primer korišćenja ovog koncepta:
+
+   Recimo želimo da ravnomerno rasporedimo ljude iz kolekcije na 4
+   moguća izlaza:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "139-180"
+
+** Kada je mutacija stvarno nezaobilazna
+
 ** Clojure u standardnim OO problemima
 ** Perzistentne strukture podataka
 
