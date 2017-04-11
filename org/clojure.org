@@ -364,6 +364,38 @@ system that ensure clean, correct, multithreaded designs.
    alokacija steka*.
 
 * REPL i IDE
+
+** /Build tools/ - alati za izgradnju
+   U Clojure zajednici se paralelno koriste dva alata za izgradnju:
+
+   - [[https://leiningen.org/][Leiningen]]
+   - [[http://boot-clj.com/][Boot]]
+
+   /Lein/ je po svom funkcionisanju sličniji alatima za razvoj koje
+   srećemo u drugim programskim jezicima pa ćemo ga na ovom kursu
+   koristiti. Ovde je potrebno napomenuti da je /Boot/ prilično
+   zanimljiv i inovativan pristup izgradnji i da mu svakako vredi
+   posvetiti pažnju. /Boot/ na veoma pametan način koristi Clojure kao
+   potpuno dinamičko Lisp okruženje.
+
+   Kako biste počeli da koristite /lein/ potrebno je da pročitate
+   /[[https://github.com/technomancy/leiningen/blob/stable/doc/TUTORIAL.md#creating-a-project][Creating a Project]]/ poglavlje iz totorijala.
+
+** IDE - integrisana razvojna okruženja
+   Podešavanje za rad u Clojure-u nije teško pronaći bez obzira na to
+   koji je Vaš omiljeni način rada i sviđaju li Vam se više
+   tradicionalni editori ili tradicionalna razvojna okruženja. Evo par
+   rešenja:
+
+   - GNU/Emacs - [[https://github.com/clojure-emacs/cider][CIDER]] ([[http://blog.cognitect.com/blog/2017/1/31/state-of-clojure-2016-results][najkorišćenije]] u okviru Clojure zajednice)
+   - Vim - [[https://github.com/tpope/vim-fireplace][Fireplace]]
+   - Eclipse - [[http://doc.ccw-ide.org/documentation.html][Counterclockwise]]
+   - IntelliJ - [[https://cursive-ide.com/][Cursive]]
+   - [[http://lighttable.com/][LightTable]] - napredni editor pisan u Clojure-u (podržava osnovne
+     Clojure alate bez dodatne konfiguracije)
+   - [[https://sekao.net/nightcode/][Nightcode]] - osnovni editor pisan u Clojure-u (preporučen Clojure
+     početnicima)
+
 * Elementi jezika
   Ovaj kurs nema deo posvećen upoznavanju sa bazičnim elementima
   jezika iz par razloga:
@@ -378,15 +410,15 @@ system that ensure clean, correct, multithreaded designs.
      objašnjenjem)
 
 ** Vežbanje 1
-  Ideje zadataka uglavnom preuzete sa [[https://www.4clojure.com][4Clojure]].
+   Ideje zadataka uglavnom preuzete sa [[https://www.4clojure.com][4Clojure]].
 
-  1. Napisati funkciju =say-hello= koja prima parametar =name= i vraća
-     tekst =Hello to <name>=.
-  2. Napisati funkciju =get-the-caps= koja prima string engleskih
-     slova a vraća samo njegova velika slova.
-  3. Napisati funkciju =drop-nth= koja prima dva parametra od kojih je
-     prvo vektor elemenata a drugo =n=. Funkcija vraća listu bez
-     svakog =n=-tog elementa.
+   1. Napisati funkciju =say-hello= koja prima parametar =name= i vraća
+      tekst =Hello to <name>=.
+   2. Napisati funkciju =get-the-caps= koja prima string engleskih
+      slova a vraća samo njegova velika slova.
+   3. Napisati funkciju =drop-nth= koja prima dva parametra od kojih je
+      prvo vektor elemenata a drugo =n=. Funkcija vraća listu bez
+      svakog =n=-tog elementa.
 
 ** Funkcije višeg reda
    [[https://en.wikipedia.org/wiki/Higher-order_function][Funkcije višeg]] reda su funkcije koje primaju funkcije kao parametre
