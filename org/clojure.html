@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="sr" xml:lang="sr">
 <head>
-<!-- 2017-04-11 уто 23:57 -->
+<!-- 2017-04-12 сре 09:59 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Napredne tehnike programiranja - Clojure</title>
@@ -266,65 +266,65 @@ for the JavaScript code in this tag.
 <h2>Sadr&#382;aj</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org796f1b9">1. Uvod</a>
+<li><a href="#orgd3ec120">1. Uvod</a>
 <ul>
-<li><a href="#orgfc60bcf">1.1. Lisp</a>
+<li><a href="#org45365f8">1.1. Lisp</a>
 <ul>
-<li><a href="#org0935953">1.1.1. Scheme</a></li>
+<li><a href="#org0f59eff">1.1.1. Scheme</a></li>
 </ul>
 </li>
-<li><a href="#org9234264">1.2. Clojure - funkcionalni način razmišljanja</a></li>
-<li><a href="#org8bc92c5">1.3. Imperativno vs funckionalno programiranje</a></li>
-<li><a href="#org9c39a34">1.4. Clojure kao <i>value oriented</i> jezik</a></li>
-<li><a href="#org5b88114">1.5. Referencijalna transparentnost i memoizacija</a></li>
-<li><a href="#orgf04ecda">1.6. Misliti rekurzivno</a></li>
+<li><a href="#org3b469fe">1.2. Clojure - funkcionalni način razmišljanja</a></li>
+<li><a href="#org74db137">1.3. Imperativno vs funckionalno programiranje</a></li>
+<li><a href="#orgd3716c1">1.4. Clojure kao <i>value oriented</i> jezik</a></li>
+<li><a href="#org203a8cf">1.5. Referencijalna transparentnost i memoizacija</a></li>
+<li><a href="#org624f112">1.6. Misliti rekurzivno</a></li>
 </ul>
 </li>
-<li><a href="#orgd38d3a8">2. REPL i IDE</a>
+<li><a href="#org91593bf">2. REPL i IDE</a>
 <ul>
-<li><a href="#org030d9e4">2.1. <i>Build tools</i> - alati za izgradnju</a></li>
-<li><a href="#orgdf8d425">2.2. <i>IDE</i> - integrisana razvojna okruženja</a></li>
+<li><a href="#orgd9b4722">2.1. <i>Build tools</i> - alati za izgradnju</a></li>
+<li><a href="#org79371e2">2.2. <i>IDE</i> - integrisana razvojna okruženja</a></li>
 </ul>
 </li>
-<li><a href="#orgfcb970e">3. Elementi jezika</a>
+<li><a href="#org8b2dc90">3. Elementi jezika</a>
 <ul>
-<li><a href="#org6cc92df">3.1. Vežbanje 1</a></li>
-<li><a href="#orgf0c10c7">3.2. Funkcije višeg reda</a>
+<li><a href="#orgff5316e">3.1. Vežbanje 1</a></li>
+<li><a href="#org3cea4a4">3.2. Funkcije višeg reda</a>
 <ul>
-<li><a href="#org16bf094">3.2.1. Parcijalne funkcije</a></li>
+<li><a href="#org5788dd7">3.2.1. Parcijalne funkcije</a></li>
 </ul>
 </li>
-<li><a href="#orgdcc4284">3.3. Kompozicija funkcija</a></li>
-<li><a href="#org5ac65b7">3.4. Clojure naglašava svoju lenjost</a></li>
-<li><a href="#org84f7d96">3.5. Kada je mutacija stvarno nezaobilazna</a></li>
-<li><a href="#org104b07f">3.6. Clojure u standardnim OO problemima</a></li>
-<li><a href="#orgead1477">3.7. Perzistentne strukture podataka</a></li>
+<li><a href="#org0636784">3.3. Kompozicija funkcija</a></li>
+<li><a href="#org8938f83">3.4. Clojure naglašava svoju lenjost</a></li>
+<li><a href="#orgcb3ba40">3.5. Kada je mutacija stvarno nezaobilazna</a></li>
+<li><a href="#org5cb2146">3.6. Clojure u standardnim OO problemima</a></li>
+<li><a href="#orgc55d7c0">3.7. Perzistentne strukture podataka</a></li>
 </ul>
 </li>
-<li><a href="#org3fce924">4. Read, evaluate vrtlog i makroi</a>
+<li><a href="#org9fc8acc">4. Read, evaluate vrtlog i makroi</a>
 <ul>
-<li><a href="#org266de04">4.1. <i>Homoiconicy</i> &#x2014; "istoizglednost"</a></li>
+<li><a href="#org580b84c">4.1. <i>Homoiconicy</i> &#x2014; "istoizglednost"</a></li>
 </ul>
 </li>
-<li><a href="#org4372e53">5. Konkurentno i paralelno programiranje</a>
+<li><a href="#orgae965f5">5. Konkurentno i paralelno programiranje</a>
 <ul>
-<li><a href="#org4b58b1b">5.1. Reference</a></li>
-<li><a href="#orge581218">5.2. core.async</a></li>
+<li><a href="#org13a328f">5.1. Reference</a></li>
+<li><a href="#org056fb83">5.2. core.async</a></li>
 </ul>
 </li>
-<li><a href="#org78eb11c">6. Interakcija sa platformom</a></li>
-<li><a href="#org1b093db">7. Apstrakcije</a>
+<li><a href="#org8b9c0e5">6. Interakcija sa platformom</a></li>
+<li><a href="#org7d19da8">7. Apstrakcije</a>
 <ul>
-<li><a href="#org3d04ef3">7.1. Multimethods</a></li>
-<li><a href="#org6e13f27">7.2. Protocols</a></li>
-<li><a href="#org7d9b8fa">7.3. Records</a></li>
-<li><a href="#orge31347a">7.4. clojure.spec</a></li>
+<li><a href="#org6dd1e5b">7.1. Multimethods</a></li>
+<li><a href="#org616b8a4">7.2. Protocols</a></li>
+<li><a href="#orga0d507c">7.3. Records</a></li>
+<li><a href="#orgb57adb1">7.4. clojure.spec</a></li>
 </ul>
 </li>
-<li><a href="#orgd7da22c">8. ClojureScript</a></li>
-<li><a href="#org79a524e">9. Reader conditionals (.cljc)</a></li>
-<li><a href="#orgb01e632">10. ClojureCLR</a></li>
-<li><a href="#org90f6e39">11. Literatura</a></li>
+<li><a href="#org7c46607">8. ClojureScript</a></li>
+<li><a href="#orgfc95e34">9. Reader conditionals (.cljc)</a></li>
+<li><a href="#orga074095">10. ClojureCLR</a></li>
+<li><a href="#orgcbb752a">11. Literatura</a></li>
 </ul>
 </div>
 </div>
@@ -360,8 +360,8 @@ system that ensure clean, correct, multithreaded designs.
 </p>
 </blockquote>
 
-<div id="outline-container-org796f1b9" class="outline-2">
-<h2 id="org796f1b9"><span class="section-number-2">1</span> Uvod</h2>
+<div id="outline-container-orgd3ec120" class="outline-2">
+<h2 id="orgd3ec120"><span class="section-number-2">1</span> Uvod</h2>
 <div class="outline-text-2" id="text-1">
 <blockquote>
 <p>
@@ -376,8 +376,8 @@ in the expert's mind there are few.
 </blockquote>
 </div>
 
-<div id="outline-container-orgfc60bcf" class="outline-3">
-<h3 id="orgfc60bcf"><span class="section-number-3">1.1</span> Lisp</h3>
+<div id="outline-container-org45365f8" class="outline-3">
+<h3 id="org45365f8"><span class="section-number-3">1.1</span> Lisp</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 <b>Lisp</b> ili <b>LISP</b> je porodica programskih jezika sa dugom
@@ -442,8 +442,8 @@ još pregršt drugih dijalekata sa raznim osobinama:
 </ul>
 </div>
 
-<div id="outline-container-org0935953" class="outline-4">
-<h4 id="org0935953"><span class="section-number-4">1.1.1</span> Scheme</h4>
+<div id="outline-container-org0f59eff" class="outline-4">
+<h4 id="org0f59eff"><span class="section-number-4">1.1.1</span> Scheme</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 <b>Scheme</b> je jedan od najznačajnijih dijalekata Lisp-a. Dizajniran
@@ -466,7 +466,7 @@ samo dva.
 </p>
 </div>
 
-<ol class="org-ol"><li><a id="orga43e214"></a>Chez Scheme (Cisco)<br /><div class="outline-text-5" id="text-1-1-1-1">
+<ol class="org-ol"><li><a id="orgccc00eb"></a>Chez Scheme (Cisco)<br /><div class="outline-text-5" id="text-1-1-1-1">
 <p>
 <a href="https://github.com/cisco/ChezScheme"><b>Chez</b></a> je <a href="http://www.r6rs.org/">Scheme implementacija</a> zajedno sa (moćnim) kompajlerom,
 <i>run time</i> sistemom i bibliotekama. Koristi je kompanije Cisco a
@@ -481,7 +481,7 @@ C biblioteka onda nije loše da počnete sa <b>Chez</b>-om.
 </p>
 </div></li>
 
-<li><a id="org7f730b1"></a>Racket lang<br /><div class="outline-text-5" id="text-1-1-1-2">
+<li><a id="org16696bf"></a>Racket lang<br /><div class="outline-text-5" id="text-1-1-1-2">
 <p>
 <a href="https://racket-lang.org/">Racket lang</a> je takođe implementacija Schema-a ali sa potpuno
 drugim ciljevima pri dizajnu. Racket je po svom dizajnu sistem za
@@ -499,8 +499,8 @@ odlično društvo od kojeg možete mnogo da naučite.
 </div>
 </div>
 
-<div id="outline-container-org9234264" class="outline-3">
-<h3 id="org9234264"><span class="section-number-3">1.2</span> Clojure - funkcionalni način razmišljanja</h3>
+<div id="outline-container-org3b469fe" class="outline-3">
+<h3 id="org3b469fe"><span class="section-number-3">1.2</span> Clojure - funkcionalni način razmišljanja</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Danas postoji mnogo programskih jezika i zaista se (pre)veliki deo
@@ -539,8 +539,8 @@ koja Vam ne dozvoljava da pišete kod onako kako ste navikli!</i>
 </div>
 </div>
 
-<div id="outline-container-org8bc92c5" class="outline-3">
-<h3 id="org8bc92c5"><span class="section-number-3">1.3</span> Imperativno vs funckionalno programiranje</h3>
+<div id="outline-container-org74db137" class="outline-3">
+<h3 id="org74db137"><span class="section-number-3">1.3</span> Imperativno vs funckionalno programiranje</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 C, C++, C#, Java, Python svi ovi (i drugi) programski jezici imaju
@@ -607,8 +607,8 @@ veoma prostom. <i>Uviđanje ove jednostavnosti dolazi uz malo vežbe.</i>
 </div>
 </div>
 
-<div id="outline-container-org9c39a34" class="outline-3">
-<h3 id="org9c39a34"><span class="section-number-3">1.4</span> Clojure kao <i>value oriented</i> jezik</h3>
+<div id="outline-container-orgd3716c1" class="outline-3">
+<h3 id="orgd3716c1"><span class="section-number-3">1.4</span> Clojure kao <i>value oriented</i> jezik</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 Clojure promoviše stil programiranja koji se zove <i>value-oriented
@@ -650,8 +650,8 @@ primera koji to ilustruje:
 </div>
 </div>
 
-<div id="outline-container-org5b88114" class="outline-3">
-<h3 id="org5b88114"><span class="section-number-3">1.5</span> Referencijalna transparentnost i memoizacija</h3>
+<div id="outline-container-org203a8cf" class="outline-3">
+<h3 id="org203a8cf"><span class="section-number-3">1.5</span> Referencijalna transparentnost i memoizacija</h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
 Funkcije za koje uvek po njihovim parametrima možete da kažete sa
@@ -717,11 +717,11 @@ njena obična verzija ali se svaki sledeći put kada bude pozvana
 </div>
 </div>
 
-<div id="outline-container-orgf04ecda" class="outline-3">
-<h3 id="orgf04ecda"><span class="section-number-3">1.6</span> Misliti rekurzivno</h3>
+<div id="outline-container-org624f112" class="outline-3">
+<h3 id="org624f112"><span class="section-number-3">1.6</span> Misliti rekurzivno</h3>
 <div class="outline-text-3" id="text-1-6">
 <p>
-Iz razloga koji su opisani <a href="#org8bc92c5">ranije</a> imperativni programski jezici ne
+Iz razloga koji su opisani <a href="#org74db137">ranije</a> imperativni programski jezici ne
 stavljaju previše akcenat na rekurziju. Funcionalno programiranje
 rekurziju koristi kao osnovni alat. Tamo gde imperativno
 programiranje koristi petlje funkcionalno programiranje koristi
@@ -767,7 +767,7 @@ Imperativno programiranje problem faktorijela posmatra ovako:
 </div>
 
 <p>
-Clojure kao funkcionalan <a href="#org9c39a34">value oriented</a> jezik ne podržava mutiranje
+Clojure kao funkcionalan <a href="#orgd3716c1">value oriented</a> jezik ne podržava mutiranje
 pa tako:
 </p>
 
@@ -1006,11 +1006,11 @@ alokacija steka</b>.
 </div>
 </div>
 
-<div id="outline-container-orgd38d3a8" class="outline-2">
-<h2 id="orgd38d3a8"><span class="section-number-2">2</span> REPL i IDE</h2>
+<div id="outline-container-org91593bf" class="outline-2">
+<h2 id="org91593bf"><span class="section-number-2">2</span> REPL i IDE</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-org030d9e4" class="outline-3">
-<h3 id="org030d9e4"><span class="section-number-3">2.1</span> <i>Build tools</i> - alati za izgradnju</h3>
+</div><div id="outline-container-orgd9b4722" class="outline-3">
+<h3 id="orgd9b4722"><span class="section-number-3">2.1</span> <i>Build tools</i> - alati za izgradnju</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 U Clojure zajednici se paralelno koriste dva alata za izgradnju:
@@ -1037,8 +1037,8 @@ Kako biste počeli da koristite <i>lein</i> potrebno je da pročitate
 </div>
 </div>
 
-<div id="outline-container-orgdf8d425" class="outline-3">
-<h3 id="orgdf8d425"><span class="section-number-3">2.2</span> <i>IDE</i> - integrisana razvojna okruženja</h3>
+<div id="outline-container-org79371e2" class="outline-3">
+<h3 id="org79371e2"><span class="section-number-3">2.2</span> <i>IDE</i> - integrisana razvojna okruženja</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 Podešavanje za rad u Clojure-u nije teško pronaći bez obzira na to
@@ -1061,8 +1061,8 @@ početnicima)</li>
 </div>
 </div>
 
-<div id="outline-container-orgfcb970e" class="outline-2">
-<h2 id="orgfcb970e"><span class="section-number-2">3</span> Elementi jezika</h2>
+<div id="outline-container-org8b2dc90" class="outline-2">
+<h2 id="org8b2dc90"><span class="section-number-2">3</span> Elementi jezika</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Ovaj kurs nema deo posvećen upoznavanju sa bazičnim elementima
@@ -1083,8 +1083,8 @@ objašnjenjem)</li>
 </ol>
 </div>
 
-<div id="outline-container-org6cc92df" class="outline-3">
-<h3 id="org6cc92df"><span class="section-number-3">3.1</span> Vežbanje 1</h3>
+<div id="outline-container-orgff5316e" class="outline-3">
+<h3 id="orgff5316e"><span class="section-number-3">3.1</span> Vežbanje 1</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 Ideje zadataka uglavnom preuzete sa <a href="https://www.4clojure.com">4Clojure</a>.
@@ -1102,8 +1102,8 @@ svakog <code>n</code>-tog elementa.</li>
 </div>
 </div>
 
-<div id="outline-container-orgf0c10c7" class="outline-3">
-<h3 id="orgf0c10c7"><span class="section-number-3">3.2</span> Funkcije višeg reda</h3>
+<div id="outline-container-org3cea4a4" class="outline-3">
+<h3 id="org3cea4a4"><span class="section-number-3">3.2</span> Funkcije višeg reda</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 <a href="https://en.wikipedia.org/wiki/Higher-order_function">Funkcije višeg</a> reda su funkcije koje primaju funkcije kao parametre
@@ -1194,8 +1194,8 @@ prirodne za Clojure je da ih probate u npr. Javi.
 </p>
 </div>
 
-<div id="outline-container-org16bf094" class="outline-4">
-<h4 id="org16bf094"><span class="section-number-4">3.2.1</span> Parcijalne funkcije</h4>
+<div id="outline-container-org5788dd7" class="outline-4">
+<h4 id="org5788dd7"><span class="section-number-4">3.2.1</span> Parcijalne funkcije</h4>
 <div class="outline-text-4" id="text-3-2-1">
 <p>
 Kada smo radili napredno Python programiranje videli smo šta su i
@@ -1225,9 +1225,7 @@ Cljure-u:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-clojure">            <span style="color: #DCDCCC;">[</span><span style="color: #7CB8BB;">clojure.string</span> <span style="color: #BFEBBF;">:as</span> str<span style="color: #DCDCCC;">]</span><span style="color: #88090B;">))</span>
-
-<span style="color: #88090B;">(</span>doc partial<span style="color: #88090B;">)</span>
+<pre class="src src-clojure"><span style="color: #DCDCCC;">(</span>doc partial<span style="color: #DCDCCC;">)</span>
 <span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt;</span>
 <span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">-------------------------</span>
 <span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">clojure.core/partial</span>
@@ -1237,7 +1235,10 @@ Cljure-u:
 <span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">called, the returned function calls f with args + additional args.</span>
 <span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">nil</span>
 
-<span style="color: #88090B;">(</span><span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #DFAF8F;">mul3</span> <span style="color: #88090B;">(</span>partial * 3<span style="color: #88090B;">))</span>
+<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #DFAF8F;">mul3</span> <span style="color: #BFEBBF;">(</span>partial * 3<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+
+<span style="color: #DCDCCC;">(</span>mul3 2<span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; 6</span>
 </pre>
 </div>
 
@@ -1257,19 +1258,32 @@ samo <code>clojure.java.jdbc</code>. To u praksi možemo uradi ovako:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-clojure">#_<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">do</span>
-    <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #DFAF8F;">spec</span> <span style="color: #D0BF8F;">{</span><span style="color: #BFEBBF;">:classname</span>   <span style="color: #CC9393;">"org.posgresql.Driver"</span>
-               <span style="color: #BFEBBF;">:subprotocol</span> <span style="color: #CC9393;">"postgresql"</span>
-               <span style="color: #BFEBBF;">:subname</span>     <span style="color: #CC9393;">"//localhost:5453/our_little_database"</span><span style="color: #D0BF8F;">}</span><span style="color: #BFEBBF;">)</span>
+<pre class="src src-clojure"><span style="color: #DCDCCC;">(</span>doc do<span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt;</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">-------------------------</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">do</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">(do exprs*)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">Special Form</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">Evaluates the expressions in order and returns the value of</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">the last. If no expressions are supplied, returns nil.</span>
 
-    <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">defn</span> <span style="color: #93E0E3;">all-users</span> <span style="color: #D0BF8F;">[]</span>
-      <span style="color: #D0BF8F;">(</span><span style="color: #7CB8BB;">jdbc</span><span style="color: #DCDCCC; background-color: #3F3F3F;">/</span>query spec <span style="color: #93E0E3;">[</span><span style="color: #CC9393;">"select * from login order by username desc"</span><span style="color: #93E0E3;">]</span><span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">Please see http://clojure.org/special_forms#do</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">nil</span>
 
-    <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">defn</span> <span style="color: #93E0E3;">find-user</span> <span style="color: #D0BF8F;">[</span>username<span style="color: #D0BF8F;">]</span>
-      <span style="color: #D0BF8F;">(</span><span style="color: #7CB8BB;">jdbc</span><span style="color: #DCDCCC; background-color: #3F3F3F;">/</span>query spec <span style="color: #93E0E3;">[</span><span style="color: #CC9393;">"select * from login where username = ?"</span> username<span style="color: #93E0E3;">]</span><span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span>
+#_<span style="color: #DCDCCC;">(</span><span style="color: #7F9F7F;">do</span>
+<span style="color: #7F9F7F;">    </span><span style="color: #BFEBBF;">(</span><span style="color: #7F9F7F;">def spec </span><span style="color: #D0BF8F;">{</span><span style="color: #7F9F7F;">:classname   "org.posgresql.Driver"</span>
+<span style="color: #7F9F7F;">               :subprotocol "postgresql"</span>
+<span style="color: #7F9F7F;">               :subname     "//localhost:5453/our_little_database"</span><span style="color: #D0BF8F;">}</span><span style="color: #BFEBBF;">)</span>
 
-    <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">defn</span> <span style="color: #93E0E3;">create-user</span> <span style="color: #D0BF8F;">[</span>username password<span style="color: #D0BF8F;">]</span>
-      <span style="color: #D0BF8F;">(</span><span style="color: #7CB8BB;">jdbc</span><span style="color: #DCDCCC; background-color: #3F3F3F;">/</span>insert! spec <span style="color: #BFEBBF;">:login</span> <span style="color: #93E0E3;">{</span><span style="color: #BFEBBF;">:username</span> username <span style="color: #BFEBBF;">:password</span> password
+<span style="color: #7F9F7F;">    </span><span style="color: #BFEBBF;">(</span><span style="color: #7F9F7F;">defn all-users </span><span style="color: #D0BF8F;">[]</span>
+<span style="color: #7F9F7F;">      </span><span style="color: #D0BF8F;">(</span><span style="color: #7F9F7F;">jdbc/query spec </span><span style="color: #93E0E3;">[</span><span style="color: #7F9F7F;">"select * from login order by username desc"</span><span style="color: #93E0E3;">]</span><span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span>
+
+<span style="color: #7F9F7F;">    </span><span style="color: #BFEBBF;">(</span><span style="color: #7F9F7F;">defn find-user </span><span style="color: #D0BF8F;">[</span><span style="color: #7F9F7F;">username</span><span style="color: #D0BF8F;">]</span>
+<span style="color: #7F9F7F;">      </span><span style="color: #D0BF8F;">(</span><span style="color: #7F9F7F;">jdbc/query spec </span><span style="color: #93E0E3;">[</span><span style="color: #7F9F7F;">"select * from login where username = ?" username</span><span style="color: #93E0E3;">]</span><span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span>
+
+<span style="color: #7F9F7F;">    </span><span style="color: #BFEBBF;">(</span><span style="color: #7F9F7F;">defn create-user </span><span style="color: #D0BF8F;">[</span><span style="color: #7F9F7F;">username password</span><span style="color: #D0BF8F;">]</span>
+<span style="color: #7F9F7F;">      </span><span style="color: #D0BF8F;">(</span><span style="color: #7F9F7F;">jdbc/insert! spec :login </span><span style="color: #93E0E3;">{</span><span style="color: #7F9F7F;">:username username :password password</span>
+<span style="color: #7F9F7F;">                                 :sal      "some_salt"</span><span style="color: #93E0E3;">}</span><span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
 
@@ -1281,22 +1295,24 @@ takav efekat postigli mnogo direktnije:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-clojure">#_<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">do</span>
-    <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #DFAF8F;">spec</span> <span style="color: #D0BF8F;">{</span><span style="color: #BFEBBF;">:classname</span>   <span style="color: #CC9393;">"org.posgresql.Driver"</span>
-               <span style="color: #BFEBBF;">:subprotocol</span> <span style="color: #CC9393;">"postgresql"</span>
-               <span style="color: #BFEBBF;">:subname</span>     <span style="color: #CC9393;">"//localhost:5453/our_little_database"</span><span style="color: #D0BF8F;">}</span><span style="color: #BFEBBF;">)</span>
+<pre class="src src-clojure">#_<span style="color: #DCDCCC;">(</span><span style="color: #7F9F7F;">do</span>
+<span style="color: #7F9F7F;">    </span><span style="color: #BFEBBF;">(</span><span style="color: #7F9F7F;">def spec </span><span style="color: #D0BF8F;">{</span><span style="color: #7F9F7F;">:classname   "org.posgresql.Driver"</span>
+<span style="color: #7F9F7F;">               :subprotocol "postgresql"</span>
+<span style="color: #7F9F7F;">               :subname     "//localhost:5453/our_little_database"</span><span style="color: #D0BF8F;">}</span><span style="color: #BFEBBF;">)</span>
 
-    <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #DFAF8F;">query</span> <span style="color: #D0BF8F;">(</span>partial <span style="color: #7CB8BB;">jdbc</span><span style="color: #DCDCCC; background-color: #3F3F3F;">/</span>query spec<span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span>
-    <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #DFAF8F;">insert!</span> <span style="color: #D0BF8F;">(</span>partial <span style="color: #7CB8BB;">jdbc</span><span style="color: #DCDCCC; background-color: #3F3F3F;">/</span>insert! spec<span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span>
+<span style="color: #7F9F7F;">    </span><span style="color: #BFEBBF;">(</span><span style="color: #7F9F7F;">def query </span><span style="color: #D0BF8F;">(</span><span style="color: #7F9F7F;">partial jdbc/query spec</span><span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span>
 
-    <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">defn</span> <span style="color: #93E0E3;">all-users</span> <span style="color: #D0BF8F;">[]</span>
-      <span style="color: #D0BF8F;">(</span><span style="color: #7CB8BB;">jdbc</span><span style="color: #DCDCCC; background-color: #3F3F3F;">/</span>query <span style="color: #93E0E3;">[</span><span style="color: #CC9393;">"select * from login order by username desc"</span><span style="color: #93E0E3;">]</span><span style="color: #D0BF8F;">)</span>
+<span style="color: #7F9F7F;">    </span><span style="color: #BFEBBF;">(</span><span style="color: #7F9F7F;">def insert! </span><span style="color: #D0BF8F;">(</span><span style="color: #7F9F7F;">partial jdbc/insert! spec</span><span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span>
 
-      <span style="color: #D0BF8F;">(</span><span style="color: #F0DFAF; font-weight: bold;">defn</span> <span style="color: #93E0E3;">find-user</span> <span style="color: #93E0E3;">[</span>username<span style="color: #93E0E3;">]</span>
-        <span style="color: #93E0E3;">(</span><span style="color: #7CB8BB;">jdbc</span><span style="color: #DCDCCC; background-color: #3F3F3F;">/</span>query <span style="color: #9FC59F;">[</span><span style="color: #CC9393;">"select * from login where username = ?"</span> username<span style="color: #9FC59F;">]</span><span style="color: #93E0E3;">)</span><span style="color: #D0BF8F;">)</span>
+<span style="color: #7F9F7F;">    </span><span style="color: #BFEBBF;">(</span><span style="color: #7F9F7F;">defn all-users </span><span style="color: #D0BF8F;">[]</span>
+<span style="color: #7F9F7F;">      </span><span style="color: #D0BF8F;">(</span><span style="color: #7F9F7F;">query </span><span style="color: #93E0E3;">[</span><span style="color: #7F9F7F;">"select * from login order by username desc"</span><span style="color: #93E0E3;">]</span><span style="color: #D0BF8F;">)</span>
 
-      <span style="color: #D0BF8F;">(</span><span style="color: #F0DFAF; font-weight: bold;">defn</span> <span style="color: #93E0E3;">create-user</span> <span style="color: #93E0E3;">[</span>username password<span style="color: #93E0E3;">]</span>
-        <span style="color: #93E0E3;">(</span><span style="color: #7CB8BB;">jdbc</span><span style="color: #DCDCCC; background-color: #3F3F3F;">/</span>insert! <span style="color: #BFEBBF;">:login</span> <span style="color: #9FC59F;">{</span><span style="color: #BFEBBF;">:username</span> username <span style="color: #BFEBBF;">:password</span> password
+<span style="color: #7F9F7F;">      </span><span style="color: #D0BF8F;">(</span><span style="color: #7F9F7F;">defn find-user </span><span style="color: #93E0E3;">[</span><span style="color: #7F9F7F;">username</span><span style="color: #93E0E3;">]</span>
+<span style="color: #7F9F7F;">        </span><span style="color: #93E0E3;">(</span><span style="color: #7F9F7F;">query </span><span style="color: #9FC59F;">[</span><span style="color: #7F9F7F;">"select * from login where username = ?" username</span><span style="color: #9FC59F;">]</span><span style="color: #93E0E3;">)</span><span style="color: #D0BF8F;">)</span>
+
+<span style="color: #7F9F7F;">      </span><span style="color: #D0BF8F;">(</span><span style="color: #7F9F7F;">defn create-user </span><span style="color: #93E0E3;">[</span><span style="color: #7F9F7F;">username password</span><span style="color: #93E0E3;">]</span>
+<span style="color: #7F9F7F;">        </span><span style="color: #93E0E3;">(</span><span style="color: #7F9F7F;">insert! :login </span><span style="color: #9FC59F;">{</span><span style="color: #7F9F7F;">:username username :password password</span>
+<span style="color: #7F9F7F;">                         :sal      "some_salt"</span><span style="color: #9FC59F;">}</span><span style="color: #93E0E3;">)</span><span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
 
@@ -1319,6 +1335,7 @@ prosledite neku funkciju koja prima više parametara. Npr. funkcija
   <span style="color: #BFEBBF;">(</span>map <span style="color: #D0BF8F;">(</span>partial * 1.6<span style="color: #D0BF8F;">)</span> items<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
 
 <span style="color: #DCDCCC;">(</span>apply-sales-tax <span style="color: #BFEBBF;">[</span>0.23 0.12 8.12 4.2<span style="color: #BFEBBF;">]</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; (0.36800000000000005 0.192 12.991999999999999 6.720000000000001)</span>
 </pre>
 </div>
 
@@ -1331,6 +1348,7 @@ Prokomentarišite sledeći rezultat?
   <span style="color: #BFEBBF;">(</span>map * items<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
 
 <span style="color: #DCDCCC;">(</span>a-result <span style="color: #BFEBBF;">[</span>0.23 0.12 8.12 4.2<span style="color: #BFEBBF;">]</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; (0.23 0.12 8.12 4.2)</span>
 </pre>
 </div>
 
@@ -1360,8 +1378,8 @@ Ali možemo postići taj efekat uvodeći jednu prostu <code>lambdu</code>:
 </div>
 </div>
 
-<div id="outline-container-orgdcc4284" class="outline-3">
-<h3 id="orgdcc4284"><span class="section-number-3">3.3</span> Kompozicija funkcija</h3>
+<div id="outline-container-org0636784" class="outline-3">
+<h3 id="org0636784"><span class="section-number-3">3.3</span> Kompozicija funkcija</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 Još jednom, Clojure svoje korene vuče iz matematike pa tako ima još
@@ -1414,7 +1432,7 @@ Primetimo da se poslednja navedena funkcija poziva prva tj. primena
 funkcija ide "iznutra ka spolja". To možda može izgledati čudno
 (iako je baš tako i u matematičkoj notaciji) pa onda Clojure pruža
 drugi način da se ovo zapiše korišćenjem <i>threading macro</i>-a (o
-makroima će biti reči <a href="#org3fce924">u nastavku</a>):
+makroima će biti reči <a href="#org9fc8acc">u nastavku</a>):
 </p>
 
 <div class="org-src-container">
@@ -1430,8 +1448,8 @@ makroima će biti reči <a href="#org3fce924">u nastavku</a>):
 </div>
 </div>
 
-<div id="outline-container-org5ac65b7" class="outline-3">
-<h3 id="org5ac65b7"><span class="section-number-3">3.4</span> Clojure naglašava svoju lenjost</h3>
+<div id="outline-container-org8938f83" class="outline-3">
+<h3 id="org8938f83"><span class="section-number-3">3.4</span> Clojure naglašava svoju lenjost</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 Clojure se ne smatra lenjim jezikom u smislu u kome se to misli
@@ -1561,23 +1579,23 @@ moguća izlaza:
 </div>
 </div>
 
-<div id="outline-container-org84f7d96" class="outline-3">
-<h3 id="org84f7d96"><span class="section-number-3">3.5</span> Kada je mutacija stvarno nezaobilazna</h3>
+<div id="outline-container-orgcb3ba40" class="outline-3">
+<h3 id="orgcb3ba40"><span class="section-number-3">3.5</span> Kada je mutacija stvarno nezaobilazna</h3>
 </div>
 
-<div id="outline-container-org104b07f" class="outline-3">
-<h3 id="org104b07f"><span class="section-number-3">3.6</span> Clojure u standardnim OO problemima</h3>
+<div id="outline-container-org5cb2146" class="outline-3">
+<h3 id="org5cb2146"><span class="section-number-3">3.6</span> Clojure u standardnim OO problemima</h3>
 </div>
-<div id="outline-container-orgead1477" class="outline-3">
-<h3 id="orgead1477"><span class="section-number-3">3.7</span> Perzistentne strukture podataka</h3>
+<div id="outline-container-orgc55d7c0" class="outline-3">
+<h3 id="orgc55d7c0"><span class="section-number-3">3.7</span> Perzistentne strukture podataka</h3>
 </div>
 </div>
 
-<div id="outline-container-org3fce924" class="outline-2">
-<h2 id="org3fce924"><span class="section-number-2">4</span> Read, evaluate vrtlog i makroi</h2>
+<div id="outline-container-org9fc8acc" class="outline-2">
+<h2 id="org9fc8acc"><span class="section-number-2">4</span> Read, evaluate vrtlog i makroi</h2>
 <div class="outline-text-2" id="text-4">
-</div><div id="outline-container-org266de04" class="outline-3">
-<h3 id="org266de04"><span class="section-number-3">4.1</span> <i>Homoiconicy</i> &#x2014; "istoizglednost"</h3>
+</div><div id="outline-container-org580b84c" class="outline-3">
+<h3 id="org580b84c"><span class="section-number-3">4.1</span> <i>Homoiconicy</i> &#x2014; "istoizglednost"</h3>
 <div class="outline-text-3" id="text-4-1">
 
 <div class="figure">
@@ -1603,56 +1621,56 @@ zamišljamo.
 </div>
 </div>
 
-<div id="outline-container-org4372e53" class="outline-2">
-<h2 id="org4372e53"><span class="section-number-2">5</span> Konkurentno i paralelno programiranje</h2>
+<div id="outline-container-orgae965f5" class="outline-2">
+<h2 id="orgae965f5"><span class="section-number-2">5</span> Konkurentno i paralelno programiranje</h2>
 <div class="outline-text-2" id="text-5">
-</div><div id="outline-container-org4b58b1b" class="outline-3">
-<h3 id="org4b58b1b"><span class="section-number-3">5.1</span> Reference</h3>
+</div><div id="outline-container-org13a328f" class="outline-3">
+<h3 id="org13a328f"><span class="section-number-3">5.1</span> Reference</h3>
 </div>
 
-<div id="outline-container-orge581218" class="outline-3">
-<h3 id="orge581218"><span class="section-number-3">5.2</span> core.async</h3>
+<div id="outline-container-org056fb83" class="outline-3">
+<h3 id="org056fb83"><span class="section-number-3">5.2</span> core.async</h3>
 </div>
 </div>
 
-<div id="outline-container-org78eb11c" class="outline-2">
-<h2 id="org78eb11c"><span class="section-number-2">6</span> Interakcija sa platformom</h2>
+<div id="outline-container-org8b9c0e5" class="outline-2">
+<h2 id="org8b9c0e5"><span class="section-number-2">6</span> Interakcija sa platformom</h2>
 </div>
 
-<div id="outline-container-org1b093db" class="outline-2">
-<h2 id="org1b093db"><span class="section-number-2">7</span> Apstrakcije</h2>
+<div id="outline-container-org7d19da8" class="outline-2">
+<h2 id="org7d19da8"><span class="section-number-2">7</span> Apstrakcije</h2>
 <div class="outline-text-2" id="text-7">
-</div><div id="outline-container-org3d04ef3" class="outline-3">
-<h3 id="org3d04ef3"><span class="section-number-3">7.1</span> Multimethods</h3>
+</div><div id="outline-container-org6dd1e5b" class="outline-3">
+<h3 id="org6dd1e5b"><span class="section-number-3">7.1</span> Multimethods</h3>
 </div>
 
-<div id="outline-container-org6e13f27" class="outline-3">
-<h3 id="org6e13f27"><span class="section-number-3">7.2</span> Protocols</h3>
+<div id="outline-container-org616b8a4" class="outline-3">
+<h3 id="org616b8a4"><span class="section-number-3">7.2</span> Protocols</h3>
 </div>
 
-<div id="outline-container-org7d9b8fa" class="outline-3">
-<h3 id="org7d9b8fa"><span class="section-number-3">7.3</span> Records</h3>
+<div id="outline-container-orga0d507c" class="outline-3">
+<h3 id="orga0d507c"><span class="section-number-3">7.3</span> Records</h3>
 </div>
 
-<div id="outline-container-orge31347a" class="outline-3">
-<h3 id="orge31347a"><span class="section-number-3">7.4</span> clojure.spec</h3>
+<div id="outline-container-orgb57adb1" class="outline-3">
+<h3 id="orgb57adb1"><span class="section-number-3">7.4</span> clojure.spec</h3>
 </div>
 </div>
 
-<div id="outline-container-orgd7da22c" class="outline-2">
-<h2 id="orgd7da22c"><span class="section-number-2">8</span> ClojureScript</h2>
+<div id="outline-container-org7c46607" class="outline-2">
+<h2 id="org7c46607"><span class="section-number-2">8</span> ClojureScript</h2>
 </div>
 
-<div id="outline-container-org79a524e" class="outline-2">
-<h2 id="org79a524e"><span class="section-number-2">9</span> Reader conditionals (.cljc)</h2>
+<div id="outline-container-orgfc95e34" class="outline-2">
+<h2 id="orgfc95e34"><span class="section-number-2">9</span> Reader conditionals (.cljc)</h2>
 </div>
 
-<div id="outline-container-orgb01e632" class="outline-2">
-<h2 id="orgb01e632"><span class="section-number-2">10</span> ClojureCLR</h2>
+<div id="outline-container-orga074095" class="outline-2">
+<h2 id="orga074095"><span class="section-number-2">10</span> ClojureCLR</h2>
 </div>
 
-<div id="outline-container-org90f6e39" class="outline-2">
-<h2 id="org90f6e39"><span class="section-number-2">11</span> Literatura</h2>
+<div id="outline-container-orgcbb752a" class="outline-2">
+<h2 id="orgcbb752a"><span class="section-number-2">11</span> Literatura</h2>
 <div class="outline-text-2" id="text-11">
 <ul class="org-ul">
 <li><a href="http://www.braveclojure.com/">Clojure For The Brave and True</a> &#x2014; Daniel Higginbotham</li>
@@ -1667,7 +1685,7 @@ Abelson, Gerald Jay Sussman with Julie Sussman (sa video
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Novak Boškov</p>
-<p class="date">Created: 2017-04-11 уто 23:57</p>
+<p class="date">Created: 2017-04-12 сре 09:59</p>
 <p class="validation"></p>
 </div>
 </body>
