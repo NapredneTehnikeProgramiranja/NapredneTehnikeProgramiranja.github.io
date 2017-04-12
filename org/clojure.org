@@ -502,52 +502,52 @@ system that ensure clean, correct, multithreaded designs.
     Pogledajmo sada osnovno korišćenje parcijalnih funkcija u
     Cljure-u:
 
-   #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "4-18"
+    #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "6-20"
 
-   Sada možemo dati neke primere Clojure-a iz realnog sveta koji
-   pokazuju kako se mogu koristiti parcijalne funkcije tamo gde se u
-   objektnom programiranju koriste gorepomenuti šabloni:
+    Sada možemo dati neke primere Clojure-a iz realnog sveta koji
+    pokazuju kako se mogu koristiti parcijalne funkcije tamo gde se u
+    objektnom programiranju koriste gorepomenuti šabloni:
 
-   Za ovaj primer nam je potrebna biblioteka [[https://github.com/clojure/java.jdbc][=clojure.java.jdbc=]].
+    Za ovaj primer nam je potrebna biblioteka [[https://github.com/clojure/java.jdbc][=clojure.java.jdbc=]].
 
-   I recimo da želimo da pravimo upite na našu bazu podataka koristeći
-   samo =clojure.java.jdbc=. To u praksi možemo uradi ovako:
+    I recimo da želimo da pravimo upite na našu bazu podataka koristeći
+    samo =clojure.java.jdbc=. To u praksi možemo uradi ovako:
 
-   #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "32-46"
+    #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "21-47"
 
-   U objektnom programiranju ne biste pisali specifikaciju konekcije
-   na bazu u svakom upitu već biste se već nekako odlučili da pravite
-   /builder/ (razmisliti šta to sve tačno obuhvata). Ovde biste
-   takav efekat postigli mnogo direktnije:
+    U objektnom programiranju ne biste pisali specifikaciju konekcije
+    na bazu u svakom upitu već biste se već nekako odlučili da pravite
+    /builder/ (razmisliti šta to sve tačno obuhvata). Ovde biste
+    takav efekat postigli mnogo direktnije:
 
-   #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "47-64"
+    #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "48-66"
 
-   Naravno, kao i svim široko korišćenim programskim jezicima i u
-   Clojure-u postoji čitav spektar gotovih biblioteka koje Vam daju
-   apstrakciju nad osnovnim drajverom baze podataka (u ovom slučaju
-   nad /jdbc/-om).
+    Naravno, kao i svim široko korišćenim programskim jezicima i u
+    Clojure-u postoji čitav spektar gotovih biblioteka koje Vam daju
+    apstrakciju nad osnovnim drajverom baze podataka (u ovom slučaju
+    nad /jdbc/-om).
 
-   Drugi primer iz /real world/ Clojure koda gde se koriste parcijalne
-   funkcije je kada imate funkciju višeg reda kojoj želite da
-   prosledite neku funkciju koja prima više parametara. Npr. funkcija
-   =*= nema previše smisla za jedan argument.
+    Drugi primer iz /real world/ Clojure koda gde se koriste parcijalne
+    funkcije je kada imate funkciju višeg reda kojoj želite da
+    prosledite neku funkciju koja prima više parametara. Npr. funkcija
+    =*= nema previše smisla za jedan argument.
 
-   #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "65-70"
+    #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "67-72"
 
-   Prokomentarišite sledeći rezultat?
+    Prokomentarišite sledeći rezultat?
 
-   #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "71-76"
+    #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "73-78"
 
-   Nedostatak parcijalnih funkcija formulisanih na način kako je to
-   urađeno u Clojure-u što se parametri funkcije parcijalizuju *samo*
-   sa početka. Na primer funkciju =-= ne možemo *samo* koristeći
-   =partial= parcijalizovati drugim parametrom već samo prvim.
+    Nedostatak parcijalnih funkcija formulisanih na način kako je to
+    urađeno u Clojure-u što se parametri funkcije parcijalizuju *samo*
+    sa početka. Na primer funkciju =-= ne možemo *samo* koristeći
+    =partial= parcijalizovati drugim parametrom već samo prvim.
 
-   #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "78-80"
+    #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "79-81"
 
-   Ali možemo postići taj efekat uvodeći jednu prostu =lambdu=:
+    Ali možemo postići taj efekat uvodeći jednu prostu =lambdu=:
 
-   #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "81-83"
+    #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "82-84"
 
 ** Kompozicija funkcija
    Još jednom, Clojure svoje korene vuče iz matematike pa tako ima još
@@ -574,7 +574,7 @@ system that ensure clean, correct, multithreaded designs.
    to vrlo elegantno možemo da iskoristimo kompoziciju funkcija koje
    već postoje u Clojure-u:
 
-   #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "84-91"
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "85-92"
 
    Primetimo da se poslednja navedena funkcija poziva prva tj. primena
    funkcija ide "iznutra ka spolja". To možda može izgledati čudno
@@ -582,7 +582,7 @@ system that ensure clean, correct, multithreaded designs.
    drugi način da se ovo zapiše korišćenjem /threading macro/-a (o
    makroima će biti reči [[*Read, evaluate vrtlog i makroi][u nastavku]]):
 
-   #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "92-99"
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "93-100"
 
 ** Clojure naglašava svoju lenjost
    Clojure se ne smatra lenjim jezikom u smislu u kome se to misli
@@ -593,7 +593,7 @@ system that ensure clean, correct, multithreaded designs.
    =reduce=, =filter= i druge. To se može jednostavno videti na
    primeru:
 
-   #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "100-109"
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "101-110"
 
    Da Clojure nije lenj tačke bi se ispisivale na ekran odmah pri
    definisanju =result=-a. Ovako je ispisivanje na ekran pozvano tek
@@ -604,7 +604,7 @@ system that ensure clean, correct, multithreaded designs.
    skup realnih brojeva onda fibonačijevu sekvencu možemo da
    predstavimo na sledeći način:
 
-   #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "110-138"
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "111-139"
 
    Kada smo radili napredni Python upoznali smo se sa metodama koje
    nam omogućuju da beskonačno kružimo kroz konačne strukture. Ovde je
@@ -613,7 +613,7 @@ system that ensure clean, correct, multithreaded designs.
    Recimo želimo da ravnomerno rasporedimo ljude iz kolekcije na 4
    moguća izlaza:
 
-   #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "139-180"
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "140-181"
 
 ** Kada je mutacija stvarno nezaobilazna
 
