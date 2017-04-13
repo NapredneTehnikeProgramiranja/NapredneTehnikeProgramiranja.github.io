@@ -409,17 +409,6 @@ system that ensure clean, correct, multithreaded designs.
      šansa da Vam neko proste stvari zakomplikuje svojim lošim
      objašnjenjem)
 
-** Vežbanje 1
-   Ideje zadataka uglavnom preuzete sa [[https://www.4clojure.com][4Clojure]].
-
-   1. Napisati funkciju =say-hello= koja prima parametar =name= i vraća
-      tekst =Hello to <name>=.
-   2. Napisati funkciju =get-the-caps= koja prima string engleskih
-      slova a vraća samo njegova velika slova.
-   3. Napisati funkciju =drop-nth= koja prima dva parametra od kojih je
-      prvo vektor elemenata a drugo =n=. Funkcija vraća listu bez
-      svakog =n=-tog elementa.
-
 ** Funkcije višeg reda
    [[https://en.wikipedia.org/wiki/Higher-order_function][Funkcije višeg]] reda su funkcije koje primaju funkcije kao parametre
    i/ili vraćaju funkcije.
@@ -614,6 +603,46 @@ system that ensure clean, correct, multithreaded designs.
    moguća izlaza:
 
    #+INCLUDE: "clojure-ntp/src/clojure_ntp/partials.clj" src clojure :lines "140-181"
+
+** Vežbanje 1
+   Ideje zadataka uglavnom preuzete sa [[https://www.4clojure.com][4Clojure]].
+
+   1. Napisati funkciju =say-hello= koja prima parametar =name= i vraća
+      tekst =Hello to <name>=.
+   2. Napisati funkciju =get-the-caps= koja prima string engleskih
+      slova a vraća samo njegova velika slova.
+   3. Napisati funkciju =drop-nth= koja prima dva parametra od kojih je
+      prvo vektor elemenata a drugo =n=. Funkcija vraća listu bez
+      svakog =n=-tog elementa.
+   4. Napravite =flip= funkciju višeg reda koja invertuje parametre
+      prosleđene funkcije.
+
+      #+BEGIN_SRC clojure
+        ((flip -) 1 2)
+        ;; => 1
+      #+END_SRC
+
+   5. Napisati funkciju =b-tree?= koja proverava da li je neka
+      sekvenca binarno stablo.
+
+      #+BEGIN_SRC clojure
+        (b-tree? [1 [2 [3 [4 false nil] nil] nil] nil])
+        ;; => true
+
+        (b-tree? '(:a nil ()))
+        ;; => false
+
+        (b-tree? [1 [2 nil nil] [3 nil nil] [4 nil nil]])
+        ;; => false
+
+        (b-tree? '(:a (:b nil nil) nil))
+        ;; => true
+      #+END_SRC
+
+   6. Lepota je u simetriji. Napišite predikat =beauty-tree?= koji
+      proverava da li je binarno stablo simetrično. Stablo je
+      simetrično ako je svako levo podstablo odraz u ogledalu od
+      desnog podstabla.
 
 ** Kada je mutacija stvarno nezaobilazna
 
