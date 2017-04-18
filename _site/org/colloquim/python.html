@@ -1,0 +1,877 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="sr" xml:lang="sr">
+<head>
+<!-- 2017-04-17 пон 19:14 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Napredne tehnike programiranja - kolokvijumi Python</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Novak Boškov" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/bigblow.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/hideshow.css"/>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.zclip.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/bigblow.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/hideshow.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Napredne tehnike programiranja - kolokvijumi Python</h1>
+<div id="table-of-contents">
+<h2>Sadr&#382;aj</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgd93c0a6">1. April 2017.</a>
+<ul>
+<li><a href="#org73f7615">1.1. <i>jagode</i></a>
+<ul>
+<li><a href="#org6b0c9de">1.1.1. Šta su <i>magične</i> metode u Python-u, čemu služe?</a></li>
+<li><a href="#org7f0b834">1.1.2. Ako želim da napravim izvedeni atribut klase koju pišem šta treba da uradim?</a></li>
+<li><a href="#orge35085c">1.1.3. Šta su dekoratori i čemu služe? Dati jedan prost primer.</a></li>
+<li><a href="#org0188737">1.1.4. Koristeći <code>itertools.takewhile</code> i <code>zip</code> implementirajte <code>solve</code> funkciju tako da radi kao što je dato u nastavku.</a></li>
+<li><a href="#org172e4e7">1.1.5. Napisati TextX gramatiku za <i>Pacman</i> jezik</a></li>
+</ul>
+</li>
+<li><a href="#org7f42c3c">1.2. <i>maline</i></a>
+<ul>
+<li><a href="#orgcfb9fc5">1.2.1. Šta radi specijalna metoda <code>__next__</code>?</a></li>
+<li><a href="#orgd39483a">1.2.2. Ako želim da podržim operacije <code>+</code>, <code>-</code>, <code>*</code> nad objektima klase koju pišem šta treba da uradim?</a></li>
+<li><a href="#org4260da9">1.2.3. Šta su deskriptori i čemu služe? Dati jedan prost primer.</a></li>
+<li><a href="#org3ddf9a4">1.2.4. Koristeći dekoratore dopuniti klasu <code>Counter</code> da radi kao što je dato u primeru dole.</a></li>
+<li><a href="#orgc609e70">1.2.5. Napisati TextX gramatiku za <i>Street Fighter</i> jezik</a></li>
+</ul>
+</li>
+<li><a href="#orged6f9d0">1.3. <i>borovnice</i></a>
+<ul>
+<li><a href="#org53826e8">1.3.1. Šta redi magična metoda <code>__delattr__</code>?</a></li>
+<li><a href="#org32af046">1.3.2. Ako želim da podržim poređenje između objekata klase koju pišem šta <b>moram</b> da uraidim?</a></li>
+<li><a href="#orgc4561ec">1.3.3. Da li dekoratori mogu imati parametre? Dati jedan prost primer sa dekoratorom koji prima jedan parametar.</a></li>
+<li><a href="#org62bc673">1.3.4. Koristeći generatore dopuniti klasu <code>Factor</code> tako da radi kao što je dato u primerima dole.</a></li>
+<li><a href="#org8711413">1.3.5. Napisati TextX gramatiku za <i>Mario</i> jezik</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd93c0a6" class="outline-2">
+<h2 id="orgd93c0a6"><span class="section-number-2">1</span> April 2017.</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-org73f7615" class="outline-3">
+<h3 id="org73f7615"><span class="section-number-3">1.1</span> <i>jagode</i></h3>
+<div class="outline-text-3" id="text-1-1">
+</div><div id="outline-container-org6b0c9de" class="outline-4">
+<h4 id="org6b0c9de"><span class="section-number-4">1.1.1</span> Šta su <i>magične</i> metode u Python-u, čemu služe?</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7f0b834" class="outline-4">
+<h4 id="org7f0b834"><span class="section-number-4">1.1.2</span> Ako želim da napravim izvedeni atribut klase koju pišem šta treba da uradim?</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<p>
+Želim da sa izvedenim atributom mogu da uradim sledeće:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #DFAF8F;">a</span> = MojaKlasa(...)
+<span style="color: #F0DFAF; font-weight: bold;">print</span>(a.izvedeni_atribut)
+<span style="color: #DFAF8F;">a.izvedeni_atribut</span> = 43
+</pre>
+</div>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge35085c" class="outline-4">
+<h4 id="orge35085c"><span class="section-number-4">1.1.3</span> Šta su dekoratori i čemu služe? Dati jedan prost primer.</h4>
+<div class="outline-text-4" id="text-1-1-3">
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0188737" class="outline-4">
+<h4 id="org0188737"><span class="section-number-4">1.1.4</span> Koristeći <code>itertools.takewhile</code> i <code>zip</code> implementirajte <code>solve</code> funkciju tako da radi kao što je dato u nastavku.</h4>
+<div class="outline-text-4" id="text-1-1-4">
+<p>
+Funkcija <code>solve</code> uzima parove <code>(prozivod, kupac)</code> sve dok kupac ima
+budžet sa kojim može da kupi proizvod.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">class</span> <span style="color: #7CB8BB;">Proizvod</span>():
+    <span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">__init__</span>(<span style="color: #F0DFAF; font-weight: bold;">self</span>, cena):
+        <span style="color: #F0DFAF; font-weight: bold;">self</span>.cena = cena
+    <span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">__str__</span>(<span style="color: #F0DFAF; font-weight: bold;">self</span>):
+        <span style="color: #F0DFAF; font-weight: bold;">return</span> <span style="color: #CC9393;">"P({})"</span>.<span style="color: #DCDCCC; font-weight: bold;">format</span>(<span style="color: #F0DFAF; font-weight: bold;">self</span>.cena)
+
+<span style="color: #F0DFAF; font-weight: bold;">class</span> <span style="color: #7CB8BB;">Kupac</span>():
+    <span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">__init__</span>(<span style="color: #F0DFAF; font-weight: bold;">self</span>, budzet):
+        <span style="color: #F0DFAF; font-weight: bold;">self</span>.budzet = budzet
+    <span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">__str__</span>(<span style="color: #F0DFAF; font-weight: bold;">self</span>):
+        <span style="color: #F0DFAF; font-weight: bold;">return</span> <span style="color: #CC9393;">"K({})"</span>.<span style="color: #DCDCCC; font-weight: bold;">format</span>(<span style="color: #F0DFAF; font-weight: bold;">self</span>.budzet)
+
+<span style="color: #DFAF8F;">proizvodi</span> = [Proizvod(1), Proizvod(2), Proizvod(3), Proizvod(4)]
+<span style="color: #DFAF8F;">kupci</span> = [Kupac(2), Kupac(2), Kupac(1)]
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #DFAF8F;">resenje</span> = solve(proizvodi, kupci)
+
+[(<span style="color: #DCDCCC; font-weight: bold;">str</span>(i), <span style="color: #DCDCCC; font-weight: bold;">str</span>(j)) <span style="color: #F0DFAF; font-weight: bold;">for</span> i, j <span style="color: #F0DFAF; font-weight: bold;">in</span> resenje] == [(<span style="color: #CC9393;">'P(1)'</span>, <span style="color: #CC9393;">'K(2)'</span>), (<span style="color: #CC9393;">'P(2)'</span>, <span style="color: #CC9393;">'K(2)'</span>)]
+</pre>
+</div>
+
+<pre class="example">
+True
+</pre>
+
+<p>
+<b>[Pomoć]</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #DCDCCC; font-weight: bold;">list</span>(<span style="color: #DCDCCC; font-weight: bold;">zip</span>(proizvodi, kupci)) <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">jer zip vraca generator</span>
+</pre>
+</div>
+
+<pre class="example">
+[(&lt;__main__.Proizvod object at 0x7f7017d18160&gt;, &lt;__main__.Kupac object at 0x7f7017d10e80&gt;),
+(&lt;__main__.Proizvod object at 0x7f7017d18198&gt;, &lt;__main__.Kupac object at 0x7f7017d10eb8&gt;),
+(&lt;__main__.Proizvod object at 0x7f7017d181d0&gt;, &lt;__main__.Kupac object at 0x7f7017d10ef0&gt;)]
+</pre>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #DFAF8F;">a</span>, <span style="color: #DFAF8F;">b</span> = (1, 2)
+<span style="color: #F0DFAF; font-weight: bold;">print</span>(a, b)
+</pre>
+</div>
+
+<pre class="example">
+1 2
+</pre>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+</div>
+</div>
+
+<div id="outline-container-org172e4e7" class="outline-4">
+<h4 id="org172e4e7"><span class="section-number-4">1.1.5</span> Napisati TextX gramatiku za <i>Pacman</i> jezik</h4>
+<div class="outline-text-4" id="text-1-1-5">
+<p>
+Voditi računa da elementi jezika budu dostupni u rezultujućem
+objektnom modelu koji dobijete od TextX-a.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c">program = {
+    init 4, 3;
+    up 3;
+    eat;
+    eat;
+    left 1;
+    eat;
+    right 5;
+    eat;
+    left 3;
+    down 1;
+};
+
+run(program);
+</pre>
+</div>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org7f42c3c" class="outline-3">
+<h3 id="org7f42c3c"><span class="section-number-3">1.2</span> <i>maline</i></h3>
+<div class="outline-text-3" id="text-1-2">
+</div><div id="outline-container-orgcfb9fc5" class="outline-4">
+<h4 id="orgcfb9fc5"><span class="section-number-4">1.2.1</span> Šta radi specijalna metoda <code>__next__</code>?</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd39483a" class="outline-4">
+<h4 id="orgd39483a"><span class="section-number-4">1.2.2</span> Ako želim da podržim operacije <code>+</code>, <code>-</code>, <code>*</code> nad objektima klase koju pišem šta treba da uradim?</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4260da9" class="outline-4">
+<h4 id="org4260da9"><span class="section-number-4">1.2.3</span> Šta su deskriptori i čemu služe? Dati jedan prost primer.</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3ddf9a4" class="outline-4">
+<h4 id="org3ddf9a4"><span class="section-number-4">1.2.4</span> Koristeći dekoratore dopuniti klasu <code>Counter</code> da radi kao što je dato u primeru dole.</h4>
+<div class="outline-text-4" id="text-1-2-4">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">class</span> <span style="color: #7CB8BB;">Counter</span>():
+    <span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">__init__</span>(<span style="color: #F0DFAF; font-weight: bold;">self</span>, num):
+        <span style="color: #F0DFAF; font-weight: bold;">self</span>.num = num
+    <span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">two_up</span>(<span style="color: #F0DFAF; font-weight: bold;">self</span>):
+        <span style="color: #F0DFAF; font-weight: bold;">return</span> <span style="color: #F0DFAF; font-weight: bold;">self</span>.num + 2
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-python">Counter(1).two_up()
+</pre>
+</div>
+
+<pre class="example">
+'This is 3'
+</pre>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc609e70" class="outline-4">
+<h4 id="orgc609e70"><span class="section-number-4">1.2.5</span> Napisati TextX gramatiku za <i>Street Fighter</i> jezik</h4>
+<div class="outline-text-4" id="text-1-2-5">
+<p>
+Voditi računa da elementi jezika budu dostupni u rezultujućem
+objektnom modelu koji dobijete od TextX-a.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">FIGHT.
+    FIST &lt;left&gt;, 2.
+    FIST &lt;right&gt;.
+    KNEE &lt;right&gt;.
+    BLOCK FOR 3.
+    LEG &lt;left&gt;.
+    FIST &lt;right&gt;, 3.
+    KNEE &lt;left&gt;.
+    BLOCK.
+    FIST &lt;right&gt;, 1.
+    HEAD.
+    HEAD.
+    KNEE &lt;left&gt;.
+WIN.
+</pre>
+</div>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orged6f9d0" class="outline-3">
+<h3 id="orged6f9d0"><span class="section-number-3">1.3</span> <i>borovnice</i></h3>
+<div class="outline-text-3" id="text-1-3">
+</div><div id="outline-container-org53826e8" class="outline-4">
+<h4 id="org53826e8"><span class="section-number-4">1.3.1</span> Šta redi magična metoda <code>__delattr__</code>?</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+</div>
+</div>
+
+<div id="outline-container-org32af046" class="outline-4">
+<h4 id="org32af046"><span class="section-number-4">1.3.2</span> Ako želim da podržim poređenje između objekata klase koju pišem šta <b>moram</b> da uraidim?</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc4561ec" class="outline-4">
+<h4 id="orgc4561ec"><span class="section-number-4">1.3.3</span> Da li dekoratori mogu imati parametre? Dati jedan prost primer sa dekoratorom koji prima jedan parametar.</h4>
+<div class="outline-text-4" id="text-1-3-3">
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+</div>
+</div>
+
+<div id="outline-container-org62bc673" class="outline-4">
+<h4 id="org62bc673"><span class="section-number-4">1.3.4</span> Koristeći generatore dopuniti klasu <code>Factor</code> tako da radi kao što je dato u primerima dole.</h4>
+<div class="outline-text-4" id="text-1-3-4">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">class</span> <span style="color: #7CB8BB;">Factor</span>():
+    <span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">__init__</span>(<span style="color: #F0DFAF; font-weight: bold;">self</span>, num):
+        <span style="color: #F0DFAF; font-weight: bold;">self</span>.num = num
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">for</span> f <span style="color: #F0DFAF; font-weight: bold;">in</span> Factor(10):
+    <span style="color: #F0DFAF; font-weight: bold;">print</span>(f.num)
+</pre>
+</div>
+
+<pre class="example">
+10
+20
+30...
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">for</span> t <span style="color: #F0DFAF; font-weight: bold;">in</span> Factor(5):
+    <span style="color: #F0DFAF; font-weight: bold;">print</span>(t.num)
+</pre>
+</div>
+
+<pre class="example">
+5
+10
+15...
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">for</span> t <span style="color: #F0DFAF; font-weight: bold;">in</span> Factor(1):
+    <span style="color: #F0DFAF; font-weight: bold;">print</span>(t.num)
+</pre>
+</div>
+
+<pre class="example">
+1
+2
+3...
+</pre>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8711413" class="outline-4">
+<h4 id="org8711413"><span class="section-number-4">1.3.5</span> Napisati TextX gramatiku za <i>Mario</i> jezik</h4>
+<div class="outline-text-4" id="text-1-3-5">
+<p>
+Voditi računa da elementi jezika budu dostupni u rezultujućem
+objektnom modelu koji dobijete od TextX-a.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">level_in
+    jump
+    go 3
+    crouch
+    go 2
+    hit turtle
+    hit turtle
+    hit snake
+    crouch <span style="color: #F0DFAF; font-weight: bold;">for</span> 3
+    go 4
+level_out
+</pre>
+</div>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+
+<p>
+=&gt;
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Novak Boškov</p>
+<p class="date">Created: 2017-04-17 пон 19:14</p>
+<p class="validation"></p>
+</div>
+</body>
+</html>

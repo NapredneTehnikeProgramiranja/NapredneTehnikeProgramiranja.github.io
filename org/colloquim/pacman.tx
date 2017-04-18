@@ -1,0 +1,12 @@
+Program: expressions*=Expression;
+Expression: Definition | Run;
+Definition: 'program' '=' '{' Commands '}' ';';
+Run: 'run' '(' program=ID ')' ';';
+Commands: commands*=Command;
+Command: Init | Up | Down | Left | Right | Eat ';';
+Init: 'init' x=INT ',' y=INT;
+Up: 'up' n=INT;
+Down: 'down' n=INT;
+Left: 'left' n=INT;
+Right: 'right' n=INT;
+Eat: 'eat';

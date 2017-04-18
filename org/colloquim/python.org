@@ -1,0 +1,526 @@
+#+TITLE: Napredne tehnike programiranja - kolokvijumi Python
+#+LANGUAGE: sr
+#+SETUPFILE: ../org-html-themes/setup/theme-bigblow.setup
+#+PROPERTY: header-args:python :session ntp :results output :exports both
+#+TAGS: za_radoznale
+
+* April 2017.
+
+** /jagode/
+
+*** Šta su /magične/ metode u Python-u, čemu služe?
+    Magične metode su metode koje se posebno tretiraju od strane
+    Python iterpretera, njihov naziv počinje i završava se sa =__=
+    (=__naziv__=). Mogu služiti za implementaciju protokola
+    (poređenje, generatori...).
+
+*** Ako želim da napravim izvedeni atribut klase koju pišem šta treba da uradim?
+
+    Želim da sa izvedenim atributom mogu da uradim sledeće:
+
+    #+BEGIN_SRC python :eval no
+      a = MojaKlasa(...)
+      print(a.izvedeni_atribut)
+      a.izvedeni_atribut = 43
+    #+END_SRC
+
+    Treba da upotrebim =properties= mehanizam. To mogu uraditi na sledeći način:
+
+    #+BEGIN_SRC python
+      class MojaKlasa:
+          def __init__(self, a):
+              self.a = a
+          @property
+          def izvedeni_atribut(self):
+              # bilo koja vrednost izvedenog atributa
+              return self.a + 1
+          @izvedeni_atribut.setter
+          def izvedeni_atribut(self, i):
+              self.a = i - 1;
+    #+END_SRC
+
+    #+RESULTS:
+
+    #+BEGIN_SRC python
+      a = MojaKlasa(1)
+      print(a.izvedeni_atribut)
+    #+END_SRC
+
+    #+RESULTS:
+    :
+    : 2
+
+    #+BEGIN_SRC python
+      a.izvedeni_atribut = 43
+      a.izvedeni_atribut
+    #+END_SRC
+
+    #+RESULTS:
+    :
+    : 43
+
+*** Šta su dekoratori i čemu služe? Dati jedan prost primer.
+    Dekoratori su funkcije višeg reda koje kao parametre prihvataju
+    druge funkcije (ili =callable= generalno) i vraćaju izmenjenu verziju.
+
+    #+BEGIN_SRC python
+      def dekorator(f):
+          def w(a):
+              return str(f(a)) + " dekorisano."
+          return w
+
+      @dekorator
+      def inc(n):
+          return n + 1
+    #+END_SRC
+
+    #+RESULTS:
+
+    #+BEGIN_SRC python
+      inc(43)
+    #+END_SRC
+
+    #+RESULTS:
+    : '44 dekorisano.'
+
+*** Koristeći =itertools.takewhile= i =zip= implementirajte =solve= funkciju tako da radi kao što je dato u nastavku.
+
+    Funkcija =solve= uzima parove =(prozivod, kupac)= sve dok kupac ima
+    budžet sa kojim može da kupi proizvod.
+
+    #+BEGIN_SRC python :eval no
+    class Proizvod():
+        def __init__(self, cena):
+            self.cena = cena
+        def __str__(self):
+            return "P({})".format(self.cena)
+
+    class Kupac():
+        def __init__(self, budzet):
+            self.budzet = budzet
+        def __str__(self):
+            return "K({})".format(self.budzet)
+
+    proizvodi = [Proizvod(1), Proizvod(2), Proizvod(3), Proizvod(4)]
+    kupci = [Kupac(2), Kupac(2), Kupac(1)]
+    #+END_SRC
+
+    #+RESULTS:
+
+    #+BEGIN_SRC python
+    import itertools
+
+    def predicate(pair):
+        p, k = pair
+        return k.budzet >= p.cena
+
+    def solve(proizvodi, kupci):
+        lazy = itertools.takewhile(predicate, zip(proizvodi, kupci))
+        return list(lazy)
+    #+END_SRC
+
+    #+RESULTS:
+
+    #+BEGIN_SRC python :eval no
+    resenje = solve(proizvodi, kupci)
+
+    [(str(i), str(j)) for i, j in resenje] == [('P(1)', 'K(2)'), ('P(2)', 'K(2)')]
+    #+END_SRC
+
+    #+RESULTS:
+    : True
+
+    *[Pomoć]*
+
+    #+BEGIN_SRC python :eval no
+    list(zip(proizvodi, kupci)) # jer zip vraća generator
+    #+END_SRC
+
+    #+LATEX: {\scriptsize
+    #+RESULTS:
+    : [(<__main__.Proizvod object at 0x7f7017d18160>, <__main__.Kupac object at 0x7f7017d10e80>),
+    : (<__main__.Proizvod object at 0x7f7017d18198>, <__main__.Kupac object at 0x7f7017d10eb8>),
+    : (<__main__.Proizvod object at 0x7f7017d181d0>, <__main__.Kupac object at 0x7f7017d10ef0>)]
+    #+LATEX: }
+
+    #+BEGIN_SRC python :eval no
+    a, b = (1, 2)
+    print(a, b)
+    #+END_SRC
+
+    #+RESULTS:
+    :
+    : 1 2
+
+*** Napisati TextX gramatiku za /Pacman/ jezik
+
+    Voditi računa da elementi jezika budu dostupni u rezultujućem
+    objektnom modelu koji dobijete od TextX-a.
+
+    #+BEGIN_SRC c
+    program = {
+        init 4, 3;
+        up 3;
+        eat;
+        eat;
+        left 1;
+        eat;
+        right 5;
+        eat;
+        left 3;
+        down 1;
+    };
+
+    run(program);
+    #+END_SRC
+
+    Gramatika:
+
+    #+INCLUDE: "pacman.tx" src textx
+
+    #+BEGIN_SRC python
+    from textx.metamodel import metamodel_from_file
+    m = metamodel_from_file("pacman.tx").model_from_file("pacman.pacman")
+    m.expressions
+    #+END_SRC
+
+    #+RESULTS:
+    :
+    : >>> ['program', <textx:Run object at 0x7f8fd13f3c18>]
+
+** /maline/
+
+*** Šta radi specijalna metoda =__next__=?
+    Vraća sledeći element iterabilnog objekta ako postoji ili
+    =StopIteration= izuzetak.
+
+    #+BEGIN_SRC python
+      class Iterabilno():
+          def __init__(self, a):
+              self.a = a
+          def __iter__(self):
+              return self
+          def __next__(self):
+              if self.a < 10:
+                  self.a += 1
+                  return self.a
+              else:
+                  raise StopIteration
+    #+END_SRC
+
+    #+RESULTS:
+
+    #+BEGIN_SRC python
+      a = Iterabilno(1)
+
+      [i for i in a]
+    #+END_SRC
+
+    #+RESULTS:
+    :
+    : >>> [2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+    #+BEGIN_SRC python
+      a = Iterabilno(1)
+
+      a.__next__()
+      a.__next__()
+      a.__next__()
+      a.__next__()
+      a.__next__()
+      a.__next__()
+      a.__next__()
+      a.__next__()
+      a.__next__()
+      a.__next__()
+    #+END_SRC
+
+    #+RESULTS:
+    #+begin_example
+
+    >>> 2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+    10
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+      File "<stdin>", line 11, in __next__
+    StopIteration
+    #+end_example
+
+    #+BEGIN_SRC python
+      li = [1, 2, 3]
+    #+END_SRC
+
+    #+RESULTS:
+
+    #+BEGIN_SRC python
+      [i for i in li]
+    #+END_SRC
+
+    #+RESULTS:
+    : [1, 2, 3]
+
+    Može i sa generatorima:
+
+    #+BEGIN_SRC python
+      def g(a):
+          while a < 10:
+              yield a + 1
+              a += 1
+    #+END_SRC
+
+    #+RESULTS:
+
+    #+BEGIN_SRC python
+      gen = g(0)
+      gen.__next__()
+    #+END_SRC
+
+    #+RESULTS:
+    :
+    : 1
+
+    #+BEGIN_SRC python
+      [i for i in gen]
+    #+END_SRC
+
+    #+RESULTS:
+    : [2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+*** Ako želim da podržim operacije =+=, =-=, =*= nad objektima klase koju pišem šta treba da uradim?
+    Potrebno je da implementiram magične metode =__add__=, =__sub__=, =__mul__=.
+
+*** Šta su deskriptori i čemu služe? Dati jedan prost primer.
+    Deskriptor je atribut objekta koji ima preklopljenu barem jednu
+    metodu iz deskriptor protokola (=__set__=, =__get__=,
+    =__del__=). Ako je neka od tih metoda atributa preklopljena ona će
+    se koristiti kada se radi odgovarajuća =set=, =get= ili =del=
+    akcija nad atributom.
+
+    #+BEGIN_SRC python
+      class Desc:
+          def __init__(self, i):
+              self.i = i
+          def __set__(self, instance, v):
+              print("instance.a: %s, value: %s" % (instance.a, v))
+              self.i = v
+          def __get__(self, instance, o):
+              print("instance.a: %s, owner: %s" % (instance.a, o))
+              return self.i
+
+      class A:
+          b = Desc(0)
+          def __init__(self, a, b):
+              self.a = a
+              self.b = b
+    #+END_SRC
+
+    #+RESULTS:
+
+    #+BEGIN_SRC python
+      a = A(43, 23)
+      a.b = 21230
+      a.b
+    #+END_SRC
+
+    #+RESULTS:
+    : instance.a: 43, value: 23
+    : instance.a: 43, value: 21230
+    : instance.a: 43, owner: <class '__main__.A'>
+    : 21230
+
+*** Koristeći dekoratore dopuniti klasu =Counter= da radi kao što je dato u primeru dole.
+
+    #+BEGIN_SRC python
+    def prettify(f):
+        def wrapper(param):
+            return "This is " + str(f(param))
+        return wrapper
+    #+END_SRC
+
+    #+RESULTS:
+
+    #+BEGIN_SRC python
+    class Counter():
+        def __init__(self, num):
+            self.num = num
+        @prettify
+        def two_up(self):
+            return self.num + 2
+    #+END_SRC
+
+    #+RESULTS:
+
+    #+BEGIN_SRC python
+    Counter(1).two_up()
+    #+END_SRC
+
+    #+RESULTS:
+    : 'This is 3'
+
+*** Napisati TextX gramatiku za /Street Fighter/ jezik
+
+    Voditi računa da elementi jezika budu dostupni u rezultujućem
+    objektnom modelu koji dobijete od TextX-a.
+
+    #+BEGIN_SRC python :eval no
+    FIGHT.
+        FIST <left>, 2.
+        FIST <right>.
+        KNEE <right>.
+        BLOCK FOR 3.
+        LEG <left>.
+        FIST <right>, 3.
+        KNEE <left>.
+        BLOCK.
+        FIST <right>, 1.
+        HEAD.
+        HEAD.
+        KNEE <left>.
+    WIN.
+    #+END_SRC
+
+    =>
+
+    =>
+
+    =>
+
+    =>
+
+    =>
+
+
+** /borovnice/
+
+*** Šta redi magična metoda =__delattr__=?
+    =>
+
+    =>
+
+    =>
+
+    =>
+
+    =>
+
+*** Ako želim da podržim poređenje između objekata klase koju pišem šta *moram* da uraidim?
+    =>
+
+    =>
+
+    =>
+
+    =>
+
+    =>
+
+*** Da li dekoratori mogu imati parametre? Dati jedan prost primer sa dekoratorom koji prima jedan parametar.
+    =>
+
+    =>
+
+    =>
+
+    =>
+
+    =>
+
+*** Koristeći generatore dopuniti klasu =Factor= tako da radi kao što je dato u primerima dole.
+
+    #+BEGIN_SRC python :eval no
+    class Factor():
+        def __init__(self, num):
+            self.num = num
+    #+END_SRC
+
+    #+BEGIN_SRC python :eval no :exports none
+    class Factor():
+        def __init__(self, num):
+            self.num = num
+        def __iter__(self):
+            factor = 1
+            while True:
+                yield Factor(factor * self.num)
+                factor += 1
+    #+END_SRC
+
+    #+RESULTS:
+
+    #+BEGIN_SRC python :eval no
+    for f in Factor(10):
+        print(f.num)
+    #+END_SRC
+
+    #+RESULTS:
+    :
+    : 10
+    : 20
+    : 30...
+
+    #+BEGIN_SRC python :eval no
+    for t in Factor(5):
+        print(t.num)
+    #+END_SRC
+
+    #+RESULTS:
+    :
+    : 5
+    : 10
+    : 15...
+
+    #+BEGIN_SRC python :eval no
+    for t in Factor(1):
+        print(t.num)
+    #+END_SRC
+
+    #+RESULTS:
+    :
+    : 1
+    : 2
+    : 3...
+
+    =>
+
+    =>
+
+    =>
+
+    =>
+
+    =>
+
+*** Napisati TextX gramatiku za /Mario/ jezik
+
+    Voditi računa da elementi jezika budu dostupni u rezultujućem
+    objektnom modelu koji dobijete od TextX-a.
+
+    #+BEGIN_SRC python :eval no
+    level_in
+        jump
+        go 3
+        crouch
+        go 2
+        hit turtle
+        hit turtle
+        hit snake
+        crouch for 3
+        go 4
+    level_out
+    #+END_SRC
+
+    =>
+
+    =>
+
+    =>
+
+    =>
+
+    =>

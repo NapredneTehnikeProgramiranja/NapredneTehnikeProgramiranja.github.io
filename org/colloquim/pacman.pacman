@@ -1,0 +1,14 @@
+program = {
+    init 4, 3;
+    up 3;
+    eat;
+    eat;
+    left 1;
+    eat;
+    right 5;
+    eat;
+    left 3;
+    down 1;
+};
+
+run(program);
