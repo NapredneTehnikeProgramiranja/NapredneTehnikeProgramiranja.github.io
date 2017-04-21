@@ -1,0 +1,14 @@
+FIGHT.
+    FIST <left>, 2.
+    FIST <right>.
+    KNEE <right>.
+    BLOCK FOR 3.
+    LEG <left>.
+    FIST <right>, 3.
+    KNEE <left>.
+    BLOCK.
+    FIST <right>, 1.
+    HEAD.
+    HEAD.
+    KNEE <left>.
+WIN.

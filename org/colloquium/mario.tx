@@ -1,0 +1,6 @@
+Program: 'level_in' commands*=Command 'level_out';
+Command: Jump | Go | Crouch | Hit;
+Jump: 'jump';
+Go: 'go' steps=NUMBER;
+Crouch: 'crouch' ('for' for=NUMBER)?;
+Hit: 'hit' object=ID;

@@ -1,0 +1,11 @@
+level_in
+    jump
+    go 3
+    crouch
+    go 2
+    hit turtle
+    hit turtle
+    hit snake
+    crouch for 3
+    go 4
+level_out

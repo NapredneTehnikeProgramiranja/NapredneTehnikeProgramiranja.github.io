@@ -1,0 +1,9 @@
+Program: 'FIGHT' '.' commands*=Command 'WIN' '.';
+Command: Fist | Knee | Block | Leg | Head;
+Fist: 'FIST' Side (',' rep=Rep)? '.';
+Side: '<left>' | '<right>';
+Rep: NUMBER;
+Knee: 'KNEE' Side (',' rep=Rep)? '.';
+Block: 'BLOCK' ('FOR' rep=Rep)? '.';
+Leg: 'LEG' Side (',' rep=Rep)? '.';
+Head: 'HEAD' '.';

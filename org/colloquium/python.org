@@ -179,9 +179,9 @@
     #+INCLUDE: "pacman.tx" src textx
 
     #+BEGIN_SRC python
-    from textx.metamodel import metamodel_from_file
-    m = metamodel_from_file("pacman.tx").model_from_file("pacman.pacman")
-    m.expressions
+      from textx.metamodel import metamodel_from_file
+      m = metamodel_from_file("pacman.tx").model_from_file("pacman.pacman")
+      m.expressions
     #+END_SRC
 
     #+RESULTS:
@@ -386,51 +386,59 @@
     WIN.
     #+END_SRC
 
-    =>
+    Gramatika:
 
-    =>
+    #+INCLUDE: "s_fighter.tx" src textx
 
-    =>
+    #+BEGIN_SRC python
+      from textx.metamodel import metamodel_from_file
+      m = metamodel_from_file("s_fighter.tx").model_from_file("s_fighter.s_fighter")
+      m.commands
+    #+END_SRC
 
-    =>
-
-    =>
+    #+RESULTS:
+    :
+    : >>> [<textx:Fist object at 0x7feec6995240>, <textx:Fist object at 0x7feec6995978>, <textx:Knee object at 0x7feec6995f60>, <textx:Block object at 0x7feec69cc048>, <textx:Leg object at 0x7feec69cc080>, <textx:Fist object at 0x7feec69cc0f0>, <textx:Knee object at 0x7feec69cc0b8>, <textx:Block object at 0x7feec69cc160>, <textx:Fist object at 0x7feec69cc128>, 'HEAD.', 'HEAD.', <textx:Knee object at 0x7feec69cc1d0>]
 
 
 ** /borovnice/
 
 *** Šta redi magična metoda =__delattr__=?
-    =>
-
-    =>
-
-    =>
-
-    =>
-
-    =>
+    Briše atribut objekta.
 
 *** Ako želim da podržim poređenje između objekata klase koju pišem šta *moram* da uraidim?
-    =>
+    Moram da implementiram specijalne metode za poređenje: =__eq__,
+    __ne__, __lt__, __le__, __gt__, __ge__=
 
-    =>
-
-    =>
-
-    =>
-
-    =>
+    Ne moram da ih implementiram sve "ručno" ako koristim
+    [[https://docs.python.org/3.6/library/functools.html#functools.total_ordering][total_ordering]] dekorator.
 
 *** Da li dekoratori mogu imati parametre? Dati jedan prost primer sa dekoratorom koji prima jedan parametar.
-    =>
+    Da, dekoratori mogu imati parametre.
 
-    =>
+    #+BEGIN_SRC python
+      def decorator_with_param(arg):
+          def decor(f):
+              def wrapped(p):
+                  return str(f(p)) + \
+                      " returned from a callable decorated by decorator with parameter " \
+                      + str(arg)
+              return wrapped
+          return decor
 
-    =>
+      @decorator_with_param(43)
+      def foo(a):
+          return a + 1
+    #+END_SRC
 
-    =>
+    #+RESULTS:
 
-    =>
+    #+BEGIN_SRC python
+      foo(1)
+    #+END_SRC
+
+    #+RESULTS:
+    : '2 returned from a callable decorated by decorator with parameter 43'
 
 *** Koristeći generatore dopuniti klasu =Factor= tako da radi kao što je dato u primerima dole.
 
@@ -440,7 +448,7 @@
             self.num = num
     #+END_SRC
 
-    #+BEGIN_SRC python :eval no :exports none
+    #+BEGIN_SRC python
     class Factor():
         def __init__(self, num):
             self.num = num
@@ -486,41 +494,35 @@
     : 2
     : 3...
 
-    =>
-
-    =>
-
-    =>
-
-    =>
-
-    =>
-
 *** Napisati TextX gramatiku za /Mario/ jezik
 
     Voditi računa da elementi jezika budu dostupni u rezultujućem
     objektnom modelu koji dobijete od TextX-a.
 
     #+BEGIN_SRC python :eval no
-    level_in
-        jump
-        go 3
-        crouch
-        go 2
-        hit turtle
-        hit turtle
-        hit snake
-        crouch for 3
-        go 4
-    level_out
+      level_in
+          jump
+          go 3
+          crouch
+          go 2
+          hit turtle
+          hit turtle
+          hit snake
+          crouch for 3
+          go 4
+      level_out
     #+END_SRC
 
-    =>
+    Gramatika:
 
-    =>
+    #+INCLUDE: "mario.tx" src textx
 
-    =>
+    #+BEGIN_SRC python
+      from textx.metamodel import metamodel_from_file
+      m = metamodel_from_file("mario.tx").model_from_file("mario.mario")
+      m.commands
+    #+END_SRC
 
-    =>
-
-    =>
+    #+RESULTS:
+    :
+    : >>> ['jump', <textx:Go object at 0x7feec69bd6d8>, <textx:Crouch object at 0x7feec69bd710>, <textx:Go object at 0x7feec69bd780>, <textx:Hit object at 0x7feec69bd748>, <textx:Hit object at 0x7feec69bd7f0>, <textx:Hit object at 0x7feec69bd828>, <textx:Crouch object at 0x7feec69bd860>, <textx:Go object at 0x7feec69bd898>]
