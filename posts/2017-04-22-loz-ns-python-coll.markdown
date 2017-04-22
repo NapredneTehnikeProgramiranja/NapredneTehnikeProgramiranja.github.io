@@ -12,6 +12,6 @@ ili deskriptorima.
 
 # Rezultati
 
-Rezultate možete pogledati
-na
-[enastavi](https://enastava.ftninformatika.com/files/6049/download?download_frd=1).
+Rezultate možete pogledati na enastavi
+([Novi Sad](https://enastava.ftninformatika.com/files/6049/download?download_frd=1),
+[Loznica](https://enastava.ftninformatika.com/files/6062/download?download_frd=1)).
