@@ -671,10 +671,7 @@ system that ensure clean, correct, multithreaded designs.
    njima rukovati. Clojure pruža nekoliko mehanizama za rukovanje
    mutabilnim stanjem.
 
-*** Atomi
-    :LOGBOOK:
-    CLOCK: [2017-04-25 уто 16:28]--[2017-04-25 уто 16:53] =>  0:25
-    :END:
+*** Atom
     /Atomi/ su prvi i najjednostavniji mehanizam za rukovanje
     mutabilnim stanjem. Ideja je da se oni uposle kada imamo
     *sinhrono*, *nekoordinisano* ili *nezavisano* korišćenje deljenih
@@ -726,9 +723,154 @@ system that ensure clean, correct, multithreaded designs.
 
     #+INCLUDE: "clojure-ntp/src/clojure_ntp/atoms.clj" src clojure :lines "63-116"
 
-** Clojure u standardnim OO problemima
-** Perzistentne strukture podataka
+*** Ref
+    Atomi nam daju mehanizam za rukovanje mutabilnim deljenim stanjem
+    kada je to stanje predstavljeno jednom vrednošću. Kada je stanje
+    predstavljeno kroz *više vrednosti* i kada rukovanje stanjem
+    zahteva *koordinaciju* između njih tu su Refs. Klasičan primer
+    koji se navodi kada se govori o ovoj vrsti deljenog stanje je
+    prenos sredstava između računa u banci. Refs u Clojure-u uvek
+    funkcionišu kroz sistem za postizanje konkurentnosti koji se
+    koristi kod baza podataka --- transakcijama. Mehanizam koji
+    obezbeđuje da se transakcije obavljaju na nivou programa se naziva
+    [[https://en.wikipedia.org/wiki/Software_transactional_memory][Software transactional memory]](STM) i ispunjava prva 3 načela [[https://en.wikipedia.org/wiki/ACID][ACID]]
+    principa (Atomicity, Consistency, Isolation). Četvrti (Durability)
+    naravno nije ispunjen po dizajnu jer je sve definisano na nivou
+    programa.
 
+    Ovaj, kao i verovatno većina kurseva koja se bave ovom temom u
+    svrhu ilustracije daće primer sa prenosom sredstava među računima
+    u banci ali ćemo za početak da zašto to ne možemo da
+    implementiramo koristeći Atome:
+
+    #+INCLUDE: "clojure-ntp/src/clojure_ntp/atoms.clj" src clojure :lines "117-149"
+
+    Dakle, atomi nas ne čuvaju od toga da akcija nad jednim uspe a nad
+    drugim ne uspe --- _nekoordinisani su_. I zato su to Refs:
+
+    #+INCLUDE: "clojure-ntp/src/clojure_ntp/atoms.clj" src clojure :lines "150-215"
+
+** Perzistentne strukture podataka
+   Kako bismo lakše razumeli efikasnost imutabinih/perzistentnih
+   struktura podataka u Clojure-u ovde ćemo pukašati da opišemo šta se
+   tu ispod haube zapravo dešava i šta se to tačno _kopira_ kada
+   Clojure "vraća vrednosti koje su nastale od prethodnih vrednosti".
+
+   Strukture podataka većine imperativnih programskih jezika koje ste
+   do sada koristili su uglavnom destruktivne prirode --- kada nešto
+   želite da izmenite to se bukvalno izmeni na mestu na kome se
+   nalazi. Ne možete više tu strukturu da prosleđujete unaokolo po svom
+   programu bez bojazni da će se neko računanje koje koristi tu
+   strukturu podataka "pokvariti".
+
+   Na primer, ako izmenite drugi element neke liste /L1/ u programskom
+   jeziku kao što je Java, sadržaj na tom mestu u memoriji je
+   promenjen i to više nije ona stara lista, stare _više nema_ i sva
+   računanja koja koriste ovu listu moraju to da prepoznaju i pravilno
+   reaguju.
+
+   #+ATTR_HTML: :width 700
+   #+CAPTION: slika iz njige [[http://www.wrox.com/WileyCDA/WroxTitle/Professional-Clojure.productCd-1119267277.html][Professional Clojure]]
+   [[file:images/Selection_001.png]]
+
+   Clojure sa druge strane svoje strukture podataka implementira u
+   perzistentnom maniru, to znači da svaki put kada pokušate da
+   izmenite vrednost zapravo _dobijete novu vrednost koja može da deli
+   neki deo strukture sa originalnom_. Možda deljenje strukture na
+   prvi pogled može izgledati rizično ali pošto su svi delovi neke
+   vrednosti (npr. kolekcije) same po sebi imutabilne tu nema nikakvih
+   problema.
+
+   Pogledajmo sada isti primer "izmene" nekog elementa liste kod
+   Clojure-a. Ono što se zapravo događa je vraćanje _nove liste_ /L2/
+   koja je nastala kopiranjem svih elemenata originalne liste do onog
+   koji želimo da menjamo, a ostatak strukture deli sa originalnom.
+
+   #+ATTR_HTML: :width 700
+   #+CAPTION: slika iz njige [[http://www.wrox.com/WileyCDA/WroxTitle/Professional-Clojure.productCd-1119267277.html][Professional Clojure]]
+   [[file:images/Selection_002.png]]
+
+   Da smo želeli da dodamo listu /L2/ na kraj liste /L1/ desilo bi se
+   kopiranje liste /L1/ sa tim što bi pokazivač na poslednjem elementu
+   nove liste /L2/ pokazivao na početak liste /L3/.
+
+   #+ATTR_HTML: :width 700
+   #+CAPTION: slika iz njige [[http://www.wrox.com/WileyCDA/WroxTitle/Professional-Clojure.productCd-1119267277.html][Professional Clojure]]
+   [[file:images/Selection_003.png]]
+
+   _Imajte u vidu_ da je osnovna motivacija za ovakvu implementaciju
+   bila _očuvanje itegriteta_ podataka i zaštita korektnosti
+   izračunavanja, a _ne puke performanse_ koje mogu narušiti
+   korektnost. Na ovom konkretnom primeru to znači da sva računanja
+   koja koriste /L1/ mogu da nastave _kao da se ništa nije desilo_ ---
+   ušteda na vremenu i prostoru se očekuje ovde.
+
+   Kako bismo stekli bolji osećaj o funkcionisanju perzistentnih
+   struktura podataka pogledajmo kako bismo implementirali binarno
+   stablo:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/persistent_datastructures.clj" src clojure :lines "0-35"
+
+   Pogledajmo sada kako bismo pravili stablo:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/persistent_datastructures.clj" src clojure :lines "36-47"
+
+   Super! Hajde sada da napravimo neko malo zanimljivije stablo:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/persistent_datastructures.clj" src clojure :lines "48-50"
+
+   Kod od gore bi trebao da odgovara stablu ispod:
+
+   #+ATTR_HTML: :width 700
+   #+CAPTION: slika iz njige [[http://www.wrox.com/WileyCDA/WroxTitle/Professional-Clojure.productCd-1119267277.html][Professional Clojure]]
+   [[file:images/Selection_004.png]]
+
+   Pa hajde da to validiramo:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/persistent_datastructures.clj" src clojure :lines "51-69"
+
+   Hajde sada da ispitamo identite levih i desnih podstabala našeg stabla:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/persistent_datastructures.clj" src clojure :lines "70-85"
+
+   Ono na šta treba da obratimo pažnju su konkretne adrese na kojima
+   se nalaze identiteti naših čvorova koji predstavljaju levo i desno
+   podstablo.
+
+   Hajde sada da da dodamo jedan čvor sa vrednošću 6 u stablo
+   (naravno, nema mutiranja, dobijamo potpuno novo stablo):
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/persistent_datastructures.clj" src clojure :lines "86-87"
+
+   *Šta je ovde sad kopirano a šta se deli?*
+
+   Ispitajmo leva i desna podstabla našeg novog stabla:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/persistent_datastructures.clj" src clojure :lines "88-99"
+
+   Levo podstablo nam nije poznato (po adresi, po identitetu) ali
+   desno jeste...
+
+   _to je taj isti identitet koji ujedno predstavlja i desno podstablo
+   početnog stabla_!
+
+   Dakle, ono što smo zapravo napravili je struktura kao na slici ispod:
+
+   #+ATTR_HTML: :width 700
+   #+CAPTION: slika iz njige [[http://www.wrox.com/WileyCDA/WroxTitle/Professional-Clojure.productCd-1119267277.html][Professional Clojure]]
+   [[file:images/Selection_005.png]]
+
+   Dakle, *desilo se neko kopiranje* ali je *neki deo strukture
+   deljen* i nije se kopirao. Oni koji žele da znaju koji se tačno deo
+   kopira a koji se deli kao i kako se to računa mogu svoje čitanje da
+   nastave na nekom od sledećih mesta:
+   - blog [[http://hypirion.com/musings/understanding-persistent-vector-pt-1][Polymatheia]]
+   - Higher Order Blog ([[http://blog.higher-order.net/2009/02/01/understanding-clojures-persistentvector-implementation][ovde]] i [[http://blog.higher-order.net/2009/09/08/understanding-clojures-persistenthashmap-deftwice][ovde]])
+
+   Ovaj kurs ne pokriva dublju priču na ovu temu ali Vam je toplo
+   preporučuje. :)
+
+** Clojure u standardnim OO problemima
 * Read, evaluate vrtlog i makroi
 ** /Homoiconicy/ --- "istoizglednost"
 

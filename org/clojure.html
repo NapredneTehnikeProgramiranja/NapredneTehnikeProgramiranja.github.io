@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="sr" xml:lang="sr">
 <head>
-<!-- 2017-04-25 уто 17:28 -->
+<!-- 2017-04-25 уто 23:19 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Napredne tehnike programiranja - Clojure</title>
@@ -266,69 +266,70 @@ for the JavaScript code in this tag.
 <h2>Sadr&#382;aj</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9981938">1. Uvod</a>
+<li><a href="#orgbe9486c">1. Uvod</a>
 <ul>
-<li><a href="#orge5ea156">1.1. Lisp</a>
+<li><a href="#org47c41db">1.1. Lisp</a>
 <ul>
-<li><a href="#org8f819a2">1.1.1. Scheme</a></li>
+<li><a href="#orgc5e592c">1.1.1. Scheme</a></li>
 </ul>
 </li>
-<li><a href="#org9a07767">1.2. Clojure - funkcionalni način razmišljanja</a></li>
-<li><a href="#org0be9415">1.3. Imperativno vs funckionalno programiranje</a></li>
-<li><a href="#orge81a380">1.4. Clojure kao <i>value oriented</i> jezik</a></li>
-<li><a href="#org5b52bc5">1.5. Referencijalna transparentnost i memoizacija</a></li>
-<li><a href="#orgcf454bf">1.6. Misliti rekurzivno</a></li>
+<li><a href="#org255f9bb">1.2. Clojure - funkcionalni način razmišljanja</a></li>
+<li><a href="#orgf8a0e7f">1.3. Imperativno vs funckionalno programiranje</a></li>
+<li><a href="#orga91dbfb">1.4. Clojure kao <i>value oriented</i> jezik</a></li>
+<li><a href="#orgf8e4506">1.5. Referencijalna transparentnost i memoizacija</a></li>
+<li><a href="#org7dbe82d">1.6. Misliti rekurzivno</a></li>
 </ul>
 </li>
-<li><a href="#org38f21e2">2. REPL i IDE</a>
+<li><a href="#orgb040567">2. REPL i IDE</a>
 <ul>
-<li><a href="#orga1197a9">2.1. <i>Build tools</i> - alati za izgradnju</a></li>
-<li><a href="#org6a30ebb">2.2. <i>IDE</i> - integrisana razvojna okruženja</a></li>
+<li><a href="#orgaa8a8f2">2.1. <i>Build tools</i> - alati za izgradnju</a></li>
+<li><a href="#org2e63fe6">2.2. <i>IDE</i> - integrisana razvojna okruženja</a></li>
 </ul>
 </li>
-<li><a href="#org570cce3">3. Elementi jezika</a>
+<li><a href="#orge256d10">3. Elementi jezika</a>
 <ul>
-<li><a href="#orgcf62197">3.1. Funkcije višeg reda</a>
+<li><a href="#org4c7a3a7">3.1. Funkcije višeg reda</a>
 <ul>
-<li><a href="#org288b3b3">3.1.1. Parcijalne funkcije</a></li>
+<li><a href="#org239a07c">3.1.1. Parcijalne funkcije</a></li>
 </ul>
 </li>
-<li><a href="#org53631c6">3.2. Kompozicija funkcija</a></li>
-<li><a href="#org398a161">3.3. Clojure naglašava svoju lenjost</a></li>
-<li><a href="#org9a54ebb">3.4. Vežbanje 1</a></li>
-<li><a href="#org06d479e">3.5. Kada je mutacija stvarno nezaobilazna</a>
+<li><a href="#orgddd08f9">3.2. Kompozicija funkcija</a></li>
+<li><a href="#org3e9aafb">3.3. Clojure naglašava svoju lenjost</a></li>
+<li><a href="#orgca413b3">3.4. Vežbanje 1</a></li>
+<li><a href="#orgdaee9cf">3.5. Kada je mutacija stvarno nezaobilazna</a>
 <ul>
-<li><a href="#org79e8272">3.5.1. Atomi</a></li>
+<li><a href="#orge7a2b2c">3.5.1. Atom</a></li>
+<li><a href="#orgb569956">3.5.2. Ref</a></li>
 </ul>
 </li>
-<li><a href="#org001250b">3.6. Clojure u standardnim OO problemima</a></li>
-<li><a href="#orgda71909">3.7. Perzistentne strukture podataka</a></li>
+<li><a href="#org72212fa">3.6. Perzistentne strukture podataka</a></li>
+<li><a href="#orgf0258d8">3.7. Clojure u standardnim OO problemima</a></li>
 </ul>
 </li>
-<li><a href="#org2d57d33">4. Read, evaluate vrtlog i makroi</a>
+<li><a href="#orgb4784ac">4. Read, evaluate vrtlog i makroi</a>
 <ul>
-<li><a href="#org30fd61e">4.1. <i>Homoiconicy</i> &#x2014; "istoizglednost"</a></li>
+<li><a href="#org7e26357">4.1. <i>Homoiconicy</i> &#x2014; "istoizglednost"</a></li>
 </ul>
 </li>
-<li><a href="#orga775e59">5. Konkurentno i paralelno programiranje</a>
+<li><a href="#org01e7618">5. Konkurentno i paralelno programiranje</a>
 <ul>
-<li><a href="#org27352ff">5.1. Reference</a></li>
-<li><a href="#org87ff076">5.2. core.async</a></li>
+<li><a href="#orga67429b">5.1. Reference</a></li>
+<li><a href="#org577566a">5.2. core.async</a></li>
 </ul>
 </li>
-<li><a href="#org40ddf79">6. Interakcija sa platformom</a></li>
-<li><a href="#org5ebecf4">7. Apstrakcije</a>
+<li><a href="#orgd88fbc5">6. Interakcija sa platformom</a></li>
+<li><a href="#org3aae25c">7. Apstrakcije</a>
 <ul>
-<li><a href="#org0c1627f">7.1. Multimethods</a></li>
-<li><a href="#orgc7f96d6">7.2. Protocols</a></li>
-<li><a href="#orgf709161">7.3. Records</a></li>
-<li><a href="#org1c76b8c">7.4. clojure.spec</a></li>
+<li><a href="#orga46f12d">7.1. Multimethods</a></li>
+<li><a href="#orgc981c71">7.2. Protocols</a></li>
+<li><a href="#org131abf4">7.3. Records</a></li>
+<li><a href="#orgafe7f66">7.4. clojure.spec</a></li>
 </ul>
 </li>
-<li><a href="#org833b1f7">8. ClojureScript</a></li>
-<li><a href="#orgaac04c2">9. Reader conditionals (.cljc)</a></li>
-<li><a href="#orga6aac1c">10. ClojureCLR</a></li>
-<li><a href="#orga1a6de1">11. Literatura</a></li>
+<li><a href="#orga7fe544">8. ClojureScript</a></li>
+<li><a href="#org768b77b">9. Reader conditionals (.cljc)</a></li>
+<li><a href="#orgf96abaa">10. ClojureCLR</a></li>
+<li><a href="#org6901ecd">11. Literatura</a></li>
 </ul>
 </div>
 </div>
@@ -364,8 +365,8 @@ system that ensure clean, correct, multithreaded designs.
 </p>
 </blockquote>
 
-<div id="outline-container-org9981938" class="outline-2">
-<h2 id="org9981938"><span class="section-number-2">1</span> Uvod</h2>
+<div id="outline-container-orgbe9486c" class="outline-2">
+<h2 id="orgbe9486c"><span class="section-number-2">1</span> Uvod</h2>
 <div class="outline-text-2" id="text-1">
 <blockquote>
 <p>
@@ -380,8 +381,8 @@ in the expert's mind there are few.
 </blockquote>
 </div>
 
-<div id="outline-container-orge5ea156" class="outline-3">
-<h3 id="orge5ea156"><span class="section-number-3">1.1</span> Lisp</h3>
+<div id="outline-container-org47c41db" class="outline-3">
+<h3 id="org47c41db"><span class="section-number-3">1.1</span> Lisp</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 <b>Lisp</b> ili <b>LISP</b> je porodica programskih jezika sa dugom
@@ -446,8 +447,8 @@ još pregršt drugih dijalekata sa raznim osobinama:
 </ul>
 </div>
 
-<div id="outline-container-org8f819a2" class="outline-4">
-<h4 id="org8f819a2"><span class="section-number-4">1.1.1</span> Scheme</h4>
+<div id="outline-container-orgc5e592c" class="outline-4">
+<h4 id="orgc5e592c"><span class="section-number-4">1.1.1</span> Scheme</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 <b>Scheme</b> je jedan od najznačajnijih dijalekata Lisp-a. Dizajniran
@@ -470,7 +471,7 @@ samo dva.
 </p>
 </div>
 
-<ol class="org-ol"><li><a id="org0208327"></a>Chez Scheme (Cisco)<br /><div class="outline-text-5" id="text-1-1-1-1">
+<ol class="org-ol"><li><a id="org727cfa7"></a>Chez Scheme (Cisco)<br /><div class="outline-text-5" id="text-1-1-1-1">
 <p>
 <a href="https://github.com/cisco/ChezScheme"><b>Chez</b></a> je <a href="http://www.r6rs.org/">Scheme implementacija</a> zajedno sa (moćnim) kompajlerom,
 <i>run time</i> sistemom i bibliotekama. Koristi je kompanije Cisco a
@@ -485,7 +486,7 @@ C biblioteka onda nije loše da počnete sa <b>Chez</b>-om.
 </p>
 </div></li>
 
-<li><a id="orgc20f3b1"></a>Racket lang<br /><div class="outline-text-5" id="text-1-1-1-2">
+<li><a id="orgaf51ea3"></a>Racket lang<br /><div class="outline-text-5" id="text-1-1-1-2">
 <p>
 <a href="https://racket-lang.org/">Racket lang</a> je takođe implementacija Schema-a ali sa potpuno
 drugim ciljevima pri dizajnu. Racket je po svom dizajnu sistem za
@@ -503,8 +504,8 @@ odlično društvo od kojeg možete mnogo da naučite.
 </div>
 </div>
 
-<div id="outline-container-org9a07767" class="outline-3">
-<h3 id="org9a07767"><span class="section-number-3">1.2</span> Clojure - funkcionalni način razmišljanja</h3>
+<div id="outline-container-org255f9bb" class="outline-3">
+<h3 id="org255f9bb"><span class="section-number-3">1.2</span> Clojure - funkcionalni način razmišljanja</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Danas postoji mnogo programskih jezika i zaista se (pre)veliki deo
@@ -543,8 +544,8 @@ koja Vam ne dozvoljava da pišete kod onako kako ste navikli!</i>
 </div>
 </div>
 
-<div id="outline-container-org0be9415" class="outline-3">
-<h3 id="org0be9415"><span class="section-number-3">1.3</span> Imperativno vs funckionalno programiranje</h3>
+<div id="outline-container-orgf8a0e7f" class="outline-3">
+<h3 id="orgf8a0e7f"><span class="section-number-3">1.3</span> Imperativno vs funckionalno programiranje</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 C, C++, C#, Java, Python svi ovi (i drugi) programski jezici imaju
@@ -611,8 +612,8 @@ veoma prostom. <i>Uviđanje ove jednostavnosti dolazi uz malo vežbe.</i>
 </div>
 </div>
 
-<div id="outline-container-orge81a380" class="outline-3">
-<h3 id="orge81a380"><span class="section-number-3">1.4</span> Clojure kao <i>value oriented</i> jezik</h3>
+<div id="outline-container-orga91dbfb" class="outline-3">
+<h3 id="orga91dbfb"><span class="section-number-3">1.4</span> Clojure kao <i>value oriented</i> jezik</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 Clojure promoviše stil programiranja koji se zove <i>value-oriented
@@ -654,8 +655,8 @@ primera koji to ilustruje:
 </div>
 </div>
 
-<div id="outline-container-org5b52bc5" class="outline-3">
-<h3 id="org5b52bc5"><span class="section-number-3">1.5</span> Referencijalna transparentnost i memoizacija</h3>
+<div id="outline-container-orgf8e4506" class="outline-3">
+<h3 id="orgf8e4506"><span class="section-number-3">1.5</span> Referencijalna transparentnost i memoizacija</h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
 Funkcije za koje uvek po njihovim parametrima možete da kažete sa
@@ -721,11 +722,11 @@ njena obična verzija ali se svaki sledeći put kada bude pozvana
 </div>
 </div>
 
-<div id="outline-container-orgcf454bf" class="outline-3">
-<h3 id="orgcf454bf"><span class="section-number-3">1.6</span> Misliti rekurzivno</h3>
+<div id="outline-container-org7dbe82d" class="outline-3">
+<h3 id="org7dbe82d"><span class="section-number-3">1.6</span> Misliti rekurzivno</h3>
 <div class="outline-text-3" id="text-1-6">
 <p>
-Iz razloga koji su opisani <a href="#org0be9415">ranije</a> imperativni programski jezici ne
+Iz razloga koji su opisani <a href="#orgf8a0e7f">ranije</a> imperativni programski jezici ne
 stavljaju previše akcenat na rekurziju. Funcionalno programiranje
 rekurziju koristi kao osnovni alat. Tamo gde imperativno
 programiranje koristi petlje funkcionalno programiranje koristi
@@ -771,7 +772,7 @@ Imperativno programiranje problem faktorijela posmatra ovako:
 </div>
 
 <p>
-Clojure kao funkcionalan <a href="#orge81a380">value oriented</a> jezik ne podržava mutiranje
+Clojure kao funkcionalan <a href="#orga91dbfb">value oriented</a> jezik ne podržava mutiranje
 pa tako:
 </p>
 
@@ -1010,11 +1011,11 @@ alokacija steka</b>.
 </div>
 </div>
 
-<div id="outline-container-org38f21e2" class="outline-2">
-<h2 id="org38f21e2"><span class="section-number-2">2</span> REPL i IDE</h2>
+<div id="outline-container-orgb040567" class="outline-2">
+<h2 id="orgb040567"><span class="section-number-2">2</span> REPL i IDE</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-orga1197a9" class="outline-3">
-<h3 id="orga1197a9"><span class="section-number-3">2.1</span> <i>Build tools</i> - alati za izgradnju</h3>
+</div><div id="outline-container-orgaa8a8f2" class="outline-3">
+<h3 id="orgaa8a8f2"><span class="section-number-3">2.1</span> <i>Build tools</i> - alati za izgradnju</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 U Clojure zajednici se paralelno koriste dva alata za izgradnju:
@@ -1041,8 +1042,8 @@ Kako biste počeli da koristite <i>lein</i> potrebno je da pročitate
 </div>
 </div>
 
-<div id="outline-container-org6a30ebb" class="outline-3">
-<h3 id="org6a30ebb"><span class="section-number-3">2.2</span> <i>IDE</i> - integrisana razvojna okruženja</h3>
+<div id="outline-container-org2e63fe6" class="outline-3">
+<h3 id="org2e63fe6"><span class="section-number-3">2.2</span> <i>IDE</i> - integrisana razvojna okruženja</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 Podešavanje za rad u Clojure-u nije teško pronaći bez obzira na to
@@ -1065,8 +1066,8 @@ početnicima)</li>
 </div>
 </div>
 
-<div id="outline-container-org570cce3" class="outline-2">
-<h2 id="org570cce3"><span class="section-number-2">3</span> Elementi jezika</h2>
+<div id="outline-container-orge256d10" class="outline-2">
+<h2 id="orge256d10"><span class="section-number-2">3</span> Elementi jezika</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Ovaj kurs nema deo posvećen upoznavanju sa bazičnim elementima
@@ -1087,8 +1088,8 @@ objašnjenjem)</li>
 </ol>
 </div>
 
-<div id="outline-container-orgcf62197" class="outline-3">
-<h3 id="orgcf62197"><span class="section-number-3">3.1</span> Funkcije višeg reda</h3>
+<div id="outline-container-org4c7a3a7" class="outline-3">
+<h3 id="org4c7a3a7"><span class="section-number-3">3.1</span> Funkcije višeg reda</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 <a href="https://en.wikipedia.org/wiki/Higher-order_function">Funkcije višeg</a> reda su funkcije koje primaju funkcije kao parametre
@@ -1179,8 +1180,8 @@ prirodne za Clojure je da ih probate u npr. Javi.
 </p>
 </div>
 
-<div id="outline-container-org288b3b3" class="outline-4">
-<h4 id="org288b3b3"><span class="section-number-4">3.1.1</span> Parcijalne funkcije</h4>
+<div id="outline-container-org239a07c" class="outline-4">
+<h4 id="org239a07c"><span class="section-number-4">3.1.1</span> Parcijalne funkcije</h4>
 <div class="outline-text-4" id="text-3-1-1">
 <p>
 Kada smo radili napredno Python programiranje videli smo šta su i
@@ -1363,8 +1364,8 @@ Ali možemo postići taj efekat uvodeći jednu prostu <code>lambdu</code>:
 </div>
 </div>
 
-<div id="outline-container-org53631c6" class="outline-3">
-<h3 id="org53631c6"><span class="section-number-3">3.2</span> Kompozicija funkcija</h3>
+<div id="outline-container-orgddd08f9" class="outline-3">
+<h3 id="orgddd08f9"><span class="section-number-3">3.2</span> Kompozicija funkcija</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Još jednom, Clojure svoje korene vuče iz matematike pa tako ima još
@@ -1417,7 +1418,7 @@ Primetimo da se poslednja navedena funkcija poziva prva tj. primena
 funkcija ide "iznutra ka spolja". To možda može izgledati čudno
 (iako je baš tako i u matematičkoj notaciji) pa onda Clojure pruža
 drugi način da se ovo zapiše korišćenjem <i>threading macro</i>-a (o
-makroima će biti reči <a href="#org2d57d33">u nastavku</a>):
+makroima će biti reči <a href="#orgb4784ac">u nastavku</a>):
 </p>
 
 <div class="org-src-container">
@@ -1433,8 +1434,8 @@ makroima će biti reči <a href="#org2d57d33">u nastavku</a>):
 </div>
 </div>
 
-<div id="outline-container-org398a161" class="outline-3">
-<h3 id="org398a161"><span class="section-number-3">3.3</span> Clojure naglašava svoju lenjost</h3>
+<div id="outline-container-org3e9aafb" class="outline-3">
+<h3 id="org3e9aafb"><span class="section-number-3">3.3</span> Clojure naglašava svoju lenjost</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 Clojure se ne smatra lenjim jezikom u smislu u kome se to misli
@@ -1564,8 +1565,8 @@ moguća izlaza:
 </div>
 </div>
 
-<div id="outline-container-org9a54ebb" class="outline-3">
-<h3 id="org9a54ebb"><span class="section-number-3">3.4</span> Vežbanje 1</h3>
+<div id="outline-container-orgca413b3" class="outline-3">
+<h3 id="orgca413b3"><span class="section-number-3">3.4</span> Vežbanje 1</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 Ideje zadataka uglavnom preuzete sa <a href="https://www.4clojure.com">4Clojure</a>.
@@ -1854,8 +1855,8 @@ desnog podstabla.</li>
 </div>
 </div>
 
-<div id="outline-container-org06d479e" class="outline-3">
-<h3 id="org06d479e"><span class="section-number-3">3.5</span> Kada je mutacija stvarno nezaobilazna</h3>
+<div id="outline-container-orgdaee9cf" class="outline-3">
+<h3 id="orgdaee9cf"><span class="section-number-3">3.5</span> Kada je mutacija stvarno nezaobilazna</h3>
 <div class="outline-text-3" id="text-3-5">
 <p>
 To što je Clojure <i>value oriented</i> ne znači da ne postoji način da
@@ -1866,8 +1867,8 @@ mutabilnim stanjem.
 </p>
 </div>
 
-<div id="outline-container-org79e8272" class="outline-4">
-<h4 id="org79e8272"><span class="section-number-4">3.5.1</span> Atomi</h4>
+<div id="outline-container-orge7a2b2c" class="outline-4">
+<h4 id="orge7a2b2c"><span class="section-number-4">3.5.1</span> Atom</h4>
 <div class="outline-text-4" id="text-3-5-1">
 <p>
 <i>Atomi</i> su prvi i najjednostavniji mehanizam za rukovanje
@@ -2029,27 +2030,452 @@ Prokomentarišite rezultate ispod.
 </div>
 </div>
 </div>
+
+<div id="outline-container-orgb569956" class="outline-4">
+<h4 id="orgb569956"><span class="section-number-4">3.5.2</span> Ref</h4>
+<div class="outline-text-4" id="text-3-5-2">
+<p>
+Atomi nam daju mehanizam za rukovanje mutabilnim deljenim stanjem
+kada je to stanje predstavljeno jednom vrednošću. Kada je stanje
+predstavljeno kroz <b>više vrednosti</b> i kada rukovanje stanjem
+zahteva <b>koordinaciju</b> između njih tu su Refs. Klasičan primer
+koji se navodi kada se govori o ovoj vrsti deljenog stanje je
+prenos sredstava između računa u banci. Refs u Clojure-u uvek
+funkcionišu kroz sistem za postizanje konkurentnosti koji se
+koristi kod baza podataka &#x2014; transakcijama. Mehanizam koji
+obezbeđuje da se transakcije obavljaju na nivou programa se naziva
+<a href="https://en.wikipedia.org/wiki/Software_transactional_memory">Software transactional memory</a>(STM) i ispunjava prva 3 načela <a href="https://en.wikipedia.org/wiki/ACID">ACID</a>
+principa (Atomicity, Consistency, Isolation). Četvrti (Durability)
+naravno nije ispunjen po dizajnu jer je sve definisano na nivou
+programa.
+</p>
+
+<p>
+Ovaj, kao i verovatno većina kurseva koja se bave ovom temom u
+svrhu ilustracije daće primer sa prenosom sredstava među računima
+u banci ali ćemo za početak da zašto to ne možemo da
+implementiramo koristeći Atome:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #DCDCCC;">(</span>doc throw<span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt;</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">-------------------------</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">throw</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">(throw expr)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">Special Form</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">The expr is evaluated and thrown, therefore it should</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">yield an instance of some derivee of Throwable.</span>
+
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">Please see http://clojure.org/special_forms#throw</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">nil</span>
+
+<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #DFAF8F;">savings</span> <span style="color: #BFEBBF;">(</span>atom <span style="color: #D0BF8F;">{</span><span style="color: #BFEBBF;">:balance</span> 300<span style="color: #D0BF8F;">}</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #DFAF8F;">checking</span> <span style="color: #BFEBBF;">(</span>atom <span style="color: #D0BF8F;">{</span><span style="color: #BFEBBF;">:balance</span> 700<span style="color: #D0BF8F;">}</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+
+<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defn</span> <span style="color: #93E0E3;">transfer</span>
+  <span style="color: #9FC59F;">"Transfer 200 from checking to savings."</span>
+  <span style="color: #BFEBBF;">[]</span>
+  <span style="color: #BFEBBF;">(</span>swap! checking assoc <span style="color: #BFEBBF;">:balance</span> 500<span style="color: #BFEBBF;">)</span>
+  <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">throw</span> <span style="color: #D0BF8F;">(</span><span style="color: #7CB8BB;">Exception.</span> <span style="color: #CC9393;">"Something went wrong..."</span><span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span>
+  <span style="color: #BFEBBF;">(</span>swap! savings assoc <span style="color: #BFEBBF;">:balance</span> 500<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">@savings</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">{</span><span style="color: #7F9F7F;">:balance</span><span style="color: #7F9F7F;"> 300}</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">@checking</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">{</span><span style="color: #7F9F7F;">:balance</span><span style="color: #7F9F7F;"> 700}</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">(transfer)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">Exception Something went wrong...  clojure-ntp.atoms/transfer (form-init75671</span><span style="color: #DC8CC3; background-color: #3F3F3F;">72114564680926.clj:124)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">@savings</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">{</span><span style="color: #7F9F7F;">:balance</span><span style="color: #7F9F7F;"> 300}</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">@checking</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">{</span><span style="color: #7F9F7F;">:balance</span><span style="color: #7F9F7F;"> 500}</span>
+</pre>
 </div>
 
-<div id="outline-container-org001250b" class="outline-3">
-<h3 id="org001250b"><span class="section-number-3">3.6</span> Clojure u standardnim OO problemima</h3>
+<p>
+Dakle, atomi nas ne čuvaju od toga da akcija nad jednim uspe a nad
+drugim ne uspe &#x2014; <span class="underline">nekoordinisani su</span>. I zato su to Refs:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #DCDCCC;">(</span>doc dosync<span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt;</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">-------------------------</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">clojure.core/dosync</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">([&amp; exprs])</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">Macro</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">Runs the exprs (in an implicit do) in a transaction that encompasses</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">exprs and any nested calls.  Starts a transaction if none is already</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">running on this thread. Any uncaught exception will abort the</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">transaction and flow out of dosync. The exprs may be run more than</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">once, but any effects on Refs will be atomic.</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">nil</span>
+
+<span style="color: #DCDCCC;">(</span>doc commute<span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt;</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">-------------------------</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">clojure.core/commute</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">([ref fun &amp; args])</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">Must be called in a transaction. Sets the in-transaction-value of</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">ref to:</span>
+
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">(apply fun in-transaction-value-of-ref args)</span>
+
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">and returns the in-transaction-value of ref.</span>
+
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">At the commit point of the transaction, sets the value of ref to be:</span>
+
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">(apply fun most-recently-committed-value-of-ref args)</span>
+
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">Thus fun should be commutative, or, failing that, you must accept</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">last-one-in-wins behavior.  commute allows for more concurrency than</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">ref-set.</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">nil</span>
+
+<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #DFAF8F;">savings</span> <span style="color: #BFEBBF;">(</span>ref <span style="color: #D0BF8F;">{</span><span style="color: #BFEBBF;">:balance</span> 300<span style="color: #D0BF8F;">}</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #DFAF8F;">checking</span> <span style="color: #BFEBBF;">(</span>ref <span style="color: #D0BF8F;">{</span><span style="color: #BFEBBF;">:balance</span> 700<span style="color: #D0BF8F;">}</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+
+<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defn</span> <span style="color: #93E0E3;">transfer</span>
+  <span style="color: #9FC59F;">"Transfer 200 from checking to savings."</span>
+  <span style="color: #BFEBBF;">[</span>&amp; e<span style="color: #BFEBBF;">]</span>
+  <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">dosync</span>
+   <span style="color: #D0BF8F;">(</span>commute checking assoc <span style="color: #BFEBBF;">:balance</span> 500<span style="color: #D0BF8F;">)</span>
+   <span style="color: #D0BF8F;">(</span><span style="color: #F0DFAF; font-weight: bold;">when</span> e
+     <span style="color: #93E0E3;">(</span><span style="color: #F0DFAF; font-weight: bold;">throw</span> <span style="color: #9FC59F;">(</span><span style="color: #7CB8BB;">Exception.</span> <span style="color: #CC9393;">"Something went wrong..."</span><span style="color: #9FC59F;">)</span><span style="color: #93E0E3;">)</span><span style="color: #D0BF8F;">)</span>
+   <span style="color: #D0BF8F;">(</span>commute savings assoc <span style="color: #BFEBBF;">:balance</span> 500<span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+
+<span style="color: #5F7F5F;">;;;; </span><span style="color: #7F9F7F;">Flow when transaction fails and everything stay untouched (but consistent).</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">@savings</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">{</span><span style="color: #7F9F7F;">:balance</span><span style="color: #7F9F7F;"> 300}</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">@checking</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">{</span><span style="color: #7F9F7F;">:balance</span><span style="color: #7F9F7F;"> 700}</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">(transfer true)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">Exception Something went wrong...  clojure-ntp.atoms/transfer/fn--20417 (form</span><span style="color: #DC8CC3; background-color: #3F3F3F;">-init7567172114564680926.clj:192)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">@savings</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">{</span><span style="color: #7F9F7F;">:balance</span><span style="color: #7F9F7F;"> 300}</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">@checking</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">{</span><span style="color: #7F9F7F;">:balance</span><span style="color: #7F9F7F;"> 700}</span>
+
+<span style="color: #5F7F5F;">;;;; </span><span style="color: #7F9F7F;">Flow when transaction succeed and things change (in consistent manner).</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">(transfer)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">{</span><span style="color: #7F9F7F;">:balance</span><span style="color: #7F9F7F;"> 500}</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">savings</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">{</span><span style="color: #7F9F7F;">:balance</span><span style="color: #7F9F7F;"> 500}</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">@checking</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">{</span><span style="color: #7F9F7F;">:balance</span><span style="color: #7F9F7F;"> 500}</span>
+</pre>
 </div>
-<div id="outline-container-orgda71909" class="outline-3">
-<h3 id="orgda71909"><span class="section-number-3">3.7</span> Perzistentne strukture podataka</h3>
+</div>
 </div>
 </div>
 
-<div id="outline-container-org2d57d33" class="outline-2">
-<h2 id="org2d57d33"><span class="section-number-2">4</span> Read, evaluate vrtlog i makroi</h2>
+<div id="outline-container-org72212fa" class="outline-3">
+<h3 id="org72212fa"><span class="section-number-3">3.6</span> Perzistentne strukture podataka</h3>
+<div class="outline-text-3" id="text-3-6">
+<p>
+Kako bismo lakše razumeli efikasnost imutabinih/perzistentnih
+struktura podataka u Clojure-u ovde ćemo pukašati da opišemo šta se
+tu ispod haube zapravo dešava i šta se to tačno <span class="underline">kopira</span> kada
+Clojure "vraća vrednosti koje su nastale od prethodnih vrednosti".
+</p>
+
+<p>
+Strukture podataka većine imperativnih programskih jezika koje ste
+do sada koristili su uglavnom destruktivne prirode &#x2014; kada nešto
+želite da izmenite to se bukvalno izmeni na mestu na kome se
+nalazi. Ne možete više tu strukturu da prosleđujete unaokolo po svom
+programu bez bojazni da će se neko računanje koje koristi tu
+strukturu podataka "pokvariti".
+</p>
+
+<p>
+Na primer, ako izmenite drugi element neke liste <i>L1</i> u programskom
+jeziku kao što je Java, sadržaj na tom mestu u memoriji je
+promenjen i to više nije ona stara lista, stare <span class="underline">više nema</span> i sva
+računanja koja koriste ovu listu moraju to da prepoznaju i pravilno
+reaguju.
+</p>
+
+
+<div class="figure">
+<p><img src="images/Selection_001.png" alt="Selection_001.png" width="700" />
+</p>
+<p><span class="figure-number">Figure 4: </span>slika iz njige <a href="http://www.wrox.com/WileyCDA/WroxTitle/Professional-Clojure.productCd-1119267277.html">Professional Clojure</a></p>
+</div>
+
+<p>
+Clojure sa druge strane svoje strukture podataka implementira u
+perzistentnom maniru, to znači da svaki put kada pokušate da
+izmenite vrednost zapravo <span class="underline">dobijete novu vrednost koja može da deli
+neki deo strukture sa originalnom</span>. Možda deljenje strukture na
+prvi pogled može izgledati rizično ali pošto su svi delovi neke
+vrednosti (npr. kolekcije) same po sebi imutabilne tu nema nikakvih
+problema.
+</p>
+
+<p>
+Pogledajmo sada isti primer "izmene" nekog elementa liste kod
+Clojure-a. Ono što se zapravo događa je vraćanje <span class="underline">nove liste</span> <i>L2</i>
+koja je nastala kopiranjem svih elemenata originalne liste do onog
+koji želimo da menjamo, a ostatak strukture deli sa originalnom.
+</p>
+
+
+<div class="figure">
+<p><img src="images/Selection_002.png" alt="Selection_002.png" width="700" />
+</p>
+<p><span class="figure-number">Figure 5: </span>slika iz njige <a href="http://www.wrox.com/WileyCDA/WroxTitle/Professional-Clojure.productCd-1119267277.html">Professional Clojure</a></p>
+</div>
+
+<p>
+Da smo želeli da dodamo listu <i>L2</i> na kraj liste <i>L1</i> desilo bi se
+kopiranje liste <i>L1</i> sa tim što bi pokazivač na poslednjem elementu
+nove liste <i>L2</i> pokazivao na početak liste <i>L3</i>.
+</p>
+
+
+<div class="figure">
+<p><img src="images/Selection_003.png" alt="Selection_003.png" width="700" />
+</p>
+<p><span class="figure-number">Figure 6: </span>slika iz njige <a href="http://www.wrox.com/WileyCDA/WroxTitle/Professional-Clojure.productCd-1119267277.html">Professional Clojure</a></p>
+</div>
+
+<p>
+<span class="underline">Imajte u vidu</span> da je osnovna motivacija za ovakvu implementaciju
+bila <span class="underline">očuvanje itegriteta</span> podataka i zaštita korektnosti
+izračunavanja, a <span class="underline">ne puke performanse</span> koje mogu narušiti
+korektnost. Na ovom konkretnom primeru to znači da sva računanja
+koja koriste <i>L1</i> mogu da nastave <span class="underline">kao da se ništa nije desilo</span> &#x2014;
+ušteda na vremenu i prostoru se očekuje ovde.
+</p>
+
+<p>
+Kako bismo stekli bolji osećaj o funkcionisanju perzistentnih
+struktura podataka pogledajmo kako bismo implementirali binarno
+stablo:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">ns</span> <span style="color: #7CB8BB;">clojure-ntp.persistent-datastructures</span>
+  <span style="color: #9FC59F;">"This code is borrowed from the book Professional Clojure."</span>
+  <span style="color: #BFEBBF;">(</span><span style="color: #BFEBBF;">:require</span> <span style="color: #D0BF8F;">[</span><span style="color: #7CB8BB;">clojure.repl</span> <span style="color: #BFEBBF;">:refer</span> <span style="color: #93E0E3;">[</span>doc<span style="color: #93E0E3;">]</span><span style="color: #D0BF8F;">]</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+
+<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defprotocol</span> <span style="color: #7CB8BB;">INode</span>
+  <span style="color: #BFEBBF;">(</span>entry <span style="color: #D0BF8F;">[</span>_<span style="color: #D0BF8F;">]</span><span style="color: #BFEBBF;">)</span>
+  <span style="color: #BFEBBF;">(</span>left <span style="color: #D0BF8F;">[</span>_<span style="color: #D0BF8F;">]</span><span style="color: #BFEBBF;">)</span>
+  <span style="color: #BFEBBF;">(</span>right <span style="color: #D0BF8F;">[</span>_<span style="color: #D0BF8F;">]</span><span style="color: #BFEBBF;">)</span>
+  <span style="color: #BFEBBF;">(</span>contains-value? <span style="color: #D0BF8F;">[</span>_ _<span style="color: #D0BF8F;">]</span><span style="color: #BFEBBF;">)</span>
+  <span style="color: #BFEBBF;">(</span>insert-value <span style="color: #D0BF8F;">[</span>_ _<span style="color: #D0BF8F;">]</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+
+<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">deftype</span> <span style="color: #7CB8BB;">Node</span> <span style="color: #BFEBBF;">[</span>value left-branch right-branch<span style="color: #BFEBBF;">]</span>
+  <span style="color: #7CB8BB;">INode</span>
+  <span style="color: #BFEBBF;">(</span>entry <span style="color: #D0BF8F;">[</span>_<span style="color: #D0BF8F;">]</span> value<span style="color: #BFEBBF;">)</span>
+  <span style="color: #BFEBBF;">(</span>left <span style="color: #D0BF8F;">[</span>_<span style="color: #D0BF8F;">]</span> left-branch<span style="color: #BFEBBF;">)</span>
+  <span style="color: #BFEBBF;">(</span>right <span style="color: #D0BF8F;">[</span>_<span style="color: #D0BF8F;">]</span> right-branch<span style="color: #BFEBBF;">)</span>
+  <span style="color: #BFEBBF;">(</span>contains-value? <span style="color: #D0BF8F;">[</span>tree v<span style="color: #D0BF8F;">]</span>
+    <span style="color: #D0BF8F;">(</span><span style="color: #F0DFAF; font-weight: bold;">cond</span>
+      <span style="color: #93E0E3;">(</span>= v value<span style="color: #93E0E3;">)</span> <span style="color: #BFEBBF;">true</span>
+      <span style="color: #93E0E3;">(</span>&lt; v value<span style="color: #93E0E3;">)</span> <span style="color: #93E0E3;">(</span>contains-value? left-branch v<span style="color: #93E0E3;">)</span>
+      <span style="color: #93E0E3;">(</span>&gt; v value<span style="color: #93E0E3;">)</span> <span style="color: #93E0E3;">(</span>contains-value? right-branch v<span style="color: #93E0E3;">)</span><span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span>
+  <span style="color: #BFEBBF;">(</span>insert-value <span style="color: #D0BF8F;">[</span>tree v<span style="color: #D0BF8F;">]</span>
+    <span style="color: #D0BF8F;">(</span><span style="color: #F0DFAF; font-weight: bold;">cond</span>
+      <span style="color: #93E0E3;">(</span>= v value<span style="color: #93E0E3;">)</span> tree
+      <span style="color: #93E0E3;">(</span>&lt; v value<span style="color: #93E0E3;">)</span> <span style="color: #93E0E3;">(</span><span style="color: #7CB8BB;">Node.</span> value <span style="color: #9FC59F;">(</span>insert-value left-branch v<span style="color: #9FC59F;">)</span> right-branch<span style="color: #93E0E3;">)</span>
+      <span style="color: #93E0E3;">(</span>&gt; v value<span style="color: #93E0E3;">)</span> <span style="color: #93E0E3;">(</span><span style="color: #7CB8BB;">Node.</span> value left-branch <span style="color: #9FC59F;">(</span>insert-value right-branch v<span style="color: #9FC59F;">)</span><span style="color: #93E0E3;">)</span><span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+
+<span style="color: #DCDCCC;">(</span>extend-protocol <span style="color: #7CB8BB;">INode</span>
+  <span style="color: #BFEBBF;">nil</span>
+  <span style="color: #BFEBBF;">(</span>entry <span style="color: #D0BF8F;">[</span>_<span style="color: #D0BF8F;">]</span> <span style="color: #BFEBBF;">nil</span><span style="color: #BFEBBF;">)</span>
+  <span style="color: #BFEBBF;">(</span>left <span style="color: #D0BF8F;">[</span>_<span style="color: #D0BF8F;">]</span> <span style="color: #BFEBBF;">nil</span><span style="color: #BFEBBF;">)</span>
+  <span style="color: #BFEBBF;">(</span>right <span style="color: #D0BF8F;">[</span>_<span style="color: #D0BF8F;">]</span> <span style="color: #BFEBBF;">nil</span><span style="color: #BFEBBF;">)</span>
+  <span style="color: #BFEBBF;">(</span>contains-value? <span style="color: #D0BF8F;">[</span>_ _<span style="color: #D0BF8F;">]</span> <span style="color: #BFEBBF;">false</span><span style="color: #BFEBBF;">)</span>
+  <span style="color: #BFEBBF;">(</span>insert-value <span style="color: #D0BF8F;">[</span>_ value<span style="color: #D0BF8F;">]</span> <span style="color: #D0BF8F;">(</span><span style="color: #7CB8BB;">Node.</span> value <span style="color: #BFEBBF;">nil</span> <span style="color: #BFEBBF;">nil</span><span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+</pre>
+</div>
+
+<p>
+Pogledajmo sada kako bismo pravili stablo:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #DFAF8F;">root</span> <span style="color: #BFEBBF;">(</span>-&gt;Node 7 <span style="color: #BFEBBF;">nil</span> <span style="color: #BFEBBF;">nil</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #DCDCCC;">(</span>left root<span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; nil</span>
+<span style="color: #DCDCCC;">(</span>right root<span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; nil</span>
+<span style="color: #DCDCCC;">(</span>entry root<span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; 7</span>
+<span style="color: #DCDCCC;">(</span>contains-value? root 7<span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; true</span>
+<span style="color: #DCDCCC;">(</span>contains-value? root 23<span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; false</span>
+</pre>
+</div>
+
+<p>
+Super! Hajde sada da napravimo neko malo zanimljivije stablo:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #DFAF8F;">root</span> <span style="color: #BFEBBF;">(</span><span style="color: #7CB8BB;">Node.</span> 7 <span style="color: #D0BF8F;">(</span><span style="color: #7CB8BB;">Node.</span> 5 <span style="color: #93E0E3;">(</span><span style="color: #7CB8BB;">Node.</span> 3 <span style="color: #BFEBBF;">nil</span> <span style="color: #BFEBBF;">nil</span><span style="color: #93E0E3;">)</span> <span style="color: #BFEBBF;">nil</span><span style="color: #D0BF8F;">)</span>
+                 <span style="color: #D0BF8F;">(</span><span style="color: #7CB8BB;">Node.</span> 12 <span style="color: #93E0E3;">(</span><span style="color: #7CB8BB;">Node.</span> 9 <span style="color: #BFEBBF;">nil</span> <span style="color: #BFEBBF;">nil</span><span style="color: #93E0E3;">)</span> <span style="color: #93E0E3;">(</span><span style="color: #7CB8BB;">Node.</span> 17 <span style="color: #BFEBBF;">nil</span> <span style="color: #BFEBBF;">nil</span><span style="color: #93E0E3;">)</span><span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+</pre>
+</div>
+
+<p>
+Kod od gore bi trebao da odgovara stablu ispod:
+</p>
+
+
+<div class="figure">
+<p><img src="images/Selection_004.png" alt="Selection_004.png" width="700" />
+</p>
+<p><span class="figure-number">Figure 7: </span>slika iz njige <a href="http://www.wrox.com/WileyCDA/WroxTitle/Professional-Clojure.productCd-1119267277.html">Professional Clojure</a></p>
+</div>
+
+<p>
+Pa hajde da to validiramo:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #DCDCCC;">(</span>left root<span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; #object[clojure_ntp.persistent_datastructures.Node 0x5c0500d7</span>
+<span style="color: #5F7F5F;">;;            </span><span style="color: #7F9F7F;">"clojure_ntp.persistent_datastructures.Node@5c0500d7"]</span>
+
+<span style="color: #DCDCCC;">(</span>entry <span style="color: #BFEBBF;">(</span>left root<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; 5</span>
+
+<span style="color: #DCDCCC;">(</span>entry <span style="color: #BFEBBF;">(</span>left <span style="color: #D0BF8F;">(</span>left root<span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; 3</span>
+
+<span style="color: #DCDCCC;">(</span>entry <span style="color: #BFEBBF;">(</span>right root<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; 12</span>
+
+<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">-&gt;</span> root
+    right
+    left
+    entry<span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; 9</span>
+</pre>
+</div>
+
+<p>
+Hajde sada da ispitamo identite levih i desnih podstabala našeg stabla:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #DCDCCC;">(</span>doc identity<span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt;</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">-------------------------</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">clojure.core/identity</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">([x])</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">Returns its argument.</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">nil</span>
+
+<span style="color: #DCDCCC;">(</span>identity <span style="color: #BFEBBF;">(</span>left root<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; #object[clojure_ntp.persistent_datastructures.Node 0x5c0500d7</span>
+<span style="color: #5F7F5F;">;;            </span><span style="color: #7F9F7F;">"clojure_ntp.persistent_datastructures.Node@5c0500d7"]</span>
+
+<span style="color: #DCDCCC;">(</span>identity <span style="color: #BFEBBF;">(</span>right root<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; #object[clojure_ntp.persistent_datastructures.Node 0x45a2d58d</span>
+<span style="color: #5F7F5F;">;;            </span><span style="color: #7F9F7F;">"clojure_ntp.persistent_datastructures.Node@45a2d58d"]</span>
+</pre>
+</div>
+
+<p>
+Ono na šta treba da obratimo pažnju su konkretne adrese na kojima
+se nalaze identiteti naših čvorova koji predstavljaju levo i desno
+podstablo.
+</p>
+
+<p>
+Hajde sada da da dodamo jedan čvor sa vrednošću 6 u stablo
+(naravno, nema mutiranja, dobijamo potpuno novo stablo):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #DFAF8F;">l</span> <span style="color: #BFEBBF;">(</span>insert-value root 6<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+</pre>
+</div>
+
+<p>
+<b>Šta je ovde sad kopirano a šta se deli?</b>
+</p>
+
+<p>
+Ispitajmo leva i desna podstabla našeg novog stabla:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #DCDCCC;">(</span>identity <span style="color: #BFEBBF;">(</span>left l<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; #object[clojure_ntp.persistent_datastructures.Node 0x12b6354b</span>
+<span style="color: #5F7F5F;">;;            </span><span style="color: #7F9F7F;">"clojure_ntp.persistent_datastructures.Node@12b6354b"]</span>
+<span style="color: #DCDCCC;">(</span>entry <span style="color: #BFEBBF;">(</span>left l<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; 5</span>
+
+<span style="color: #DCDCCC;">(</span>identity <span style="color: #BFEBBF;">(</span>right l<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; #object[clojure_ntp.persistent_datastructures.Node 0x45a2d58d</span>
+<span style="color: #5F7F5F;">;;            </span><span style="color: #7F9F7F;">"clojure_ntp.persistent_datastructures.Node@45a2d58d"]</span>
+<span style="color: #DCDCCC;">(</span>entry <span style="color: #BFEBBF;">(</span>right l<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; 12</span>
+</pre>
+</div>
+
+<p>
+Levo podstablo nam nije poznato (po adresi, po identitetu) ali
+desno jeste&#x2026;
+</p>
+
+<p>
+<span class="underline">to je taj isti identitet koji ujedno predstavlja i desno podstablo
+početnog stabla</span>!
+</p>
+
+<p>
+Dakle, ono što smo zapravo napravili je struktura kao na slici ispod:
+</p>
+
+
+<div class="figure">
+<p><img src="images/Selection_005.png" alt="Selection_005.png" width="700" />
+</p>
+<p><span class="figure-number">Figure 8: </span>slika iz njige <a href="http://www.wrox.com/WileyCDA/WroxTitle/Professional-Clojure.productCd-1119267277.html">Professional Clojure</a></p>
+</div>
+
+<p>
+Dakle, <b>desilo se neko kopiranje</b> ali je <b>neki deo strukture
+deljen</b> i nije se kopirao. Oni koji žele da znaju koji se tačno deo
+kopira a koji se deli kao i kako se to računa mogu svoje čitanje da
+nastave na nekom od sledećih mesta:
+</p>
+<ul class="org-ul">
+<li>blog <a href="http://hypirion.com/musings/understanding-persistent-vector-pt-1">Polymatheia</a></li>
+<li>Higher Order Blog (<a href="http://blog.higher-order.net/2009/02/01/understanding-clojures-persistentvector-implementation">ovde</a> i <a href="http://blog.higher-order.net/2009/09/08/understanding-clojures-persistenthashmap-deftwice">ovde</a>)</li>
+</ul>
+
+<p>
+Ovaj kurs ne pokriva dublju priču na ovu temu ali Vam je toplo
+preporučuje. :)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf0258d8" class="outline-3">
+<h3 id="orgf0258d8"><span class="section-number-3">3.7</span> Clojure u standardnim OO problemima</h3>
+</div>
+</div>
+<div id="outline-container-orgb4784ac" class="outline-2">
+<h2 id="orgb4784ac"><span class="section-number-2">4</span> Read, evaluate vrtlog i makroi</h2>
 <div class="outline-text-2" id="text-4">
-</div><div id="outline-container-org30fd61e" class="outline-3">
-<h3 id="org30fd61e"><span class="section-number-3">4.1</span> <i>Homoiconicy</i> &#x2014; "istoizglednost"</h3>
+</div><div id="outline-container-org7e26357" class="outline-3">
+<h3 id="org7e26357"><span class="section-number-3">4.1</span> <i>Homoiconicy</i> &#x2014; "istoizglednost"</h3>
 <div class="outline-text-3" id="text-4-1">
 
 <div class="figure">
 <p><img src="images/franca_homoiconicy_clojure.jpg" alt="franca_homoiconicy_clojure.jpg" width="700" />
 </p>
-<p><span class="figure-number">Figure 4: </span><a href="https://twitter.com/franschm">@franschm</a></p>
+<p><span class="figure-number">Figure 9: </span><a href="https://twitter.com/franschm">@franschm</a></p>
 </div>
 
 <p>
@@ -2069,56 +2495,56 @@ zamišljamo.
 </div>
 </div>
 
-<div id="outline-container-orga775e59" class="outline-2">
-<h2 id="orga775e59"><span class="section-number-2">5</span> Konkurentno i paralelno programiranje</h2>
+<div id="outline-container-org01e7618" class="outline-2">
+<h2 id="org01e7618"><span class="section-number-2">5</span> Konkurentno i paralelno programiranje</h2>
 <div class="outline-text-2" id="text-5">
-</div><div id="outline-container-org27352ff" class="outline-3">
-<h3 id="org27352ff"><span class="section-number-3">5.1</span> Reference</h3>
+</div><div id="outline-container-orga67429b" class="outline-3">
+<h3 id="orga67429b"><span class="section-number-3">5.1</span> Reference</h3>
 </div>
 
-<div id="outline-container-org87ff076" class="outline-3">
-<h3 id="org87ff076"><span class="section-number-3">5.2</span> core.async</h3>
+<div id="outline-container-org577566a" class="outline-3">
+<h3 id="org577566a"><span class="section-number-3">5.2</span> core.async</h3>
 </div>
 </div>
 
-<div id="outline-container-org40ddf79" class="outline-2">
-<h2 id="org40ddf79"><span class="section-number-2">6</span> Interakcija sa platformom</h2>
+<div id="outline-container-orgd88fbc5" class="outline-2">
+<h2 id="orgd88fbc5"><span class="section-number-2">6</span> Interakcija sa platformom</h2>
 </div>
 
-<div id="outline-container-org5ebecf4" class="outline-2">
-<h2 id="org5ebecf4"><span class="section-number-2">7</span> Apstrakcije</h2>
+<div id="outline-container-org3aae25c" class="outline-2">
+<h2 id="org3aae25c"><span class="section-number-2">7</span> Apstrakcije</h2>
 <div class="outline-text-2" id="text-7">
-</div><div id="outline-container-org0c1627f" class="outline-3">
-<h3 id="org0c1627f"><span class="section-number-3">7.1</span> Multimethods</h3>
+</div><div id="outline-container-orga46f12d" class="outline-3">
+<h3 id="orga46f12d"><span class="section-number-3">7.1</span> Multimethods</h3>
 </div>
 
-<div id="outline-container-orgc7f96d6" class="outline-3">
-<h3 id="orgc7f96d6"><span class="section-number-3">7.2</span> Protocols</h3>
+<div id="outline-container-orgc981c71" class="outline-3">
+<h3 id="orgc981c71"><span class="section-number-3">7.2</span> Protocols</h3>
 </div>
 
-<div id="outline-container-orgf709161" class="outline-3">
-<h3 id="orgf709161"><span class="section-number-3">7.3</span> Records</h3>
+<div id="outline-container-org131abf4" class="outline-3">
+<h3 id="org131abf4"><span class="section-number-3">7.3</span> Records</h3>
 </div>
 
-<div id="outline-container-org1c76b8c" class="outline-3">
-<h3 id="org1c76b8c"><span class="section-number-3">7.4</span> clojure.spec</h3>
+<div id="outline-container-orgafe7f66" class="outline-3">
+<h3 id="orgafe7f66"><span class="section-number-3">7.4</span> clojure.spec</h3>
 </div>
 </div>
 
-<div id="outline-container-org833b1f7" class="outline-2">
-<h2 id="org833b1f7"><span class="section-number-2">8</span> ClojureScript</h2>
+<div id="outline-container-orga7fe544" class="outline-2">
+<h2 id="orga7fe544"><span class="section-number-2">8</span> ClojureScript</h2>
 </div>
 
-<div id="outline-container-orgaac04c2" class="outline-2">
-<h2 id="orgaac04c2"><span class="section-number-2">9</span> Reader conditionals (.cljc)</h2>
+<div id="outline-container-org768b77b" class="outline-2">
+<h2 id="org768b77b"><span class="section-number-2">9</span> Reader conditionals (.cljc)</h2>
 </div>
 
-<div id="outline-container-orga6aac1c" class="outline-2">
-<h2 id="orga6aac1c"><span class="section-number-2">10</span> ClojureCLR</h2>
+<div id="outline-container-orgf96abaa" class="outline-2">
+<h2 id="orgf96abaa"><span class="section-number-2">10</span> ClojureCLR</h2>
 </div>
 
-<div id="outline-container-orga1a6de1" class="outline-2">
-<h2 id="orga1a6de1"><span class="section-number-2">11</span> Literatura</h2>
+<div id="outline-container-org6901ecd" class="outline-2">
+<h2 id="org6901ecd"><span class="section-number-2">11</span> Literatura</h2>
 <div class="outline-text-2" id="text-11">
 <ul class="org-ul">
 <li><a href="http://www.braveclojure.com/">Clojure For The Brave and True</a> &#x2014; Daniel Higginbotham</li>
@@ -2133,7 +2559,7 @@ Abelson, Gerald Jay Sussman with Julie Sussman (sa video
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Novak Boškov</p>
-<p class="date">Created: 2017-04-25 уто 17:28</p>
+<p class="date">Created: 2017-04-25 уто 23:19</p>
 <p class="validation"></p>
 </div>
 </body>
