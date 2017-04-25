@@ -611,9 +611,25 @@ system that ensure clean, correct, multithreaded designs.
       tekst =Hello to <name>=.
    2. Napisati funkciju =get-the-caps= koja prima string engleskih
       slova a vraća samo njegova velika slova.
+
+      #+INCLUDE: "clojure-ntp/src/clojure_ntp/exercises_1.clj" src clojure :lines "7-38"
+
    3. Napisati funkciju =drop-nth= koja prima dva parametra od kojih je
       prvo vektor elemenata a drugo =n=. Funkcija vraća listu bez
       svakog =n=-tog elementa.
+
+      Eksplicitnom rekurzijom:
+
+      #+INCLUDE: "clojure-ntp/src/clojure_ntp/exercises_1.clj" src clojure :lines "39-84"
+
+      Ili koristeći =keep-indexed= funkciju:
+
+      #+INCLUDE: "clojure-ntp/src/clojure_ntp/exercises_1.clj" src clojure :lines "85-136"
+
+      Ili uz malo skupovnih operacija:
+
+      #+INCLUDE: "clojure-ntp/src/clojure_ntp/exercises_1.clj" src clojure :lines "137-159"
+
    4. Napravite =flip= funkciju višeg reda koja invertuje parametre
       prosleđene funkcije.
 
@@ -621,6 +637,8 @@ system that ensure clean, correct, multithreaded designs.
         ((flip -) 1 2)
         ;; => 1
       #+END_SRC
+
+      #+INCLUDE: "clojure-ntp/src/clojure_ntp/exercises_1.clj" src clojure :lines "160-185"
 
    5. Napisati funkciju =b-tree?= koja proverava da li je neka
       sekvenca binarno stablo.
@@ -638,6 +656,8 @@ system that ensure clean, correct, multithreaded designs.
         (b-tree? '(:a (:b nil nil) nil))
         ;; => true
       #+END_SRC
+
+      #+INCLUDE: "clojure-ntp/src/clojure_ntp/exercises_1.clj" src clojure :lines "186-206"
 
    6. Lepota je u simetriji. Napišite predikat =beauty-tree?= koji
       proverava da li je binarno stablo simetrično. Stablo je
