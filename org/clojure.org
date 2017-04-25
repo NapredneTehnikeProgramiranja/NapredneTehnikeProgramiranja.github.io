@@ -665,6 +665,66 @@ system that ensure clean, correct, multithreaded designs.
       desnog podstabla.
 
 ** Kada je mutacija stvarno nezaobilazna
+   To što je Clojure /value oriented/ ne znači da ne postoji način da
+   koristite mutabilna stanja već da kada ih koristite ona moraju biti
+   dobro izolovana i jedino na pravilan (konzistentan) način možete
+   njima rukovati. Clojure pruža nekoliko mehanizama za rukovanje
+   mutabilnim stanjem.
+
+*** Atomi
+    :LOGBOOK:
+    CLOCK: [2017-04-25 уто 16:28]--[2017-04-25 уто 16:53] =>  0:25
+    :END:
+    /Atomi/ su prvi i najjednostavniji mehanizam za rukovanje
+    mutabilnim stanjem. Ideja je da se oni uposle kada imamo
+    *sinhrono*, *nekoordinisano* ili *nezavisano* korišćenje deljenih
+    resursa. Dakle, ako treba da baratamo samo jednim parčetom
+    mutabilnog stanja od jednom i drugih zahteva onda su Atomi prava
+    stvar za nas (i upravo to je i najčešće).
+
+    Do sada smo uvek kada govorimo o Clojure-u govorili o vrednostima
+    (a ne o promenljivom sadržaju), /atomi su definisani na malo
+    složeniji način/. Pošto nam treba da atomima predstavimo nešto što
+    se može menjati u vremenu i pošto Clojure ne dozvoljava mutabilne
+    strukture podataka jedini način da se implementiraju atomi je bio
+    --- _kao promenljive reference na imutabilne strukture_. Jedan
+    način kako se definiše atom je dat u nastavku:
+
+    #+INCLUDE: "clojure-ntp/src/clojure_ntp/atoms.clj" src clojure :lines "3-6"
+
+    Ovako smo napravili atom koji sadrži praznu perzistentnu -
+    *imutabilnu* mapu a čija je referenca sačuvana u =app-state=
+    (adresa mape je data heksadecimalno). Pošto ovako prazna naša mapa
+    nije baš korisna hajde da asociramo neke vrednosti unutar nje:
+
+    #+INCLUDE: "clojure-ntp/src/clojure_ntp/atoms.clj" src clojure :lines "8-24"
+
+    Dakle, funkcija =swap!= *zamenjuje* vrednost na kuju pokazuje
+    =app-state= za neku drugu vrednost koja je rezultat primene
+    funkcije =assoc= na onu vrednost na koju trenutno pokazuje
+    =app-state= i ostale argumente. Naravno, umesto =assoc= funkcije
+    se može koristiti bilo koja druga.
+
+    Ako samo želimo da *zamenimo* vrednost na koju trenutno pokazuje
+    =app-state= sa nekom drugom vrednošću za to možemo koristiti
+    funkciju =reset!=:
+
+    #+INCLUDE: "clojure-ntp/src/clojure_ntp/atoms.clj" src clojure :lines "25-27"
+
+    Sada kada znamo kako da sačuvamo deljeno stanje u okviru atoma
+    pitanje je --- kako da ga pročitamo odatle? Operacija čitanja se u
+    ovom kontekstu zove *dereferenciranje* i radi se funkcijom =deref=
+    ili =@= /reader macro/-om:
+
+    #+INCLUDE: "clojure-ntp/src/clojure_ntp/atoms.clj" src clojure :lines "28-37"
+
+    Ovaj vrlo prost i intuitivan mehanizam nas spašava pisanje
+    eksplicitnih zaključavanja i daje nam veoma čist - funkcionalni
+    API za rukovanje deljenim stanjem.
+
+    Prokomentarišite rezultate ispod.
+
+    #+INCLUDE: "clojure-ntp/src/clojure_ntp/atoms.clj" src clojure :lines "63-116"
 
 ** Clojure u standardnim OO problemima
 ** Perzistentne strukture podataka
