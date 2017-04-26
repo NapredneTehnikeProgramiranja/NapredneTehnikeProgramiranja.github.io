@@ -770,7 +770,7 @@ system that ensure clean, correct, multithreaded designs.
    reaguju.
 
    #+ATTR_HTML: :width 700
-   #+CAPTION: slika iz njige [[http://www.wrox.com/WileyCDA/WroxTitle/Professional-Clojure.productCd-1119267277.html][Professional Clojure]]
+   #+CAPTION: slika iz knjige [[http://www.wrox.com/WileyCDA/WroxTitle/Professional-Clojure.productCd-1119267277.html][Professional Clojure]]
    [[file:images/Selection_001.png]]
 
    Clojure sa druge strane svoje strukture podataka implementira u
@@ -787,7 +787,7 @@ system that ensure clean, correct, multithreaded designs.
    koji želimo da menjamo, a ostatak strukture deli sa originalnom.
 
    #+ATTR_HTML: :width 700
-   #+CAPTION: slika iz njige [[http://www.wrox.com/WileyCDA/WroxTitle/Professional-Clojure.productCd-1119267277.html][Professional Clojure]]
+   #+CAPTION: slika iz knjige [[http://www.wrox.com/WileyCDA/WroxTitle/Professional-Clojure.productCd-1119267277.html][Professional Clojure]]
    [[file:images/Selection_002.png]]
 
    Da smo želeli da dodamo listu /L2/ na kraj liste /L1/ desilo bi se
@@ -795,7 +795,7 @@ system that ensure clean, correct, multithreaded designs.
    nove liste /L2/ pokazivao na početak liste /L3/.
 
    #+ATTR_HTML: :width 700
-   #+CAPTION: slika iz njige [[http://www.wrox.com/WileyCDA/WroxTitle/Professional-Clojure.productCd-1119267277.html][Professional Clojure]]
+   #+CAPTION: slika iz knjige [[http://www.wrox.com/WileyCDA/WroxTitle/Professional-Clojure.productCd-1119267277.html][Professional Clojure]]
    [[file:images/Selection_003.png]]
 
    _Imajte u vidu_ da je osnovna motivacija za ovakvu implementaciju
@@ -822,7 +822,7 @@ system that ensure clean, correct, multithreaded designs.
    Kod od gore bi trebao da odgovara stablu ispod:
 
    #+ATTR_HTML: :width 700
-   #+CAPTION: slika iz njige [[http://www.wrox.com/WileyCDA/WroxTitle/Professional-Clojure.productCd-1119267277.html][Professional Clojure]]
+   #+CAPTION: slika iz knjige [[http://www.wrox.com/WileyCDA/WroxTitle/Professional-Clojure.productCd-1119267277.html][Professional Clojure]]
    [[file:images/Selection_004.png]]
 
    Pa hajde da to validiramo:
@@ -857,7 +857,7 @@ system that ensure clean, correct, multithreaded designs.
    Dakle, ono što smo zapravo napravili je struktura kao na slici ispod:
 
    #+ATTR_HTML: :width 700
-   #+CAPTION: slika iz njige [[http://www.wrox.com/WileyCDA/WroxTitle/Professional-Clojure.productCd-1119267277.html][Professional Clojure]]
+   #+CAPTION: slika iz knjige [[http://www.wrox.com/WileyCDA/WroxTitle/Professional-Clojure.productCd-1119267277.html][Professional Clojure]]
    [[file:images/Selection_005.png]]
 
    Dakle, *desilo se neko kopiranje* ali je *neki deo strukture
