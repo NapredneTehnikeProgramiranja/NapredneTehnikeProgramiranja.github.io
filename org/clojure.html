@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="sr" xml:lang="sr">
 <head>
-<!-- 2017-04-26 сре 09:20 -->
+<!-- 2017-05-02 уто 19:18 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Napredne tehnike programiranja - Clojure</title>
@@ -266,70 +266,73 @@ for the JavaScript code in this tag.
 <h2>Sadr&#382;aj</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org1ae0e04">1. Uvod</a>
+<li><a href="#orgb96e798">1. Uvod</a>
 <ul>
-<li><a href="#orgafc9dae">1.1. Lisp</a>
+<li><a href="#org692d18c">1.1. Lisp</a>
 <ul>
-<li><a href="#org9236aca">1.1.1. Scheme</a></li>
+<li><a href="#org9664ea3">1.1.1. Scheme</a></li>
 </ul>
 </li>
-<li><a href="#orgd395db2">1.2. Clojure - funkcionalni način razmišljanja</a></li>
-<li><a href="#org7b7ae2b">1.3. Imperativno vs funckionalno programiranje</a></li>
-<li><a href="#orgc9a3d93">1.4. Clojure kao <i>value oriented</i> jezik</a></li>
-<li><a href="#orgec5d49d">1.5. Referencijalna transparentnost i memoizacija</a></li>
-<li><a href="#org8232c8b">1.6. Misliti rekurzivno</a></li>
+<li><a href="#org8c35d08">1.2. Clojure - funkcionalni način razmišljanja</a></li>
+<li><a href="#orgfa86c32">1.3. Imperativno vs funckionalno programiranje</a></li>
+<li><a href="#org4e6b505">1.4. Clojure kao <i>value oriented</i> jezik</a></li>
+<li><a href="#orge6e1c6e">1.5. Referencijalna transparentnost i memoizacija</a></li>
+<li><a href="#org976faed">1.6. Misliti rekurzivno</a></li>
 </ul>
 </li>
-<li><a href="#org375d107">2. REPL i IDE</a>
+<li><a href="#orga466409">2. REPL i IDE</a>
 <ul>
-<li><a href="#orgae98d28">2.1. <i>Build tools</i> - alati za izgradnju</a></li>
-<li><a href="#org124a354">2.2. <i>IDE</i> - integrisana razvojna okruženja</a></li>
+<li><a href="#orgc9f3f74">2.1. <i>Build tools</i> - alati za izgradnju</a></li>
+<li><a href="#org3c0a64e">2.2. <i>IDE</i> - integrisana razvojna okruženja</a></li>
 </ul>
 </li>
-<li><a href="#org0ba2e13">3. Elementi jezika</a>
+<li><a href="#orge7a95e6">3. Elementi jezika</a>
 <ul>
-<li><a href="#orgb1b04d3">3.1. Funkcije višeg reda</a>
+<li><a href="#orgdd9ea41">3.1. Funkcije višeg reda</a>
 <ul>
-<li><a href="#org997e3ea">3.1.1. Parcijalne funkcije</a></li>
+<li><a href="#org856a513">3.1.1. Parcijalne funkcije</a></li>
 </ul>
 </li>
-<li><a href="#orgfbc15a8">3.2. Kompozicija funkcija</a></li>
-<li><a href="#org911c461">3.3. Clojure naglašava svoju lenjost</a></li>
-<li><a href="#orgbf67c8b">3.4. Vežbanje 1</a></li>
-<li><a href="#org349174d">3.5. Kada je mutacija stvarno nezaobilazna</a>
+<li><a href="#org8872c45">3.2. Kompozicija funkcija</a></li>
+<li><a href="#org478d8bd">3.3. Clojure naglašava svoju lenjost</a></li>
+<li><a href="#org28e0d7c">3.4. Vežbanje 1</a></li>
+<li><a href="#orgd9a0d06">3.5. Kada je mutacija stvarno nezaobilazna</a>
 <ul>
-<li><a href="#org454566c">3.5.1. Atom</a></li>
-<li><a href="#org7413585">3.5.2. Ref</a></li>
+<li><a href="#org726c1ba">3.5.1. Atom</a></li>
+<li><a href="#org08a5236">3.5.2. Ref</a></li>
 </ul>
 </li>
-<li><a href="#orgfbf64df">3.6. Perzistentne strukture podataka</a></li>
-<li><a href="#org7f59c44">3.7. Clojure u standardnim OO problemima</a></li>
+<li><a href="#orgeff1bec">3.6. Perzistentne strukture podataka</a></li>
+<li><a href="#orga917b12">3.7. Clojure u standardnim OO problemima</a></li>
 </ul>
 </li>
-<li><a href="#org18df9ae">4. Read, evaluate vrtlog i makroi</a>
+<li><a href="#org55c9af0">4. Read, evaluate vrtlog i makroi</a>
 <ul>
-<li><a href="#org7b130fc">4.1. <i>Homoiconicy</i> &#x2014; "istoizglednost"</a></li>
+<li><a href="#org5061c77">4.1. <i>Evaluation Model</i> Clojure-a</a></li>
+<li><a href="#org05c2beb">4.2. Neki poznati <i>reader</i> makroi</a></li>
+<li><a href="#org5995e84">4.3. <i>Homoiconicy</i> &#x2014; "istoizglednost"</a></li>
+<li><a href="#orgc5c6140">4.4. Neki primeri iz prakse koji koriste makroe</a></li>
 </ul>
 </li>
-<li><a href="#org0e36fcd">5. Konkurentno i paralelno programiranje</a>
+<li><a href="#org34636d6">5. Konkurentno i paralelno programiranje</a>
 <ul>
-<li><a href="#org3198e78">5.1. Reference</a></li>
-<li><a href="#orga37c0c7">5.2. core.async</a></li>
+<li><a href="#org574b4e6">5.1. Reference</a></li>
+<li><a href="#org601605d">5.2. core.async</a></li>
 </ul>
 </li>
-<li><a href="#org0a5733b">6. Interakcija sa platformom</a></li>
-<li><a href="#org75045ff">7. Apstrakcije</a>
+<li><a href="#org53ccd91">6. Interakcija sa platformom</a></li>
+<li><a href="#org5ace79c">7. Apstrakcije</a>
 <ul>
-<li><a href="#org9e587e8">7.1. Multimethods</a></li>
-<li><a href="#org0b8cf0d">7.2. Protocols</a></li>
-<li><a href="#org64b453f">7.3. Records</a></li>
-<li><a href="#org4631ea0">7.4. clojure.spec</a></li>
+<li><a href="#orge277ede">7.1. Multimethods</a></li>
+<li><a href="#org842716f">7.2. Protocols</a></li>
+<li><a href="#org822f001">7.3. Records</a></li>
+<li><a href="#orgdc28f99">7.4. clojure.spec</a></li>
 </ul>
 </li>
-<li><a href="#orgc3efcd0">8. ClojureScript</a></li>
-<li><a href="#orgba13855">9. Reader conditionals (.cljc)</a></li>
-<li><a href="#org4c4e31e">10. ClojureCLR</a></li>
-<li><a href="#org463f6c3">11. Literatura</a></li>
+<li><a href="#org1d7a7d3">8. ClojureScript</a></li>
+<li><a href="#org6a7cc94">9. Reader conditionals (.cljc)</a></li>
+<li><a href="#org178f5f8">10. ClojureCLR</a></li>
+<li><a href="#org1a9b459">11. Literatura</a></li>
 </ul>
 </div>
 </div>
@@ -365,8 +368,8 @@ system that ensure clean, correct, multithreaded designs.
 </p>
 </blockquote>
 
-<div id="outline-container-org1ae0e04" class="outline-2">
-<h2 id="org1ae0e04"><span class="section-number-2">1</span> Uvod</h2>
+<div id="outline-container-orgb96e798" class="outline-2">
+<h2 id="orgb96e798"><span class="section-number-2">1</span> Uvod</h2>
 <div class="outline-text-2" id="text-1">
 <blockquote>
 <p>
@@ -381,8 +384,8 @@ in the expert's mind there are few.
 </blockquote>
 </div>
 
-<div id="outline-container-orgafc9dae" class="outline-3">
-<h3 id="orgafc9dae"><span class="section-number-3">1.1</span> Lisp</h3>
+<div id="outline-container-org692d18c" class="outline-3">
+<h3 id="org692d18c"><span class="section-number-3">1.1</span> Lisp</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 <b>Lisp</b> ili <b>LISP</b> je porodica programskih jezika sa dugom
@@ -447,8 +450,8 @@ još pregršt drugih dijalekata sa raznim osobinama:
 </ul>
 </div>
 
-<div id="outline-container-org9236aca" class="outline-4">
-<h4 id="org9236aca"><span class="section-number-4">1.1.1</span> Scheme</h4>
+<div id="outline-container-org9664ea3" class="outline-4">
+<h4 id="org9664ea3"><span class="section-number-4">1.1.1</span> Scheme</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 <b>Scheme</b> je jedan od najznačajnijih dijalekata Lisp-a. Dizajniran
@@ -471,7 +474,7 @@ samo dva.
 </p>
 </div>
 
-<ol class="org-ol"><li><a id="org10aa664"></a>Chez Scheme (Cisco)<br /><div class="outline-text-5" id="text-1-1-1-1">
+<ol class="org-ol"><li><a id="org5e2e8b8"></a>Chez Scheme (Cisco)<br /><div class="outline-text-5" id="text-1-1-1-1">
 <p>
 <a href="https://github.com/cisco/ChezScheme"><b>Chez</b></a> je <a href="http://www.r6rs.org/">Scheme implementacija</a> zajedno sa (moćnim) kompajlerom,
 <i>run time</i> sistemom i bibliotekama. Koristi je kompanije Cisco a
@@ -486,7 +489,7 @@ C biblioteka onda nije loše da počnete sa <b>Chez</b>-om.
 </p>
 </div></li>
 
-<li><a id="orgddb0b16"></a>Racket lang<br /><div class="outline-text-5" id="text-1-1-1-2">
+<li><a id="orge7b22f0"></a>Racket lang<br /><div class="outline-text-5" id="text-1-1-1-2">
 <p>
 <a href="https://racket-lang.org/">Racket lang</a> je takođe implementacija Schema-a ali sa potpuno
 drugim ciljevima pri dizajnu. Racket je po svom dizajnu sistem za
@@ -504,8 +507,8 @@ odlično društvo od kojeg možete mnogo da naučite.
 </div>
 </div>
 
-<div id="outline-container-orgd395db2" class="outline-3">
-<h3 id="orgd395db2"><span class="section-number-3">1.2</span> Clojure - funkcionalni način razmišljanja</h3>
+<div id="outline-container-org8c35d08" class="outline-3">
+<h3 id="org8c35d08"><span class="section-number-3">1.2</span> Clojure - funkcionalni način razmišljanja</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Danas postoji mnogo programskih jezika i zaista se (pre)veliki deo
@@ -544,8 +547,8 @@ koja Vam ne dozvoljava da pišete kod onako kako ste navikli!</i>
 </div>
 </div>
 
-<div id="outline-container-org7b7ae2b" class="outline-3">
-<h3 id="org7b7ae2b"><span class="section-number-3">1.3</span> Imperativno vs funckionalno programiranje</h3>
+<div id="outline-container-orgfa86c32" class="outline-3">
+<h3 id="orgfa86c32"><span class="section-number-3">1.3</span> Imperativno vs funckionalno programiranje</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 C, C++, C#, Java, Python svi ovi (i drugi) programski jezici imaju
@@ -612,8 +615,8 @@ veoma prostom. <i>Uviđanje ove jednostavnosti dolazi uz malo vežbe.</i>
 </div>
 </div>
 
-<div id="outline-container-orgc9a3d93" class="outline-3">
-<h3 id="orgc9a3d93"><span class="section-number-3">1.4</span> Clojure kao <i>value oriented</i> jezik</h3>
+<div id="outline-container-org4e6b505" class="outline-3">
+<h3 id="org4e6b505"><span class="section-number-3">1.4</span> Clojure kao <i>value oriented</i> jezik</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 Clojure promoviše stil programiranja koji se zove <i>value-oriented
@@ -655,8 +658,8 @@ primera koji to ilustruje:
 </div>
 </div>
 
-<div id="outline-container-orgec5d49d" class="outline-3">
-<h3 id="orgec5d49d"><span class="section-number-3">1.5</span> Referencijalna transparentnost i memoizacija</h3>
+<div id="outline-container-orge6e1c6e" class="outline-3">
+<h3 id="orge6e1c6e"><span class="section-number-3">1.5</span> Referencijalna transparentnost i memoizacija</h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
 Funkcije za koje uvek po njihovim parametrima možete da kažete sa
@@ -722,11 +725,11 @@ njena obična verzija ali se svaki sledeći put kada bude pozvana
 </div>
 </div>
 
-<div id="outline-container-org8232c8b" class="outline-3">
-<h3 id="org8232c8b"><span class="section-number-3">1.6</span> Misliti rekurzivno</h3>
+<div id="outline-container-org976faed" class="outline-3">
+<h3 id="org976faed"><span class="section-number-3">1.6</span> Misliti rekurzivno</h3>
 <div class="outline-text-3" id="text-1-6">
 <p>
-Iz razloga koji su opisani <a href="#org7b7ae2b">ranije</a> imperativni programski jezici ne
+Iz razloga koji su opisani <a href="#orgfa86c32">ranije</a> imperativni programski jezici ne
 stavljaju previše akcenat na rekurziju. Funcionalno programiranje
 rekurziju koristi kao osnovni alat. Tamo gde imperativno
 programiranje koristi petlje funkcionalno programiranje koristi
@@ -772,7 +775,7 @@ Imperativno programiranje problem faktorijela posmatra ovako:
 </div>
 
 <p>
-Clojure kao funkcionalan <a href="#orgc9a3d93">value oriented</a> jezik ne podržava mutiranje
+Clojure kao funkcionalan <a href="#org4e6b505">value oriented</a> jezik ne podržava mutiranje
 pa tako:
 </p>
 
@@ -1011,11 +1014,11 @@ alokacija steka</b>.
 </div>
 </div>
 
-<div id="outline-container-org375d107" class="outline-2">
-<h2 id="org375d107"><span class="section-number-2">2</span> REPL i IDE</h2>
+<div id="outline-container-orga466409" class="outline-2">
+<h2 id="orga466409"><span class="section-number-2">2</span> REPL i IDE</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-orgae98d28" class="outline-3">
-<h3 id="orgae98d28"><span class="section-number-3">2.1</span> <i>Build tools</i> - alati za izgradnju</h3>
+</div><div id="outline-container-orgc9f3f74" class="outline-3">
+<h3 id="orgc9f3f74"><span class="section-number-3">2.1</span> <i>Build tools</i> - alati za izgradnju</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 U Clojure zajednici se paralelno koriste dva alata za izgradnju:
@@ -1042,8 +1045,8 @@ Kako biste počeli da koristite <i>lein</i> potrebno je da pročitate
 </div>
 </div>
 
-<div id="outline-container-org124a354" class="outline-3">
-<h3 id="org124a354"><span class="section-number-3">2.2</span> <i>IDE</i> - integrisana razvojna okruženja</h3>
+<div id="outline-container-org3c0a64e" class="outline-3">
+<h3 id="org3c0a64e"><span class="section-number-3">2.2</span> <i>IDE</i> - integrisana razvojna okruženja</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 Podešavanje za rad u Clojure-u nije teško pronaći bez obzira na to
@@ -1066,8 +1069,8 @@ početnicima)</li>
 </div>
 </div>
 
-<div id="outline-container-org0ba2e13" class="outline-2">
-<h2 id="org0ba2e13"><span class="section-number-2">3</span> Elementi jezika</h2>
+<div id="outline-container-orge7a95e6" class="outline-2">
+<h2 id="orge7a95e6"><span class="section-number-2">3</span> Elementi jezika</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Ovaj kurs nema deo posvećen upoznavanju sa bazičnim elementima
@@ -1088,8 +1091,8 @@ objašnjenjem)</li>
 </ol>
 </div>
 
-<div id="outline-container-orgb1b04d3" class="outline-3">
-<h3 id="orgb1b04d3"><span class="section-number-3">3.1</span> Funkcije višeg reda</h3>
+<div id="outline-container-orgdd9ea41" class="outline-3">
+<h3 id="orgdd9ea41"><span class="section-number-3">3.1</span> Funkcije višeg reda</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 <a href="https://en.wikipedia.org/wiki/Higher-order_function">Funkcije višeg</a> reda su funkcije koje primaju funkcije kao parametre
@@ -1180,8 +1183,8 @@ prirodne za Clojure je da ih probate u npr. Javi.
 </p>
 </div>
 
-<div id="outline-container-org997e3ea" class="outline-4">
-<h4 id="org997e3ea"><span class="section-number-4">3.1.1</span> Parcijalne funkcije</h4>
+<div id="outline-container-org856a513" class="outline-4">
+<h4 id="org856a513"><span class="section-number-4">3.1.1</span> Parcijalne funkcije</h4>
 <div class="outline-text-4" id="text-3-1-1">
 <p>
 Kada smo radili napredno Python programiranje videli smo šta su i
@@ -1364,8 +1367,8 @@ Ali možemo postići taj efekat uvodeći jednu prostu <code>lambdu</code>:
 </div>
 </div>
 
-<div id="outline-container-orgfbc15a8" class="outline-3">
-<h3 id="orgfbc15a8"><span class="section-number-3">3.2</span> Kompozicija funkcija</h3>
+<div id="outline-container-org8872c45" class="outline-3">
+<h3 id="org8872c45"><span class="section-number-3">3.2</span> Kompozicija funkcija</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Još jednom, Clojure svoje korene vuče iz matematike pa tako ima još
@@ -1418,7 +1421,7 @@ Primetimo da se poslednja navedena funkcija poziva prva tj. primena
 funkcija ide "iznutra ka spolja". To možda može izgledati čudno
 (iako je baš tako i u matematičkoj notaciji) pa onda Clojure pruža
 drugi način da se ovo zapiše korišćenjem <i>threading macro</i>-a (o
-makroima će biti reči <a href="#org18df9ae">u nastavku</a>):
+makroima će biti reči <a href="#org55c9af0">u nastavku</a>):
 </p>
 
 <div class="org-src-container">
@@ -1434,8 +1437,8 @@ makroima će biti reči <a href="#org18df9ae">u nastavku</a>):
 </div>
 </div>
 
-<div id="outline-container-org911c461" class="outline-3">
-<h3 id="org911c461"><span class="section-number-3">3.3</span> Clojure naglašava svoju lenjost</h3>
+<div id="outline-container-org478d8bd" class="outline-3">
+<h3 id="org478d8bd"><span class="section-number-3">3.3</span> Clojure naglašava svoju lenjost</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 Clojure se ne smatra lenjim jezikom u smislu u kome se to misli
@@ -1565,8 +1568,8 @@ moguća izlaza:
 </div>
 </div>
 
-<div id="outline-container-orgbf67c8b" class="outline-3">
-<h3 id="orgbf67c8b"><span class="section-number-3">3.4</span> Vežbanje 1</h3>
+<div id="outline-container-org28e0d7c" class="outline-3">
+<h3 id="org28e0d7c"><span class="section-number-3">3.4</span> Vežbanje 1</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 Ideje zadataka uglavnom preuzete sa <a href="https://www.4clojure.com">4Clojure</a>.
@@ -1855,8 +1858,8 @@ desnog podstabla.</li>
 </div>
 </div>
 
-<div id="outline-container-org349174d" class="outline-3">
-<h3 id="org349174d"><span class="section-number-3">3.5</span> Kada je mutacija stvarno nezaobilazna</h3>
+<div id="outline-container-orgd9a0d06" class="outline-3">
+<h3 id="orgd9a0d06"><span class="section-number-3">3.5</span> Kada je mutacija stvarno nezaobilazna</h3>
 <div class="outline-text-3" id="text-3-5">
 <p>
 To što je Clojure <i>value oriented</i> ne znači da ne postoji način da
@@ -1867,8 +1870,8 @@ mutabilnim stanjem.
 </p>
 </div>
 
-<div id="outline-container-org454566c" class="outline-4">
-<h4 id="org454566c"><span class="section-number-4">3.5.1</span> Atom</h4>
+<div id="outline-container-org726c1ba" class="outline-4">
+<h4 id="org726c1ba"><span class="section-number-4">3.5.1</span> Atom</h4>
 <div class="outline-text-4" id="text-3-5-1">
 <p>
 <i>Atomi</i> su prvi i najjednostavniji mehanizam za rukovanje
@@ -2031,8 +2034,8 @@ Prokomentarišite rezultate ispod.
 </div>
 </div>
 
-<div id="outline-container-org7413585" class="outline-4">
-<h4 id="org7413585"><span class="section-number-4">3.5.2</span> Ref</h4>
+<div id="outline-container-org08a5236" class="outline-4">
+<h4 id="org08a5236"><span class="section-number-4">3.5.2</span> Ref</h4>
 <div class="outline-text-4" id="text-3-5-2">
 <p>
 Atomi nam daju mehanizam za rukovanje mutabilnim deljenim stanjem
@@ -2170,8 +2173,8 @@ drugim ne uspe &#x2014; <span class="underline">nekoordinisani su</span>. I zato
 </div>
 </div>
 
-<div id="outline-container-orgfbf64df" class="outline-3">
-<h3 id="orgfbf64df"><span class="section-number-3">3.6</span> Perzistentne strukture podataka</h3>
+<div id="outline-container-orgeff1bec" class="outline-3">
+<h3 id="orgeff1bec"><span class="section-number-3">3.6</span> Perzistentne strukture podataka</h3>
 <div class="outline-text-3" id="text-3-6">
 <p>
 Kako bismo lakše razumeli efikasnost imutabinih/perzistentnih
@@ -2461,21 +2464,382 @@ preporučuje. :)
 </div>
 </div>
 
-<div id="outline-container-org7f59c44" class="outline-3">
-<h3 id="org7f59c44"><span class="section-number-3">3.7</span> Clojure u standardnim OO problemima</h3>
+<div id="outline-container-orga917b12" class="outline-3">
+<h3 id="orga917b12"><span class="section-number-3">3.7</span> Clojure u standardnim OO problemima</h3>
 </div>
 </div>
-<div id="outline-container-org18df9ae" class="outline-2">
-<h2 id="org18df9ae"><span class="section-number-2">4</span> Read, evaluate vrtlog i makroi</h2>
+<div id="outline-container-org55c9af0" class="outline-2">
+<h2 id="org55c9af0"><span class="section-number-2">4</span> Read, evaluate vrtlog i makroi</h2>
 <div class="outline-text-2" id="text-4">
-</div><div id="outline-container-org7b130fc" class="outline-3">
-<h3 id="org7b130fc"><span class="section-number-3">4.1</span> <i>Homoiconicy</i> &#x2014; "istoizglednost"</h3>
+<blockquote>
+<p>
+Sve navedeno u ovom poglavlju važi za Clojure kako i za sve ostale
+Lisp jezike i obrnuto, osim ako drugačije nije naznačeno.
+</p>
+</blockquote>
+
+<p>
+Programski jezici koji spadaju u porodicu Lisp jezika imaju korisnu
+i zanimljivu osobinu da mogu veoma elegantno da transformišu <span class="underline">bilo
+kakve izraze</span> u validan kod. Šta to praktično znači:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defmacro</span> <span style="color: #93E0E3;">hebrew-lisp</span> <span style="color: #BFEBBF;">[</span>form<span style="color: #BFEBBF;">]</span>
+  <span style="color: #BFEBBF;">(</span>reverse form<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+
+<span style="color: #DCDCCC;">(</span>hebrew-lisp <span style="color: #BFEBBF;">(</span><span style="color: #D0BF8F;">(</span>str <span style="color: #CC9393;">"Hello "</span> p<span style="color: #D0BF8F;">)</span> <span style="color: #D0BF8F;">[</span>p<span style="color: #D0BF8F;">]</span> foo defn<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+
+<span style="color: #DCDCCC;">(</span>foo <span style="color: #CC9393;">"people!"</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; Hello people!</span>
+
+<span style="color: #DCDCCC;">(</span>hebrew-lisp <span style="color: #BFEBBF;">(</span><span style="color: #CC9393;">"people!"</span> foo<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; Hello people!</span>
+</pre>
+</div>
+
+<p>
+Sve gore navedeno radi fino iako sledeći izrazi uopšte nisu
+sintaktički validni u Clojure-u:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">(((str "Hello ") [p] foo defn))</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; CompilerException java.lang.RuntimeException: Unable to resolve symbol:</span>
+<span style="color: #5F7F5F;">;;    </span><span style="color: #7F9F7F;">p in this context, compiling:...</span>
+
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">("people!" foo)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; ClassCastException java.lang.String cannot be cast to clojure.lang.IFn</span>
+<span style="color: #5F7F5F;">;;    </span><span style="color: #7F9F7F;">clojure-ntp.macros/eval20385 (form-init7854233134659944327.clj:14)</span>
+</pre>
+</div>
+
+<p>
+Ova osobina nam omogućuje da jednostavno <span class="underline">menjamo jezik</span> u kome
+programiramo shodno problemu koji rešavamo našim programom. To na
+kraju dovodi do momenta kada svoj program možemo da pišemo
+<span class="underline">direktno preslikavajući</span> svoje znanje iz domena problema na
+kod. Tako dobijamo maksimalnu ekspresivnost (deklerativnost) koda i
+minimalan prostor za greške u domenu problema koji rešavamo.
+</p>
+
+<p>
+Filozofija koja stoji iza makroa je sledeća:
+</p>
+
+<blockquote>
+<p>
+Ako pravite WEB aplikaciju &#x2014; programirajte jezikom WEB-a (a ne
+jezikom opšte namene).
+</p>
+
+<p>
+Ako pravite grafički interfejs &#x2014; programirajte jezikom grafičkih
+interfejsa (a ne jezikom opšte namene).
+</p>
+
+<p>
+Ako programirate sistem za genetska istraživanja &#x2014; programirajte
+jezikom genetike (a ne jezikom opšte namene).
+</p>
+
+<p>
+&#x2026;
+</p>
+</blockquote>
+
+<p>
+Ono što Vam Cljure pruža u duhu ove filozofije je veoma moćan a
+lagan sistem u kome možete da pišete Vaše nove jezike. Taj sistem
+čak <span class="underline">nije nadgradnja</span> Lisp-a već je u <span class="underline">osnovi njegove
+konstrukcije</span>, u temeljima &#x2014; u <i>evaluation model</i>-u.
+</p>
+</div>
+
+<div id="outline-container-org5061c77" class="outline-3">
+<h3 id="org5061c77"><span class="section-number-3">4.1</span> <i>Evaluation Model</i> Clojure-a</h3>
 <div class="outline-text-3" id="text-4-1">
+<p>
+Lisp ima model izvršavanja koji se u osnovi razlikuje od ostalih
+programskih jezika. Taj sistem radi u dve faze &#x2014; čita se kod kao
+tekst i od njega se pravi Lisp struktura podataka. Te strukture
+podataka se potom evaluiraju(izračunavaju): obilazi se struktura i
+rade se razne akcije nad njom na osnovu tipa izraza.
+</p>
+
+<p>
+Npr. kada Lisp čita tekst <code>(+ 1 2)</code> u prvoj fazi se dobija Lisp
+lista čiji je prvi element <code>+</code> a potom idu brojevi 1 i 2. Ta Lista
+se onda šalje evaluatoru koji potraži funkciju koja odgovara
+simbolu <code>+</code> i primeni je na brojeve 1 i 2.
+</p>
+
+<p>
+Jezici koji imaju ovakvu vezu između koda, podataka i izvršavanja
+se nazivaju <b>homoikoničnim</b>.
+</p>
+
+<blockquote>
+<p>
+Homoikonični jezici Vam daju moć da na kod gledate kao na strukturu
+podataka koja se može programski menjati.
+</p>
+</blockquote>
+
+<p>
+Kako bismo objasnili način nakoji je ovo izvedeno hajde da
+napravimo jedan mali osvrt na kompajlere i proces kompaanja:
+Programski kod je samo skup karaktera a kompjuter razume samo
+mašinske instrukcije. Dakle, da bi mašina mogla da izvršava kod
+potreban nam je interpreter ili kompajler. Tokom svog rada
+kompajler konstruiše stablo apstrakne sintakse (AST) &#x2014; strukturu
+podataka koja predstavlja program. AST se potom prosledi evaluatoru
+na izvršavanje. Evaluator možete zamisliti kao funkciju koja
+obilazi stablo i pravi mašinske instrukcije za čvorove kroz koje
+prolazi.
+</p>
+
+<p>
+Dakle, proces kompajliranja poprilično podseća na ono što radi
+Lisp. Međutim, kod većine programskih jezika AST nije dostupno u
+programskom jeziku. Prostor u kome deluje kompajler i prostor u
+koje deluje sam programski jezik su razdvojeni. Proces
+kompajliranja izvršavanja u ne-Lisp jezicima možete zamisliti na
+sledeći način:
+</p>
+
+
+<div class="figure">
+<p><img src="images/Selection_006.png" alt="Selection_006.png" width="500" />
+</p>
+<p><span class="figure-number">Figure 9: </span>Ilustracija iz knjige <a href="http://www.braveclojure.com/read-and-eval/">Clojure For The Brave And True</a></p>
+</div>
+
+<p>
+Za razliku od većine programskih jezika Lisp svoje apstraktno
+sintaksno stablo predstavlja u obliku svojih struktura podataka &#x2014;
+ugnježdenih listi. Evo jedne ilustracije koja pokazuje da su Lisp
+izrazi zapravo već sami posebi jedan način predstave stabla:
+</p>
+
+
+<div class="figure">
+<p><img src="images/Selection_007.png" alt="Selection_007.png" width="500" />
+</p>
+<p><span class="figure-number">Figure 10: </span>Ilustracija iz knjige <a href="http://www.braveclojure.com/read-and-eval/">Clojure For The Brave And True</a></p>
+</div>
+
+<p>
+Dakle, Clojure <i>reader</i> dobije na ulaz tekst a na izlazu da AST u
+obliku Clojure listi koje kasnije prosledi evaluatoru. Proces
+izvršavanja Lisp-a možete zamisliti na sledeći način:
+</p>
+
+
+<div class="figure">
+<p><img src="images/Selection_008.png" alt="Selection_008.png" width="500" />
+</p>
+<p><span class="figure-number">Figure 11: </span>Ilustracija iz knjige <a href="http://www.braveclojure.com/read-and-eval/">Clojure For The Brave And True</a></p>
+</div>
+
+<p>
+Dakle, <b>Lisp kod je zapravo Lisp struktura podataka</b>. Da bismo
+pokazali da je to stvarno tako evo primera koji pokazuje da su
+<i>evaluator</i> i <i>reader</i> <span class="underline">dostupni u svakom vašem programu</span>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">-&gt;</span> <span style="color: #CC9393;">"(defn foo [p] (println (str p </span><span style="color: #CC9393; font-weight: bold;">\"</span><span style="color: #CC9393;"> from some function foo.</span><span style="color: #CC9393; font-weight: bold;">\"</span><span style="color: #CC9393;">)))"</span>
+    read-string
+    eval<span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; #'clojure-ntp.macros/foo</span>
+
+<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">-&gt;</span> <span style="color: #CC9393;">"(foo </span><span style="color: #CC9393; font-weight: bold;">\"</span><span style="color: #CC9393;">Some text</span><span style="color: #CC9393; font-weight: bold;">\"</span><span style="color: #CC9393;">)"</span>
+    read-string
+    eval<span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; Some text printed from some function foo.</span>
+</pre>
+</div>
+
+<p>
+Pošto je Clojure homoikoničan zašto bismo pisali stringove? Hajde
+da pišemo <b>liste == kod</b>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #DCDCCC;">(</span>eval '<span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">defn</span> <span style="color: #93E0E3;">foo</span>
+         <span style="color: #D0BF8F;">[</span>p<span style="color: #D0BF8F;">]</span>
+         <span style="color: #D0BF8F;">(</span>println <span style="color: #93E0E3;">(</span>str p <span style="color: #CC9393;">" printed from some function foo."</span><span style="color: #93E0E3;">)</span><span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; #'clojure-ntp.macros/foo</span>
+
+<span style="color: #DCDCCC;">(</span>eval '<span style="color: #BFEBBF;">(</span>foo <span style="color: #CC9393;">"Some text"</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; Some text printed from some function foo.</span>
+</pre>
+</div>
+
+<p>
+Ali liste su podrazumevane strukture podataka u Lispu a evaluator
+se poziva implicitno :) Pa je tako sve ovo prosto ekvivalentno sa:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defn</span> <span style="color: #93E0E3;">foo</span>
+  <span style="color: #BFEBBF;">[</span>p<span style="color: #BFEBBF;">]</span>
+  <span style="color: #BFEBBF;">(</span>println <span style="color: #D0BF8F;">(</span>str p <span style="color: #CC9393;">" printed from some function foo."</span><span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; #'clojure-ntp.macros/foo</span>
+
+<span style="color: #DCDCCC;">(</span>foo <span style="color: #CC9393;">"Some text"</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; Some text printed from some function foo.</span>
+
+<span style="color: #DCDCCC;">(</span>list? <span style="color: #BFEBBF;">(</span>read-string <span style="color: #CC9393;">"(+ 1 2)"</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; true</span>
+</pre>
+</div>
+
+<p>
+Sada kada nam je potpuno jasno kako Lisp radi hajde da pokušamo da
+razumemo šta se tačno dešava sa makroom na početku:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defmacro</span> <span style="color: #93E0E3;">hebrew-lisp</span> <span style="color: #BFEBBF;">[</span>form<span style="color: #BFEBBF;">]</span>
+  <span style="color: #BFEBBF;">(</span>reverse form<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+
+<span style="color: #DCDCCC;">(</span>hebrew-lisp <span style="color: #BFEBBF;">(</span><span style="color: #D0BF8F;">(</span>str <span style="color: #CC9393;">"Hello "</span> p<span style="color: #D0BF8F;">)</span> <span style="color: #D0BF8F;">[</span>p<span style="color: #D0BF8F;">]</span> foo defn<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+
+<span style="color: #DCDCCC;">(</span>foo <span style="color: #CC9393;">"people!"</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; Hello people!</span>
+
+<span style="color: #DCDCCC;">(</span>hebrew-lisp <span style="color: #BFEBBF;">(</span><span style="color: #CC9393;">"people!"</span> foo<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; Hello people!</span>
+</pre>
+</div>
+
+<p>
+Da bismo ovo razumeli potrebno nam je da još detaljnije pogledamo
+kako izgleda proces izvršavanja Lisp-a. Zato hajde napišemo još
+jedan mali makro:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defmacro</span> <span style="color: #93E0E3;">infix</span> <span style="color: #BFEBBF;">[</span>form<span style="color: #BFEBBF;">]</span>
+  <span style="color: #BFEBBF;">(</span>list
+   <span style="color: #D0BF8F;">(</span>second form<span style="color: #D0BF8F;">)</span>
+   <span style="color: #D0BF8F;">(</span>first form<span style="color: #D0BF8F;">)</span>
+   <span style="color: #D0BF8F;">(</span>last form<span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+
+<span style="color: #DCDCCC;">(</span>infix <span style="color: #BFEBBF;">(</span>1 + 2<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; 3</span>
+</pre>
+</div>
+
+<p>
+I pogledajmo kako teče izvršavanje ovog malog programa:
+</p>
+
+
+<div class="figure">
+<p><img src="images/Selection_009.png" alt="Selection_009.png" width="200" />
+</p>
+<p><span class="figure-number">Figure 12: </span>Ilustracija iz knjige <a href="http://www.braveclojure.com/read-and-eval/">Clojure For The Brave And True</a></p>
+</div>
+
+<p>
+Dakle, Lisp kod u obliku teksta se izvršava tako što se prvo
+pročita <b>reader</b>-om onda se razviju svi makroi <b>makroexpander</b>-om i
+rezultujuća struktura podataka se preda <b>evaluator</b>-u.
+</p>
+
+<p>
+Kako bismo utvrdili da je jasno šta se dešava pogledajmo još jedan
+makro:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #DCDCCC;">(</span>read-string <span style="color: #CC9393;">"(defmacro hebrew-lisp [form] (reverse form))"</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; (defmacro hebrew-lisp [form] (reverse form))</span>
+
+<span style="color: #DCDCCC;">(</span>eval <span style="color: #BFEBBF;">(</span>read-string <span style="color: #CC9393;">"(defmacro hebrew-lisp [form] (reverse form))"</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; #'clojure-ntp.macros/hebrew-lisp</span>
+
+<span style="color: #DCDCCC;">(</span>macroexpand <span style="color: #BFEBBF;">(</span>read-string <span style="color: #CC9393;">"(hebrew-lisp ((str </span><span style="color: #CC9393; font-weight: bold;">\"</span><span style="color: #CC9393;">Hello </span><span style="color: #CC9393; font-weight: bold;">\"</span><span style="color: #CC9393;"> p) [p] foo defn))"</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; (def foo (clojure.core/fn ([p] (str "Hello " p))))</span>
+
+<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">-&gt;</span> <span style="color: #CC9393;">"(hebrew-lisp ((str </span><span style="color: #CC9393; font-weight: bold;">\"</span><span style="color: #CC9393;">Hello </span><span style="color: #CC9393; font-weight: bold;">\"</span><span style="color: #CC9393;"> p) [p] foo defn))"</span>
+    read-string
+    macroexpand
+    eval<span style="color: #DCDCCC;">)</span>
+
+<span style="color: #DCDCCC;">(</span>foo <span style="color: #CC9393;">"good people"</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; Hello good people</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org05c2beb" class="outline-3">
+<h3 id="org05c2beb"><span class="section-number-3">4.2</span> Neki poznati <i>reader</i> makroi</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+Znamo da anonimnu funkciju u Clojure možemo da napišemo na više
+načina i da je jedan od njih <code>#(...)</code>, drugi <code>(fn [...] ...)</code>. Kako
+to radi?
+</p>
+
+<p>
+<b>Kao <i>reader</i> makro</b>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #DCDCCC;">(</span>read-string <span style="color: #CC9393;">"#(println %)"</span><span style="color: #DCDCCC;">)</span>
+</pre>
+</div>
+
+<p>
+Dakle, struktura podataka koja izađe iz <i>reader</i>-a kada koristimo
+jedan način i kada koristimo drugi način je zapravo jedno te isto.
+</p>
+
+<p>
+Na sličan način je napravljeno citiranje sintakse u Clojure:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #DCDCCC;">(</span>read-string <span style="color: #CC9393;">"#(println %)"</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; (fn* [p1__20475#] (println p1__20475#))</span>
+</pre>
+</div>
+
+<p>
+Takođe i dereferenciranje:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #DCDCCC;">(</span>read-string <span style="color: #CC9393;">"'(1 2 3)"</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; (quote (1 2 3))</span>
+</pre>
+</div>
+
+<p>
+I komentari su izvedeni na taj način:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #DCDCCC;">(</span>read-string <span style="color: #CC9393;">"@a"</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">=&gt; (clojure.core/deref a)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5995e84" class="outline-3">
+<h3 id="org5995e84"><span class="section-number-3">4.3</span> <i>Homoiconicy</i> &#x2014; "istoizglednost"</h3>
+<div class="outline-text-3" id="text-4-3">
 
 <div class="figure">
 <p><img src="images/franca_homoiconicy_clojure.jpg" alt="franca_homoiconicy_clojure.jpg" width="700" />
 </p>
-<p><span class="figure-number">Figure 9: </span><a href="https://twitter.com/franschm">@franschm</a></p>
+<p><span class="figure-number">Figure 13: </span><a href="https://twitter.com/franschm">@franschm</a></p>
 </div>
 
 <p>
@@ -2493,58 +2857,62 @@ zamišljamo.
 </p>
 </div>
 </div>
+
+<div id="outline-container-orgc5c6140" class="outline-3">
+<h3 id="orgc5c6140"><span class="section-number-3">4.4</span> Neki primeri iz prakse koji koriste makroe</h3>
+</div>
 </div>
 
-<div id="outline-container-org0e36fcd" class="outline-2">
-<h2 id="org0e36fcd"><span class="section-number-2">5</span> Konkurentno i paralelno programiranje</h2>
+<div id="outline-container-org34636d6" class="outline-2">
+<h2 id="org34636d6"><span class="section-number-2">5</span> Konkurentno i paralelno programiranje</h2>
 <div class="outline-text-2" id="text-5">
-</div><div id="outline-container-org3198e78" class="outline-3">
-<h3 id="org3198e78"><span class="section-number-3">5.1</span> Reference</h3>
+</div><div id="outline-container-org574b4e6" class="outline-3">
+<h3 id="org574b4e6"><span class="section-number-3">5.1</span> Reference</h3>
 </div>
 
-<div id="outline-container-orga37c0c7" class="outline-3">
-<h3 id="orga37c0c7"><span class="section-number-3">5.2</span> core.async</h3>
+<div id="outline-container-org601605d" class="outline-3">
+<h3 id="org601605d"><span class="section-number-3">5.2</span> core.async</h3>
 </div>
 </div>
 
-<div id="outline-container-org0a5733b" class="outline-2">
-<h2 id="org0a5733b"><span class="section-number-2">6</span> Interakcija sa platformom</h2>
+<div id="outline-container-org53ccd91" class="outline-2">
+<h2 id="org53ccd91"><span class="section-number-2">6</span> Interakcija sa platformom</h2>
 </div>
 
-<div id="outline-container-org75045ff" class="outline-2">
-<h2 id="org75045ff"><span class="section-number-2">7</span> Apstrakcije</h2>
+<div id="outline-container-org5ace79c" class="outline-2">
+<h2 id="org5ace79c"><span class="section-number-2">7</span> Apstrakcije</h2>
 <div class="outline-text-2" id="text-7">
-</div><div id="outline-container-org9e587e8" class="outline-3">
-<h3 id="org9e587e8"><span class="section-number-3">7.1</span> Multimethods</h3>
+</div><div id="outline-container-orge277ede" class="outline-3">
+<h3 id="orge277ede"><span class="section-number-3">7.1</span> Multimethods</h3>
 </div>
 
-<div id="outline-container-org0b8cf0d" class="outline-3">
-<h3 id="org0b8cf0d"><span class="section-number-3">7.2</span> Protocols</h3>
+<div id="outline-container-org842716f" class="outline-3">
+<h3 id="org842716f"><span class="section-number-3">7.2</span> Protocols</h3>
 </div>
 
-<div id="outline-container-org64b453f" class="outline-3">
-<h3 id="org64b453f"><span class="section-number-3">7.3</span> Records</h3>
+<div id="outline-container-org822f001" class="outline-3">
+<h3 id="org822f001"><span class="section-number-3">7.3</span> Records</h3>
 </div>
 
-<div id="outline-container-org4631ea0" class="outline-3">
-<h3 id="org4631ea0"><span class="section-number-3">7.4</span> clojure.spec</h3>
+<div id="outline-container-orgdc28f99" class="outline-3">
+<h3 id="orgdc28f99"><span class="section-number-3">7.4</span> clojure.spec</h3>
 </div>
 </div>
 
-<div id="outline-container-orgc3efcd0" class="outline-2">
-<h2 id="orgc3efcd0"><span class="section-number-2">8</span> ClojureScript</h2>
+<div id="outline-container-org1d7a7d3" class="outline-2">
+<h2 id="org1d7a7d3"><span class="section-number-2">8</span> ClojureScript</h2>
 </div>
 
-<div id="outline-container-orgba13855" class="outline-2">
-<h2 id="orgba13855"><span class="section-number-2">9</span> Reader conditionals (.cljc)</h2>
+<div id="outline-container-org6a7cc94" class="outline-2">
+<h2 id="org6a7cc94"><span class="section-number-2">9</span> Reader conditionals (.cljc)</h2>
 </div>
 
-<div id="outline-container-org4c4e31e" class="outline-2">
-<h2 id="org4c4e31e"><span class="section-number-2">10</span> ClojureCLR</h2>
+<div id="outline-container-org178f5f8" class="outline-2">
+<h2 id="org178f5f8"><span class="section-number-2">10</span> ClojureCLR</h2>
 </div>
 
-<div id="outline-container-org463f6c3" class="outline-2">
-<h2 id="org463f6c3"><span class="section-number-2">11</span> Literatura</h2>
+<div id="outline-container-org1a9b459" class="outline-2">
+<h2 id="org1a9b459"><span class="section-number-2">11</span> Literatura</h2>
 <div class="outline-text-2" id="text-11">
 <ul class="org-ul">
 <li><a href="http://www.braveclojure.com/">Clojure For The Brave and True</a> &#x2014; Daniel Higginbotham</li>
@@ -2559,7 +2927,7 @@ Abelson, Gerald Jay Sussman with Julie Sussman (sa video
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Novak Boškov</p>
-<p class="date">Created: 2017-04-26 сре 09:20</p>
+<p class="date">Created: 2017-05-02 уто 19:18</p>
 <p class="validation"></p>
 </div>
 </body>

@@ -872,6 +872,175 @@ system that ensure clean, correct, multithreaded designs.
 
 ** Clojure u standardnim OO problemima
 * Read, evaluate vrtlog i makroi
+
+  #+BEGIN_QUOTE
+  Sve navedeno u ovom poglavlju važi za Clojure kako i za sve ostale
+  Lisp jezike i obrnuto, osim ako drugačije nije naznačeno.
+  #+END_QUOTE
+
+  Programski jezici koji spadaju u porodicu Lisp jezika imaju korisnu
+  i zanimljivu osobinu da mogu veoma elegantno da transformišu _bilo
+  kakve izraze_ u validan kod. Šta to praktično znači:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/macros.clj" src clojure :lines "3-13"
+
+   Sve gore navedeno radi fino iako sledeći izrazi uopšte nisu
+   sintaktički validni u Clojure-u:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/macros.clj" src clojure :lines "14-21"
+
+   Ova osobina nam omogućuje da jednostavno _menjamo jezik_ u kome
+   programiramo shodno problemu koji rešavamo našim programom. To na
+   kraju dovodi do momenta kada svoj program možemo da pišemo
+   _direktno preslikavajući_ svoje znanje iz domena problema na
+   kod. Tako dobijamo maksimalnu ekspresivnost (deklerativnost) koda i
+   minimalan prostor za greške u domenu problema koji rešavamo.
+
+   Filozofija koja stoji iza makroa je sledeća:
+
+   #+BEGIN_QUOTE
+   Ako pravite WEB aplikaciju --- programirajte jezikom WEB-a (a ne
+   jezikom opšte namene).
+
+   Ako pravite grafički interfejs --- programirajte jezikom grafičkih
+   interfejsa (a ne jezikom opšte namene).
+
+   Ako programirate sistem za genetska istraživanja --- programirajte
+   jezikom genetike (a ne jezikom opšte namene).
+
+   ...
+   #+END_QUOTE
+
+   Ono što Vam Cljure pruža u duhu ove filozofije je veoma moćan a
+   lagan sistem u kome možete da pišete Vaše nove jezike. Taj sistem
+   čak _nije nadgradnja_ Lisp-a već je u _osnovi njegove
+   konstrukcije_, u temeljima --- u /evaluation model/-u.
+
+** /Evaluation Model/ Clojure-a
+   Lisp ima model izvršavanja koji se u osnovi razlikuje od ostalih
+   programskih jezika. Taj sistem radi u dve faze --- čita se kod kao
+   tekst i od njega se pravi Lisp struktura podataka. Te strukture
+   podataka se potom evaluiraju(izračunavaju): obilazi se struktura i
+   rade se razne akcije nad njom na osnovu tipa izraza.
+
+   Npr. kada Lisp čita tekst =(+ 1 2)= u prvoj fazi se dobija Lisp
+   lista čiji je prvi element =+= a potom idu brojevi 1 i 2. Ta Lista
+   se onda šalje evaluatoru koji potraži funkciju koja odgovara
+   simbolu =+= i primeni je na brojeve 1 i 2.
+
+   Jezici koji imaju ovakvu vezu između koda, podataka i izvršavanja
+   se nazivaju *homoikoničnim*.
+
+   #+BEGIN_QUOTE
+   Homoikonični jezici Vam daju moć da na kod gledate kao na strukturu
+   podataka koja se može programski menjati.
+   #+END_QUOTE
+
+   Kako bismo objasnili način nakoji je ovo izvedeno hajde da
+   napravimo jedan mali osvrt na kompajlere i proces kompaanja:
+   Programski kod je samo skup karaktera a kompjuter razume samo
+   mašinske instrukcije. Dakle, da bi mašina mogla da izvršava kod
+   potreban nam je interpreter ili kompajler. Tokom svog rada
+   kompajler konstruiše stablo apstrakne sintakse (AST) --- strukturu
+   podataka koja predstavlja program. AST se potom prosledi evaluatoru
+   na izvršavanje. Evaluator možete zamisliti kao funkciju koja
+   obilazi stablo i pravi mašinske instrukcije za čvorove kroz koje
+   prolazi.
+
+   Dakle, proces kompajliranja poprilično podseća na ono što radi
+   Lisp. Međutim, kod većine programskih jezika AST nije dostupno u
+   programskom jeziku. Prostor u kome deluje kompajler i prostor u
+   koje deluje sam programski jezik su razdvojeni. Proces
+   kompajliranja izvršavanja u ne-Lisp jezicima možete zamisliti na
+   sledeći način:
+
+   #+ATTR_HTML: :width 500
+   #+CAPTION: Ilustracija iz knjige [[http://www.braveclojure.com/read-and-eval/][Clojure For The Brave And True]]
+   [[file:images/Selection_006.png]]
+
+   Za razliku od većine programskih jezika Lisp svoje apstraktno
+   sintaksno stablo predstavlja u obliku svojih struktura podataka ---
+   ugnježdenih listi. Evo jedne ilustracije koja pokazuje da su Lisp
+   izrazi zapravo već sami posebi jedan način predstave stabla:
+
+   #+ATTR_HTML: :width 500
+   #+CAPTION: Ilustracija iz knjige [[http://www.braveclojure.com/read-and-eval/][Clojure For The Brave And True]]
+   [[file:images/Selection_007.png]]
+
+   Dakle, Clojure /reader/ dobije na ulaz tekst a na izlazu da AST u
+   obliku Clojure listi koje kasnije prosledi evaluatoru. Proces
+   izvršavanja Lisp-a možete zamisliti na sledeći način:
+
+   #+ATTR_HTML: :width 500
+   #+CAPTION: Ilustracija iz knjige [[http://www.braveclojure.com/read-and-eval/][Clojure For The Brave And True]]
+   [[file:images/Selection_008.png]]
+
+   Dakle, *Lisp kod je zapravo Lisp struktura podataka*. Da bismo
+   pokazali da je to stvarno tako evo primera koji pokazuje da su
+   /evaluator/ i /reader/ _dostupni u svakom vašem programu_:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/macros.clj" src clojure :lines "22-31"
+
+   Pošto je Clojure homoikoničan zašto bismo pisali stringove? Hajde
+   da pišemo *liste == kod*:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/macros.clj" src clojure :lines "32-39"
+
+   Ali liste su podrazumevane strukture podataka u Lispu a evaluator
+   se poziva implicitno :) Pa je tako sve ovo prosto ekvivalentno sa:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/macros.clj" src clojure :lines "40-50"
+
+   Sada kada nam je potpuno jasno kako Lisp radi hajde da pokušamo da
+   razumemo šta se tačno dešava sa makroom na početku:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/macros.clj" src clojure :lines "3-13"
+
+   Da bismo ovo razumeli potrebno nam je da još detaljnije pogledamo
+   kako izgleda proces izvršavanja Lisp-a. Zato hajde napišemo još
+   jedan mali makro:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/macros.clj" src clojure :lines "69-77"
+
+   I pogledajmo kako teče izvršavanje ovog malog programa:
+
+   #+ATTR_HTML: :width 200
+   #+CAPTION: Ilustracija iz knjige [[http://www.braveclojure.com/read-and-eval/][Clojure For The Brave And True]]
+   [[file:images/Selection_009.png]]
+
+   Dakle, Lisp kod u obliku teksta se izvršava tako što se prvo
+   pročita *reader*-om onda se razviju svi makroi *makroexpander*-om i
+   rezultujuća struktura podataka se preda *evaluator*-u.
+
+   Kako bismo utvrdili da je jasno šta se dešava pogledajmo još jedan
+   makro:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/macros.clj" src clojure :lines "78-94"
+
+** Neki poznati /reader/ makroi
+   Znamo da anonimnu funkciju u Clojure možemo da napišemo na više
+   načina i da je jedan od njih =#(...)=, drugi =(fn [...] ...)=. Kako
+   to radi?
+
+   *Kao /reader/ makro*:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/macros.clj" src clojure :lines "53-55"
+
+   Dakle, struktura podataka koja izađe iz /reader/-a kada koristimo
+   jedan način i kada koristimo drugi način je zapravo jedno te isto.
+
+   Na sličan način je napravljeno citiranje sintakse u Clojure:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/macros.clj" src clojure :lines "54-56"
+
+   Takođe i dereferenciranje:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/macros.clj" src clojure :lines "57-59"
+
+   I komentari su izvedeni na taj način:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/macros.clj" src clojure :lines "60-62"
+
 ** /Homoiconicy/ --- "istoizglednost"
 
    #+ATTR_HTML: :width 700
@@ -885,6 +1054,8 @@ system that ensure clean, correct, multithreaded designs.
    Dok kod jezika koji su /homoikonični/ situacija nije tako
    striktna. Kod u koji gledamo su zapravo podaci, ne moramo da ih
    zamišljamo.
+
+** Neki primeri iz prakse koji koriste makroe
 
 * Konkurentno i paralelno programiranje
 
