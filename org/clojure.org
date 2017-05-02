@@ -1042,6 +1042,12 @@ system that ensure clean, correct, multithreaded designs.
    #+INCLUDE: "clojure-ntp/src/clojure_ntp/macros.clj" src clojure :lines "60-62"
 
 ** /Homoiconicy/ --- "istoizglednost"
+   Razmotrite ovaj crtež i primetite kako fleksibilnost /evaluation
+   model/-a Lispa utiče na dizajn programa koji su pisani u
+   njemu. /Homoikoničnost/ jezika čini implementaciju čitavog niza
+   alata konceptualno trivijalnim (mackroi, validacija podataka i
+   generativno testiranje --- [[*clojure.spec][Clojure.spec]], transfer podataka --- [[https://github.com/edn-format/edn][EDN]],
+   konfiguracija...).
 
    #+ATTR_HTML: :width 700
    #+CAPTION: [[https://twitter.com/franschm][@franschm]]
@@ -1055,7 +1061,7 @@ system that ensure clean, correct, multithreaded designs.
    striktna. Kod u koji gledamo su zapravo podaci, ne moramo da ih
    zamišljamo.
 
-** Neki primeri iz prakse koji koriste makroe
+** Reader conditionals (.cljc)
 
 * Konkurentno i paralelno programiranje
 
@@ -1064,7 +1070,6 @@ system that ensure clean, correct, multithreaded designs.
 ** core.async
 
 * Interakcija sa platformom
-
 * Apstrakcije
 
 ** Multimethods
@@ -1074,12 +1079,125 @@ system that ensure clean, correct, multithreaded designs.
 ** Records
 
 ** clojure.spec
+   Clojure je dinamički programski jezik i kao takvom mu nisu
+   neophodne anotacije tipova u vreme kompajliranja. Iako Clojure ima
+   /type hints/ oni nisu ni obavezni a ni dovoljno bogat mehanizam već
+   samo služe da pomognu kompajleru kako bi rezultujući kod bio što
+   efikasniji. Ipak, u Clojure zajednici je uvek bila praksa da se
+   koriste različite biblioteke za opis oblika podataka i predikatskih
+   pravila koja se proveravaju u vreme izvršavanja. Komentari, koji su
+   osnovni mehanizam u dinamičkim programskim jezicima, mogu da
+   posluže za komunikaciju sa čovekom ali u automatskoj proveri ili
+   testiranju i ne baš.
+
+   Početnicima u Clojure svetu poruke o grešci koje potiču iz ručnog
+   parsiranja podataka ili restruktuiranja čestu deluju nejasno
+   (posebno kada one dođu od makroa). U ovom slučaju deklerativni opis
+   podataka može mnogo da pomogne u razumevanju greške.
+
+   Ako govorimo o testiranju onda je /property based testing/ tehnika
+   koja nam omogućuje mnogo pouzdanije testove od onih koje bismo
+   napisali ručno. Kako bi se testovi mogli generisati (npr. pomoću
+   [[https://github.com/clojure/test.check][test.check]]) potreban je dobar opis podataka a to je upravo posao
+   [[https://clojure.org/about/spec][clojure.spec]]-a.
+
+   Pored svih svoji osobina /clojure.spec/ _nije_ /type system/ ---
+   /type/ sistemi uzimaju za korektno samo ono što je formalno
+   dokazivo, /clojure.spec/ dozvoljava veću ekspresivnost u opisu ali
+   sa druge strane ne teži nikakvom formalnom dokazu
+   korektnosti. Takođe ono čime se /clojure.spec/ bavi jesu dinamički
+   stvoreni podaci u programu a ne statički.
+
+   #+BEGIN_QUOTE
+   Dakle, smisao =clojure.spec=-a je da pruži moćan mehanizam za
+   deklerativan opis podataka koji će se proveravati u vreme
+   izvršavanja.
+   #+END_QUOTE
+
+   U ovom delu ćemo dati neke primere korićenja a za opširniji uvod
+   pogledajte [[https://clojure.org/guides/spec][ovde]].
+
+   *[napomena]* /clojure.spec/ je uveden u Clojure verziji =1.9= koja
+   još nije oficijalno izašla pa će tako primeri biti dati za verziju
+   =1.9.0-alpha16=.
+
+   Šemu možemo definisati na sledeći način:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/spec.clj" src clojure :lines "1-12"
+
+   A ovako možemo proveriti da li je neki podatak validan po nekoj šemi:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/spec.clj" src clojure :lines "13-17"
+
+   Dajemo još primera:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/spec.clj" src clojure :lines "21-35"
+
+   Ako želimo da kažemo da neka vrednost treba da zadovoljava šemu ili
+   da bude =nil=:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/spec.clj" src clojure :lines "36-42"
+
+   Postoji i funkcija koja može da "objasni" zašto neki podaci ne
+   zadovoljavaju datu šemu:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/spec.clj" src clojure :lines "43-50"
+
+*** Validatori za mape
+    Validitori za mape se kreiraju sa =clojure.spec/keys=:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/spec.clj" src clojure :lines "51-84"
+
+   Evo nekih primera:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/spec.clj" src clojure :lines "85-135"
+
+*** Validatori za kolekcije
+    Validatore za kolekcije možete dobiti i korišćenjem sledećih /helper/-a:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/spec.clj" src clojure :lines "136-197"
+
+*** Validatori za sekvence
+    Sekvencijalni podaci se mogu validirati validatorima koji
+    oslikavaju one standardne operatore kod regularnih izraza:
+
+    - =cat= --- konkatenacija šema
+    - =alt= --- izbor šema
+    - =*= --- 0 ili više pojava neke šeme
+    - =+= --- 1 ili više pojava neke šeme
+    - =?= --- 0 ili 1 pojava neke šeme
+
+    Ovde ćemo dati samo neke primere:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/spec.clj" src clojure :lines "198-210"
+
+*** Validiranje funkcija
+    Pošto možemo opisati podatke onda možemo opisati i parametre
+    funkcije kao i njene povratne vrednosti. Dodatno, možemo opisati i
+    funkciju koja će proveriti da li važi neka za:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/spec.clj" src clojure :lines "211-323"
+
+*** Generativno testiranje =test-check=
+    Kada imamo sve ove validatore baš bi bilo dobro da postoji način
+    da generišemo podatke iz šeme. To bi nam baš bilo korisno za
+    testiranje. Ono što nam treba za ovako nešto se nalazi u
+    =clojure.spec.gen.alpha= /namespace-u/.
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/spec.clj" src clojure :lines "324-365"
+
+   Funkcija kojom možemo da dobijemo uporedno generisane podatke i
+   njihovo slaganje u šemu je =exercise=:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/spec.clj" src clojure :lines "366-373"
+
+   Možemo od generatora dobiti i parove ulaz-izlaz za funkcije kojima
+   smo dali šeme i koje smo instrumentalizovali --- eto generativnog
+   testiranja:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/spec.clj" src clojure :lines "374-396"
 
 * ClojureScript
-
-* Reader conditionals (.cljc)
-
-* ClojureCLR
 
 * Literatura
   - [[http://www.braveclojure.com/][Clojure For The Brave and True]] --- Daniel Higginbotham
