@@ -1041,7 +1041,7 @@ system that ensure clean, correct, multithreaded designs.
 
    #+INCLUDE: "clojure-ntp/src/clojure_ntp/macros.clj" src clojure :lines "60-62"
 
-** /Homoiconicy/ --- "istoizglednost"
+** /Homoiconicity/ --- "istoizglednost"
    Razmotrite ovaj crtež i primetite kako fleksibilnost /evaluation
    model/-a Lispa utiče na dizajn programa koji su pisani u
    njemu. /Homoikoničnost/ jezika čini implementaciju čitavog niza
