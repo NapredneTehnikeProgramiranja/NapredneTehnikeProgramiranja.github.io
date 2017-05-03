@@ -45,7 +45,7 @@ Prezentacija je sastavljena kombinovanjem nekoliko tehnologija:
    - dok ste još na `develop` grani kopirajte `_site` direktorijum u
      npr. `~/Desktop`.
    - pređite na `master` granu.
-   - sa master grane obrišite sve osim: `CNAME`, `.git`, `README.md`.
+   - sa master grane obrišite sve osim: `CNAME`, `.git`, `.github`, `README.md`.
    - sadržaj `_site` direktorijuma koji ste stavili u npr. `~/Desktop`
      kopirajte na `master` granu.
    - push-ujte izmene na `master` granu na GitHub-u. Od ovog momenta
@@ -74,3 +74,11 @@ Objave se pišu u standardnom *markdown-u*.
 - **contact** stranica se piše direktno u `contact.markdown`.
 - **statički resursi dostupni svuda** nalaze se u `resources`.
 - **slike dostupne materijalima napravljenim org-om** nalaze se u `org/images`.
+
+# Pronašli ste grešku?
+
+Ako pronađete bilo kakvu grešku ili nedoslednost u ovim materijalima
+(uključujući i sav povezan kod) molimo Vas da nam skrenete pažnju na
+to kako bismo zajedno učinili ovaj kurs boljim.
+
+Budite slobodni da otvorite [issue](https://github.com/NapredneTehnikeProgramiranja/NapredneTehnikeProgramiranja.github.io/issues).
