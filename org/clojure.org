@@ -1061,8 +1061,51 @@ system that ensure clean, correct, multithreaded designs.
    striktna. Kod u koji gledamo su zapravo podaci, ne moramo da ih
    zamišljamo.
 
+   #+BEGIN_QUOTE
+   Lisp je definisan u terminima sopstvenih struktura podataka a ne u
+   terminima tekstualne sintakse. [[https://clojure.org/reference/reader][Možemo reći]] da je sintaksa Lispa
+   data u strukturama podataka Lispa.
+   #+END_QUOTE
+
+** Navođenje sintakse --- /syntax quoting/
+   Sav Lisp kod je ujedno i struktura podataka, a izvršavanje svodi na
+   izračunavanje struktura podataka. Ako pak nekada _ne želimo_ da
+   neka *struktura podataka == kod* bude računata treba da je
+   /quote/-ujemo.
+
+   Za sve forme koje nisu simboli, liste, vektori, skupovi i mape je
+   =`x= (/syntax quoting/) isto što i ='x= (običan =(quote x)=). Za
+   simbole, liste, vektore, skupove i mape /syntax quoting/ (=`=) radi
+   rekurzivno /quote/-ovanje --- za svaku strukturu /quote/-uje sve
+   unutar nje, do najdublje strukture.
+
+   Sada je pitanje šta ako u okviru neke forme koju smo /syntax
+   quote/-ovali želimo da izvršimo neki mali deo. Stvar koja nam to
+   omogućava se zove /unquoting/. Ako želimo da /unquote/-ujemo formu
+   to radimo sa =~= ispred nje. Dakle:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/macros.clj" src clojure :lines "98-115"
+
+   Takođe postoji i način da /unquote/-ujete neku formu i da je pri
+   tome "odvijete iz zagrada" --- /unquote-splicing/ =~@=:
+
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/macros.clj" src clojure :lines "116-119"
+
+   Za još priče o /quoting/-u pogledajte [[https://8thlight.com/blog/colin-jones/2012/05/22/quoting-without-confusion.html][ovaj]] post.
+
 ** Reader conditionals (.cljc)
 
+** Vežbanje 2
+   1. Koristeći makroe proširiti Clojure tako da se u njemu mogu
+      definisati funkcije korišćenjem srpske reči za to "дефиниши-ф"
+      (Clojure podržava [[https://en.wikipedia.org/wiki/Unicode][Unicode]], možete slobodno da pišete ćirilicom):
+
+      #+INCLUDE: "clojure-ntp/src/clojure_ntp/exercises_2.clj" src clojure :lines "6-21"
+
+      Vaše je da definišete makro =дефиниши-ф=.
+
+   2. Učinite isto i za funkcije =println=, =count= i =apply=
+      (ćirilična imena za njih se prepuštaju Vašoj mašti).
 * Konkurentno i paralelno programiranje
 
 ** Reference
