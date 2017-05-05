@@ -620,15 +620,15 @@ system that ensure clean, correct, multithreaded designs.
 
       Eksplicitnom rekurzijom:
 
-      #+INCLUDE: "clojure-ntp/src/clojure_ntp/exercises_1.clj" src clojure :lines "39-84"
+      #+INCLUDE: "clojure-ntp/src/clojure_ntp/exercises_1.clj" src clojure :lines "42-86"
 
       Ili koristeći =keep-indexed= funkciju:
 
-      #+INCLUDE: "clojure-ntp/src/clojure_ntp/exercises_1.clj" src clojure :lines "85-136"
+      #+INCLUDE: "clojure-ntp/src/clojure_ntp/exercises_1.clj" src clojure :lines "87-138"
 
       Ili uz malo skupovnih operacija:
 
-      #+INCLUDE: "clojure-ntp/src/clojure_ntp/exercises_1.clj" src clojure :lines "137-159"
+      #+INCLUDE: "clojure-ntp/src/clojure_ntp/exercises_1.clj" src clojure :lines "139-161"
 
    4. Napravite =flip= funkciju višeg reda koja invertuje parametre
       prosleđene funkcije.
@@ -638,7 +638,7 @@ system that ensure clean, correct, multithreaded designs.
         ;; => 1
       #+END_SRC
 
-      #+INCLUDE: "clojure-ntp/src/clojure_ntp/exercises_1.clj" src clojure :lines "160-185"
+      #+INCLUDE: "clojure-ntp/src/clojure_ntp/exercises_1.clj" src clojure :lines "162-187"
 
    5. Napisati funkciju =b-tree?= koja proverava da li je neka
       sekvenca binarno stablo.
@@ -657,7 +657,7 @@ system that ensure clean, correct, multithreaded designs.
         ;; => true
       #+END_SRC
 
-      #+INCLUDE: "clojure-ntp/src/clojure_ntp/exercises_1.clj" src clojure :lines "186-206"
+      #+INCLUDE: "clojure-ntp/src/clojure_ntp/exercises_1.clj" src clojure :lines "188-208"
 
    6. Lepota je u simetriji. Napišite predikat =beauty-tree?= koji
       proverava da li je binarno stablo simetrično. Stablo je
