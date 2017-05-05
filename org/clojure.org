@@ -1104,6 +1104,10 @@ system that ensure clean, correct, multithreaded designs.
 
       Vaše je da definišete makro =дефиниши-ф=.
 
+      Rešenje:
+
+      #+INCLUDE: "clojure-ntp/src/clojure_ntp/exercises_2.clj" src clojure :lines "3-5"
+
    2. Učinite isto i za funkcije =println=, =count= i =apply=
       (ćirilična imena za njih se prepuštaju Vašoj mašti).
 * Konkurentno i paralelno programiranje
