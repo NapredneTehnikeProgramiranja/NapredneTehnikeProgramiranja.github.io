@@ -19,8 +19,8 @@
   |       8 | [[*predavanja 7][Clojure 3]]       | <2017-04-26 Wed> | [[*vežbe 5][v5]]         | <2017-04-25 Tue> | <2017-04-27 Thu> | <2017-05-05 Fri> |
   |       9 | [[*predavanja 8][Clojure 4]]       | <2017-05-03 Wed> | [[*vežbe 6][v6]]         | <2017-05-09 Tue> | <2017-05-04 Thu> | <2017-05-12 Fri> |
   |---------+-----------------+------------------+------------+------------------+------------------+------------------|
-  |      10 | [[*predavanja 9][Go 1]]            | <2017-05-10 Wed> | [[*vežbe 7][v7]]         | <2017-05-16 Tue> | <2017-05-11 Thu> | <2017-05-19 Fri> |
-  |      11 | [[*predavanja 10][Go 2]]            | <2017-05-17 Wed> | [[*vežbe 8][v8]]         | <2017-05-23 Tue> | <2017-05-18 Thu> | <2017-05-26 Fri> |
+  |      10 | [[*predavanja 9][Smalltalk 1]]     | <2017-05-10 Wed> | [[*vežbe 7][v7]]         | <2017-05-16 Tue> | <2017-05-11 Thu> | <2017-05-19 Fri> |
+  |      11 | [[*predavanja 10][Smalltalk 2]]     | <2017-05-17 Wed> | [[*vežbe 8][v8]]         | <2017-05-23 Tue> | <2017-05-18 Thu> | <2017-05-26 Fri> |
   |---------+-----------------+------------------+------------+------------------+------------------+------------------|
   |      12 | [[*predavanja 11][Haskell 1]]       | <2017-05-24 Wed> | [[*vežbe 9][v9]]         | <2017-05-30 Tue> | <2017-05-25 Thu> | <2017-06-02 Fri> |
   |      13 | [[*predavanja 12][Haskell 2]]       | <2017-05-31 Wed> | [[*vežbe 10][v10]]        | <2017-06-06 Tue> | <2017-06-01 Thu> | <2017-06-09 Fri> |
@@ -48,18 +48,13 @@
    - Parsing & code generators - DSL basics (mali uvod u JSD predmet)
 ** predavanja 5
    - [[file:clojure.org::*Uvod][Uvod]]
-   - [[file:clojure.org::*Elementi%20jezika][Elementi jezika]]
-   - [[file:clojure.org::*REPL%20i%20IDE][REPL i IDE]]
 ** predavanja 6
-   - [[file:clojure.org::*Read,%20evaluate%20vrtlog%20i%20makroi][Read, evaluate vrtlog i makroi]]
+   - [[file:clojure.org::*Elementi%20jezika][Elementi jezika]]
 ** predavanja 7
-   - [[file:clojure.org::*Konkurentno%20i%20paralelno%20programiranje][Konkurentno i paralelno programiranje]]
+   - [[file:clojure.org::*Kada%20je%20mutacija%20stvarno%20nezaobilazna][Kada je mutacija stvarno nezaobilazna]]
 ** predavanja 8
-   - [[file:clojure.org::*Interakcija%20sa%20platformom][Interakcija sa platformom]]
-   - [[file:clojure.org::*Abstrakcije][Abstrakcije]]
-   Ako ostane vremena:
-   - [[file:clojure.org::*ClojureScript][ClojureScript]]
-   - [[file:clojure.org::*Reader%20conditionals%20(.cljc)][Reader conditionals (.cljc)]]
+   - [[file:clojure.org::*Read,%20evaluate%20vrtlog%20i%20makroi][Read, evaluate vrtlog i makroi]]
+   - [[file:clojure.org::*clojure.spec][Clojure.spec]]
 ** predavanja 9
    - Introduction
    - goroutines and concurent programming
