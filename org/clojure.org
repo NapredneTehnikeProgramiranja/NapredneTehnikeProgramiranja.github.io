@@ -746,7 +746,7 @@ system that ensure clean, correct, multithreaded designs.
     #+INCLUDE: "clojure-ntp/src/clojure_ntp/atoms.clj" src clojure :lines "117-149"
 
     Dakle, atomi nas ne čuvaju od toga da akcija nad jednim uspe a nad
-    drugim ne uspe --- _nekoordinisani su_. I zato su to Refs:
+    drugim ne uspe --- _nekoordinisani su_. I zato su tu Refs:
 
     #+INCLUDE: "clojure-ntp/src/clojure_ntp/atoms.clj" src clojure :lines "150-215"
 
