@@ -15,4 +15,8 @@ Kolokvijum će se održavati **od 15:30h u učionici 102 Jugodrvo**.
 
 ## Raspored
 
-Raspored dolazaka na kolokvijum će biti naknadno objavljen ovde.
+Raspored dolazaka na kolokvijum možete
+naći [ovde](../resources/raspored_kol_2.pdf)
+
+- ljudi u levom stupcu dolaze od **15:30h**,
+- ljudi u desnom stupcu u **17:30h**.
