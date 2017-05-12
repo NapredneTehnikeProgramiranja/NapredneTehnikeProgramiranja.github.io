@@ -17,6 +17,7 @@ materijalu na kursu Napredne tehnike programiranja.*
 - [ ] grešku u pisanju
 - [ ] korišćenje pogrešnog pojma
 - [ ] sugestija
+- [ ] samo imam pitanje
 
 *Stavite `x` da biste označili opciju.*
 
