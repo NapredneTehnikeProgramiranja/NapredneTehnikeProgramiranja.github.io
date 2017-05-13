@@ -1,0 +1,226 @@
+#+TITLE: Napredne tehnike programiranja - kolokvijumi Clojure
+#+LANGUAGE: sr
+#+SETUPFILE: ../org-html-themes/setup/theme-bigblow.setup
+#+TAGS: za_radoznale
+
+* Maj 2017.
+
+** /Kizomba/
+
+*** Precrtajte tvrdnje koje smatrate netačnim, zaokružite one koje smatrate tačnim. Navedite zašto.
+    Tačne tvrdnje su obeležene sa:
+    - [X]
+    a netačne sa:
+    - [ ]
+    -----
+
+    - [ ] Funkcionalno programiranje je paradigma programiranja koja
+      se zasniva na pisanju naredbi koje menjaju stanje objekata u
+      memoriji.
+
+      Ne, naprotiv. Funkcionalno programiranje se orijentiše na izraze
+      a ne na naredbe, koncept stanja se obično predstavlja serijom
+      imutabilnih vrednosti. Funkcionalni dizajn programa se bavi
+      stvarima kao što su čiste funkcije i njihova orkestracija.
+
+    - [ ] Funkcionalno programiranje daje najbolje alate za pristup i
+      upravljanje memorijskim lokacijama.
+
+      Ne, funkcionalno programiranje je ujedno i deklerativno te stoga
+      na upravljanje memorijom obično gleda kao na detalje
+      implementacije pre nego dizajn. Upravljanje memorijom je obično
+      van dohvata programera koji piše program u funckionalnom
+      programskom jeziku.
+
+    - [ ] U funkcionalnom programiranju programer treba da gleda na
+      entitete programa kao na logičke celine koje menjaju svoje
+      stanje odgovarajući na dešavanja u programu.
+
+      U funkcionalnom programiranju programer treba da gleda na
+      problem tako što ga dekomponuje na čiste funkcije (i pametetno
+      odredi tipove). Gore opisano ponašanje više odgovara objektnom
+      programiranju.
+
+*** Objasnite koncept homoikoničnosti i dajte jedan primer koji ga oslikava.
+
+    Homoikoničnost je osobina programskog jezika ili programa koja
+    govori o tome da se sintaksa predstavlja validnim programskim
+    konstrukcijama (strukturama podataka). Na taj način pomoću
+    homoikoničnosti može menjati struktura programa iz samog programa.
+
+    U Clojure-u je npr:
+
+    #+BEGIN_SRC clojure
+      (def a 1)
+    #+END_SRC
+
+    Istovremeno i lista od 3 simbola i njome možete baratati na
+    standardan način kao i sa listom:
+
+    #+BEGIN_SRC clojure
+      '(1 2 3)
+    #+END_SRC
+
+    #+BEGIN_SRC clojure
+      (type '(def a 1))
+      ;; => clojure.lang.PersistentList
+
+      (= (type '(def a 1))
+         (type '(1 2 3)))
+      ;; => true
+    #+END_SRC
+
+*** Objasnite koncept kompozicije funkcija i dajte jedan primer koji ga oslikava.
+
+    Kompozicija funkcija je primena funkcije na povratnu vrednost neke
+    druge funkcije kako bi se napravila treća.
+
+    #+BEGIN_SRC clojure
+      (def f3 (comp - *))
+
+      (f3 2 3)
+      ;; => -6
+
+      (defn f3 [a b]
+        (-> (* a b)
+            -))
+
+      (f3 2 3)
+      ;; => -6
+    #+END_SRC
+
+*** Šta su reference (=refs=) u Clojure i čemu služe?
+
+    Koncept reference (=ref=) u okruženju gde imamo više tokova
+    izvršavanja (/thread/-ova) omogućuje sinhronizovan, koordinisan
+    pristup mnoštvu identiteta korišćenjem softverske transakcione
+    memorije.
+
+*** Napišite makro =defatom=.
+
+    =defatom= se koristi ovako:
+
+    #+BEGIN_SRC clojure
+      (defatom moj-atom {:a 1})
+    #+END_SRC
+
+    a ima isti efekat kao da smo napisali:
+
+    #+BEGIN_SRC clojure
+      (def moj-atom (atom {:a 1}))
+    #+END_SRC
+
+    Rešenje:
+
+    #+BEGIN_SRC clojure
+      (defmacro defatom
+        [s form]
+        `(def ~s (atom ~form)))
+    #+END_SRC
+
+** /Eskista/
+
+*** Precrtajte tvrdnje koje smatrate netačnim, zaokružite one koje smatrate tačnim. Navedite zašto.
+    Tačne tvrdnje su obeležene sa:
+    - [X]
+    a netačne sa:
+    - [ ]
+    -----
+
+    - [ ] Funkcionalno programiranje je inspirisano /Von Neumann/-ovom
+      arhitekturom računara.
+
+      Ne, funkcionalno programiranje je koncipirano nezavisno od /Von
+      Neumann/-ove arhitekture.
+
+    - [ ] Funkcionalno programiranje po svojoj postavci unosi novu
+      kompleksnost u konkurentno/paralelno programiranje.
+
+      Ne, s obzirom da naglašava imutabilne strukture podataka i čiste
+      funkcije predstavlja dobru podlogu za konkurentno programiranje.
+
+    - [X] Funkcionalno programiranje promoviše rekurzivan način
+      razmišljanja i dizajn.
+
+*** Objasnite koncept referencijalne transparentnosti i dajte jedan primer koji ga oslikava.
+    Za funkcije koje za iste parametre uvek daju iste rezultate kažemo
+    da su referencijalno transparentne. Funkcije u matematici su
+    referencijalno transparentne. U Clojure-u je npr. funckija =conj=
+    referencijalno transparenta:
+
+    #+BEGIN_SRC clojure
+      (def a [1 2 3])
+
+      (= (conj a 4)
+         (conj a 4))
+      ;; => true
+    #+END_SRC
+
+    Ali funkcija =swap!= nije:
+
+    #+BEGIN_SRC clojure
+      (def a (atom [1 2 3]))
+
+      (= (swap! a conj 4)
+         (swap! a conj 4))
+      ;; => false
+    #+END_SRC
+
+*** Objasnite koncept lenjih sekvenci i dajte jedan primer koji ga oslikava.
+    Lenje sekvence su sekvence koje ne evaluiraju svoje elemente do
+    momenta kada su one neophodne. Svoje elemente reačunaju "na
+    zahtev". Većina Clojure funkcija vraća lenje sekvence. Takve su i
+    =range= i =concat=:
+
+    #+BEGIN_SRC clojure
+      (def a (concat [1 2 3] (range 100000000)))
+    #+END_SRC
+
+    Izraz gore će se izvršiti odmah. Neće se trošiti vreme ni za
+    pravljenje /range/-a ni za njegovu konkatenaciju sa =[1 2
+    3]=. Svaki element u =a= će se računati tek kada/ako bude
+    potreban.
+
+    Primetimo da sledeći izraz u Python-u 3 troši vreme i ne izvršava
+    se odmah.
+
+    #+BEGIN_SRC python
+      a = [1, 2, 3] + list(range(100000000))
+    #+END_SRC
+
+    Iako se pravljenje /range/-a izvršava odmah:
+
+    #+BEGIN_SRC python
+      a = range(100000000)
+    #+END_SRC
+
+*** Šta su atomi (=atoms=) u Clojure i čemu služe?
+    Atomi su koncept koji služi za rad sa entitetima kojima je
+    potrebno obezbediti sinhrono, nekoordinisano, nezavisno
+    pristupanje u okruženju gde imamo više alternativnih tokova
+    izvršavanja --- /thread/-ova. Atomi nam daju /thread safe/
+    mehanizam za rad sa takvim entitetima.
+
+*** Napišite makro =print-ref=.
+
+    =print-ref= se koristi ovako:
+
+    #+BEGIN_SRC clojure
+      (def moja-referenca (ref {:m 2}))
+      (print-ref moja-referenca)
+      ;; => referenca sa trenutnom vrednoscu  {:m 2}
+    #+END_SRC
+
+    a ima isti efekat kao:
+
+    #+BEGIN_SRC clojure
+      (println "referenca sa trenutnom vrednoscu " (deref moja-referenca))
+    #+END_SRC
+
+    Rešenje:
+
+    #+BEGIN_SRC clojure
+      (defmacro print-ref
+        [r]
+        `(println "referenca sa trenutnom vrednoscu " (deref ~r)))
+    #+END_SRC
