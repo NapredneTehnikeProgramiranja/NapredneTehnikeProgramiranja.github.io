@@ -1,14 +1,12 @@
 ---
-title: Rezultati i rešenja kolokvijuma iz Python-a
+title: Rezultati i rešenja kolokvijuma iz Clojure-a
 author: Novak Boškov
 ---
 
 # Molba
 
 Molim sve studente da
-pogledaju [rešenja](../org/colloquium/python.html)
-kolokvijuma. Posebno one koji su imali neko pitanje sa dekoratorima
-ili deskriptorima.
+pogledaju [rešenja](../org/colloquium/clojure.html) kolokvijuma.
 
 # Rezultati
 
