@@ -13,10 +13,278 @@ language.
 #+END_QUOTE
 
 * Uvod
+  Haskell je čisto funkcionalan programski jezik opšte
+  namene. Karakteriše ga [[https://en.wikipedia.org/wiki/Evaluation_strategy#Non-strict_evaluation][non-strict]] semantika i stroga statička
+  tipizacija. Ime je dobio po logičaru [[https://en.wikipedia.org/wiki/Haskell_Curry][Haskell Curry]]-ju. Nastao je
+  kasnih 80-tih godina kao rezultat rada grupe akademaca u oblasti
+  računarskih nauka. Haskell je izgrađen oko veoma napredanog /type
+  system/-a koji sadrži algoritam za zaključivanje tipova ([[https://en.wikipedia.org/wiki/Type_inference][type
+  inference]]) pa se veoma malo jezičkih konstrukcija u kodu mora
+  eksplicitno obeležiti tipovima.
+
+  Haskell jasno nameće način razmišljanja. Jedino kod nastao čisto
+  funkcionalnim načinom razmišljanja se može[fn:1] zapisati u
+  Haskell-u.
+
+  Pošto je "funckionalan programski jezik" veoma rastegljiv pojam
+  odmah ovde na početku ćemo reći šta za nas znači da je Haskell
+  funkcionalan:
+
+  - Funkcije su prvoklasni koncepti.
+  - Značenje Haskell programa je izgrađeno na osnovu izračunavanja
+    izraza a ne na izvršavanju naredbi --- /Haskell nema naredbe/.
+
+  Pošto je "čisto funkcionalan programski jezik" takođe rastegljiv
+  pojam u poslednje vreme i to ćemo odmah na početku jasno
+  odrediti. Kada kažemo da je Haskell čisto funkcionalan programski
+  jezik to znači:
+
+  - Nema mutiranja, nigde! Sve je imutabilno.
+  - Izrazi nikada nemaju sporedne efekte (ni kod ispisivanja na
+    ekran[fn:2]).
+  - Sve funkcije za iste ulaze vraćaju iste izlaze.
+
+  Haskell je istinski lenj. Dakle, _nije da većina funckija vraća
+  lenje sekvence_ već nešto striktnije:
+
+  - Izrazi ( _svi_, _bilo koji_ ) se ne evaluiraju dok njihov rezultat
+    nije potreban za neko drugo izračunavanje.
+  - Omogućuje kompozicijsko programiranje ([[*/Wholemeal/ programiranje][wholemeal programiranje]]).
+  - To ima svoju manu --- rezonovanje o korišćenju vremena i prostora
+    postaje dosta komplikovanije.
+
+  Haskell je statički tipiziran jezik --- _svaki_ izraz ima svoj tip i
+  svi tipovi se proveravaju u vreme kompajliranja. Program koji nije
+  korektan sa stanovišta tipova se ne može kompajlirati a još manje
+  pokrenuti. Tipovi izraza _nisu_ dostupni u vreme izvršavanja ---
+  _nisu_ ni potrebni, kompajlirani kod je _korektan_ i to je dokazivo
+  "matematikom koja stoji iza Haskell kompajlera".
+
+  U nastavku ćemo dati neke ideje koje su od najveće važnosti u
+  Haskell porgramiranju.
+
+** Tipovi
+   Haskell ima statički type sistem. Statički type sistemi propisuju
+   da tipovi izraza (a u procedurnim jezivima objekata, promenljivih)
+   moraju biti poznati u vreme kompajliranja.
+
+   Kada programer u kodu mora da anotira sve izraze to može da bude
+   prilično dosadna stvar. Ono što je bitno da zapamtimo je:
+
+   #+BEGIN_QUOTE
+   Obavezna anotacija svih izraza u programu _nije_ osobina statičkih
+   type sistema već pre posledica nedovoljne ekspresivnosti _nekih_
+   statičkih type sistema (kao što je slučaj kod Java, C, C++, C#...).
+   #+END_QUOTE
+
+   Haskell-ov type sistem nam daje sledeće stvari:
+
+   - Pomaže nam da promislimo i izrazimo svoj program
+
+     Prvi korak u pisanju Haskell programa je popišemo sve tipove koji
+     su potrebni. Pošto je Haskell-ov type sistem prilično ekspresivan
+     to nije trivijalan zadatak ali zato jeste veliki korak ka jasnom
+     razumevanju strukture programa.
+
+   - Služi kao forma dokumentacije
+
+     Type sistem je toliko ekspresivan da čitanje tipa funkcije
+     najčešće već samo govori sasvim dovoljno o tome šta funkcija radi
+     pa tekst o tome šta funckija radi nije neophodan. Mnoge
+     standardne Haskell funckije nemaju dokumentaciju u vidu teksta!
+
+   - Pretvara /run-time/ greške u /compile-time/ greške
+
+     Bolje je imati korektan program nakon kompajliranja nego
+     beskrajno testirati u /run-time/-u. Haskell ima maksimu --- *ako
+     se kompajlira onda je korektno*. Postoji mogućnost da se
+     "provuče" neka greška vezana za logiku programa ali se i to u
+     Haskell-u očekuje ređe nego u ostalim programskim jezicima.
+
+** Apstrakcije
+   "Don't Repeat Yourself" je česta mantra koja se čuje u današnjem
+   programiranju, u nauci se zove još i /Princip Apstrakcije/. Idaja
+   je da ništa ne treba pisati više puta: svaka ideja, algoritam,
+   parče podatka treba da se pojavi samo na jednom jedinom mestu u
+   kodu. Izdvajanje sličnih delova koda se naziva procesom
+   apstrakcije.
+
+   Haskell je vrlo dobar u apstrahovanju. Koncepti kao što su
+   /parametric polymorphism/, funkcije višeg reda, /type classes/ i
+   drugi za cilj imaju da se izbore za princip apstrakcije.
+
+   #+BEGIN_QUOTE
+   Da li je Vaš softver /DRY/?
+
+   Šta je Vaš izgovor?
+   #+END_QUOTE
+
+** /Wholemeal/ programiranje
+   Citat [[http://www.cs.ox.ac.uk/ralf.hinze/][Ralf Hinze]]:
+
+   #+BEGIN_QUOTE
+   “Functional languages excel at wholemeal programming, a term coined
+   by Geraint Jones. Wholemeal programming means to think big: work
+   with an entire list, rather than a sequence of elements; develop a
+   solution space, rather than an individual solution; imagine a
+   graph, rather than a single path. The wholemeal approach often
+   offers new insights or provides new perspectives on a given
+   problem. It is nicely complemented by the idea of projective
+   programming: first solve a more general problem, then extract the
+   interesting bits and pieces by transforming the general program
+   into more specialised ones.”
+   #+END_QUOTE
+
+   /Wholemeal/ programiranje je dakle [[https://sh.wikipedia.org/wiki/Dedukcija][deduktivan]] proces.
+
+   Pogledajmo ovo parče pseudo Java/C#/C... koda:
+
+   #+BEGIN_SRC c
+     int acc = 0;
+     for ( int i = 0; i < lst.length; i++ ) {
+         acc = acc + 3 * lst[i];
+     }
+   #+END_SRC
+
+   [[http://www.cs.ox.ac.uk/people/richard.bird/][Richard Bird]] kaže da ovo parče koda boluje od "indeksitisa": brine
+   se o iteriranju kroz niz na niskom nivou --- tako što prati
+   indekse. Pored toga još i meša u jedno ono što se obično smatra kao
+   dve operacije --- uvećavanje svakog elementa za 3 i sabiranje svih
+   elemenata. U Haskell-u to bismo uradili ovako:
+
+   #+BEGIN_SRC haskell
+     sum $ map (3*) lst
+   #+END_SRC
+
 ** Elementi jezika
+   Možemo reći da se Haskell sastoji iz dva jezika: *jezik tipova* i
+   *jezik izraza* gde prvi nije obavezno pisati jer /type inference/
+   algoritam ume da zaključi informacije koje on nosi. Konstrukcija
+   =::= razdvaja ova dva jezika.
+
+   #+BEGIN_SRC haskell
+     jezik izraza :: jezik tipova
+   #+END_SRC
+
+   =::= se još čita i "ima tip".
+
+*** Dekleracije i variable
+
+    Deklarisanje promenljivih možemo uraditi na sledeći način:
+
+    #+INCLUDE: "haskellNTP/showcase/src/Intro.hs" src haskell :lines "3-9"
+
+    Kod iznad deklariše variablu koja ima tip =Int= i
+    vrednost 3. Imajte u vidu da se ova promenljiva *ne može* više
+    nikada promeniti ona će do kraja sveta(dobro programa) imati
+    vrednost koju smo joj ovde zadali. Takođe, ako pokušamo negde
+    drugo ponovo da deklarišemo ovu istu variablu kompajler će
+    prijaviti grešku:
+
+    #+INCLUDE: "haskellNTP/showcase/src/Intro.hs" src haskell :lines "10-16"
+
+    Dakle, /=/ *ne predstavlja* /dodelu/ kao što je slučaj u mnogim
+    drugim jezicima već /definiciju/ kao u matematici. Dakle =x = 1=
+    se *ne čita* kao "x dobija vrednost 1" ili "dodeljujem broj 4
+    promenljivoj x" već *"x je definisano kao 1"*. Šta radi sledeći
+    kod?
+
+    #+INCLUDE: "haskellNTP/showcase/src/Intro.hs" src haskell :lines "17-19"
+
+*** Osnovni tipovi
+    =Int= je osnovni celobrojni tip i po standardu mora biti u stanju
+    da prikaže vrednosti u opsegu ne manjem od $\pm2^{29}$. Na
+    standardnim 64-bitnim mašinama je $\pm2^{63}$. Maksimalna i
+    minimalna vrednost =Int= tipa su date sa =biggestInt= i
+    =smallestInt=:
+
+    #+INCLUDE: "haskellNTP/showcase/src/Intro.hs" src haskell :lines "20-27"
+
+    =Integer= tip je proizvoljne preciznosti i ograničen je samo
+    memorijom računara:
+
+    #+INCLUDE: "haskellNTP/showcase/src/Intro.hs" src haskell :lines "28-40"
+
+    =Float= je standardan tip za predstavu razlomljenih brojeva u
+    /single-precision/, =Double= je /double-precision/:
+
+    #+INCLUDE: "haskellNTP/showcase/src/Intro.hs" src haskell :lines "41-48"
+
+    Tu su i =Bool=, =Char= i =String=:
+
+    #+INCLUDE: "haskellNTP/showcase/src/Intro.hs" src haskell :lines "49-60"
+
+*** Aritmetika
+    Probajmo sledeće izraze:
+
+    #+INCLUDE: "haskellNTP/showcase/src/Intro.hs" src haskell :lines "61-69"
+
+    - /backticks/ prefiksnu funkciju pretvaraju u infiksnu
+    - minusi kao znakovi moraju biti u zagradama kako ne bi bili
+      parsirani kao oduzimanje
+
+    Sledeći izraz ne prolazi kompajler:
+
+    #+INCLUDE: "haskellNTP/showcase/src/Intro.hs" src haskell :lines "70-76"
+
+    Haskell neće raditi implicitnu konverziju između ova dva tipa,
+    morate Vi eksplicitno:
+
+    #+INCLUDE: "haskellNTP/showcase/src/Intro.hs" src haskell :lines "77-80"
+
+    Ovo takođe ne prolazi kompajler:
+
+    #+INCLUDE: "haskellNTP/showcase/src/Intro.hs" src haskell :lines "81-86"
+
+    Za deljenje celobrojnih vrednosti moramo da koristimo =div=:
+
+    #+INCLUDE: "haskellNTP/showcase/src/Intro.hs" src haskell :lines "87-90"
+
+*** Boolova logika
+    Ovo radi kako ste i navikli:
+
+    #+INCLUDE: "haskellNTP/showcase/src/Intro.hs" src haskell :lines "91-99"
+
+*** Definisanje osnovnih funkcija
+    Funkcije se definišu na sledeći način:
+
+    #+INCLUDE: "haskellNTP/showcase/src/Intro.hs" src haskell :lines "100-104"
+
+    =Integer -> Integer= znači da funkcija prima =Integer= i vraća
+    =Integer=.
+
+    U definiciji funkcije prvi izraz koji odgovara pozivu se
+    izvršava. Objasnite izvršavanje funkcije =sumtorial=?
+
+    Izbor poziva takođe može biti izražen i korišćenjem mehanizma koji
+    se zove /guards/:
+
+    #+INCLUDE: "haskellNTP/showcase/src/Intro.hs" src haskell :lines "105-109"
+
+    /Guards/ se izvršavaju redom --- od gore ka dole i prvi izraz koji
+    se evaluira u =True= će izazvati da se izvrši njegova grana
+    funkcije.
+
+    #+INCLUDE: "haskellNTP/showcase/src/Intro.hs" src haskell :lines "110-119"
+
+    Šta će biti =foo(-3)=, =foo(0)=, =foo(1)=, =foo(36)=, =foo(38)=?
+
+*** Parovi
+
+*** Funkcije više argumenata
+
+*** Liste
+
+*** Konstrukcija listi
+
+*** Funkcije nad listama
+
+*** Kombinovanje funkcija
+
+*** Čitanje poruka o grešci
 *** Pragme
-    {-# LANGUAGE #-} {-# OPTIONS_GHC #-} {-# INCLUDE #-} {-# INFIX #-}
-    {-# DEPRECATED #-} {-# WARNING #-} {-# RULES #-}
+    ={-# LANGUAGE #-}= ={-# OPTIONS_GHC #-}= ={-# INCLUDE #-}= ={-# INFIX #-}=
+    ={-# DEPRECATED #-}= ={-# WARNING #-}= ={-# RULES #-}=
 ** Kompajler (GHC)
 *** /Type inference/
     Haskell je implicitno tipiziran jezik (/implicitly-typed/) za
@@ -24,6 +292,111 @@ language.
     tipizirani (explicitly-typed).
 *** Sugestije kompajlera
 ** GHCi
+   GHCi je Haskell REPL. Listu opcija koju pruža možete naći sa =:?=:
+
+   #+BEGIN_SRC haskell
+     λ> :?
+      Commands available from the prompt:
+
+        <statement>                 evaluate/run <statement>
+        :                           repeat last command
+        :{\n ..lines.. \n:}\n       multiline command
+        :add [*]<module> ...        add module(s) to the current target set
+        :browse[!] [[*]<mod>]       display the names defined by module <mod>
+                                    (!: more details; *: all top-level names)
+        :cd <dir>                   change directory to <dir>
+        :cmd <expr>                 run the commands returned by <expr>::IO String
+        :complete <dom> [<rng>] <s> list completions for partial input string
+        :ctags[!] [<file>]          create tags file <file> for Vi (default: "tags")
+                                    (!: use regex instead of line number)
+        :def <cmd> <expr>           define command :<cmd> (later defined command has
+                                    precedence, ::<cmd> is always a builtin command)
+        :edit <file>                edit file
+        :edit                       edit last module
+        :etags [<file>]             create tags file <file> for Emacs (default: "TAGS")
+        :help, :?                   display this list of commands
+        :info[!] [<name> ...]       display information about the given names
+                                    (!: do not filter instances)
+        :issafe [<mod>]             display safe haskell information of module <mod>
+        :kind[!] <type>             show the kind of <type>
+                                    (!: also print the normalised type)
+        :load[!] [*]<module> ...    load module(s) and their dependents
+                                    (!: defer type errors)
+        :main [<arguments> ...]     run the main function with the given arguments
+        :module [+/-] [*]<mod> ...  set the context for expression evaluation
+        :quit                       exit GHCi
+        :reload[!]                  reload the current module set
+                                    (!: defer type errors)
+        :run function [<arguments> ...] run the function with the given arguments
+        :script <file>              run the script <file>
+        :type <expr>                show the type of <expr>
+        :undef <cmd>                undefine user-defined command :<cmd>
+        :!<command>                 run the shell command <command>
+
+      -- Commands for debugging:
+
+        :abandon                    at a breakpoint, abandon current computation
+        :back [<n>]                 go back in the history N steps (after :trace)
+        :break [<mod>] <l> [<col>]  set a breakpoint at the specified location
+        :break <name>               set a breakpoint on the specified function
+        :continue                   resume after a breakpoint
+        :delete <number>            delete the specified breakpoint
+        :delete *                   delete all breakpoints
+        :force <expr>               print <expr>, forcing unevaluated parts
+        :forward [<n>]              go forward in the history N step s(after :back)
+        :history [<n>]              after :trace, show the execution history
+        :list                       show the source code around current breakpoint
+        :list <identifier>          show the source code for <identifier>
+        :list [<module>] <line>     show the source code around line number <line>
+        :print [<name> ...]         show a value without forcing its computation
+        :sprint [<name> ...]        simplified version of :print
+        :step                       single-step after stopping at a breakpoint
+        :step <expr>                single-step into <expr>
+        :steplocal                  single-step within the current top-level binding
+        :stepmodule                 single-step restricted to the current module
+        :trace                      trace after stopping at a breakpoint
+        :trace <expr>               evaluate <expr> with tracing on (see :history)
+
+      -- Commands for changing settings:
+
+        :set <option> ...           set options
+        :seti <option> ...          set options for interactive evaluation only
+        :set args <arg> ...         set the arguments returned by System.getArgs
+        :set prog <progname>        set the value returned by System.getProgName
+        :set prompt <prompt>        set the prompt used in GHCi
+        :set prompt2 <prompt>       set the continuation prompt used in GHCi
+        :set editor <cmd>           set the command used for :edit
+        :set stop [<n>] <cmd>       set the command to run when a breakpoint is hit
+        :unset <option> ...         unset options
+
+       Options for ':set' and ':unset':
+
+         +m            allow multiline commands
+         +r            revert top-level expressions after each evaluation
+         +s            print timing/memory stats after each evaluation
+         +t            print type after evaluation
+         +c            collect type/location info after loading modules
+         -<flags>      most GHC command line flags can also be set here
+                              (eg. -v2, -XFlexibleInstances, etc.)
+                         for GHCi-specific flags, see User's Guide,
+                         Flag reference, Interactive-mode options
+
+      -- Commands for displaying information:
+
+        :show bindings              show the current bindings made at the prompt
+        :show breaks                show the active breakpoints
+        :show context               show the breakpoint context
+        :show imports               show the current imports
+        :show linker                show current linker state
+        :show modules               show the currently loaded modules
+        :show packages              show the currently active package flags
+        :show paths                 show the currently active search paths
+        :show language              show the currently active language flags
+        :show <setting>             show value of <setting>, which is one of
+                                       [args, prog, prompt, editor, stop]
+        :showi language             show language flags for interactive evaluation
+
+   #+END_SRC
 ** IDE
 *** Hoogle
 *** Stack & Stackage
@@ -345,3 +718,10 @@ language.
   - [[http://book.realworldhaskell.org/][Real World Haskell]] (odlična knjiga ali nije davno ažurirana)
   - [[http://www.seas.upenn.edu/~cis194/][Kursevi na Pensilvanija univerzitetu]] (/spring13/, /fall16/ ili
     bilo koji drugi po izboru.)
+
+* Footnotes
+
+[fn:2] Izrazi koji imaju sporedne efekte se _veoma_ posebno tretiraju.
+
+[fn:1] Naravno, sve se može ako je čovek dovoljno uporan, samo nije
+uvek najpametnije.
