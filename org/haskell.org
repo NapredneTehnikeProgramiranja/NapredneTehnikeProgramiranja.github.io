@@ -379,7 +379,6 @@ language.
 
     #+INCLUDE: "haskellNTP/showcase/src/Intro.hs" src haskell :lines "194-198"
 
-*** Čitanje poruka o grešci
 *** Pragme
     ={-# LANGUAGE #-}= ={-# OPTIONS_GHC #-}= ={-# INCLUDE #-}= ={-# INFIX #-}=
     ={-# DEPRECATED #-}= ={-# WARNING #-}= ={-# RULES #-}=
@@ -498,9 +497,39 @@ language.
 ** IDE
 *** Hoogle
 *** Stack & Stackage
+
+** Čitanje poruka o grešci
+   Nemojte se plašiti poruka o grešci.
+
+   *GHC-ove poruke o grešci nisu duge nego su informativne.*
+
+   Poruke o grešci sadrže mnogo informacija iz kojih vidite zašto
+   nešto "nije po volji" kompajlera. Iz tih grešaka, ako umete da ih
+   čitate, možete da naučite bitne stvari.
+
+   #+INCLUDE: "haskellNTP/showcase/src/Intro.hs" src haskell :lines "199-205"
+
+   Šta kaže ova greška?
+
+   - Očeluje se =[Char]= tip, a nađen je =Int=
+   - kod prvog argumenta funkcije =(++)=, tačnije =x=.
+   - u izrazu =x ++ "string"=
+   - u jednačini za (=it= je variabla koja će uvek imati vrednost
+     izraza koju ste predhodno uneli u GHCi): =it = x ++ "string"=
+
 ** Ograničenja GHC kompajlera                                  :za_radoznale:
 *** Monomorfizam restrikcija
     https://wiki.haskell.org/Monomorphism_restriction
+
+** Zadaci 1
+   Na kursu [[http://www.seas.upenn.edu/~cis194/spring13/hw/01-intro.pdf][cis194]] su data dva zadatka, smatram ih vrlo ilustrativnim
+   za uvod u Haskell :)
+
+   1. Napisati funkciju =validate= za validiranje broja platne kartice
+   2. Napisati funkciju =hanoi= koja prima broj diskova [[https://en.wikipedia.org/wiki/Tower_of_Hanoi][Hanoi]] tornjeva
+      i daje listu poteza koje treba preduzeti da bi se diskovi
+      pravilno preneli sa jednog na drugi toranj.
+
 * Funkcije
 * Tipovi
 ** =nešto :: tip=, sve ima tip
