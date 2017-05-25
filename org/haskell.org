@@ -383,13 +383,23 @@ language.
     ={-# LANGUAGE #-}= ={-# OPTIONS_GHC #-}= ={-# INCLUDE #-}= ={-# INFIX #-}=
     ={-# DEPRECATED #-}= ={-# WARNING #-}= ={-# RULES #-}=
 ** Kompajler (GHC)
+   Haskell ima više različitih kompajlera (kao što C ima GCC,
+   Clang...) ali je [[https://www.haskell.org/ghc/][GHC]] definitivno najkorišćeniji. Sam GHC kao
+   kompajler je prilično pametno dizajniran i predstavlja jedan od
+   najnaprednijih kompajlera danas. Na ovom kursu koristićemo samo GHC
+   i nećemo diskutovati o ostalim kompajlerima.
+
 *** /Type inference/
     Haskell je implicitno tipiziran jezik (/implicitly-typed/) za
     razliku od C/C++, Java, C#, Go i dr. koji su eksplicitno
-    tipizirani (explicitly-typed).
-*** Sugestije kompajlera
+    tipizirani (/explicitly-typed/). To praktično znači da u kodu ne
+    mora stajati tip za sve izraze već kompajler sam ume da zaključi
+    tipove. Dakle, tipovi su poznati u vreme kompajliranja (pre
+    pokretanja porgrama) ali nisu eksplicitno napisani u kodu.
+
 ** GHCi
-   GHCi je Haskell REPL. Listu opcija koju pruža možete naći sa =:?=:
+   GHCi je Haskell REPL (ne toliko moćan kao u Clojure-u zbog statičke
+   prirode Haskell-a). Listu opcija koju pruža možete naći sa =:?=:
 
    #+BEGIN_SRC haskell
      λ> :?
@@ -495,8 +505,34 @@ language.
 
    #+END_SRC
 ** IDE
+   Haskell je podržan u svim u poznatijim razvojnim alatima.
+
+   - Emacs
+     - [[https://github.com/haskell/haskell-mode][haskell-mode]], [[https://github.com/commercialhaskell/intero][intero]] i drugi dodatni paketi po ukusu
+     - za ljude koji počinju sa Emacs-om preporučujem [[http://spacemacs.org/][Spacemacs]] koji
+       već ima [[https://github.com/syl20bnr/spacemacs/tree/master/layers/%252Blang/haskell][sloj]] za Haskell u kome su standardni alati već
+       podešeni.
+   - Vim [[https://github.com/begriffs/haskell-vim-now][haskell-vim-now]]
+   - Eclipse [[http://eclipsefp.github.io/][EclipseFP]]
+   - IntelliJ [[https://github.com/rikvdkleij/intellij-haskell][intellij-haskell]]
+   - Atom [[https://atom.io/packages/ide-haskell][ide-haskell]]
+   - [[http://leksah.org/][Leksah]]
+
 *** Hoogle
+    [[https://www.haskell.org/hoogle/][Hoogle]] je sajt na kome možete pretraživati dokumentaciju. Podržava
+    jezik za postavljanje upita. Može se veoma jednostavno pokretati i
+    u lokalu.
+
 *** Stack & Stackage
+    [[https://docs.haskellstack.org/en/stable/README/][Stack]] je standardan /build tool/ i /dependency manager/. Projekti
+    sa kodom koji vidite u ovoj prezentaciji a koji su dostupni na
+    [[https://github.com/NapredneTehnikeProgramiranja/haskellNTP][GitHub-u]] su pod kontrolom Stack-a. Pojednostavljuje rad sa
+    Haskell-om tako da više liči na proces razvoja softvera u
+    Python-u, JavaScript-u, Javi... Preporučujem ga pre [[https://www.haskell.org/platform/][/haskell
+    platform/]]-e.
+
+    [[https://www.stackage.org/][Stackage]] je centralni repozitorijum koji koristi Stack. Njihov
+    odnos je sličan odnosu /PIP/-a i /PyPI/-a u Python svetu.
 
 ** Čitanje poruka o grešci
    Nemojte se plašiti poruka o grešci.
