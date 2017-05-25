@@ -12,7 +12,7 @@ An advanced, purely functional, statically typed, lazy programming
 language.
 #+END_QUOTE
 
-* Uvod
+* Uvod[fn:3]
   Haskell je čisto funkcionalan programski jezik opšte
   namene. Karakteriše ga [[https://en.wikipedia.org/wiki/Evaluation_strategy#Non-strict_evaluation][non-strict]] semantika i stroga statička
   tipizacija. Ime je dobio po logičaru [[https://en.wikipedia.org/wiki/Haskell_Curry][Haskell Curry]]-ju. Nastao je
@@ -270,16 +270,114 @@ language.
     Šta će biti =foo(-3)=, =foo(0)=, =foo(1)=, =foo(36)=, =foo(38)=?
 
 *** Parovi
+    Parovi služe da uparimo neke dve informacije. Postoje i ostale
+    n-torke ali se u praksi uglavnom koriste parovi jer za ostalo
+    posotje bolji načini predstavljanja.
+
+   #+INCLUDE: "haskellNTP/showcase/src/Intro.hs" src haskell :lines "120-122"
+
+   Obratiti pažnju da su n-torke različitihj tipova:
+
+   #+INCLUDE: "haskellNTP/showcase/src/Intro.hs" src haskell :lines "123-131"
+
+   N-torkama se u praksi najčešće pristupa [[https://en.wikipedia.org/wiki/Pattern_matching][pattern matching]]-om:
+
+   #+INCLUDE: "haskellNTP/showcase/src/Intro.hs" src haskell :lines "132-136"
 
 *** Funkcije više argumenata
+    Funkcija sa više argumenata se definiše na sledeći način:
+
+   #+INCLUDE: "haskellNTP/showcase/src/Intro.hs" src haskell :lines "137-142"
+
+   Ako Vam tip funkcije =multiArgFoo :: Int -> Int -> Int -> Int=
+   deluje čudno i pitate se:
+
+   #+BEGIN_QUOTE
+   Zašto ovoliko strelica, funkcija prima 3 parametra i vraća jededan
+   zar ne bi više imalo smisla da bude nešto kao =Int Int Int -> Int=?
+   #+END_QUOTE
+
+   onda ste na dobrom tragu. Razlog za ovo je dosta dublji od same
+   sintakse i ima valjan razlog u matematici. Razlog za ovakvu
+   notaciju je [[https://wiki.haskell.org/Currying][Currying]].
+
+   #+BEGIN_QUOTE
+   /Currying/ je proces transformacije funckije koja prima više
+   argumenata u funckiju koja prima samo jedan argument i vraća drugu
+   funkciju ako su još neki parametri potrebni.
+   #+END_QUOTE
+
+   Pa tako:
+
+   #+BEGIN_SRC haskell
+     λ> foo = multiArgFoo 1
+     λ> :t foo
+     foo :: Int -> Int -> Int
+     λ> foo1 = foo 2
+     λ> :t foo1
+     foo1 :: Int -> Int
+     λ> res = foo1 3
+     λ> :t res
+     res :: Int
+     λ> res
+     6
+   #+END_SRC
+
+   Ovo podseća na parcijalnu primenu funkcije ali _to nije baš
+   to_. Pogledajte ovu diskusiju na [[https://stackoverflow.com/questions/218025/what-is-the-difference-between-currying-and-partial-application][StackOverflow]] (barem prva dva
+   odgovora).
 
 *** Liste
+    Liste su jedne od najosnovnih struktura podataka Haskell-a.
+
+    #+INCLUDE: "haskellNTP/showcase/src/Intro.hs" src haskell :lines "142-158"
+
+    Postoji i /list comprehension/:
+
+    #+INCLUDE: "haskellNTP/showcase/src/Intro.hs" src haskell :lines "158-166"
 
 *** Konstrukcija listi
+    Sve liste se grade od prazne liste korišćenjem =cons= operatora
+    (=:=). Ovo Vam je možda poznato iz Lispa?
+
+    #+INCLUDE: "haskellNTP/showcase/src/Intro.hs" src haskell :lines "167-171"
+
+    Obratite pažnju da su ovo prave jednostruko spregnute liste a ne
+    nizovi. Uzgred, šta je razlika između niza i jednostruko spregnute
+    liste?
 
 *** Funkcije nad listama
+    Funkcije koje rade sa listama takođe koriste /pattern matching/:
+
+    #+INCLUDE: "haskellNTP/showcase/src/Intro.hs" src haskell :lines "171-176"
+
+    Pošto prvi element liste ne koristimo ne moramo ni da koirstimo
+    ime za njega i zato imamo =intListLength (_:xs)=. Ovo je
+    rekurzija, uslov završetka je dat elegantno zar ne?
+
+    Paterni mogu da se ugnježdavaju:
+
+    #+INCLUDE: "haskellNTP/showcase/src/Intro.hs" src haskell :lines "177-181"
 
 *** Kombinovanje funkcija
+    Haskell kao funckionalan jezik inspiriše da rešenja većih problema
+    gradimo kroz rešavanje manjih porcija problema. Pa tako kopleksne
+    funkcije gradimo kombinovanjem jednostavnijijh.
+
+    #+INCLUDE: "haskellNTP/showcase/src/Intro.hs" src haskell :lines "182-193"
+
+    Kako vam ovo deluje?
+
+    Možda mislite: ovo nije memorijski efikasno, treba da potroši
+    vreme i memoriju da napravi celu [[https://en.wikipedia.org/wiki/3x_%252B_1_problem][hailstone]] sekvencu od =n= pa onda
+    da računa njenu dužinu.
+
+    Zapravo, zahvaljujući lenjoj eveluaciji čitavo računanje koristi
+    =O(1)= momoriju bez obzira na dužinu sekvence. Zapravo _skoro_
+    O(n) ali o tome će biti reči kasnije. Sada možete da probate to u
+    praksi, probajte:
+
+    #+INCLUDE: "haskellNTP/showcase/src/Intro.hs" src haskell :lines "194-198"
 
 *** Čitanje poruka o grešci
 *** Pragme
@@ -720,6 +818,9 @@ language.
     bilo koji drugi po izboru.)
 
 * Footnotes
+
+[fn:3] Ovaj deo je uglavnom preuzet sa [[http://www.seas.upenn.edu/~cis194/spring13/lectures/01-intro.html][cis194]] (koji svakako
+preporučujem u celini :) ).
 
 [fn:2] Izrazi koji imaju sporedne efekte se _veoma_ posebno tretiraju.
 
