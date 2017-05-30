@@ -567,16 +567,136 @@ language.
       pravilno preneli sa jednog na drugi toranj.
 
 * Funkcije
-* Tipovi
-** =nešto :: tip=, sve ima tip
-** Kinds
-   https://jeltsch.wordpress.com/2013/02/09/some-interesting-features-of-haskells-type-system/
+  Funkcije se pišu slično kao u matematici. O Haskell funkcijama treba
+  razmišljati više na matematički način a menje kao o
+  procedurama/rutinama u proceduralnom programiranju:
+
+  #+BEGIN_SRC haskell
+    (fooIme :: <izraz_za_tip>)?
+    (<definicija_za_fooIme>)+
+  #+END_SRC
+
+  Primer jedne funkcije:
+
+  #+INCLUDE: "haskellNTP/showcase/src/Functions.hs" src haskell :lines "3-8"
+
+  Funkcije podržavaju /pattern matching/. Funkcije se često pišu uz
+  korišćenje /guards/ mehanizma. =case= izraz se retko koristi za
+  rukovanje parametrima funkcije jer za njim retko ima potrebe. =case=
+  izraz takođe podržava /pattern matching/.
+
+  #+INCLUDE: "haskellNTP/showcase/src/Functions.hs" src haskell :lines "9-18"
+
+  =case= izraz može da koristi /quards/:
+
+  #+INCLUDE: "haskellNTP/showcase/src/Functions.hs" src haskell :lines "19-30"
+
+  =case= može da kombinuje /pattern matching/ i /quards/:
+
+  #+INCLUDE: "haskellNTP/showcase/src/Functions.hs" src haskell :lines "31-42"
 
 * Data deklaracije
-** Data konstruktor & value konstruktor
+  Postoje tri osnovna načina na koja možete uvesti novi tip u Haskell:
+  =data=, =newtype= i =type=.
+
+** =data=
+   Standardan način za uvođenje novih tipova:
+
+  #+INCLUDE: "haskellNTP/showcase/src/DataDeclarations.hs" src haskell :lines "5-10"
+
+  Obratite pažnju da =Person= levo od znaka jednakosti i =Person=
+  desno od znaka jednakosti nisu iste stvari. Ono sa leve strane unosi
+  novi pojam u jezik tipova dok ono sa desne strane unosi novi pojam u
+  jezik izraza. U primeru gore samo se slučajno isto zovu. Evo
+  primera:
+
+  #+INCLUDE: "haskellNTP/showcase/src/DataDeclarations.hs" src haskell :lines "11-16"
+
+  =MkPerson= je u jeziku izraza, a =Person1= u jeziku tipova.
+
+  Pogledajmo sledeći primer:
+
+  #+INCLUDE: "haskellNTP/showcase/src/DataDeclarations.hs" src haskell :lines "37-64"
+
+  Tipovi kao što su =CardValue= i =Suit= gde specificiramo oblik
+  svakog elementa zovu se [[https://wiki.haskell.org/Algebraic_data_type][algebartski tipovi]]. Algebarski tipovi se
+  tako zovu jer se definišu korišćenjem "algebarskih" operacija
+  ("algebra" ovde praktično znači operaciju sabiranja --- izbora =A |
+  B= i množenja --- kombinacije =A B=). Npr. naš prvi tip =Person= je
+  kombinacija dva =String=-a, =Suit= je izbor jedne od boja na
+  kartama.
+
+  Tipovi mogu biti i parametrizovani:
+
+  #+INCLUDE: "haskellNTP/showcase/src/DataDeclarations.hs" src haskell :lines "65-71"
+
 *** Records sintaksa
+    Postoji i alternativni način za uvođenje novih tipova kada se
+    koristi =data= --- /records syntax/:
+
+    #+INCLUDE: "haskellNTP/showcase/src/DataDeclarations.hs" src haskell :lines "17-36"
+
 ** =newtype=
+   =newtype= dekleracija uvodi novi tip na isti način kao što to radi
+   =data=. Ako u vašem programu sve pojave =newtype= zamenite sa
+   =data= velike su šanse da će se kompajlirati(dakle raditi). Ali
+   konverzija u suprotnom smeru stoji samo pod jednim uslovom --- ako
+   =data= dekleracije imaju samo jedan /value/ konstruktor sa samo
+   jednim parametrom:
+
+   #+INCLUDE: "haskellNTP/showcase/src/DataDeclarations.hs" src haskell :lines "72-74"
+
+   Vrednost =newtype= dekleracije je u tome što uvodi tipove koji
+   _nemaju nikakvu cenu_ u /run time/-u --- u /run time/-u se mogu
+   predstaviti "bit za bit" isto kao i tipovi koje obavijaju. U
+   slučaju iznad kompajler će znati da su tipovi =HTML= i =String=
+   potpuno različiti, ni jedna funkcija koja prima/vraća =HTML= _ne
+   može_ umesto njega da koristi =String=. Tako dobijamo sve benefite
+   komplajlera jer on razlikuje tipove bez obzira što se ti tipovi u
+   /run time/-u reprezentuju na "bit za bit" isti način.
+
 ** =type=
+   Type dekleracija uvodi sinonime za tipove --- /type synonyms/. U
+   /C/-u se to na primer radi sa =typedef=. Tipovi uvedeni sa =type=
+   imaju iste /value/ konstruktore kao i osnovni tip i u svim izrazima
+   gde se pojavljuje osnovni tip mogu stajati umesto njega.
+
+   #+INCLUDE: "haskellNTP/showcase/src/DataDeclarations.hs" src haskell :lines "75-90"
+
+* Kinds
+  Tipovi u svojoj osnovi predstavljaju skupove vrednosti. Tako je
+  =Integer= skup svih celih brojeva, =[Bool]= skup svih lista
+  istinitosnih vrednosti.
+
+  Haskell koristi još opširniju definiciju tipa koja obuhvata i
+  funkcije nad tipovima. Pa se tako neprimenjen konstruktor list tipa
+  =[]= takođe smatra tipom. Parcijalno primenjen konstruktor tipa
+  funkcije =(->) Integer= takođe. Ovi tipovi svakako ne sadrže
+  vrednosti.
+
+  Kako bi razlikovao obične tipove od funkcija nad tipovima Haskell
+  koristi /system of kinds/(sistem rodova - u slobodnom
+  prevodu). /Kinds/ se mogu zamisliti kao "tipovi tipova". Svaki
+  /kind/ je ili =*= ili =kind1 -> kind2= gde su =kind1= i =kind2=
+  takođe /kinds/. =*= je /kind/ svih običnih tipova (onih koji sadrže
+  vrednosti) a =kind1 -> kind2= je /kind/ svih funkcija na nivou tipa
+  koje preslikavaju =kind1= u =kind2=. Evo nekih primera tipova i
+  njihovih /kind/-a:
+
+  #+BEGIN_SRC haskell
+    Integer, Char, [Bool], [[Bool]], [val] :: *
+    [], Maybe :: * -> *
+    (,), (->) :: * -> * -> *
+  #+END_SRC
+
+  Funkcije na nivou tipova koje primaju više parametara mogu biti
+  izražene kroz /Currying/:
+
+  #+BEGIN_SRC haskell
+    (,), (->) :: * -> * -> *
+  #+END_SRC
+
+  Dobar blog na ovu temu nalazi se [[https://jeltsch.wordpress.com/2013/02/09/some-interesting-features-of-haskells-type-system/][ovde]].
 
 * Haskell --- lazy by default
 ** /Strict evaluation vs. lazy evaluation/
@@ -589,10 +709,35 @@ language.
    Java je na [[https://www.sitepoint.com/java-in-praise-of-laziness/][SitePoint-u]]. Haskell je na [[http://www.seas.upenn.edu/~cis194/spring13/lectures/06-laziness.html][CIS-u]].
 
 * Polimorfizam
+  Vrsta polimorfizma koju haskell koristi je [[https://en.wikipedia.org/wiki/Parametric_polymorphism][parametarski
+  polimorfizam]].
 * GADTs
 * Type Classes
+  /Type class/-e predstavljaju skupove tipova koji ispoljavaju neke
+  iste osobine. Te iste osobine oslikane su funkcijama koje obuhvata
+  klasa.
+
+  =Eq= je klasa koja predstavlja skup tipova koji mogu da se porede:
+
+  #+BEGIN_SRC haskell
+    class Eq a where
+      (==) :: a -> a -> Bool
+      (/=) :: a -> a -> Bool
+  #+END_SRC
+
+  Ako želimo da naš tip može da se poredi treba da napravimo instancu
+  našeg tipa u =Eq= klasi.
+
+   #+INCLUDE: "haskellNTP/showcase/src/TypeClasses.hs" src haskell :lines "5-18"
 
 ** Automatsko instanciranje sa =deriving=
+   Kada je situacija dovoljno prosta, kompajler može samostalno da
+   uradi proširenje /type class/-e. Da bismo naznačili da to želimo
+   treba da koristimo =deriving=:
+
+   #+INCLUDE: "haskellNTP/showcase/src/TypeClasses.hs" src haskell :lines "19-26"
+
+   U primeru sa =Foo= smo takođe mogli samo da iskoristimo =deriving=.
 
 ** =class= NIJE =class= iz Pythona i Jave
 
