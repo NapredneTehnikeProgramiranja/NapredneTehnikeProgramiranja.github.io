@@ -833,6 +833,15 @@ language.
 
    #+INCLUDE: "haskellNTP/showcase/src/FunDeps.hs" src haskell :lines "74-89"
 
+** Zadaci 2
+   Vaša aplikacija je u produkciji i često se dešava nešto čudno što
+   dovodi do otkaza. Vaš zadatak je da parsirate [[http://www.seas.upenn.edu/~cis194/spring13/extras/02-ADTs/error.log][logove]] koje pravi
+   aplikacija i utvrdite šta je u pitanju. Pun opis zadatka i smernice
+   su na [[http://www.seas.upenn.edu/~cis194/spring13/hw/02-ADTs.pdf][cis194]]. Potrebni fajlovi su:
+
+   - [[http://www.seas.upenn.edu/~cis194/spring13/extras/02-ADTs/sample.log][sample.log]]
+   - [[http://www.seas.upenn.edu/~cis194/spring13/extras/02-ADTs/Log.hs][Log.hs]]
+
 * Monoidi
 * Funktori
 * Aplikativni funktori
