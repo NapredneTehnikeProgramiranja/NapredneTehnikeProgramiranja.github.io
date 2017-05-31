@@ -614,6 +614,10 @@ language.
 
   =MkPerson= je u jeziku izraza, a =Person1= u jeziku tipova.
 
+  Ono sa leve strane jednakosti naziva se /type constructor/ jer
+  konstruiše tip u jeziku tipova, ono sa desne strane se naziva /data
+  constructor/ jer konstruiše vrednost tog tipa u jeziku izraza.
+
   Pogledajmo sledeći primer:
 
   #+INCLUDE: "haskellNTP/showcase/src/DataDeclarations.hs" src haskell :lines "37-64"
@@ -675,7 +679,7 @@ language.
   vrednosti.
 
   Kako bi razlikovao obične tipove od funkcija nad tipovima Haskell
-  koristi /system of kinds/(sistem rodova - u slobodnom
+  koristi /system of kinds/ (sistem rodova - u slobodnom
   prevodu). /Kinds/ se mogu zamisliti kao "tipovi tipova". Svaki
   /kind/ je ili =*= ili =kind1 -> kind2= gde su =kind1= i =kind2=
   takođe /kinds/. =*= je /kind/ svih običnih tipova (onih koji sadrže
