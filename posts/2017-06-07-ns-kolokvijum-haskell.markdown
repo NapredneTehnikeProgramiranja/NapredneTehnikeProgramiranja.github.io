@@ -15,4 +15,5 @@ Kolokvijum će se održavati **od 15:30h u učionici 103 Jugodrvo**.
 
 ## Raspored
 
-Raspored dolazaka će naknadno biti objavljen ovde.
+Raspored dolazaka na kolokvijum možete
+naći [ovde](../resources/raspored_kol_4.pdf).
