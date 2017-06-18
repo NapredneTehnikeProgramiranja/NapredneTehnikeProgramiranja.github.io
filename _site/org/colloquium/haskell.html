@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="sr" xml:lang="sr">
+<head>
+<!-- 2017-06-18 нед 22:53 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Napredne tehnike programiranja - kolokvijumi Haskell</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Novak Boškov" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/bigblow.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/hideshow.css"/>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.zclip.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/bigblow.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/hideshow.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Napredne tehnike programiranja - kolokvijumi Haskell</h1>
+<div id="table-of-contents">
+<h2>Sadr&#382;aj</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org1dda409">1. Jun 2017.</a>
+<ul>
+<li><a href="#org3989619">1.1. <i>\(\alpha\) - conversion</i></a>
+<ul>
+<li><a href="#org78fb6b2">1.1.1. Objasnite šta znači da je jezik implicitno tipiziran.</a></li>
+<li><a href="#orgd29a73f">1.1.2. Napisati funkciju <code>obidji :: Tree -&gt; Int -&gt; Int</code>.</a></li>
+<li><a href="#org566a481">1.1.3. Napisati funkciju <code>lokalniMaximumi :: [Int] -&gt; [Int]</code>.</a></li>
+</ul>
+</li>
+<li><a href="#orgafbc3a0">1.2. <i>\(\beta\) - reduction</i></a>
+<ul>
+<li><a href="#org22a3b91">1.2.1. Objasnite jezik tipova i jezik izraza u Haskell-u.</a></li>
+<li><a href="#org7a99abb">1.2.2. Napisati funkciju <code>obidji :: Tree -&gt; Int -&gt; Int</code>.</a></li>
+<li><a href="#org3888bbd">1.2.3. Napisati funkciju <code>frequencies :: [Integer] -&gt; [(Integer, Int)]</code>.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1dda409" class="outline-2">
+<h2 id="org1dda409"><span class="section-number-2">1</span> Jun 2017.</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-org3989619" class="outline-3">
+<h3 id="org3989619"><span class="section-number-3">1.1</span> <i>\(\alpha\) - conversion</i></h3>
+<div class="outline-text-3" id="text-1-1">
+</div><div id="outline-container-org78fb6b2" class="outline-4">
+<h4 id="org78fb6b2"><span class="section-number-4">1.1.1</span> Objasnite šta znači da je jezik implicitno tipiziran.</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p>
+Dajte primer u jednom jeziku koji je eksplicitno tipiziran i u
+jednom koji je implicitno tipiziran.
+</p>
+
+<p>
+Implicitno tipizirani jezici imaju dovoljno sposoban kompajler da
+ume sam da zaključi tipove većine izraza ili naredbi. Tipovi su
+poznati <b>u vreme kompajliranja</b> ali nisu eksplicitno navedeni u
+izvornom kodu.
+</p>
+
+<p>
+Primer eksplicitno tipiziranog jezika &#x2014; C:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">a</span> = 1;
+
+<span style="color: #7CB8BB;">int</span> <span style="color: #93E0E3;">foo_a</span>(<span style="color: #7CB8BB;">double</span> <span style="color: #DFAF8F;">niz</span>[]) {
+    <span style="color: #5F7F5F;">/* </span><span style="color: #7F9F7F;">Uradi ne&#353;to sa nizom </span><span style="color: #5F7F5F;">*/</span>
+
+    <span style="color: #F0DFAF; font-weight: bold;">return</span> 5;
+}
+</pre>
+</div>
+
+<p>
+Primer implicitno tipiziranog jezika &#x2014; Haskell:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #93E0E3;">a</span> <span style="color: #DFAF8F;">=</span> 1
+
+<span style="color: #93E0E3;">foo</span> x <span style="color: #DFAF8F;">=</span> succ x <span style="color: #DFAF8F;">+</span> 1
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd29a73f" class="outline-4">
+<h4 id="orgd29a73f"><span class="section-number-4">1.1.2</span> Napisati funkciju <code>obidji :: Tree -&gt; Int -&gt; Int</code>.</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<p>
+Dato je stablo čiji svaki čvor sadrži informaciju o ceni:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #F0DFAF; font-weight: bold;">data</span> <span style="color: #7CB8BB;">Tree</span>
+  <span style="color: #DFAF8F;">=</span> <span style="color: #7CB8BB;">Leaf</span>
+  <span style="color: #DFAF8F;">|</span> <span style="color: #7CB8BB;">Node</span> <span style="color: #7CB8BB;">Int</span>
+         <span style="color: #7CB8BB;">Tree</span>
+         <span style="color: #7CB8BB;">Tree</span>
+         <span style="color: #7CB8BB;">Tree</span>
+  <span style="color: #F0DFAF; font-weight: bold;">deriving</span> (<span style="color: #7CB8BB;">Eq</span>, <span style="color: #7CB8BB;">Show</span>)
+</pre>
+</div>
+
+<p>
+Napisati funkciju <code>obidji :: Tree -&gt; Int -&gt; Int</code> koja sabira cene
+svih čvorova koje su veće od <code>minCena</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #DFAF8F;">&gt;</span> <span style="color: #93E0E3;">t1</span> <span style="color: #DFAF8F;">=</span> <span style="color: #7CB8BB;">Node</span> 3 (<span style="color: #7CB8BB;">Node</span> 0 <span style="color: #7CB8BB;">Leaf</span> <span style="color: #7CB8BB;">Leaf</span> <span style="color: #7CB8BB;">Leaf</span>)
+              (<span style="color: #7CB8BB;">Node</span> 6 <span style="color: #7CB8BB;">Leaf</span> <span style="color: #7CB8BB;">Leaf</span> <span style="color: #7CB8BB;">Leaf</span>)
+              (<span style="color: #7CB8BB;">Node</span>  6 <span style="color: #7CB8BB;">Leaf</span> <span style="color: #7CB8BB;">Leaf</span> <span style="color: #7CB8BB;">Leaf</span>)
+<span style="color: #DFAF8F;">&gt;</span> <span style="color: #93E0E3;">obidji</span> t1 5
+12
+
+<span style="color: #DFAF8F;">&gt;</span> <span style="color: #93E0E3;">t2</span> <span style="color: #DFAF8F;">=</span> <span style="color: #7CB8BB;">Node</span> 3 (<span style="color: #7CB8BB;">Node</span> 0 <span style="color: #7CB8BB;">Leaf</span> <span style="color: #7CB8BB;">Leaf</span> (<span style="color: #7CB8BB;">Node</span> 10 <span style="color: #7CB8BB;">Leaf</span> <span style="color: #7CB8BB;">Leaf</span> <span style="color: #7CB8BB;">Leaf</span>))
+              (<span style="color: #7CB8BB;">Node</span> 6 <span style="color: #7CB8BB;">Leaf</span> <span style="color: #7CB8BB;">Leaf</span> <span style="color: #7CB8BB;">Leaf</span>)
+              (<span style="color: #7CB8BB;">Node</span> 6 <span style="color: #7CB8BB;">Leaf</span> <span style="color: #7CB8BB;">Leaf</span> <span style="color: #7CB8BB;">Leaf</span>)
+<span style="color: #DFAF8F;">&gt;</span> <span style="color: #93E0E3;">obidji</span> t2 5
+22
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #93E0E3;">obidji</span> <span style="color: #DFAF8F;">::</span> <span style="color: #7CB8BB;">Tree</span> <span style="color: #DFAF8F;">-&gt;</span> <span style="color: #7CB8BB;">Int</span> <span style="color: #DFAF8F;">-&gt;</span> <span style="color: #7CB8BB;">Int</span>
+<span style="color: #93E0E3;">obidji</span> <span style="color: #7CB8BB;">Leaf</span> <span style="color: #F0DFAF; font-weight: bold;">_</span> <span style="color: #DFAF8F;">=</span> 0
+<span style="color: #93E0E3;">obidji</span> (<span style="color: #7CB8BB;">Node</span> cena <span style="color: #7CB8BB;">Leaf</span> <span style="color: #7CB8BB;">Leaf</span> <span style="color: #7CB8BB;">Leaf</span>) minCena
+  <span style="color: #DFAF8F;">|</span> cena <span style="color: #DFAF8F;">&lt;</span> minCena <span style="color: #DFAF8F;">=</span> 0
+  <span style="color: #DFAF8F;">|</span> otherwise <span style="color: #DFAF8F;">=</span> cena
+<span style="color: #93E0E3;">obidji</span> (<span style="color: #7CB8BB;">Node</span> cena f s t) minCena <span style="color: #DFAF8F;">=</span>
+  (uzmiCenu cena) <span style="color: #DFAF8F;">+</span> obidji f minCena <span style="color: #DFAF8F;">+</span> obidji s minCena <span style="color: #DFAF8F;">+</span> obidji t minCena
+  <span style="color: #F0DFAF; font-weight: bold;">where</span>
+    uzmiCenu c
+      <span style="color: #DFAF8F;">|</span> c <span style="color: #DFAF8F;">&lt;</span> minCena <span style="color: #DFAF8F;">=</span> 0
+      <span style="color: #DFAF8F;">|</span> otherwise <span style="color: #DFAF8F;">=</span> cena
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org566a481" class="outline-4">
+<h4 id="org566a481"><span class="section-number-4">1.1.3</span> Napisati funkciju <code>lokalniMaximumi :: [Int] -&gt; [Int]</code>.</h4>
+<div class="outline-text-4" id="text-1-1-3">
+<p>
+Funkcija <code>lokalniMaximumi :: [Int] -&gt; [Int]</code> vrać listu lokalnih
+maksimuma. Lokalni maximum je broj koji je veći od oba svoja suseda:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #DFAF8F;">&gt;</span> <span style="color: #93E0E3;">lokalniMaximumi</span> [1, 10, 5, 9, 5]
+[10,9]
+<span style="color: #DFAF8F;">&gt;</span> <span style="color: #93E0E3;">lokalniMaximumi</span> [2,9,5,6,1]
+[9,6]
+<span style="color: #DFAF8F;">&gt;</span>  lokalniMaximumi [2,3,4,1,5]
+[4]
+<span style="color: #DFAF8F;">&gt;</span>  lokalniMaximumi <span style="color: #7CB8BB;">[]</span>
+<span style="color: #7CB8BB;">[]</span>
+<span style="color: #DFAF8F;">&gt;</span>  lokalniMaximumi [4]
+<span style="color: #7CB8BB;">[]</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #93E0E3;">lokalniMaximumi</span> <span style="color: #DFAF8F;">::</span> [<span style="color: #7CB8BB;">Integer</span>] <span style="color: #DFAF8F;">-&gt;</span> [<span style="color: #7CB8BB;">Integer</span>]
+<span style="color: #93E0E3;">lokalniMaximumi</span> (f<span style="color: #7CB8BB;">:</span>r<span style="color: #DFAF8F;">@</span>(s<span style="color: #7CB8BB;">:</span>t<span style="color: #7CB8BB;">:</span><span style="color: #F0DFAF; font-weight: bold;">_</span>))
+  <span style="color: #DFAF8F;">|</span> s <span style="color: #DFAF8F;">&gt;</span> f <span style="color: #DFAF8F;">&amp;&amp;</span> s <span style="color: #DFAF8F;">&gt;</span> t <span style="color: #DFAF8F;">=</span> s <span style="color: #7CB8BB;">:</span> lokalniMaximumi r
+  <span style="color: #DFAF8F;">|</span> otherwise <span style="color: #DFAF8F;">=</span> lokalniMaximumi r
+<span style="color: #93E0E3;">lokalniMaximumi</span> <span style="color: #F0DFAF; font-weight: bold;">_</span> <span style="color: #DFAF8F;">=</span> <span style="color: #7CB8BB;">[]</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgafbc3a0" class="outline-3">
+<h3 id="orgafbc3a0"><span class="section-number-3">1.2</span> <i>\(\beta\) - reduction</i></h3>
+<div class="outline-text-3" id="text-1-2">
+</div><div id="outline-container-org22a3b91" class="outline-4">
+<h4 id="org22a3b91"><span class="section-number-4">1.2.1</span> Objasnite jezik tipova i jezik izraza u Haskell-u.</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+Dajte nekoliko primera koji pokazuju kako se koristi jezik tipova.
+</p>
+
+<p>
+Haskell se može posmatrati kao skup dva jezika &#x2014; jezika tipova i
+jezika izraza, gde je jezik tipova opcion.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">SomeType je deo jezika tipova ili type konstruktor, a ST je deo</span>
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">jezika izraza ili data konstruktor</span>
+
+<span style="color: #F0DFAF; font-weight: bold;">newtype</span> <span style="color: #7CB8BB;">SomeType</span> a <span style="color: #DFAF8F;">=</span> <span style="color: #7CB8BB;">ST</span> a
+
+12 <span style="color: #DFAF8F;">::</span> <span style="color: #7CB8BB;">Double</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7a99abb" class="outline-4">
+<h4 id="org7a99abb"><span class="section-number-4">1.2.2</span> Napisati funkciju <code>obidji :: Tree -&gt; Int -&gt; Int</code>.</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+Dato je stablo čiji svaki čvor sadrži informaciju o ceni:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #F0DFAF; font-weight: bold;">data</span> <span style="color: #7CB8BB;">Tree</span>
+  <span style="color: #DFAF8F;">=</span> <span style="color: #7CB8BB;">Leaf</span>
+  <span style="color: #DFAF8F;">|</span> <span style="color: #7CB8BB;">Node</span> <span style="color: #7CB8BB;">Tree</span>
+         <span style="color: #7CB8BB;">Int</span>
+         <span style="color: #7CB8BB;">Tree</span>
+  <span style="color: #F0DFAF; font-weight: bold;">deriving</span> (<span style="color: #7CB8BB;">Eq</span>, <span style="color: #7CB8BB;">Show</span>)
+</pre>
+</div>
+
+<p>
+Napisati funkciju <code>obidji :: Tree -&gt; Int -&gt; Int</code> koja sabira cene
+svih čvorova koje su veće od <code>minCena</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #DFAF8F;">&gt;</span> <span style="color: #93E0E3;">t1</span> <span style="color: #DFAF8F;">=</span> <span style="color: #7CB8BB;">Node</span> (<span style="color: #7CB8BB;">Node</span> <span style="color: #7CB8BB;">Leaf</span> 6 <span style="color: #7CB8BB;">Leaf</span>) 4 (<span style="color: #7CB8BB;">Node</span> <span style="color: #7CB8BB;">Leaf</span> 7 <span style="color: #7CB8BB;">Leaf</span>)
+<span style="color: #DFAF8F;">&gt;</span> <span style="color: #93E0E3;">obidji</span> t1 5
+13
+
+<span style="color: #DFAF8F;">&gt;</span> <span style="color: #93E0E3;">t2</span> <span style="color: #DFAF8F;">=</span> <span style="color: #7CB8BB;">Node</span> (<span style="color: #7CB8BB;">Node</span> <span style="color: #7CB8BB;">Leaf</span> 6 <span style="color: #7CB8BB;">Leaf</span>) 4 (<span style="color: #7CB8BB;">Node</span> (<span style="color: #7CB8BB;">Node</span> <span style="color: #7CB8BB;">Leaf</span> 2 <span style="color: #7CB8BB;">Leaf</span>) 3 <span style="color: #7CB8BB;">Leaf</span>)
+<span style="color: #DFAF8F;">&gt;</span> <span style="color: #93E0E3;">obidji</span> t2 5
+6
+
+<span style="color: #DFAF8F;">&gt;</span> <span style="color: #93E0E3;">t3</span> <span style="color: #DFAF8F;">=</span> <span style="color: #7CB8BB;">Node</span> (<span style="color: #7CB8BB;">Node</span> <span style="color: #7CB8BB;">Leaf</span> 6 <span style="color: #7CB8BB;">Leaf</span>) 4 (<span style="color: #7CB8BB;">Node</span> (<span style="color: #7CB8BB;">Node</span> <span style="color: #7CB8BB;">Leaf</span> 10 <span style="color: #7CB8BB;">Leaf</span>) 3 <span style="color: #7CB8BB;">Leaf</span>)
+<span style="color: #DFAF8F;">&gt;</span> <span style="color: #93E0E3;">obidji</span> t3 5
+16
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #93E0E3;">obidji</span> <span style="color: #DFAF8F;">::</span> <span style="color: #7CB8BB;">Tree</span> <span style="color: #DFAF8F;">-&gt;</span> <span style="color: #7CB8BB;">Int</span> <span style="color: #DFAF8F;">-&gt;</span> <span style="color: #7CB8BB;">Int</span>
+<span style="color: #93E0E3;">obidji</span> <span style="color: #7CB8BB;">Leaf</span> <span style="color: #F0DFAF; font-weight: bold;">_</span> <span style="color: #DFAF8F;">=</span> 0
+<span style="color: #93E0E3;">obidji</span> (<span style="color: #7CB8BB;">Node</span> <span style="color: #7CB8BB;">Leaf</span> cena <span style="color: #7CB8BB;">Leaf</span>) minCena
+  <span style="color: #DFAF8F;">|</span> cena <span style="color: #DFAF8F;">&lt;</span> minCena <span style="color: #DFAF8F;">=</span> 0
+  <span style="color: #DFAF8F;">|</span> otherwise <span style="color: #DFAF8F;">=</span> cena
+<span style="color: #93E0E3;">obidji</span> (<span style="color: #7CB8BB;">Node</span> l cena r) minCena <span style="color: #DFAF8F;">=</span>
+  (uzmiCenu cena) <span style="color: #DFAF8F;">+</span> obidji l minCena <span style="color: #DFAF8F;">+</span> obidji r minCena
+  <span style="color: #F0DFAF; font-weight: bold;">where</span>
+    uzmiCenu c
+      <span style="color: #DFAF8F;">|</span> c <span style="color: #DFAF8F;">&lt;</span> minCena <span style="color: #DFAF8F;">=</span> 0
+      <span style="color: #DFAF8F;">|</span> otherwise <span style="color: #DFAF8F;">=</span> cena
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3888bbd" class="outline-4">
+<h4 id="org3888bbd"><span class="section-number-4">1.2.3</span> Napisati funkciju <code>frequencies :: [Integer] -&gt; [(Integer, Int)]</code>.</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+Funkcija <code>frequencies :: [Integer] -&gt; [(Integer, Int)]</code> vraća listu
+frekvencija pojave <code>Integer</code>-a u listi:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #DFAF8F;">&gt;</span> <span style="color: #93E0E3;">frequencies</span> [1, 1, 2, 3, 2, 4, 5, 2, 1]
+[(1,3),(2,3),(3,1),(4,1),(5,1)]
+<span style="color: #5F7F5F;">-- </span><span style="color: #7F9F7F;">1 se pojavljuje 3 puta, 2 se pojavljuje 3 puta, 3 se pojavljuje jedan put ...</span>
+<span style="color: #DFAF8F;">&gt;</span> <span style="color: #93E0E3;">frequencies</span> [5, 1, 1, 2, 3, 2, 4, 5, 2]
+[(1,2),(2,3),(3,1),(4,1),(5,2)]
+<span style="color: #DFAF8F;">&gt;</span> <span style="color: #93E0E3;">frequencies</span> <span style="color: #7CB8BB;">[]</span>
+<span style="color: #7CB8BB;">[]</span>
+<span style="color: #DFAF8F;">&gt;</span> <span style="color: #93E0E3;">frequencies</span> [1]
+[(1,1)]
+</pre>
+</div>
+
+<p>
+Frekvencije treba da budu poređane u rastućem redosledu <code>Integer</code>-a
+iz ulazne liste:
+</p>
+
+<p>
+<b>Pomoć:</b>
+</p>
+
+<ul class="org-ul">
+<li><p>
+Postoje funkcije:
+</p>
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #93E0E3;">sort</span> <span style="color: #DFAF8F;">::</span> <span style="color: #7CB8BB;">Ord</span> a <span style="color: #DFAF8F;">=&gt;</span> [a] <span style="color: #DFAF8F;">-&gt;</span> [a]
+<span style="color: #93E0E3;">group</span> <span style="color: #DFAF8F;">::</span> <span style="color: #7CB8BB;">Eq</span> a <span style="color: #DFAF8F;">=&gt;</span> [a] <span style="color: #DFAF8F;">-&gt;</span> [[a]]
+</pre>
+</div></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #93E0E3;">frequencies</span> <span style="color: #DFAF8F;">::</span> [<span style="color: #7CB8BB;">Integer</span>] <span style="color: #DFAF8F;">-&gt;</span> [(<span style="color: #7CB8BB;">Integer</span>, <span style="color: #7CB8BB;">Int</span>)]
+<span style="color: #93E0E3;">frequencies</span> l <span style="color: #DFAF8F;">=</span> map (<span style="color: #DFAF8F;">\</span>xs<span style="color: #DFAF8F;">@</span>(x<span style="color: #7CB8BB;">:</span><span style="color: #F0DFAF; font-weight: bold;">_</span>) <span style="color: #DFAF8F;">-&gt;</span> (x, length xs)) <span style="color: #DFAF8F;">$</span> group <span style="color: #DFAF8F;">.</span> sort <span style="color: #DFAF8F;">$</span> l
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Novak Boškov</p>
+<p class="date">Created: 2017-06-18 нед 22:53</p>
+<p class="validation"></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,202 @@
+#+TITLE: Napredne tehnike programiranja - kolokvijumi Haskell
+#+LANGUAGE: sr
+#+SETUPFILE: ../org-html-themes/setup/theme-bigblow.setup
+#+TAGS: za_radoznale
+
+* Jun 2017.
+
+** /$\alpha$ - conversion/
+*** Objasnite šta znači da je jezik implicitno tipiziran.
+
+    Dajte primer u jednom jeziku koji je eksplicitno tipiziran i u
+    jednom koji je implicitno tipiziran.
+
+    Implicitno tipizirani jezici imaju dovoljno sposoban kompajler da
+    ume sam da zaključi tipove većine izraza ili naredbi. Tipovi su
+    poznati *u vreme kompajliranja* ali nisu eksplicitno navedeni u
+    izvornom kodu.
+
+    Primer eksplicitno tipiziranog jezika --- C:
+
+    #+BEGIN_SRC C
+      int a = 1;
+
+      int foo_a(double niz[]) {
+          /* Uradi nešto sa nizom */
+
+          return 5;
+      }
+    #+END_SRC
+
+    Primer implicitno tipiziranog jezika --- Haskell:
+
+    #+BEGIN_SRC haskell
+      a = 1
+
+      foo x = succ x + 1
+    #+END_SRC
+
+*** Napisati funkciju =obidji :: Tree -> Int -> Int=.
+
+    Dato je stablo čiji svaki čvor sadrži informaciju o ceni:
+
+    #+BEGIN_SRC haskell
+    data Tree
+      = Leaf
+      | Node Int
+             Tree
+             Tree
+             Tree
+      deriving (Eq, Show)
+    #+END_SRC
+
+    Napisati funkciju =obidji :: Tree -> Int -> Int= koja sabira cene
+    svih čvorova koje su veće od =minCena=:
+
+    #+BEGIN_SRC haskell
+    > t1 = Node 3 (Node 0 Leaf Leaf Leaf)
+                  (Node 6 Leaf Leaf Leaf)
+                  (Node  6 Leaf Leaf Leaf)
+    > obidji t1 5
+    12
+
+    > t2 = Node 3 (Node 0 Leaf Leaf (Node 10 Leaf Leaf Leaf))
+                  (Node 6 Leaf Leaf Leaf)
+                  (Node 6 Leaf Leaf Leaf)
+    > obidji t2 5
+    22
+    #+END_SRC
+
+    #+BEGIN_SRC haskell
+    obidji :: Tree -> Int -> Int
+    obidji Leaf _ = 0
+    obidji (Node cena Leaf Leaf Leaf) minCena
+      | cena < minCena = 0
+      | otherwise = cena
+    obidji (Node cena f s t) minCena =
+      (uzmiCenu cena) + obidji f minCena + obidji s minCena + obidji t minCena
+      where
+        uzmiCenu c
+          | c < minCena = 0
+          | otherwise = cena
+    #+END_SRC
+
+*** Napisati funkciju =lokalniMaximumi :: [Int] -> [Int]=.
+
+    Funkcija =lokalniMaximumi :: [Int] -> [Int]= vrać listu lokalnih
+    maksimuma. Lokalni maximum je broj koji je veći od oba svoja suseda:
+
+    #+BEGIN_SRC haskell
+    > lokalniMaximumi [1, 10, 5, 9, 5]
+    [10,9]
+    > lokalniMaximumi [2,9,5,6,1]
+    [9,6]
+    >  lokalniMaximumi [2,3,4,1,5]
+    [4]
+    >  lokalniMaximumi []
+    []
+    >  lokalniMaximumi [4]
+    []
+    #+END_SRC
+
+    #+BEGIN_SRC haskell
+    lokalniMaximumi :: [Integer] -> [Integer]
+    lokalniMaximumi (f:r@(s:t:_))
+      | s > f && s > t = s : lokalniMaximumi r
+      | otherwise = lokalniMaximumi r
+    lokalniMaximumi _ = []
+    #+END_SRC
+
+** /$\beta$ - reduction/
+*** Objasnite jezik tipova i jezik izraza u Haskell-u.
+
+    Dajte nekoliko primera koji pokazuju kako se koristi jezik tipova.
+
+    Haskell se može posmatrati kao skup dva jezika --- jezika tipova i
+    jezika izraza, gde je jezik tipova opcion.
+
+    #+BEGIN_SRC haskell
+      -- SomeType je deo jezika tipova ili type konstruktor, a ST je deo
+      -- jezika izraza ili data konstruktor
+
+      newtype SomeType a = ST a
+
+      12 :: Double
+    #+END_SRC
+
+*** Napisati funkciju =obidji :: Tree -> Int -> Int=.
+
+    Dato je stablo čiji svaki čvor sadrži informaciju o ceni:
+
+    #+BEGIN_SRC haskell
+      data Tree
+        = Leaf
+        | Node Tree
+               Int
+               Tree
+        deriving (Eq, Show)
+    #+END_SRC
+
+    Napisati funkciju =obidji :: Tree -> Int -> Int= koja sabira cene
+    svih čvorova koje su veće od =minCena=:
+
+    #+BEGIN_SRC haskell
+      > t1 = Node (Node Leaf 6 Leaf) 4 (Node Leaf 7 Leaf)
+      > obidji t1 5
+      13
+
+      > t2 = Node (Node Leaf 6 Leaf) 4 (Node (Node Leaf 2 Leaf) 3 Leaf)
+      > obidji t2 5
+      6
+
+      > t3 = Node (Node Leaf 6 Leaf) 4 (Node (Node Leaf 10 Leaf) 3 Leaf)
+      > obidji t3 5
+      16
+    #+END_SRC
+
+    #+BEGIN_SRC haskell
+      obidji :: Tree -> Int -> Int
+      obidji Leaf _ = 0
+      obidji (Node Leaf cena Leaf) minCena
+        | cena < minCena = 0
+        | otherwise = cena
+      obidji (Node l cena r) minCena =
+        (uzmiCenu cena) + obidji l minCena + obidji r minCena
+        where
+          uzmiCenu c
+            | c < minCena = 0
+            | otherwise = cena
+    #+END_SRC
+
+*** Napisati funkciju =frequencies :: [Integer] -> [(Integer, Int)]=.
+
+    Funkcija =frequencies :: [Integer] -> [(Integer, Int)]= vraća listu
+    frekvencija pojave =Integer=-a u listi:
+
+    #+BEGIN_SRC haskell
+      > frequencies [1, 1, 2, 3, 2, 4, 5, 2, 1]
+      [(1,3),(2,3),(3,1),(4,1),(5,1)]
+      -- 1 se pojavljuje 3 puta, 2 se pojavljuje 3 puta, 3 se pojavljuje jedan put ...
+      > frequencies [5, 1, 1, 2, 3, 2, 4, 5, 2]
+      [(1,2),(2,3),(3,1),(4,1),(5,2)]
+      > frequencies []
+      []
+      > frequencies [1]
+      [(1,1)]
+    #+END_SRC
+
+    Frekvencije treba da budu poređane u rastućem redosledu =Integer=-a
+    iz ulazne liste:
+
+    *Pomoć:*
+
+    - Postoje funkcije:
+      #+BEGIN_SRC haskell
+        sort :: Ord a => [a] -> [a]
+        group :: Eq a => [a] -> [[a]]
+      #+END_SRC
+
+    #+BEGIN_SRC haskell
+      frequencies :: [Integer] -> [(Integer, Int)]
+      frequencies l = map (\xs@(x:_) -> (x, length xs)) $ group . sort $ l
+    #+END_SRC
