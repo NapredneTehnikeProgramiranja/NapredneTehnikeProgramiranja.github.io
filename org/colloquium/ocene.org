@@ -6,54 +6,54 @@
 
   |   |        br. | ime i prezime         | python | clojure | smalltalk | haskell | ukupno |
   |---+------------+-----------------------+--------+---------+-----------+---------+--------|
-  |   |          1 | Aleksandar Novaković  |    100 |     100 |           |         | 50.000 |
-  |   |          2 | Stefan Kalnak         |    100 |     100 |           |         | 50.000 |
-  |   |          3 | Sebastijan Stevanović |    100 |     100 |           |         | 50.000 |
-  |   |          4 | Dušan Borovčanin      |    100 |     100 |           |         | 50.000 |
-  |   |          5 | Arsenije Vladisavljev |    100 |     100 |           |         | 50.000 |
-  |   |          6 | Stefan Bratic         |    100 |     100 |           |         | 50.000 |
-  |   |          7 | Milorad Vojnovic      |    100 |     100 |           |         | 50.000 |
+  |   |          1 | Aleksandar Novaković  |    100 |     100 |           |     100 | 75.000 |
+  |   |          2 | Stefan Kalnak         |    100 |     100 |           |     100 | 75.000 |
+  |   |          3 | Sebastijan Stevanović |    100 |     100 |           |     100 | 75.000 |
+  |   |          4 | Dušan Borovčanin      |    100 |     100 |           |     100 | 75.000 |
+  |   |          5 | Arsenije Vladisavljev |    100 |     100 |           |     100 | 75.000 |
+  |   |          6 | Stefan Bratic         |    100 |     100 |           |     100 | 75.000 |
+  |   |          7 | Milorad Vojnovic      |    100 |     100 |           |     100 | 75.000 |
   |   |          8 | Ivan Mihajlov         |     80 |         |           |         | 20.000 |
-  |   |          9 | Predrag Falcic        |    100 |      80 |           |         | 45.000 |
-  |   |         10 | Nemanja Milosavljevic |     70 |      80 |           |         | 37.500 |
-  |   |         11 | Predrag Kaljevic      |     90 |      60 |           |         | 37.500 |
-  |   |         12 | Milos Obradovic       |    100 |      80 |           |         | 45.000 |
-  |   |         13 | Milos Andric          |        |      80 |           |         | 20.000 |
-  |   |         14 | Mladen Došlić         |     80 |      60 |           |         | 35.000 |
-  |   |         15 | Stefan Ristanović     |    100 |     100 |           |         | 50.000 |
-  |   |         16 | Dragutin Marjanović   |    100 |     100 |           |         | 50.000 |
-  |   |         17 | Bojan Blagojević      |    100 |     100 |           |         | 50.000 |
+  |   |          9 | Predrag Falcic        |    100 |      80 |           |      34 | 53.500 |
+  |   |         10 | Nemanja Milosavljevic |     70 |      80 |           |      34 | 46.000 |
+  |   |         11 | Predrag Kaljevic      |     90 |      60 |           |      34 | 46.000 |
+  |   |         12 | Milos Obradovic       |    100 |      80 |           |     100 | 70.000 |
+  |   |         13 | Milos Andric          |        |      80 |           |     100 | 45.000 |
+  |   |         14 | Mladen Došlić         |     80 |      60 |           |     100 | 60.000 |
+  |   |         15 | Stefan Ristanović     |    100 |     100 |           |     100 | 75.000 |
+  |   |         16 | Dragutin Marjanović   |    100 |     100 |           |     100 | 75.000 |
+  |   |         17 | Bojan Blagojević      |    100 |     100 |           |     100 | 75.000 |
   |   |         18 | Aleksa Zrnić          |    100 |     100 |           |         | 50.000 |
-  |   |         19 | Mina Medic            |    100 |     100 |           |         | 50.000 |
-  |   |         20 | Katarina Preradov     |    100 |     100 |           |         | 50.000 |
-  |   |         21 | Jovana Micic          |    100 |     100 |           |         | 50.000 |
-  |   |         22 | Jasna Stanković       |    100 |     100 |           |         | 50.000 |
-  |   |         23 | Nikola Lukić          |     90 |     100 |           |         | 47.500 |
-  |   |         24 | Damjan Bećirović      |        |      80 |           |         | 20.000 |
-  |   |         25 | Nikola Korica         |     70 |     100 |           |         | 42.500 |
+  |   |         19 | Mina Medic            |    100 |     100 |           |     100 | 75.000 |
+  |   |         20 | Katarina Preradov     |    100 |     100 |           |     100 | 75.000 |
+  |   |         21 | Jovana Micic          |    100 |     100 |           |     100 | 75.000 |
+  |   |         22 | Jasna Stanković       |    100 |     100 |           |     100 | 75.000 |
+  |   |         23 | Nikola Lukić          |     90 |     100 |           |     100 | 72.500 |
+  |   |         24 | Damjan Bećirović      |        |      80 |           |     100 | 45.000 |
+  |   |         25 | Nikola Korica         |     70 |     100 |           |      67 | 59.250 |
   |   |         26 | Kristina Grujić       |        |         |           |         |  0.000 |
-  |   |         27 | Tamara Varađanin      |     70 |     100 |           |         | 42.500 |
+  |   |         27 | Tamara Varađanin      |     70 |     100 |           |     100 | 67.500 |
   |   |         28 | Luka Klačar           |        |         |           |         |  0.000 |
   |   |         29 | Miljana Vinokić       |        |         |           |         |  0.000 |
-  |   |         30 | Ivana Savin           |     90 |      80 |           |         | 42.500 |
-  |   |         31 | Dunja Krga            |    100 |     100 |           |         | 50.000 |
-  |   |         32 | Katarina Cerović      |     80 |      80 |           |         | 40.000 |
+  |   |         30 | Ivana Savin           |     90 |      80 |           |      67 | 59.250 |
+  |   |         31 | Dunja Krga            |    100 |     100 |           |      67 | 66.750 |
+  |   |         32 | Katarina Cerović      |     80 |      80 |           |     100 | 65.000 |
   |   |         33 | Nikola Dakić          |     60 |         |           |         | 15.000 |
   |   |         34 | Đorđe Marjanović      |    100 |     100 |           |         | 50.000 |
   |   |         35 | Aleksandar Rakic      |        |         |           |         |  0.000 |
   |   |         36 | Kristina Pomirisac    |        |         |           |         |  0.000 |
-  |   |         37 | Novica Nikolic        |     80 |      60 |           |         | 35.000 |
+  |   |         37 | Novica Nikolic        |     80 |      60 |           |     100 | 60.000 |
   |   |         38 | Božo Bjeković         |    100 |     100 |           |         | 50.000 |
-  |   |         39 | Ana Marojević         |    100 |     100 |           |         | 50.000 |
-  |   |         40 | Maja Miljić           |    100 |     100 |           |         | 50.000 |
-  |   |         41 | Stefan Plazić         |     90 |     100 |           |         | 47.500 |
-  |   |         42 | Nemanja Žunić         |    100 |     100 |           |         | 50.000 |
+  |   |         39 | Ana Marojević         |    100 |     100 |           |     100 | 75.000 |
+  |   |         40 | Maja Miljić           |    100 |     100 |           |     100 | 75.000 |
+  |   |         41 | Stefan Plazić         |     90 |     100 |           |     100 | 72.500 |
+  |   |         42 | Nemanja Žunić         |    100 |     100 |           |      34 | 58.500 |
   |   |         43 | Mladen Stajčić        |        |         |           |         |  0.000 |
   |   |         44 | Miodrag Vilotijević   |        |         |           |         |  0.000 |
   | ^ |     brStud |                       |        |         |           |         |        |
   |---+------------+-----------------------+--------+---------+-----------+---------+--------|
-  |   |   Prosečno |                       | 92.857 |  92.571 |     0.000 |   0.000 | 36.875 |
-  |   |   Položilo | 0                     |        |         |           |         |        |
+  |   |   Prosečno |                       | 92.857 |  92.571 |     0.000 |  88.656 | 52.994 |
+  |   |   Položilo | 27                    |        |         |           |         |        |
   | ^ |            | polozilo              |        |         |           |         |        |
   |   | Prolaznost | 0.000                 |        |         |           |         |        |
   #+TBLFM: @>>>$3=vcount(map(<if(gt(#1, 55), 1, [])>, @2$8..@45$8))::@>>>>$8=vmean(@2$8..@45$8);%.3f::@>>>>$7=vmean(@2$7..@45$7);%.3f::@>>>>$6=vmean(@2$6..@45$6);%.3f::@>>>>$5=vmean(@2$5..@45$5);%.3f::@>>>>$4=vmean(@2$4..@45$4);%.3f::@>$3=$polozilo/$brStud;%.3f::@2$2..@45$2=@# - 1::@2$8..@45$8=vsum($4..$7)/4;%.3f
