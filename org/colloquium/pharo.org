@@ -1,0 +1,97 @@
+#+TITLE: Napredne tehnike programiranja - kolokvijumi Pharo
+#+LANGUAGE: sr
+#+SETUPFILE: ../org-html-themes/setup/theme-bigblow.setup
+#+TAGS: za_radoznale
+
+* Maj 2017.
+
+** /Carimbo/
+*** Šta su blokovi u Pharo-u? Dajte jedan primer bloka.
+
+    Blokovi su anonimne metode, leksički zatvarači
+    (/closure/). Predstavljaju objekte kao i sve drugo u Smalltalk-u.
+
+    #+BEGIN_SRC python
+      [ :x | x*x ] value: 2
+      "4"
+    #+END_SRC
+
+*** Da li je kompozicija poruka u Pharo-u desno asocijativna? Dati jedan primer.
+
+    Nisu.
+
+    #+BEGIN_SRC python
+      1 + 2 * 3 = (1 + 2) * 3
+    #+END_SRC
+
+*** Napište kod koji učitava sliku sa desktopa u Morph prozor (/window/).
+
+    #+BEGIN_SRC python
+      (ImageReadWriter formFromFileNamed: '/home/novak/Desktop/nb.jpg') asMorph openInWindow
+    #+END_SRC
+
+*** Napisati kod koji u nizu (/array/) pronalazi parne brojeve i štampa ih u Transkript, svaki u novi red.
+
+    #+BEGIN_SRC python
+      #(9 8 4 9 6 7) <vas_kod>
+
+      "U Transcript-u:"
+      8
+      4
+      6
+    #+END_SRC
+
+    #+BEGIN_SRC python
+      (#(9 8 4 9 6 7) select: [ :i | (i \\ 2) = 0]) do: [ :e | Transcript show: e ; cr]
+    #+END_SRC
+
+** /Sabar/
+*** Šta su metode a šta poruke u Smalltalku? Kako se vrši kreiranje objekata? Dati jedan primer.
+
+    Metode su deo klase i opisuju kako se radi nešto što klasa
+    ume. Poruke su namera da se to uradi. Kreiranje objekta se vrši
+    slanjem poruke =new=.
+
+    #+BEGIN_SRC python
+      NekaKlasa new
+    #+END_SRC
+
+*** Šta je kaskada (/cascade/) u Pharo-u? Dati jedan primer.
+
+    Kaskada je mehanizam za slanje više poruka jednom objektu.
+
+    #+BEGIN_SRC python
+      coll := Set new.
+      coll add:'one'; add:'two'; add:3.
+    #+END_SRC
+
+*** Napisati Pharo blok koji prima putanju do slike sa lokalnog sistema i otvara tu sliku u svetu(/world/).
+
+    #+BEGIN_SRC python
+      [ <ovaj_blok_treba_napisati> ] <odgovarajuca_poruka>: '/home/user/Desktop/ostatak_putanje'
+    #+END_SRC
+
+    #+BEGIN_SRC python
+      [ :x |  (ImageReadWriter formFromFileNamed: x) asMorph openInWorld  ] value: '/home/novak/Desktop/nb.jpg'
+    #+END_SRC
+
+*** Napisati kod koji:
+    - iz niza izbacuje brojeve koji su od trojke udaljeni za više od 5
+    - za svaki element koji ostane ispisuje u Transcript poruku =Ostao
+      je <broj>=, svaka poruka u novom redu.
+
+    #+BEGIN_SRC python
+      #(4 5 6 -7 3) <vas_kod>
+
+      "U Transcript-u"
+
+      Ostao je 4
+      Ostao je 5
+      Ostao je 6
+      Ostao je 3
+
+    #+END_SRC
+
+    #+BEGIN_SRC python
+      (#(4 5 6 -7 3) reject: [ :x | (3 - x) abs > 5 ]) do: [ :e | Transcript show: 'Ostao je '; show: e; cr ]
+    #+END_SRC
