@@ -1,0 +1,9 @@
+---
+title: Test za 6
+author: Novak Boškov
+---
+
+# Kada je test za 6?
+
+Studenti koji žele da rade test za 6 to će moći da rade u terminu u
+ispitnom roku **1. septembra**.
