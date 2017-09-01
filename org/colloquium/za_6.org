@@ -1,0 +1,85 @@
+#+TITLE: Test za 6
+#+DATE: 1. septembar 2017.
+#+AUTHOR: Napredne tehnike programiranja
+#+LANGUAGE: sr
+#+OPTIONS: toc:nil
+
+* Da li je Python eksplicitno tipiziran programski jezik? Objasnite.
+
+  -
+  -
+  -
+  -
+  -
+
+* Da li je Python strogo tipiziran (/strongly typed/) programski jezik? Dati primer.
+
+  -
+  -
+  -
+  -
+  -
+
+* Objasnite proces parsiranja.
+
+  -
+  -
+  -
+  -
+  -
+
+* Da li je Clojure dinamički tipiziran programski jezik?
+
+  -
+  -
+  -
+  -
+  -
+
+* Objasnite (svojim rečima) šta je makro sistem Lisp-a.
+
+  -
+  -
+  -
+  -
+  -
+
+* Šta su funkcije višeg reda?
+
+  -
+  -
+  -
+  -
+  -
+
+* Objasnite kako funkcioniše proces konstrukcije objekta u Smalltalk-u. Dajte jedan primer klase u Smalltalk-u.
+
+  -
+  -
+  -
+  -
+  -
+
+* Objasniti šta je /curry-ing/. Dajte jedan primer u programskom jeziku Haskell.
+
+  -
+  -
+  -
+  -
+  -
+
+* Šta je /typeclass/ u Haskell-u?
+
+  -
+  -
+  -
+  -
+  -
+
+* Šta znači da je programski jezik /lazy/?
+
+  -
+  -
+  -
+  -
+  -
