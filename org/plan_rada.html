@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="sr" xml:lang="sr">
 <head>
-<!-- 2017-02-11 суб 12:21 -->
+<!-- 2018-02-27 Tue 00:52 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Napredne tehnike programiranja - plan rada</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="TODO, Novak Boškov" />
+<meta name="author" content="Igor Dejanović, Novak Boškov" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -68,6 +68,7 @@
   pre.src-fortran:before { content: 'Fortran'; }
   pre.src-gnuplot:before { content: 'gnuplot'; }
   pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
   pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
@@ -179,12 +180,23 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/bigblow.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/hideshow.css"/>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.zclip.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/bigblow.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/hideshow.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -229,6 +241,85 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <h1 class="title">Napredne tehnike programiranja - plan rada</h1>
+<div id="table-of-contents">
+<h2>Sadr&#382;aj</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org863c881">1. 2017</a>
+<ul>
+<li><a href="#p1_2017">1.1. predavanja 1</a></li>
+<li><a href="#p2_2017">1.2. predavanja 2</a></li>
+<li><a href="#p3_2017">1.3. predavanja 3</a></li>
+<li><a href="#p4_2017">1.4. predavanja 4</a></li>
+<li><a href="#p5_2017">1.5. predavanja 5</a></li>
+<li><a href="#p6_2017">1.6. predavanja 6</a></li>
+<li><a href="#p7_2017">1.7. predavanja 7</a></li>
+<li><a href="#p8_2017">1.8. predavanja 8</a></li>
+<li><a href="#p9_2017">1.9. predavanja 9</a></li>
+<li><a href="#p10_2017">1.10. predavanja 10</a></li>
+<li><a href="#p11_2017">1.11. predavanja 11</a></li>
+<li><a href="#p12_2017">1.12. predavanja 12</a></li>
+<li><a href="#p13_2017">1.13. predavanja 13</a></li>
+<li><a href="#org00b702b">1.14. vežbe 1</a></li>
+<li><a href="#orgeed5492">1.15. vežbe 2</a></li>
+<li><a href="#orga610cff">1.16. vežbe 3</a></li>
+<li><a href="#org24a2464">1.17. vežbe 4</a></li>
+<li><a href="#orgfde8574">1.18. vežbe 5</a></li>
+<li><a href="#org5f8be5f">1.19. vežbe 6</a></li>
+<li><a href="#org3018572">1.20. vežbe 7</a></li>
+<li><a href="#org6994829">1.21. vežbe 8</a></li>
+<li><a href="#org4556605">1.22. vežbe 9</a></li>
+<li><a href="#orge0b25b8">1.23. vežbe 10</a></li>
+<li><a href="#org0611a80">1.24. vežbe 11</a></li>
+<li><a href="#orgf8971b4">1.25. Način ocenjivanja</a>
+<ul>
+<li><a href="#org07ba45a">1.25.1. Kolokvijumi u toku semestra</a></li>
+<li><a href="#org0e1a554">1.25.2. Test za one koji imaju &lt;55 na kolokvijumima i ne žele projekat</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org17d4535">2. 2018</a>
+<ul>
+<li><a href="#p1_2018">2.1. predavanja 1</a></li>
+<li><a href="#p2_2018">2.2. predavanja 2</a></li>
+<li><a href="#p3_2018">2.3. predavanja 3</a></li>
+<li><a href="#p4_2018">2.4. predavanja 4</a></li>
+<li><a href="#p5_2018">2.5. predavanja 5</a></li>
+<li><a href="#p6_2018">2.6. predavanja 6</a></li>
+<li><a href="#p7_2018">2.7. predavanja 7</a></li>
+<li><a href="#p8_2018">2.8. predavanja 8</a></li>
+<li><a href="#p9_2018">2.9. predavanja 9</a></li>
+<li><a href="#p10_2018">2.10. predavanja 10</a></li>
+<li><a href="#p11_2018">2.11. predavanja 11</a></li>
+<li><a href="#p12_2018">2.12. predavanja 12</a></li>
+<li><a href="#p13_2018">2.13. predavanja 13</a></li>
+<li><a href="#orgc6cba29">2.14. vežbe 1</a></li>
+<li><a href="#org3ad5eea">2.15. vežbe 2</a></li>
+<li><a href="#orga66a1d3">2.16. vežbe 3</a></li>
+<li><a href="#orgfed3bb0">2.17. vežbe 4</a></li>
+<li><a href="#org70b205c">2.18. vežbe 5</a></li>
+<li><a href="#orgcc0f5d6">2.19. vežbe 6</a></li>
+<li><a href="#orged70402">2.20. vežbe 7</a></li>
+<li><a href="#org7e62654">2.21. vežbe 8</a></li>
+<li><a href="#orgb57b0be">2.22. vežbe 9</a></li>
+<li><a href="#orga4fafab">2.23. vežbe 10</a></li>
+<li><a href="#org579ad69">2.24. vežbe 11</a></li>
+<li><a href="#orgcb1766d">2.25. Način ocenjivanja</a>
+<ul>
+<li><a href="#orgef16f39">2.25.1. Kolokvijumi u toku semestra</a></li>
+<li><a href="#org78c119a">2.25.2. Test za one koji imaju &lt;55 na kolokvijumima i ne žele projekat</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org863c881" class="outline-2">
+<h2 id="org863c881"><span class="section-number-2">1</span> 2017</h2>
+<div class="outline-text-2" id="text-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="border">
 
 
@@ -261,8 +352,8 @@ for the JavaScript code in this tag.
 <tbody>
 <tr>
 <td class="org-right">1</td>
-<td class="org-left"><a href="#org0465921">Uvod u predmet</a></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-03-01 сре&gt;</span></span></td>
+<td class="org-left"><a href="#p1_2017">Uvod u predmet</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-03-01 Wed&gt;</span></span></td>
 <td class="org-left">&#xa0;</td>
 <td class="org-left">&#xa0;</td>
 <td class="org-left">&#xa0;</td>
@@ -271,8 +362,8 @@ for the JavaScript code in this tag.
 
 <tr>
 <td class="org-right">2</td>
-<td class="org-left"><a href="#org3c8e3f9">Python 1</a></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-03-08 сре&gt;</span></span></td>
+<td class="org-left"><a href="#p2_2017">Python 1</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-03-08 Wed&gt;</span></span></td>
 <td class="org-left">&#xa0;</td>
 <td class="org-left">&#xa0;</td>
 <td class="org-left">&#xa0;</td>
@@ -291,131 +382,132 @@ for the JavaScript code in this tag.
 
 <tr>
 <td class="org-right">4</td>
-<td class="org-left"><a href="#orgf193b07">Python 2</a></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-03-22 сре&gt;</span></span></td>
-<td class="org-left"><a href="#orgd9bdb06">v1</a></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-03-21 уто&gt;</span></span></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-03-23 чет&gt;</span></span></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-03-24 пет&gt;</span></span></td>
+<td class="org-left"><a href="#p3_2017">Python 2</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-03-22 Wed&gt;</span></span></td>
+<td class="org-left"><a href="#org00b702b">v1</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-03-21 Tue&gt;</span></span></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-03-23 Thu&gt;</span></span></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-03-24 Fri&gt;</span></span></td>
 </tr>
 
 <tr>
 <td class="org-right">5</td>
-<td class="org-left"><a href="#org76fe6a4">Python 3</a></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-03-29 сре&gt;</span></span></td>
-<td class="org-left"><a href="#org4e8f959">v2</a></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-03-28 уто&gt;</span></span></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-03-30 чет&gt;</span></span></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-03-31 пет&gt;</span></span></td>
+<td class="org-left"><a href="#p4_2017">Python 3</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-03-29 Wed&gt;</span></span></td>
+<td class="org-left"><a href="#orgeed5492">v2</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-03-28 Tue&gt;</span></span></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-03-30 Thu&gt;</span></span></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-03-31 Fri&gt;</span></span></td>
 </tr>
 </tbody>
 <tbody>
 <tr>
 <td class="org-right">6</td>
-<td class="org-left"><a href="#org0e49417">Clojure 1</a></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-04-05 сре&gt;</span></span></td>
-<td class="org-left"><a href="#org718f0fc">v3</a></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-04-04 уто&gt;</span></span></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-04-06 чет&gt;</span></span></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-04-07 пет&gt;</span></span></td>
+<td class="org-left"><a href="#p5_2017">Clojure 1</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-04-05 Wed&gt;</span></span></td>
+<td class="org-left"><a href="#orga610cff">v3</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-04-04 Tue&gt;</span></span></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-04-06 Thu&gt;</span></span></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-04-07 Fri&gt;</span></span></td>
 </tr>
 
 <tr>
 <td class="org-right">7</td>
-<td class="org-left"><a href="#orgb8376ff">Clojure 2</a></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-04-12 сре&gt;</span></span></td>
-<td class="org-left"><a href="#org90bd3dd">v4</a></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-04-11 уто&gt;</span></span></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-04-13 чет&gt;</span></span></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-04-28 пет&gt;</span></span></td>
+<td class="org-left"><a href="#p6_2017">Clojure 2</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-04-12 Wed&gt;</span></span></td>
+<td class="org-left"><a href="#org24a2464">v4</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-04-11 Tue&gt;</span></span></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-04-13 Thu&gt;</span></span></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-04-28 Fri&gt;</span></span></td>
 </tr>
 
 <tr>
 <td class="org-right">8</td>
-<td class="org-left"><a href="#org1594c4e">Clojure 3</a></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-04-26 сре&gt;</span></span></td>
-<td class="org-left"><a href="#org0486916">v5</a></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-04-25 уто&gt;</span></span></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-04-27 чет&gt;</span></span></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-05 пет&gt;</span></span></td>
+<td class="org-left"><a href="#p7_2017">Clojure 3</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-04-26 Wed&gt;</span></span></td>
+<td class="org-left"><a href="#orgfde8574">v5</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-04-25 Tue&gt;</span></span></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-04-27 Thu&gt;</span></span></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-05 Fri&gt;</span></span></td>
 </tr>
 
 <tr>
 <td class="org-right">9</td>
-<td class="org-left"><a href="#org9c9fca3">Clojure 4</a></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-03 сре&gt;</span></span></td>
-<td class="org-left"><a href="#org29af600">v6</a></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-09 уто&gt;</span></span></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-04 чет&gt;</span></span></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-12 пет&gt;</span></span></td>
+<td class="org-left"><a href="#p8_2017">Clojure 4</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-03 Wed&gt;</span></span></td>
+<td class="org-left"><a href="#org5f8be5f">v6</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-09 Tue&gt;</span></span></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-04 Thu&gt;</span></span></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-12 Fri&gt;</span></span></td>
 </tr>
 </tbody>
 <tbody>
 <tr>
 <td class="org-right">10</td>
-<td class="org-left"><a href="#org59d05dd">Go 1</a></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-10 сре&gt;</span></span></td>
-<td class="org-left"><a href="#org799bb74">v7</a></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-16 уто&gt;</span></span></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-11 чет&gt;</span></span></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-19 пет&gt;</span></span></td>
+<td class="org-left"><a href="#p9_2017">Smalltalk 1</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-10 Wed&gt;</span></span></td>
+<td class="org-left"><a href="#org3018572">v7</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-16 Tue&gt;</span></span></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-11 Thu&gt;</span></span></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-19 Fri&gt;</span></span></td>
 </tr>
 
 <tr>
 <td class="org-right">11</td>
-<td class="org-left"><a href="#org528762b">Go 2</a></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-17 сре&gt;</span></span></td>
-<td class="org-left"><a href="#orgdc43550">v8</a></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-23 уто&gt;</span></span></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-18 чет&gt;</span></span></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-26 пет&gt;</span></span></td>
+<td class="org-left"><a href="#p10_2017">Smalltalk 2</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-17 Wed&gt;</span></span></td>
+<td class="org-left"><a href="#org6994829">v8</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-23 Tue&gt;</span></span></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-18 Thu&gt;</span></span></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-26 Fri&gt;</span></span></td>
 </tr>
 </tbody>
 <tbody>
 <tr>
 <td class="org-right">12</td>
-<td class="org-left"><a href="#orgbd7add0">Haskell 1</a></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-24 сре&gt;</span></span></td>
-<td class="org-left"><a href="#org3bf1e27">v9</a></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-30 уто&gt;</span></span></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-25 чет&gt;</span></span></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-06-02 пет&gt;</span></span></td>
+<td class="org-left"><a href="#p11_2017">Haskell 1</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-24 Wed&gt;</span></span></td>
+<td class="org-left"><a href="#org4556605">v9</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-30 Tue&gt;</span></span></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-25 Thu&gt;</span></span></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-06-02 Fri&gt;</span></span></td>
 </tr>
 
 <tr>
 <td class="org-right">13</td>
-<td class="org-left"><a href="#orgf235153">Haskell 2</a></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-31 сре&gt;</span></span></td>
-<td class="org-left"><a href="#org3dca2ec">v10</a></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-06-06 уто&gt;</span></span></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-06-01 чет&gt;</span></span></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-06-09 пет&gt;</span></span></td>
+<td class="org-left"><a href="#p12_2017">Haskell 2</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-31 Wed&gt;</span></span></td>
+<td class="org-left"><a href="#orge0b25b8">v10</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-06-06 Tue&gt;</span></span></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-06-01 Thu&gt;</span></span></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-06-09 Fri&gt;</span></span></td>
 </tr>
 
 <tr>
 <td class="org-right">14</td>
-<td class="org-left"><a href="#org881876a">Haskell 3</a></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-06-07 сре&gt;</span></span></td>
-<td class="org-left"><a href="#org22573b7">v11</a></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-06-13 уто&gt;</span></span></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-06-08 чет&gt;</span></span></td>
-<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-06-14 сре&gt;</span></span></td>
+<td class="org-left"><a href="#p13_2017">Haskell 3</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-06-07 Wed&gt;</span></span></td>
+<td class="org-left"><a href="#org0611a80">v11</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-06-13 Tue&gt;</span></span></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-06-08 Thu&gt;</span></span></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-06-14 Wed&gt;</span></span></td>
 </tr>
 </tbody>
 </table>
+</div>
 
-<div id="outline-container-org0465921" class="outline-2">
-<h2 id="org0465921">predavanja 1</h2>
-<div class="outline-text-2" id="text-org0465921">
+<div id="outline-container-org5bb3a8e" class="outline-3">
+<h3 id="p1_2017"><a id="org5bb3a8e"></a><span class="section-number-3">1.1</span> predavanja 1</h3>
+<div class="outline-text-3" id="text-p1_2017">
 <ul class="org-ul">
 <li>Kratak pregled oblasti</li>
 <li>Način polaganja - kolokvijumi ili mini projekat</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org3c8e3f9" class="outline-2">
-<h2 id="org3c8e3f9">predavanja 2</h2>
-<div class="outline-text-2" id="text-org3c8e3f9">
+<div id="outline-container-org79e9942" class="outline-3">
+<h3 id="p2_2017"><a id="org79e9942"></a><span class="section-number-3">1.2</span> predavanja 2</h3>
+<div class="outline-text-3" id="text-p2_2017">
 <ul class="org-ul">
 <li>functools</li>
 <li>itertools</li>
@@ -426,9 +518,9 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf193b07" class="outline-2">
-<h2 id="orgf193b07">predavanja 3</h2>
-<div class="outline-text-2" id="text-orgf193b07">
+<div id="outline-container-org17812bb" class="outline-3">
+<h3 id="p3_2017"><a id="org17812bb"></a><span class="section-number-3">1.3</span> predavanja 3</h3>
+<div class="outline-text-3" id="text-p3_2017">
 <ul class="org-ul">
 <li>meta-classes, multiple inheritance, special methods, overriding operators</li>
 <li>Static types checking. New type hinting syntax. mypy</li>
@@ -436,91 +528,523 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org76fe6a4" class="outline-2">
-<h2 id="org76fe6a4">predavanja 4</h2>
-<div class="outline-text-2" id="text-org76fe6a4">
+<div id="outline-container-orgdbdfa67" class="outline-3">
+<h3 id="p4_2017"><a id="orgdbdfa67"></a><span class="section-number-3">1.4</span> predavanja 4</h3>
+<div class="outline-text-3" id="text-p4_2017">
 <ul class="org-ul">
 <li>Parsing &amp; code generators - DSL basics (mali uvod u JSD predmet)</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org0e49417" class="outline-2">
-<h2 id="org0e49417">predavanja 5</h2>
+<div id="outline-container-org7394d8e" class="outline-3">
+<h3 id="p5_2017"><a id="org7394d8e"></a><span class="section-number-3">1.5</span> predavanja 5</h3>
+<div class="outline-text-3" id="text-p5_2017">
+<ul class="org-ul">
+<li><a href="clojure.html#MissingReference">Uvod</a></li>
+</ul>
 </div>
-<div id="outline-container-orgb8376ff" class="outline-2">
-<h2 id="orgb8376ff">predavanja 6</h2>
 </div>
-<div id="outline-container-org1594c4e" class="outline-2">
-<h2 id="org1594c4e">predavanja 7</h2>
+<div id="outline-container-org6693c9a" class="outline-3">
+<h3 id="p6_2017"><a id="org6693c9a"></a><span class="section-number-3">1.6</span> predavanja 6</h3>
+<div class="outline-text-3" id="text-p6_2017">
+<ul class="org-ul">
+<li><a href="clojure.html#MissingReference">Elementi jezika</a></li>
+</ul>
 </div>
-<div id="outline-container-org9c9fca3" class="outline-2">
-<h2 id="org9c9fca3">predavanja 8</h2>
 </div>
-<div id="outline-container-org59d05dd" class="outline-2">
-<h2 id="org59d05dd">predavanja 9</h2>
-<div class="outline-text-2" id="text-org59d05dd">
+<div id="outline-container-org0fda53e" class="outline-3">
+<h3 id="p7_2017"><a id="org0fda53e"></a><span class="section-number-3">1.7</span> predavanja 7</h3>
+<div class="outline-text-3" id="text-p7_2017">
+<ul class="org-ul">
+<li><a href="clojure.html#MissingReference">Kada je mutacija stvarno nezaobilazna</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org941a53a" class="outline-3">
+<h3 id="p8_2017"><a id="org941a53a"></a><span class="section-number-3">1.8</span> predavanja 8</h3>
+<div class="outline-text-3" id="text-p8_2017">
+<ul class="org-ul">
+<li><a href="clojure.html#MissingReference">Read, evaluate vrtlog i makroi</a></li>
+<li><a href="clojure.html#MissingReference">Clojure.spec</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc470ac1" class="outline-3">
+<h3 id="p9_2017"><a id="orgc470ac1"></a><span class="section-number-3">1.9</span> predavanja 9</h3>
+<div class="outline-text-3" id="text-p9_2017">
 <ul class="org-ul">
 <li>Introduction</li>
 <li>goroutines and concurent programming</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org528762b" class="outline-2">
-<h2 id="org528762b">predavanja 10</h2>
-<div class="outline-text-2" id="text-org528762b">
+<div id="outline-container-org4f4994f" class="outline-3">
+<h3 id="p10_2017"><a id="org4f4994f"></a><span class="section-number-3">1.10</span> predavanja 10</h3>
+<div class="outline-text-3" id="text-p10_2017">
 <ul class="org-ul">
 <li>I/O and network programming</li>
 <li>Go best practices</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgbd7add0" class="outline-2">
-<h2 id="orgbd7add0">predavanja 11</h2>
+<div id="outline-container-org55d185e" class="outline-3">
+<h3 id="p11_2017"><a id="org55d185e"></a><span class="section-number-3">1.11</span> predavanja 11</h3>
+<div class="outline-text-3" id="text-p11_2017">
 </div>
-<div id="outline-container-orgf235153" class="outline-2">
-<h2 id="orgf235153">predavanja 12</h2>
 </div>
-<div id="outline-container-org881876a" class="outline-2">
-<h2 id="org881876a">predavanja 13</h2>
+<div id="outline-container-org5822dee" class="outline-3">
+<h3 id="p12_2017"><a id="org5822dee"></a><span class="section-number-3">1.12</span> predavanja 12</h3>
+<div class="outline-text-3" id="text-p12_2017">
+</div>
+</div>
+<div id="outline-container-org70663b6" class="outline-3">
+<h3 id="p13_2017"><a id="org70663b6"></a><span class="section-number-3">1.13</span> predavanja 13</h3>
+<div class="outline-text-3" id="text-p13_2017">
+</div>
 </div>
 
-<div id="outline-container-orgd9bdb06" class="outline-2">
-<h2 id="orgd9bdb06">vežbe 1</h2>
+<div id="outline-container-org00b702b" class="outline-3">
+<h3 id="org00b702b"><span class="section-number-3">1.14</span> vežbe 1</h3>
 </div>
-<div id="outline-container-org4e8f959" class="outline-2">
-<h2 id="org4e8f959">vežbe 2</h2>
+<div id="outline-container-orgeed5492" class="outline-3">
+<h3 id="orgeed5492"><span class="section-number-3">1.15</span> vežbe 2</h3>
 </div>
-<div id="outline-container-org718f0fc" class="outline-2">
-<h2 id="org718f0fc">vežbe 3</h2>
+<div id="outline-container-orga610cff" class="outline-3">
+<h3 id="orga610cff"><span class="section-number-3">1.16</span> vežbe 3</h3>
 </div>
-<div id="outline-container-org90bd3dd" class="outline-2">
-<h2 id="org90bd3dd">vežbe 4</h2>
+<div id="outline-container-org24a2464" class="outline-3">
+<h3 id="org24a2464"><span class="section-number-3">1.17</span> vežbe 4</h3>
 </div>
-<div id="outline-container-org0486916" class="outline-2">
-<h2 id="org0486916">vežbe 5</h2>
+<div id="outline-container-orgfde8574" class="outline-3">
+<h3 id="orgfde8574"><span class="section-number-3">1.18</span> vežbe 5</h3>
 </div>
-<div id="outline-container-org29af600" class="outline-2">
-<h2 id="org29af600">vežbe 6</h2>
+<div id="outline-container-org5f8be5f" class="outline-3">
+<h3 id="org5f8be5f"><span class="section-number-3">1.19</span> vežbe 6</h3>
 </div>
-<div id="outline-container-org799bb74" class="outline-2">
-<h2 id="org799bb74">vežbe 7</h2>
+<div id="outline-container-org3018572" class="outline-3">
+<h3 id="org3018572"><span class="section-number-3">1.20</span> vežbe 7</h3>
 </div>
-<div id="outline-container-orgdc43550" class="outline-2">
-<h2 id="orgdc43550">vežbe 8</h2>
+<div id="outline-container-org6994829" class="outline-3">
+<h3 id="org6994829"><span class="section-number-3">1.21</span> vežbe 8</h3>
 </div>
-<div id="outline-container-org3bf1e27" class="outline-2">
-<h2 id="org3bf1e27">vežbe 9</h2>
+<div id="outline-container-org4556605" class="outline-3">
+<h3 id="org4556605"><span class="section-number-3">1.22</span> vežbe 9</h3>
 </div>
-<div id="outline-container-org3dca2ec" class="outline-2">
-<h2 id="org3dca2ec">vežbe 10</h2>
+<div id="outline-container-orge0b25b8" class="outline-3">
+<h3 id="orge0b25b8"><span class="section-number-3">1.23</span> vežbe 10</h3>
 </div>
-<div id="outline-container-org22573b7" class="outline-2">
-<h2 id="org22573b7">vežbe 11</h2>
+<div id="outline-container-org0611a80" class="outline-3">
+<h3 id="org0611a80"><span class="section-number-3">1.24</span> vežbe 11</h3>
+</div>
+
+<div id="outline-container-orgf8971b4" class="outline-3">
+<h3 id="orgf8971b4"><span class="section-number-3">1.25</span> Način ocenjivanja</h3>
+<div class="outline-text-3" id="text-1-25">
+</div>
+<div id="outline-container-org07ba45a" class="outline-4">
+<h4 id="org07ba45a"><span class="section-number-4">1.25.1</span> Kolokvijumi u toku semestra</h4>
+<div class="outline-text-4" id="text-1-25-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">predmet ocenjivanja</th>
+<th scope="col" class="org-right">udeo bodova (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">kolokvijum 1</td>
+<td class="org-right">25</td>
+</tr>
+
+<tr>
+<td class="org-left">kolokvijum 2</td>
+<td class="org-right">25</td>
+</tr>
+
+<tr>
+<td class="org-left">kolokvijum 3</td>
+<td class="org-right">25</td>
+</tr>
+
+<tr>
+<td class="org-left">kolokvijum 4</td>
+<td class="org-right">25</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">ukupno</td>
+<td class="org-right">100</td>
+</tr>
+</tbody>
+</table>
+
+<ul class="org-ul">
+<li>Ko nije zadovoljan ocenom nakon kolokvijuma može da uzme projekat
+i time nadoknadi bodove. <b>Maksimalna ocena 10</b></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0e1a554" class="outline-4">
+<h4 id="org0e1a554"><span class="section-number-4">1.25.2</span> Test za one koji imaju &lt;55 na kolokvijumima i ne žele projekat</h4>
+<div class="outline-text-4" id="text-1-25-2">
+<p>
+Osnovne stvari iz svih delova. <b>Maksimalna ocena 6</b>.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org17d4535" class="outline-2">
+<h2 id="org17d4535"><span class="section-number-2">2</span> 2018</h2>
+<div class="outline-text-2" id="text-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="border">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">nedelja</th>
+<th scope="col" class="org-left">tema predavanja</th>
+<th scope="col" class="org-left">datum predavanja</th>
+<th scope="col" class="org-left">tema vežbi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-left"><a href="#p1_2018">Uvod u predmet</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2018-02-21 Wed&gt;</span></span></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-left"><a href="#p2_2018">Python 1</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2018-02-28 Wed&gt;</span></span></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-right">4</td>
+<td class="org-left"><a href="#p3_2018">Python 2</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2018-03-07 Wed&gt;</span></span></td>
+<td class="org-left"><a href="#org00b702b">v1</a></td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-left"><b>ICIST</b></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-right">5</td>
+<td class="org-left"><a href="#p4_2018">Python 3</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2018-03-21 Wed&gt;</span></span></td>
+<td class="org-left"><a href="#orgeed5492">v2</a></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">6</td>
+<td class="org-left"><a href="#p5_2018">Clojure 1</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2018-03-28 Wed&gt;</span></span></td>
+<td class="org-left"><a href="#orga610cff">v3</a></td>
+</tr>
+
+<tr>
+<td class="org-right">7</td>
+<td class="org-left"><a href="#p6_2018">Clojure 2</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2018-04-04 Wed&gt;</span></span></td>
+<td class="org-left"><a href="#org24a2464">v4</a></td>
+</tr>
+
+<tr>
+<td class="org-right">8</td>
+<td class="org-left"><a href="#p7_2018">Clojure 3</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2018-04-18 Wed&gt;</span></span></td>
+<td class="org-left"><a href="#orgfde8574">v5</a></td>
+</tr>
+
+<tr>
+<td class="org-right">9</td>
+<td class="org-left"><a href="#p8_2018">Clojure 4</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2018-04-25 Wed&gt;</span></span></td>
+<td class="org-left"><a href="#org5f8be5f">v6</a></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">10</td>
+<td class="org-left"><a href="#p9_2018">Smalltalk 1</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2018-05-09 Wed&gt;</span></span></td>
+<td class="org-left"><a href="#org3018572">v7</a></td>
+</tr>
+
+<tr>
+<td class="org-right">11</td>
+<td class="org-left"><a href="#p10_2018">Smalltalk 2</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2018-05-16 Wed&gt;</span></span></td>
+<td class="org-left"><a href="#org6994829">v8</a></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">12</td>
+<td class="org-left"><a href="#p11_2018">Haskell 1</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2018-05-23 Wed&gt;</span></span></td>
+<td class="org-left"><a href="#org4556605">v9</a></td>
+</tr>
+
+<tr>
+<td class="org-right">13</td>
+<td class="org-left"><a href="#p12_2018">Haskell 2</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2018-05-30 Wed&gt;</span></span></td>
+<td class="org-left"><a href="#orge0b25b8">v10</a></td>
+</tr>
+
+<tr>
+<td class="org-right">14</td>
+<td class="org-left"><a href="#p13_2018">Haskell 3</a></td>
+<td class="org-left"><span class="timestamp-wrapper"><span class="timestamp">&lt;2018-06-06 Wed&gt;</span></span></td>
+<td class="org-left"><a href="#org0611a80">v11</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-org6999215" class="outline-3">
+<h3 id="p1_2018"><a id="org6999215"></a><span class="section-number-3">2.1</span> predavanja 1</h3>
+<div class="outline-text-3" id="text-p1_2018">
+<ul class="org-ul">
+<li>Kratak pregled oblasti</li>
+<li>Način polaganja - kolokvijumi ili mini projekat</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org59274f0" class="outline-3">
+<h3 id="p2_2018"><a id="org59274f0"></a><span class="section-number-3">2.2</span> predavanja 2</h3>
+<div class="outline-text-3" id="text-p2_2018">
+<ul class="org-ul">
+<li>functools</li>
+<li>itertools</li>
+<li>collections</li>
+<li>eval</li>
+<li>generators</li>
+<li>cooroutines</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2b3aa8c" class="outline-3">
+<h3 id="p3_2018"><a id="org2b3aa8c"></a><span class="section-number-3">2.3</span> predavanja 3</h3>
+<div class="outline-text-3" id="text-p3_2018">
+<ul class="org-ul">
+<li>meta-classes, multiple inheritance, special methods, overriding operators</li>
+<li>Static types checking. New type hinting syntax. mypy</li>
+<li>Transpilers - Cython &amp; Co. - Make Python programs run faster</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7485e7a" class="outline-3">
+<h3 id="p4_2018"><a id="org7485e7a"></a><span class="section-number-3">2.4</span> predavanja 4</h3>
+<div class="outline-text-3" id="text-p4_2018">
+<ul class="org-ul">
+<li>Parsing &amp; code generators - DSL basics (mali uvod u JSD predmet)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org13d6511" class="outline-3">
+<h3 id="p5_2018"><a id="org13d6511"></a><span class="section-number-3">2.5</span> predavanja 5</h3>
+<div class="outline-text-3" id="text-p5_2018">
+<ul class="org-ul">
+<li><a href="clojure.html#MissingReference">Uvod</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0277fb5" class="outline-3">
+<h3 id="p6_2018"><a id="org0277fb5"></a><span class="section-number-3">2.6</span> predavanja 6</h3>
+<div class="outline-text-3" id="text-p6_2018">
+<ul class="org-ul">
+<li><a href="clojure.html#MissingReference">Elementi jezika</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgbc59078" class="outline-3">
+<h3 id="p7_2018"><a id="orgbc59078"></a><span class="section-number-3">2.7</span> predavanja 7</h3>
+<div class="outline-text-3" id="text-p7_2018">
+<ul class="org-ul">
+<li><a href="clojure.html#MissingReference">Kada je mutacija stvarno nezaobilazna</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org41f6089" class="outline-3">
+<h3 id="p8_2018"><a id="org41f6089"></a><span class="section-number-3">2.8</span> predavanja 8</h3>
+<div class="outline-text-3" id="text-p8_2018">
+<ul class="org-ul">
+<li><a href="clojure.html#MissingReference">Read, evaluate vrtlog i makroi</a></li>
+<li><a href="clojure.html#MissingReference">Clojure.spec</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgcf9d7af" class="outline-3">
+<h3 id="p9_2018"><a id="orgcf9d7af"></a><span class="section-number-3">2.9</span> predavanja 9</h3>
+<div class="outline-text-3" id="text-p9_2018">
+<ul class="org-ul">
+<li>Introduction</li>
+<li>goroutines and concurent programming</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge2d5d73" class="outline-3">
+<h3 id="p10_2018"><a id="orge2d5d73"></a><span class="section-number-3">2.10</span> predavanja 10</h3>
+<div class="outline-text-3" id="text-p10_2018">
+<ul class="org-ul">
+<li>I/O and network programming</li>
+<li>Go best practices</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7fba876" class="outline-3">
+<h3 id="p11_2018"><a id="org7fba876"></a><span class="section-number-3">2.11</span> predavanja 11</h3>
+<div class="outline-text-3" id="text-p11_2018">
+</div>
+</div>
+<div id="outline-container-org3a95646" class="outline-3">
+<h3 id="p12_2018"><a id="org3a95646"></a><span class="section-number-3">2.12</span> predavanja 12</h3>
+<div class="outline-text-3" id="text-p12_2018">
+</div>
+</div>
+<div id="outline-container-orge2ae919" class="outline-3">
+<h3 id="p13_2018"><a id="orge2ae919"></a><span class="section-number-3">2.13</span> predavanja 13</h3>
+<div class="outline-text-3" id="text-p13_2018">
+</div>
+</div>
+
+<div id="outline-container-orgc6cba29" class="outline-3">
+<h3 id="orgc6cba29"><span class="section-number-3">2.14</span> vežbe 1</h3>
+</div>
+<div id="outline-container-org3ad5eea" class="outline-3">
+<h3 id="org3ad5eea"><span class="section-number-3">2.15</span> vežbe 2</h3>
+</div>
+<div id="outline-container-orga66a1d3" class="outline-3">
+<h3 id="orga66a1d3"><span class="section-number-3">2.16</span> vežbe 3</h3>
+</div>
+<div id="outline-container-orgfed3bb0" class="outline-3">
+<h3 id="orgfed3bb0"><span class="section-number-3">2.17</span> vežbe 4</h3>
+</div>
+<div id="outline-container-org70b205c" class="outline-3">
+<h3 id="org70b205c"><span class="section-number-3">2.18</span> vežbe 5</h3>
+</div>
+<div id="outline-container-orgcc0f5d6" class="outline-3">
+<h3 id="orgcc0f5d6"><span class="section-number-3">2.19</span> vežbe 6</h3>
+</div>
+<div id="outline-container-orged70402" class="outline-3">
+<h3 id="orged70402"><span class="section-number-3">2.20</span> vežbe 7</h3>
+</div>
+<div id="outline-container-org7e62654" class="outline-3">
+<h3 id="org7e62654"><span class="section-number-3">2.21</span> vežbe 8</h3>
+</div>
+<div id="outline-container-orgb57b0be" class="outline-3">
+<h3 id="orgb57b0be"><span class="section-number-3">2.22</span> vežbe 9</h3>
+</div>
+<div id="outline-container-orga4fafab" class="outline-3">
+<h3 id="orga4fafab"><span class="section-number-3">2.23</span> vežbe 10</h3>
+</div>
+<div id="outline-container-org579ad69" class="outline-3">
+<h3 id="org579ad69"><span class="section-number-3">2.24</span> vežbe 11</h3>
+</div>
+
+<div id="outline-container-orgcb1766d" class="outline-3">
+<h3 id="orgcb1766d"><span class="section-number-3">2.25</span> Način ocenjivanja</h3>
+<div class="outline-text-3" id="text-2-25">
+</div>
+<div id="outline-container-orgef16f39" class="outline-4">
+<h4 id="orgef16f39"><span class="section-number-4">2.25.1</span> Kolokvijumi u toku semestra</h4>
+<div class="outline-text-4" id="text-2-25-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">predmet ocenjivanja</th>
+<th scope="col" class="org-right">udeo bodova (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">kolokvijum 1</td>
+<td class="org-right">25</td>
+</tr>
+
+<tr>
+<td class="org-left">kolokvijum 2</td>
+<td class="org-right">25</td>
+</tr>
+
+<tr>
+<td class="org-left">kolokvijum 3</td>
+<td class="org-right">25</td>
+</tr>
+
+<tr>
+<td class="org-left">kolokvijum 4</td>
+<td class="org-right">25</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">ukupno</td>
+<td class="org-right">100</td>
+</tr>
+</tbody>
+</table>
+
+<ul class="org-ul">
+<li>Ko nije zadovoljan ocenom nakon kolokvijuma može da uzme projekat
+i time nadoknadi bodove. <b>Maksimalna ocena 10</b></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org78c119a" class="outline-4">
+<h4 id="org78c119a"><span class="section-number-4">2.25.2</span> Test za one koji imaju &lt;55 na kolokvijumima i ne žele projekat</h4>
+<div class="outline-text-4" id="text-2-25-2">
+<p>
+Osnovne stvari iz svih delova. <b>Maksimalna ocena 6</b>.
+</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: TODO, Novak Boškov</p>
-<p class="date">Created: 2017-02-11 суб 12:21</p>
+<p class="author">Author: Igor Dejanović, Novak Boškov</p>
+<p class="date">Created: 2018-02-27 Tue 00:52</p>
 <p class="validation"></p>
 </div>
 </body>
