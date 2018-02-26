@@ -1,7 +1,7 @@
 #+TITLE: Napredne tehnike programiranja - plan rada
 #+AUTHOR: Igor Dejanović, Novak Boškov
-#+OPTIONS: toc:nil num:nil
 #+LANGUAGE: sr
+#+SETUPFILE: org-html-themes/setup/theme-bigblow.setup
 
 * 2017
 
