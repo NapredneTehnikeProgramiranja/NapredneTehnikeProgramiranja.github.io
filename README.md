@@ -45,7 +45,8 @@ Prezentacija je sastavljena kombinovanjem nekoliko tehnologija:
    - dok ste još na `develop` grani kopirajte `_site` direktorijum u
      npr. `~/Desktop`.
    - pređite na `master` granu.
-   - sa master grane obrišite sve osim: `CNAME`, `.git`, `.github`, `README.md`.
+   - sa master grane obrišite sve osim: `CNAME`, `.git`, `.github`,
+     `README.md`, `.gitignore`.
    - sadržaj `_site` direktorijuma koji ste stavili u npr. `~/Desktop`
      kopirajte na `master` granu.
    - push-ujte izmene na `master` granu na GitHub-u. Od ovog momenta
