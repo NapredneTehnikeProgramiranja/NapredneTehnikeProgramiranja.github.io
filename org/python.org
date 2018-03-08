@@ -446,6 +446,16 @@ integrate systems more effectively.
    #+RESULTS:
    : {'b': 'this is b.', 'return': 3, 'a': 3}
 
+** MyPy
+   Python je dinamički tipiziran programski jezik. [[http://mypy-lang.org/][MyPy]] je opcioni
+   statički /type checker/ za Python. Ako želite da ispitate tipove u
+   Python-u pre nego što se program izvrši to možete da uradite
+   koristeći MyPy.
+
+   MyPy se oslanja na anotacije koje su podržane od Python-a 3.
+
+   #+INCLUDE: "py_examples/mypy_example.py" src python :eval no
+
 ** Zadaci
 
    1. Napraviti klasu =GithubUser= čiji svaki objekat pri konstrukciji

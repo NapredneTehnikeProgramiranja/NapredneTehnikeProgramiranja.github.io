@@ -3,3 +3,4 @@ _cache/
 *.pygtex
 *.pygstyle
 *.el
+org/py_examples/.mypy_cache/

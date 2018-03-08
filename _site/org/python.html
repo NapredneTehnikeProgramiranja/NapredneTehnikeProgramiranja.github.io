@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="sr" xml:lang="sr">
 <head>
-<!-- 2017-04-04 уто 12:48 -->
+<!-- 2018-03-08 Thu 10:37 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Napredne tehnike programiranja - Python</title>
@@ -68,6 +68,7 @@
   pre.src-fortran:before { content: 'Fortran'; }
   pre.src-gnuplot:before { content: 'gnuplot'; }
   pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
   pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
@@ -195,7 +196,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -244,29 +245,30 @@ for the JavaScript code in this tag.
 <h2>Sadr&#382;aj</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9d31acf">1. Teorija</a></li>
-<li><a href="#org94f5135">2. Napredni Python</a>
+<li><a href="#orgee4ce8d">1. Teorija</a></li>
+<li><a href="#org0a71e81">2. Napredni Python</a>
 <ul>
-<li><a href="#org3df874e">2.1. <i>virtualenv</i> i <i>pip</i></a></li>
-<li><a href="#orgfb1b98d">2.2. Iteratori i generatori</a></li>
-<li><a href="#org36fa020">2.3. Ostale specijalne metode</a></li>
-<li><a href="#org5b33370">2.4. Deskriptiori</a></li>
-<li><a href="#orgda4586f">2.5. Dekoratori</a></li>
-<li><a href="#orgd4f5070">2.6. <code>functools</code></a></li>
-<li><a href="#orga518759">2.7. <code>itertools</code></a></li>
-<li><a href="#org26524fd">2.8. <i>High performance</i> kolekcije</a></li>
-<li><a href="#org18af981">2.9. Višestruko nasleđivanje</a></li>
-<li><a href="#org99c1e1b">2.10. Meta klase</a></li>
-<li><a href="#org22cc7ef">2.11. Anotacije funkcija</a></li>
-<li><a href="#org2cc8249">2.12. Zadaci</a></li>
-<li><a href="#org94ed3aa">2.13. Rešenja</a></li>
+<li><a href="#orgd6094e7">2.1. <i>virtualenv</i> i <i>pip</i></a></li>
+<li><a href="#org029bba1">2.2. Iteratori i generatori</a></li>
+<li><a href="#orga261f6d">2.3. Ostale specijalne metode</a></li>
+<li><a href="#org00e0048">2.4. Deskriptiori</a></li>
+<li><a href="#org5f08ee4">2.5. Dekoratori</a></li>
+<li><a href="#org3b9444d">2.6. <code>functools</code></a></li>
+<li><a href="#org658f1b1">2.7. <code>itertools</code></a></li>
+<li><a href="#orgd10ca92">2.8. <i>High performance</i> kolekcije</a></li>
+<li><a href="#org6735f46">2.9. Višestruko nasleđivanje</a></li>
+<li><a href="#orgd2ff12f">2.10. Meta klase</a></li>
+<li><a href="#org5d592e6">2.11. Anotacije funkcija</a></li>
+<li><a href="#org8067995">2.12. MyPy</a></li>
+<li><a href="#orge74323b">2.13. Zadaci</a></li>
+<li><a href="#orgc2d6c77">2.14. Rešenja</a></li>
 </ul>
 </li>
-<li><a href="#org63e2d34">3. Parsiranje</a>
+<li><a href="#orgf2d4cfa">3. Parsiranje</a>
 <ul>
-<li><a href="#orgeb84f23">3.1. TextX</a></li>
-<li><a href="#orgd22bb5b">3.2. Zadaci</a></li>
-<li><a href="#org505d0de">3.3. Rešenja</a></li>
+<li><a href="#org17c1d23">3.1. TextX</a></li>
+<li><a href="#orgdfa2216">3.2. Zadaci</a></li>
+<li><a href="#org57e59af">3.3. Rešenja</a></li>
 </ul>
 </li>
 </ul>
@@ -285,8 +287,8 @@ integrate systems more effectively.
 </p>
 </blockquote>
 
-<div id="outline-container-org9d31acf" class="outline-2">
-<h2 id="org9d31acf"><span class="section-number-2">1</span> Teorija</h2>
+<div id="outline-container-orgee4ce8d" class="outline-2">
+<h2 id="orgee4ce8d"><span class="section-number-2">1</span> Teorija</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Svi teorijski materijali nalaze se na <a href="http://www.igordejanovic.net/courses/ntp.html">sajtu profesora</a>.
@@ -294,11 +296,12 @@ Svi teorijski materijali nalaze se na <a href="http://www.igordejanovic.net/cour
 </div>
 </div>
 
-<div id="outline-container-org94f5135" class="outline-2">
-<h2 id="org94f5135"><span class="section-number-2">2</span> Napredni Python</h2>
+<div id="outline-container-org0a71e81" class="outline-2">
+<h2 id="org0a71e81"><span class="section-number-2">2</span> Napredni Python</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-org3df874e" class="outline-3">
-<h3 id="org3df874e"><span class="section-number-3">2.1</span> <i>virtualenv</i> i <i>pip</i></h3>
+</div>
+<div id="outline-container-orgd6094e7" class="outline-3">
+<h3 id="orgd6094e7"><span class="section-number-3">2.1</span> <i>virtualenv</i> i <i>pip</i></h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Ako Vam koncept <i>virtualenv</i>-a nije poznat pogledajte <a href="https://virtualenv.pypa.io/en/stable/">ovde</a>. Kratak
@@ -307,38 +310,40 @@ podsetnik možete naći <a href="http://docs.python-guide.org/en/latest/dev/virt
 </div>
 </div>
 
-<div id="outline-container-orgfb1b98d" class="outline-3">
-<h3 id="orgfb1b98d"><span class="section-number-3">2.2</span> Iteratori i generatori</h3>
+<div id="outline-container-org029bba1" class="outline-3">
+<h3 id="org029bba1"><span class="section-number-3">2.2</span> Iteratori i generatori</h3>
 <div class="outline-text-3" id="text-2-2">
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">generator_foo</span>(n):
-    <span style="color: #F0DFAF; font-weight: bold;">if</span> n &lt; 65 <span style="color: #F0DFAF; font-weight: bold;">or</span> n &gt; 90:
-        <span style="color: #F0DFAF; font-weight: bold;">yield</span> <span style="color: #CC9393;">"Unsupported alphabetical argument"</span>
-        <span style="color: #F0DFAF; font-weight: bold;">return</span>
-    <span style="color: #F0DFAF; font-weight: bold;">else</span>:
-        <span style="color: #DFAF8F;">letter</span> = n
-        <span style="color: #F0DFAF; font-weight: bold;">while</span> letter &lt;= 90:
-            <span style="color: #F0DFAF; font-weight: bold;">yield</span> <span style="color: #DCDCCC; font-weight: bold;">chr</span>(letter)
-            <span style="color: #DFAF8F;">letter</span> += 1
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">generator_foo</span>(n):
+    <span style="color: #3a81c3; font-weight: bold;">if</span> n &lt; 65 <span style="color: #3a81c3; font-weight: bold;">or</span> n &gt; 90:
+        <span style="color: #3a81c3; font-weight: bold;">yield</span> <span style="color: #2d9574;">"Unsupported alphabetical argument"</span>
+        <span style="color: #3a81c3; font-weight: bold;">return</span>
+    <span style="color: #3a81c3; font-weight: bold;">else</span>:
+        <span style="color: #715ab1;">letter</span> = n
+        <span style="color: #3a81c3; font-weight: bold;">while</span> letter &lt;= 90:
+            <span style="color: #3a81c3; font-weight: bold;">yield</span> <span style="color: #3a81c3;">chr</span>(letter)
+            <span style="color: #715ab1;">letter</span> += 1
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #DFAF8F;">ge</span> = generator_foo(15)
+<pre class="src src-python"><span style="color: #715ab1;">ge</span> = generator_foo(15)
 ge.__next__()
 ge.__next__()
 </pre>
 </div>
 
 <pre class="example">
-'Unsupported alphabetical argument'
 Traceback (most recent call last):
   File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+  File "/tmp/babel-1832tV9/python-1832n4g", line 3, in &lt;module&gt;
+    ge.__next__()
 StopIteration
+
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #DFAF8F;">g1</span> = generator_foo(70)
+<pre class="src src-python"><span style="color: #715ab1;">g1</span> = generator_foo(70)
 </pre>
 </div>
 
@@ -351,15 +356,8 @@ g1.__next__()
 </pre>
 </div>
 
-<pre class="example">
-'F'
-'G'
-'H'
-'I'
-</pre>
-
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #DFAF8F;">g2</span> = generator_foo(88)
+<pre class="src src-python"><span style="color: #715ab1;">g2</span> = generator_foo(88)
 g2.__next__()
 g2.__next__()
 g2.__next__()
@@ -369,27 +367,24 @@ g2.__next__()
 </div>
 
 <pre class="example">
-'X'
-'Y'
-'Z'
 Traceback (most recent call last):
   File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+  File "/tmp/babel-1832tV9/python-1832BNt", line 5, in &lt;module&gt;
+    g2.__next__()
 StopIteration
-Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
-StopIteration
+
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #DFAF8F;">g3</span> = generator_foo(80)
+<pre class="src src-python"><span style="color: #715ab1;">g3</span> = generator_foo(80)
 
-<span style="color: #F0DFAF; font-weight: bold;">for</span> l <span style="color: #F0DFAF; font-weight: bold;">in</span> g3:
-    <span style="color: #F0DFAF; font-weight: bold;">print</span>(l)
+<span style="color: #3a81c3; font-weight: bold;">for</span> l <span style="color: #3a81c3; font-weight: bold;">in</span> g3:
+    <span style="color: #3a81c3; font-weight: bold;">print</span>(l)
 </pre>
 </div>
 
 <pre class="example">
-&gt;&gt;&gt; ... ... P
+P
 Q
 R
 S
@@ -407,16 +402,16 @@ A to bi bilo zapravo:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #DFAF8F;">g3</span> = generator_foo(80)
+<pre class="src src-python"><span style="color: #715ab1;">g3</span> = generator_foo(80)
 
-<span style="color: #DFAF8F;">iterator_od_g3</span> = g3.__iter__()
-<span style="color: #F0DFAF; font-weight: bold;">for</span> l <span style="color: #F0DFAF; font-weight: bold;">in</span> iterator_od_g3:
-    <span style="color: #F0DFAF; font-weight: bold;">print</span>(l)
+<span style="color: #715ab1;">iterator_od_g3</span> = g3.__iter__()
+<span style="color: #3a81c3; font-weight: bold;">for</span> l <span style="color: #3a81c3; font-weight: bold;">in</span> iterator_od_g3:
+    <span style="color: #3a81c3; font-weight: bold;">print</span>(l)
 </pre>
 </div>
 
 <pre class="example">
-&gt;&gt;&gt; &gt;&gt;&gt; ... ... P
+P
 Q
 R
 S
@@ -434,41 +429,42 @@ Tako ako hoćemo da implementiramo svoju generatorsku klasu možemo:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">class</span> <span style="color: #7CB8BB;">Alphabet</span>:
-      <span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">__init__</span>(<span style="color: #F0DFAF; font-weight: bold;">self</span>, num):
-          <span style="color: #F0DFAF; font-weight: bold;">self</span>.letter = <span style="color: #DCDCCC; font-weight: bold;">chr</span>(num)
-          <span style="color: #F0DFAF; font-weight: bold;">self</span>.num = num
-      <span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">__iter__</span>(<span style="color: #F0DFAF; font-weight: bold;">self</span>):
-          <span style="color: #F0DFAF; font-weight: bold;">if</span> <span style="color: #F0DFAF; font-weight: bold;">self</span>.num &lt; 65 <span style="color: #F0DFAF; font-weight: bold;">or</span> <span style="color: #F0DFAF; font-weight: bold;">self</span>.num &gt; 90:
-              <span style="color: #F0DFAF; font-weight: bold;">yield</span> <span style="color: #7CB8BB;">Exception</span>
-              <span style="color: #F0DFAF; font-weight: bold;">return</span>
-          <span style="color: #F0DFAF; font-weight: bold;">else</span>:
-              <span style="color: #F0DFAF; font-weight: bold;">for</span> l <span style="color: #F0DFAF; font-weight: bold;">in</span> <span style="color: #DCDCCC; font-weight: bold;">range</span>(<span style="color: #F0DFAF; font-weight: bold;">self</span>.num, 91):
-                  <span style="color: #F0DFAF; font-weight: bold;">yield</span> Alphabet(l)
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">class</span> <span style="color: #ba2f59; font-weight: bold;">Alphabet</span>:
+      <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__init__</span>(<span style="color: #3a81c3; font-weight: bold;">self</span>, num):
+          <span style="color: #3a81c3; font-weight: bold;">self</span>.letter = <span style="color: #3a81c3;">chr</span>(num)
+          <span style="color: #3a81c3; font-weight: bold;">self</span>.num = num
+      <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__iter__</span>(<span style="color: #3a81c3; font-weight: bold;">self</span>):
+          <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.num &lt; 65 <span style="color: #3a81c3; font-weight: bold;">or</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.num &gt; 90:
+              <span style="color: #3a81c3; font-weight: bold;">yield</span> <span style="color: #ba2f59; font-weight: bold;">Exception</span>
+              <span style="color: #3a81c3; font-weight: bold;">return</span>
+          <span style="color: #3a81c3; font-weight: bold;">else</span>:
+              <span style="color: #3a81c3; font-weight: bold;">for</span> l <span style="color: #3a81c3; font-weight: bold;">in</span> <span style="color: #3a81c3;">range</span>(<span style="color: #3a81c3; font-weight: bold;">self</span>.num, 91):
+                  <span style="color: #3a81c3; font-weight: bold;">yield</span> Alphabet(l)
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #DFAF8F;">a</span> = Alphabet(85)
+<pre class="src src-python"><span style="color: #715ab1;">a</span> = Alphabet(85)
 
-<span style="color: #F0DFAF; font-weight: bold;">for</span> l <span style="color: #F0DFAF; font-weight: bold;">in</span> a:
-    <span style="color: #F0DFAF; font-weight: bold;">print</span>(l.letter)
+<span style="color: #3a81c3; font-weight: bold;">for</span> l <span style="color: #3a81c3; font-weight: bold;">in</span> a:
+    <span style="color: #3a81c3; font-weight: bold;">print</span>(l.letter)
 </pre>
 </div>
 
 <pre class="example">
-&gt;&gt;&gt; ... ... U
+U
 V
 W
 X
 Y
 Z
+
 </pre>
 </div>
 </div>
 
-<div id="outline-container-org36fa020" class="outline-3">
-<h3 id="org36fa020"><span class="section-number-3">2.3</span> Ostale specijalne metode</h3>
+<div id="outline-container-orga261f6d" class="outline-3">
+<h3 id="orga261f6d"><span class="section-number-3">2.3</span> Ostale specijalne metode</h3>
 <div class="outline-text-3" id="text-2-3">
 <ul class="org-ul">
 <li><code>__contains__</code> (in)</li>
@@ -478,52 +474,54 @@ Z
 </div>
 </div>
 
-<div id="outline-container-org5b33370" class="outline-3">
-<h3 id="org5b33370"><span class="section-number-3">2.4</span> Deskriptiori</h3>
+<div id="outline-container-org00e0048" class="outline-3">
+<h3 id="org00e0048"><span class="section-number-3">2.4</span> Deskriptiori</h3>
 </div>
 
-<div id="outline-container-orgda4586f" class="outline-3">
-<h3 id="orgda4586f"><span class="section-number-3">2.5</span> Dekoratori</h3>
+<div id="outline-container-org5f08ee4" class="outline-3">
+<h3 id="org5f08ee4"><span class="section-number-3">2.5</span> Dekoratori</h3>
 <div class="outline-text-3" id="text-2-5">
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">greet</span>(func):
-    <span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">wrapper</span>(arg):
-        <span style="color: #F0DFAF; font-weight: bold;">return</span> <span style="color: #CC9393;">"Hello "</span> + func(arg)
-    <span style="color: #F0DFAF; font-weight: bold;">return</span> wrapper
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">greet</span>(func):
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">wrapper</span>(arg):
+        <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #2d9574;">"Hello "</span> + func(arg)
+    <span style="color: #3a81c3; font-weight: bold;">return</span> wrapper
 
-<span style="color: #7CB8BB;">@greet</span>
-<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">id</span>(a):
-    <span style="color: #F0DFAF; font-weight: bold;">return</span> a
+<span style="color: #ba2f59; font-weight: bold;">@greet</span>
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">id</span>(a):
+    <span style="color: #3a81c3; font-weight: bold;">return</span> a
 
-<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">greet_side_effect</span>(func):
-    <span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">wrapper</span>(arg):
-        <span style="color: #F0DFAF; font-weight: bold;">print</span>(<span style="color: #CC9393;">"Hello!"</span>)
-        <span style="color: #F0DFAF; font-weight: bold;">return</span> func(arg)
-    <span style="color: #F0DFAF; font-weight: bold;">return</span> wrapper
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">greet_side_effect</span>(func):
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">wrapper</span>(arg):
+        <span style="color: #3a81c3; font-weight: bold;">print</span>(<span style="color: #2d9574;">"Hello!"</span>)
+        <span style="color: #3a81c3; font-weight: bold;">return</span> func(arg)
+    <span style="color: #3a81c3; font-weight: bold;">return</span> wrapper
 
-<span style="color: #7CB8BB;">@greet_side_effect</span>
-<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">id_side</span>(a):
-    <span style="color: #F0DFAF; font-weight: bold;">return</span> a + <span style="color: #CC9393;">" students"</span>
+<span style="color: #ba2f59; font-weight: bold;">@greet_side_effect</span>
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">id_side</span>(a):
+    <span style="color: #3a81c3; font-weight: bold;">return</span> a + <span style="color: #2d9574;">" students"</span>
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #DCDCCC; font-weight: bold;">id</span>(<span style="color: #CC9393;">"all of you!"</span>)
+<pre class="src src-python"><span style="color: #3a81c3;">id</span>(<span style="color: #2d9574;">"all of you!"</span>)
 </pre>
 </div>
 
 <pre class="example">
 'Hello all of you!'
+
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-python">id_side(<span style="color: #CC9393;">"Our"</span>)
+<pre class="src src-python">id_side(<span style="color: #2d9574;">"Our"</span>)
 </pre>
 </div>
 
 <pre class="example">
 Hello!
 'Our students'
+
 </pre>
 
 <p>
@@ -531,36 +529,36 @@ Mogu se dekorisati i metode:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">dec</span>(f):
-    <span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">w</span>(s, arg):
-        <span style="color: #F0DFAF; font-weight: bold;">print</span>(<span style="color: #CC9393;">"from dec: %d"</span> % s.a)
-        <span style="color: #F0DFAF; font-weight: bold;">return</span> f(s, arg)
-    <span style="color: #F0DFAF; font-weight: bold;">return</span> w
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">dec</span>(f):
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">w</span>(s, arg):
+        <span style="color: #3a81c3; font-weight: bold;">print</span>(<span style="color: #2d9574;">"from dec: %d"</span> % s.a)
+        <span style="color: #3a81c3; font-weight: bold;">return</span> f(s, arg)
+    <span style="color: #3a81c3; font-weight: bold;">return</span> w
 
-<span style="color: #F0DFAF; font-weight: bold;">class</span> <span style="color: #7CB8BB;">A</span>:
-    <span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">__init__</span>(<span style="color: #F0DFAF; font-weight: bold;">self</span>, a):
-        <span style="color: #F0DFAF; font-weight: bold;">self</span>.a = a
-    <span style="color: #7CB8BB;">@dec</span>
-    <span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">do_something</span>(<span style="color: #F0DFAF; font-weight: bold;">self</span>, arg):
-        <span style="color: #F0DFAF; font-weight: bold;">return</span> <span style="color: #F0DFAF; font-weight: bold;">self</span>.a + arg
+<span style="color: #3a81c3; font-weight: bold;">class</span> <span style="color: #ba2f59; font-weight: bold;">A</span>:
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__init__</span>(<span style="color: #3a81c3; font-weight: bold;">self</span>, a):
+        <span style="color: #3a81c3; font-weight: bold;">self</span>.a = a
+    <span style="color: #ba2f59; font-weight: bold;">@dec</span>
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">do_something</span>(<span style="color: #3a81c3; font-weight: bold;">self</span>, arg):
+        <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.a + arg
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #DFAF8F;">a</span> = A(1)
+<pre class="src src-python"><span style="color: #715ab1;">a</span> = A(1)
 a.do_something(2)
 </pre>
 </div>
 
 <pre class="example">
 from dec: 1
-3
+
 </pre>
 </div>
 </div>
 
-<div id="outline-container-orgd4f5070" class="outline-3">
-<h3 id="orgd4f5070"><span class="section-number-3">2.6</span> <code>functools</code></h3>
+<div id="outline-container-org3b9444d" class="outline-3">
+<h3 id="org3b9444d"><span class="section-number-3">2.6</span> <code>functools</code></h3>
 <div class="outline-text-3" id="text-2-6">
 <ul class="org-ul">
 <li><code>partial</code></li>
@@ -575,20 +573,21 @@ rečnik:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #DFAF8F;">a</span> = [<span style="color: #CC9393;">'a'</span>, <span style="color: #CC9393;">'b'</span>, <span style="color: #CC9393;">'c'</span>, <span style="color: #CC9393;">'d'</span>]
-<span style="color: #DFAF8F;">b</span> = [1, 2, 3, 4]
+<pre class="src src-python"><span style="color: #715ab1;">a</span> = [<span style="color: #2d9574;">'a'</span>, <span style="color: #2d9574;">'b'</span>, <span style="color: #2d9574;">'c'</span>, <span style="color: #2d9574;">'d'</span>]
+<span style="color: #715ab1;">b</span> = [1, 2, 3, 4]
 
-<span style="color: #DFAF8F;">d</span> = <span style="color: #DCDCCC; font-weight: bold;">dict</span>(<span style="color: #DCDCCC; font-weight: bold;">zip</span>(a, b))
-<span style="color: #F0DFAF; font-weight: bold;">print</span>(d)
+<span style="color: #715ab1;">d</span> = <span style="color: #3a81c3;">dict</span>(<span style="color: #3a81c3;">zip</span>(a, b))
+<span style="color: #3a81c3; font-weight: bold;">print</span>(d)
 
-<span style="color: #DFAF8F;">d2</span> = <span style="color: #DCDCCC; font-weight: bold;">dict</span>(<span style="color: #DCDCCC; font-weight: bold;">zip</span>(b,a))
-<span style="color: #F0DFAF; font-weight: bold;">print</span>(d2)
+<span style="color: #715ab1;">d2</span> = <span style="color: #3a81c3;">dict</span>(<span style="color: #3a81c3;">zip</span>(b,a))
+<span style="color: #3a81c3; font-weight: bold;">print</span>(d2)
 </pre>
 </div>
 
 <pre class="example">
-&gt;&gt;&gt; &gt;&gt;&gt; &gt;&gt;&gt; {'b': 2, 'c': 3, 'd': 4, 'a': 1}
-&gt;&gt;&gt; &gt;&gt;&gt; {1: 'a', 2: 'b', 3: 'c', 4: 'd'}
+{'a': 1, 'b': 2, 'c': 3, 'd': 4}
+{1: 'a', 2: 'b', 3: 'c', 4: 'd'}
+
 </pre></li>
 
 <li><code>map</code></li>
@@ -596,8 +595,8 @@ rečnik:
 </div>
 </div>
 
-<div id="outline-container-orga518759" class="outline-3">
-<h3 id="orga518759"><span class="section-number-3">2.7</span> <code>itertools</code></h3>
+<div id="outline-container-org658f1b1" class="outline-3">
+<h3 id="org658f1b1"><span class="section-number-3">2.7</span> <code>itertools</code></h3>
 <div class="outline-text-3" id="text-2-7">
 <ul class="org-ul">
 <li><p>
@@ -605,23 +604,24 @@ rečnik:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">import</span> itertools <span style="color: #F0DFAF; font-weight: bold;">as</span> it
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">import</span> itertools <span style="color: #3a81c3; font-weight: bold;">as</span> it
 
-<span style="color: #DFAF8F;">a</span> = <span style="color: #CC9393;">"abc"</span>
-<span style="color: #DFAF8F;">i</span> = [1, 2, 3]
+<span style="color: #715ab1;">a</span> = <span style="color: #2d9574;">"abc"</span>
+<span style="color: #715ab1;">i</span> = [1, 2, 3]
 
-<span style="color: #F0DFAF; font-weight: bold;">for</span> e <span style="color: #F0DFAF; font-weight: bold;">in</span> it.chain(a, i):
-    <span style="color: #F0DFAF; font-weight: bold;">print</span>(e)
+<span style="color: #3a81c3; font-weight: bold;">for</span> e <span style="color: #3a81c3; font-weight: bold;">in</span> it.chain(a, i):
+    <span style="color: #3a81c3; font-weight: bold;">print</span>(e)
 </pre>
 </div>
 
 <pre class="example">
-&gt;&gt;&gt; &gt;&gt;&gt; &gt;&gt;&gt; &gt;&gt;&gt; ... ... a
+a
 b
 c
 1
 2
 3
+
 </pre></li>
 
 <li><p>
@@ -629,15 +629,15 @@ c
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">import</span> itertools <span style="color: #F0DFAF; font-weight: bold;">as</span> it
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">import</span> itertools <span style="color: #3a81c3; font-weight: bold;">as</span> it
 
-<span style="color: #F0DFAF; font-weight: bold;">for</span> i <span style="color: #F0DFAF; font-weight: bold;">in</span> it.takewhile(<span style="color: #F0DFAF; font-weight: bold;">lambda</span> x: x &lt; 10, <span style="color: #DCDCCC; font-weight: bold;">range</span>(1, 20)):
-    <span style="color: #F0DFAF; font-weight: bold;">print</span>(i)
+<span style="color: #3a81c3; font-weight: bold;">for</span> i <span style="color: #3a81c3; font-weight: bold;">in</span> it.takewhile(<span style="color: #3a81c3; font-weight: bold;">lambda</span> x: x &lt; 10, <span style="color: #3a81c3;">range</span>(1, 20)):
+    <span style="color: #3a81c3; font-weight: bold;">print</span>(i)
 </pre>
 </div>
 
 <pre class="example">
-&gt;&gt;&gt; ... ... 1
+1
 2
 3
 4
@@ -646,6 +646,7 @@ c
 7
 8
 9
+
 </pre></li>
 
 <li><p>
@@ -653,20 +654,21 @@ c
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #DFAF8F;">d</span> = it.dropwhile(<span style="color: #F0DFAF; font-weight: bold;">lambda</span> l: l &lt; <span style="color: #CC9393;">'U'</span>, [<span style="color: #DCDCCC; font-weight: bold;">chr</span>(i) <span style="color: #F0DFAF; font-weight: bold;">for</span> i <span style="color: #F0DFAF; font-weight: bold;">in</span> <span style="color: #DCDCCC; font-weight: bold;">range</span>(65, 91)])
+<pre class="src src-python"><span style="color: #715ab1;">d</span> = it.dropwhile(<span style="color: #3a81c3; font-weight: bold;">lambda</span> l: l &lt; <span style="color: #2d9574;">'U'</span>, [<span style="color: #3a81c3;">chr</span>(i) <span style="color: #3a81c3; font-weight: bold;">for</span> i <span style="color: #3a81c3; font-weight: bold;">in</span> <span style="color: #3a81c3;">range</span>(65, 91)])
 
-<span style="color: #F0DFAF; font-weight: bold;">for</span> i <span style="color: #F0DFAF; font-weight: bold;">in</span> d:
-    <span style="color: #F0DFAF; font-weight: bold;">print</span>(i)
+<span style="color: #3a81c3; font-weight: bold;">for</span> i <span style="color: #3a81c3; font-weight: bold;">in</span> d:
+    <span style="color: #3a81c3; font-weight: bold;">print</span>(i)
 </pre>
 </div>
 
 <pre class="example">
-&gt;&gt;&gt; ... ... U
+U
 V
 W
 X
 Y
 Z
+
 </pre></li>
 
 <li><code>groupby</code></li>
@@ -674,46 +676,46 @@ Z
 </div>
 </div>
 
-<div id="outline-container-org26524fd" class="outline-3">
-<h3 id="org26524fd"><span class="section-number-3">2.8</span> <i>High performance</i> kolekcije</h3>
+<div id="outline-container-orgd10ca92" class="outline-3">
+<h3 id="orgd10ca92"><span class="section-number-3">2.8</span> <i>High performance</i> kolekcije</h3>
 <div class="outline-text-3" id="text-2-8">
 <ul class="org-ul">
 <li><p>
 <code>deque</code>
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">from</span> time <span style="color: #F0DFAF; font-weight: bold;">import</span> time
-<span style="color: #F0DFAF; font-weight: bold;">from</span> collections <span style="color: #F0DFAF; font-weight: bold;">import</span> deque
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">from</span> time <span style="color: #3a81c3; font-weight: bold;">import</span> time
+<span style="color: #3a81c3; font-weight: bold;">from</span> collections <span style="color: #3a81c3; font-weight: bold;">import</span> deque
 
-<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">timed</span>(f):
-    <span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">w</span>():
-        <span style="color: #DFAF8F;">bg</span> = time()
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">timed</span>(f):
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">w</span>():
+        <span style="color: #715ab1;">bg</span> = time()
         f()
-        <span style="color: #DFAF8F;">en</span> = time()
-        <span style="color: #F0DFAF; font-weight: bold;">print</span>(<span style="color: #CC9393;">"time elapsed : "</span> + <span style="color: #DCDCCC; font-weight: bold;">str</span>(en - bg))
-    <span style="color: #F0DFAF; font-weight: bold;">return</span> w
+        <span style="color: #715ab1;">en</span> = time()
+        <span style="color: #3a81c3; font-weight: bold;">print</span>(<span style="color: #2d9574;">"time elapsed : "</span> + <span style="color: #3a81c3;">str</span>(en - bg))
+    <span style="color: #3a81c3; font-weight: bold;">return</span> w
 
-<span style="color: #DFAF8F;">small</span> = 10
-<span style="color: #DFAF8F;">large</span> = <span style="color: #DCDCCC; font-weight: bold;">int</span>(10e6)
-<span style="color: #DFAF8F;">l_small</span> = <span style="color: #DCDCCC; font-weight: bold;">list</span>(<span style="color: #DCDCCC; font-weight: bold;">range</span>(small))
-<span style="color: #DFAF8F;">l_large</span> = <span style="color: #DCDCCC; font-weight: bold;">list</span>(<span style="color: #DCDCCC; font-weight: bold;">range</span>(large))
-<span style="color: #DFAF8F;">d_small</span> = deque(<span style="color: #DCDCCC; font-weight: bold;">range</span>(small))
-<span style="color: #DFAF8F;">d_large</span> = deque(<span style="color: #DCDCCC; font-weight: bold;">range</span>(large))
+<span style="color: #715ab1;">small</span> = 10
+<span style="color: #715ab1;">large</span> = <span style="color: #3a81c3;">int</span>(10e6)
+<span style="color: #715ab1;">l_small</span> = <span style="color: #3a81c3;">list</span>(<span style="color: #3a81c3;">range</span>(small))
+<span style="color: #715ab1;">l_large</span> = <span style="color: #3a81c3;">list</span>(<span style="color: #3a81c3;">range</span>(large))
+<span style="color: #715ab1;">d_small</span> = deque(<span style="color: #3a81c3;">range</span>(small))
+<span style="color: #715ab1;">d_large</span> = deque(<span style="color: #3a81c3;">range</span>(large))
 
-<span style="color: #7CB8BB;">@timed</span>
-<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">a_list</span>():
+<span style="color: #ba2f59; font-weight: bold;">@timed</span>
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">a_list</span>():
     l_small.pop()
 
-<span style="color: #7CB8BB;">@timed</span>
-<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">a_larger_list</span>():
+<span style="color: #ba2f59; font-weight: bold;">@timed</span>
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">a_larger_list</span>():
     l_large.pop()
 
-<span style="color: #7CB8BB;">@timed</span>
-<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">a_deque</span>():
+<span style="color: #ba2f59; font-weight: bold;">@timed</span>
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">a_deque</span>():
     d_small.pop()
 
-<span style="color: #7CB8BB;">@timed</span>
-<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">a_larger_deque</span>():
+<span style="color: #ba2f59; font-weight: bold;">@timed</span>
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">a_larger_deque</span>():
     d_large.pop()
 
 a_list()
@@ -724,25 +726,27 @@ a_larger_deque()
 </div>
 
 <pre class="example">
+
 time elapsed : 2.384185791015625e-06
 time elapsed : 1.6689300537109375e-06
 time elapsed : 1.1920928955078125e-06
 time elapsed : 1.1920928955078125e-06
+
 </pre></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org18af981" class="outline-3">
-<h3 id="org18af981"><span class="section-number-3">2.9</span> Višestruko nasleđivanje</h3>
+<div id="outline-container-org6735f46" class="outline-3">
+<h3 id="org6735f46"><span class="section-number-3">2.9</span> Višestruko nasleđivanje</h3>
 </div>
 
-<div id="outline-container-org99c1e1b" class="outline-3">
-<h3 id="org99c1e1b"><span class="section-number-3">2.10</span> Meta klase</h3>
+<div id="outline-container-orgd2ff12f" class="outline-3">
+<h3 id="orgd2ff12f"><span class="section-number-3">2.10</span> Meta klase</h3>
 </div>
 
-<div id="outline-container-org22cc7ef" class="outline-3">
-<h3 id="org22cc7ef"><span class="section-number-3">2.11</span> Anotacije funkcija</h3>
+<div id="outline-container-org5d592e6" class="outline-3">
+<h3 id="org5d592e6"><span class="section-number-3">2.11</span> Anotacije funkcija</h3>
 <div class="outline-text-3" id="text-2-11">
 <p>
 Funkcijama u Python-u <b>&gt;=3</b> se mogu davati opcione <a href="https://www.python.org/dev/peps/pep-3107/">anotacije</a> za
@@ -752,8 +756,8 @@ određenu ulogu već njihovo značenje može da dopuni neka biblioteka.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">annot_foo</span>(a: 1 + 2, b: <span style="color: #CC9393;">"this "</span> + <span style="color: #CC9393;">"is b."</span>) -&gt; <span style="color: #DCDCCC; font-weight: bold;">len</span>([1, 2, 3]):
-    <span style="color: #F0DFAF; font-weight: bold;">pass</span>
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">annot_foo</span>(a: 1 + 2, b: <span style="color: #2d9574;">"this "</span> + <span style="color: #2d9574;">"is b."</span>) -&gt; <span style="color: #3a81c3;">len</span>([1, 2, 3]):
+    <span style="color: #3a81c3; font-weight: bold;">pass</span>
 </pre>
 </div>
 
@@ -764,21 +768,22 @@ možete da izazovete sporedni efekat:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #DFAF8F;">a</span> = 1
+<pre class="src src-python"><span style="color: #715ab1;">a</span> = 1
 
-<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">mutator</span>():
-    <span style="color: #F0DFAF; font-weight: bold;">global</span> a
-    <span style="color: #DFAF8F;">a</span> += 1
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">mutator</span>():
+    <span style="color: #3a81c3; font-weight: bold;">global</span> a
+    <span style="color: #715ab1;">a</span> += 1
 
-<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">foo</span>(a: mutator()):
-    <span style="color: #F0DFAF; font-weight: bold;">pass</span>
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">foo</span>(a: mutator()):
+    <span style="color: #3a81c3; font-weight: bold;">pass</span>
 
-<span style="color: #F0DFAF; font-weight: bold;">print</span>(a)
+<span style="color: #3a81c3; font-weight: bold;">print</span>(a)
 </pre>
 </div>
 
 <pre class="example">
-&gt;&gt;&gt; ... ... ... &gt;&gt;&gt; ... ... &gt;&gt;&gt; 2
+2
+
 </pre>
 
 <p>
@@ -791,14 +796,62 @@ Anotacije su dostupne kroz objekat funkcije kao mutabilan rečnik:
 </div>
 
 <pre class="example">
-{'b': 'this is b.', 'return': 3, 'a': 3}
+{'a': 3, 'b': 'this is b.', 'return': 3}
+
 </pre>
 </div>
 </div>
 
-<div id="outline-container-org2cc8249" class="outline-3">
-<h3 id="org2cc8249"><span class="section-number-3">2.12</span> Zadaci</h3>
+<div id="outline-container-org8067995" class="outline-3">
+<h3 id="org8067995"><span class="section-number-3">2.12</span> MyPy</h3>
 <div class="outline-text-3" id="text-2-12">
+<p>
+Python je dinamički tipiziran programski jezik. <a href="http://mypy-lang.org/">MyPy</a> je opcioni
+statički <i>type checker</i> za Python. Ako želite da ispitate tipove u
+Python-u pre nego što se program izvrši to možete da uradite
+koristeći MyPy.
+</p>
+
+<p>
+MyPy se oslanja na anotacije koje su podržane od Python-a 3.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">loud_greetings</span>(name: <span style="color: #3a81c3;">str</span>) -&gt; <span style="color: #3a81c3;">str</span>:
+    <span style="color: #3a81c3; font-weight: bold;">return</span> 1
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">^^^ Incompatible return value type (got "int", expected "str")</span>
+
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">loud_greetings_two</span>(name: <span style="color: #3a81c3;">str</span>) -&gt; <span style="color: #3a81c3;">str</span>:
+    <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #2d9574;">"Hello World!"</span>
+
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">mypy_example</span>() -&gt; <span style="color: #4e3163;">None</span>:
+    <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Ovako override-ujemo type inference</span>
+    <span style="color: #715ab1;">a</span> = 2 <span style="color: #2aa1ae; background-color: #ecf3ec;">#</span><span style="color: #2aa1ae; background-color: #ecf3ec;">type: float</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">### </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Kinds</span>
+
+<span style="color: #3a81c3; font-weight: bold;">from</span> typing <span style="color: #3a81c3; font-weight: bold;">import</span> Tuple
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">mypy_k1</span>(a: <span style="color: #3a81c3;">int</span>) -&gt; Tuple[<span style="color: #3a81c3;">str</span>, <span style="color: #3a81c3;">int</span>]:
+    <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #2d9574;">'prvi'</span>, a
+
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">mypy_k2</span>(a: <span style="color: #3a81c3;">int</span>) -&gt; Tuple[<span style="color: #3a81c3;">str</span>, <span style="color: #3a81c3;">int</span>]:
+    <span style="color: #3a81c3; font-weight: bold;">return</span> a, a
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">^^^ Incompatible return value type (got "Tuple[int, int]", expected "Tuple[str</span><span style="color: #6c4173; background-color: #ecf3ec;">, int]")</span>
+
+<span style="color: #3a81c3; font-weight: bold;">from</span> typing <span style="color: #3a81c3; font-weight: bold;">import</span> Iterator
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">mypy_iterator</span>() -&gt; Iterator[<span style="color: #3a81c3;">int</span>]:
+    <span style="color: #715ab1;">i</span> = 0
+    <span style="color: #3a81c3; font-weight: bold;">while</span> <span style="color: #4e3163;">True</span>:
+        <span style="color: #3a81c3; font-weight: bold;">yield</span> i
+        <span style="color: #715ab1;">i</span> += 1
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge74323b" class="outline-3">
+<h3 id="orge74323b"><span class="section-number-3">2.13</span> Zadaci</h3>
+<div class="outline-text-3" id="text-2-13">
 <ol class="org-ol">
 <li>Napraviti klasu <code>GithubUser</code> čiji svaki objekat pri konstrukciji
 dobija ime, prezime i login podatke za <i>GitHub</i>. Iteriranjem
@@ -832,52 +885,63 @@ koristeći njegovu <code>self.__iter__</code> metodu.</li>
 </div>
 </div>
 
-<div id="outline-container-org94ed3aa" class="outline-3">
-<h3 id="org94ed3aa"><span class="section-number-3">2.13</span> Rešenja</h3>
-<div class="outline-text-3" id="text-2-13">
+<div id="outline-container-orgc2d6c77" class="outline-3">
+<h3 id="orgc2d6c77"><span class="section-number-3">2.14</span> Rešenja</h3>
+<div class="outline-text-3" id="text-2-14">
 <ol class="org-ol">
 <li><p>
 <code>get_followers</code>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">from</span> github <span style="color: #F0DFAF; font-weight: bold;">import</span> Github
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">from</span> github <span style="color: #3a81c3; font-weight: bold;">import</span> Github
 
-<span style="color: #F0DFAF; font-weight: bold;">class</span> <span style="color: #7CB8BB;">GithubUser</span>:
-    <span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">__init__</span>(<span style="color: #F0DFAF; font-weight: bold;">self</span>, name, surname, username, paswd=<span style="color: #BFEBBF;">None</span>):
-        <span style="color: #F0DFAF; font-weight: bold;">self</span>.name = name
-        <span style="color: #F0DFAF; font-weight: bold;">self</span>.surname = surname
-        <span style="color: #F0DFAF; font-weight: bold;">self</span>.username = username
-        <span style="color: #F0DFAF; font-weight: bold;">self</span>.paswd = paswd
-        <span style="color: #F0DFAF; font-weight: bold;">self</span>.gh_user = Github(username, paswd <span style="color: #F0DFAF; font-weight: bold;">or</span> <span style="color: #F0DFAF; font-weight: bold;">self</span>.get_pass()).get_user()
-    <span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">__iter__</span>(<span style="color: #F0DFAF; font-weight: bold;">self</span>):
-        <span style="color: #F0DFAF; font-weight: bold;">for</span> fl <span style="color: #F0DFAF; font-weight: bold;">in</span> <span style="color: #F0DFAF; font-weight: bold;">self</span>.gh_user.get_followers():
-            <span style="color: #F0DFAF; font-weight: bold;">yield</span> fl
-    <span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">get_pass</span>(<span style="color: #F0DFAF; font-weight: bold;">self</span>):
-        <span style="color: #F0DFAF; font-weight: bold;">with</span> <span style="color: #DCDCCC; font-weight: bold;">open</span>(<span style="color: #CC9393;">'/home/novak/Desktop/pass.github'</span>, <span style="color: #CC9393;">'r'</span>) <span style="color: #F0DFAF; font-weight: bold;">as</span> f:
-            <span style="color: #F0DFAF; font-weight: bold;">return</span> f.readline().strip()
-    <span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">peek</span>(<span style="color: #F0DFAF; font-weight: bold;">self</span>):
-        <span style="color: #F0DFAF; font-weight: bold;">for</span> repo <span style="color: #F0DFAF; font-weight: bold;">in</span> <span style="color: #F0DFAF; font-weight: bold;">self</span>.gh_user.get_starred():
-            <span style="color: #F0DFAF; font-weight: bold;">yield</span> repo.full_name
+<span style="color: #3a81c3; font-weight: bold;">class</span> <span style="color: #ba2f59; font-weight: bold;">GithubUser</span>:
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__init__</span>(<span style="color: #3a81c3; font-weight: bold;">self</span>, name, surname, username, paswd=<span style="color: #4e3163;">None</span>):
+        <span style="color: #3a81c3; font-weight: bold;">self</span>.name = name
+        <span style="color: #3a81c3; font-weight: bold;">self</span>.surname = surname
+        <span style="color: #3a81c3; font-weight: bold;">self</span>.username = username
+        <span style="color: #3a81c3; font-weight: bold;">self</span>.paswd = paswd
+        <span style="color: #3a81c3; font-weight: bold;">self</span>.gh_user = Github(username, paswd <span style="color: #3a81c3; font-weight: bold;">or</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.get_pass()).get_user()
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__iter__</span>(<span style="color: #3a81c3; font-weight: bold;">self</span>):
+        <span style="color: #3a81c3; font-weight: bold;">for</span> fl <span style="color: #3a81c3; font-weight: bold;">in</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.gh_user.get_followers():
+            <span style="color: #3a81c3; font-weight: bold;">yield</span> fl
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">get_pass</span>(<span style="color: #3a81c3; font-weight: bold;">self</span>):
+        <span style="color: #3a81c3; font-weight: bold;">with</span> <span style="color: #3a81c3;">open</span>(<span style="color: #2d9574;">'/home/novak/Desktop/pass.github'</span>, <span style="color: #2d9574;">'r'</span>) <span style="color: #3a81c3; font-weight: bold;">as</span> f:
+            <span style="color: #3a81c3; font-weight: bold;">return</span> f.readline().strip()
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">peek</span>(<span style="color: #3a81c3; font-weight: bold;">self</span>):
+        <span style="color: #3a81c3; font-weight: bold;">for</span> repo <span style="color: #3a81c3; font-weight: bold;">in</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.gh_user.get_starred():
+            <span style="color: #3a81c3; font-weight: bold;">yield</span> repo.full_name
 </pre>
 </div>
 
+<pre class="example">
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+  File "/tmp/babel-1832tV9/python-1832BbV", line 1, in &lt;module&gt;
+    from github import Github
+ModuleNotFoundError: No module named 'github'
+
+</pre>
+
 <div class="org-src-container">
-<pre class="src src-python">[u.login <span style="color: #F0DFAF; font-weight: bold;">for</span> u <span style="color: #F0DFAF; font-weight: bold;">in</span> GithubUser(<span style="color: #CC9393;">'Novak'</span>, <span style="color: #CC9393;">'Boskov'</span>, <span style="color: #CC9393;">'novakboskov'</span>)]
+<pre class="src src-python">[u.login <span style="color: #3a81c3; font-weight: bold;">for</span> u <span style="color: #3a81c3; font-weight: bold;">in</span> GithubUser(<span style="color: #2d9574;">'Novak'</span>, <span style="color: #2d9574;">'Boskov'</span>, <span style="color: #2d9574;">'novakboskov'</span>)]
 </pre>
 </div>
 
 <pre class="example">
 ['MihailoIsakov', 'danielkupco', 'cusspvz', 'angusshire', 'mbejn', 'igordejanovic', 'amittendulkar', 'coka', 'strika', 'MilosSimic', 'AleksandarRakic', 'nikoladakic', 'C0mpy', 'Mijura', 'stefanplazic', 'yalu']
+
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">for</span> r <span style="color: #F0DFAF; font-weight: bold;">in</span> GithubUser(<span style="color: #CC9393;">'Novak'</span>, <span style="color: #CC9393;">'Boskov'</span>, <span style="color: #CC9393;">'novakboskov'</span>).peek():
-    <span style="color: #F0DFAF; font-weight: bold;">print</span>(r)
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">for</span> r <span style="color: #3a81c3; font-weight: bold;">in</span> GithubUser(<span style="color: #2d9574;">'Novak'</span>, <span style="color: #2d9574;">'Boskov'</span>, <span style="color: #2d9574;">'novakboskov'</span>).peek():
+    <span style="color: #3a81c3; font-weight: bold;">print</span>(r)
 </pre>
 </div>
 
 <pre class="example">
+
 ... bscarlet/llvm-general
 commercialhaskell/stack
 alwx/luno-react-native
@@ -912,8 +976,8 @@ defunkt/coffee-mode
 </div>
 </div>
 
-<div id="outline-container-org63e2d34" class="outline-2">
-<h2 id="org63e2d34"><span class="section-number-2">3</span> Parsiranje</h2>
+<div id="outline-container-orgf2d4cfa" class="outline-2">
+<h2 id="orgf2d4cfa"><span class="section-number-2">3</span> Parsiranje</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 <a href="https://en.wikipedia.org/wiki/Parsing">Parsiranje</a> je proces analize teksta (jezika) prema formalnim
@@ -929,8 +993,8 @@ teksta.
 </div>
 </div>
 
-<div id="outline-container-orgeb84f23" class="outline-3">
-<h3 id="orgeb84f23"><span class="section-number-3">3.1</span> TextX</h3>
+<div id="outline-container-org17c1d23" class="outline-3">
+<h3 id="org17c1d23"><span class="section-number-3">3.1</span> TextX</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 <a href="https://github.com/igordejanovic/textX">TextX</a> (pogledati primire) je Python meta jezik za definisanje
@@ -939,45 +1003,45 @@ jezika inspirisan <a href="http://www.eclipse.org/Xtext/">XText</a>-om.
 </div>
 </div>
 
-<div id="outline-container-orgd22bb5b" class="outline-3">
-<h3 id="orgd22bb5b"><span class="section-number-3">3.2</span> Zadaci</h3>
+<div id="outline-container-orgdfa2216" class="outline-3">
+<h3 id="orgdfa2216"><span class="section-number-3">3.2</span> Zadaci</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Dato je parče koda u čudnom programskom jeziku <b>Plisp</b>.
 </p>
 
 <p>
-<a id="orgec32f69"></a>
+<a id="orgebc7d74"></a>
 </p>
 <div class="org-src-container">
-<pre class="src src-python">(<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">hello_number</span> (a b)
+<pre class="src src-python">(<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">hello_number</span> (a b)
   (let [v (* (let [a b]
                   c)
              12)]
-       (<span style="color: #F0DFAF; font-weight: bold;">print</span> <span style="color: #CC9393;">"Hello "</span> (+ a b))))
+       (<span style="color: #3a81c3; font-weight: bold;">print</span> <span style="color: #2d9574;">"Hello "</span> (+ a b))))
 
-(<span style="color: #DCDCCC; font-weight: bold;">apply</span> hello_number 1 2)
+(<span style="color: #3a81c3;">apply</span> hello_number 1 2)
 
-(<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">say_hello_to_hello</span> ()
-  <span style="color: #CC9393;">"Ay yo!"</span>)
+(<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">say_hello_to_hello</span> ()
+  <span style="color: #2d9574;">"Ay yo!"</span>)
 
-(<span style="color: #DCDCCC; font-weight: bold;">apply</span> say_hello_to_hello)
+(<span style="color: #3a81c3;">apply</span> say_hello_to_hello)
 
-(<span style="color: #DCDCCC; font-weight: bold;">apply</span> hello_number
-       (let [a (<span style="color: #DCDCCC; font-weight: bold;">apply</span> say_hello_to_hello)
-             b <span style="color: #CC9393;">"it's also able to hell o!"</span>]
+(<span style="color: #3a81c3;">apply</span> hello_number
+       (let [a (<span style="color: #3a81c3;">apply</span> say_hello_to_hello)
+             b <span style="color: #2d9574;">"it's also able to hell o!"</span>]
              (let [s (* a b)]
                   (+ a b s)))
        2)
 
-(<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">sum_two</span> (f s)
+(<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">sum_two</span> (f s)
   (+ f s))
 
 (let [m 12
       n 18]
-     (<span style="color: #DCDCCC; font-weight: bold;">apply</span> sum_two m n))
+     (<span style="color: #3a81c3;">apply</span> sum_two m n))
 
-<span style="color: #CC9393;">"Po ovoj gramatici mo&#382;e i ovo:"</span>
+<span style="color: #2d9574;">"Po ovoj gramatici mo&#382;e i ovo:"</span>
 43
 23.0
 0
@@ -1007,19 +1071,19 @@ okruženje. Za početak će biti dovoljna statička analiza.
 </p>
 
 <p>
-Napišite parser za <b>Plisp</b> koristeći <a href="#orgeb84f23">TextX</a>, a potom napravite
-Python program sa funkcijom <code>spot_lets</code> kojoj prosledite <a href="#orgeb84f23">TextX</a>
+Napišite parser za <b>Plisp</b> koristeći <a href="#org17c1d23">TextX</a>, a potom napravite
+Python program sa funkcijom <code>spot_lets</code> kojoj prosledite <a href="#org17c1d23">TextX</a>
 model programa a on Vam vrati listu koja ukazuje na kojim
 pozicijama u programu se nalaze <code>let</code> izrazi. Funkcija <code>spot_lets</code>
-za program <a href="#orgec32f69">gore</a> treba da vrati:
+za program <a href="#orgebc7d74">gore</a> treba da vrati:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python">[([<span style="color: #CC9393;">'v'</span>], (2, 4)),
- ([<span style="color: #CC9393;">'a'</span>], (2, 15)),
- ([<span style="color: #CC9393;">'a'</span>, <span style="color: #CC9393;">'b'</span>], (15, 9)),
- ([<span style="color: #CC9393;">'s'</span>], (17, 15)),
- ([<span style="color: #CC9393;">'m'</span>, <span style="color: #CC9393;">'n'</span>], (24, 2))]
+<pre class="src src-python">[([<span style="color: #2d9574;">'v'</span>], (2, 4)),
+ ([<span style="color: #2d9574;">'a'</span>], (2, 15)),
+ ([<span style="color: #2d9574;">'a'</span>, <span style="color: #2d9574;">'b'</span>], (15, 9)),
+ ([<span style="color: #2d9574;">'s'</span>], (17, 15)),
+ ([<span style="color: #2d9574;">'m'</span>, <span style="color: #2d9574;">'n'</span>], (24, 2))]
 </pre>
 </div>
 
@@ -1031,28 +1095,28 @@ u tom <code>let</code>-u <i>binding</i> za simbol <code>v</code>) i po jednu na 
 </div>
 </div>
 
-<div id="outline-container-org505d0de" class="outline-3">
-<h3 id="org505d0de"><span class="section-number-3">3.3</span> Rešenja</h3>
+<div id="outline-container-org57e59af" class="outline-3">
+<h3 id="org57e59af"><span class="section-number-3">3.3</span> Rešenja</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 Gramatika jezika je data sa:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-textx">Program: expressions<span style="color: #F0DFAF; font-weight: bold;">*=</span>Expression;
+<pre class="src src-textx">Program: expressions<span style="color: #3a81c3; font-weight: bold;">*=</span>Expression;
 Expression: Basic_Expression | S_Expression;
-Basic_Expression: val<span style="color: #F0DFAF; font-weight: bold;">=</span><span style="color: #7CB8BB;">BASETYPE</span>;
-S_Expression: <span style="color: #CC9393;">'('</span> exp<span style="color: #F0DFAF; font-weight: bold;">=</span>Exp <span style="color: #CC9393;">')'</span>;
-Exp: DefExpression | PrintExpression | ArithExpression | LetExpression | ApplyEx<span style="color: #DC8CC3; background-color: #3F3F3F;">p;</span>
-LetExpression: <span style="color: #CC9393;">'let'</span> <span style="color: #CC9393;">'['</span> bind_form<span style="color: #F0DFAF; font-weight: bold;">+=</span>BindForm <span style="color: #CC9393;">']'</span> exp<span style="color: #F0DFAF; font-weight: bold;">*=</span>Expression;
-BindForm: name<span style="color: #F0DFAF; font-weight: bold;">=</span><span style="color: #7CB8BB;">ID</span> exp<span style="color: #F0DFAF; font-weight: bold;">=</span>Expression;
-PrintExpression: <span style="color: #CC9393;">'print'</span> to_print<span style="color: #F0DFAF; font-weight: bold;">+=</span>Expression;
+Basic_Expression: val<span style="color: #3a81c3; font-weight: bold;">=</span><span style="color: #ba2f59; font-weight: bold;">BASETYPE</span>;
+S_Expression: <span style="color: #2d9574;">'('</span> exp<span style="color: #3a81c3; font-weight: bold;">=</span>Exp <span style="color: #2d9574;">')'</span>;
+Exp: DefExpression | PrintExpression | ArithExpression | LetExpression | ApplyEx<span style="color: #6c4173;">p;</span>
+LetExpression: <span style="color: #2d9574;">'let'</span> <span style="color: #2d9574;">'['</span> bind_form<span style="color: #3a81c3; font-weight: bold;">+=</span>BindForm <span style="color: #2d9574;">']'</span> exp<span style="color: #3a81c3; font-weight: bold;">*=</span>Expression;
+BindForm: name<span style="color: #3a81c3; font-weight: bold;">=</span><span style="color: #ba2f59; font-weight: bold;">ID</span> exp<span style="color: #3a81c3; font-weight: bold;">=</span>Expression;
+PrintExpression: <span style="color: #2d9574;">'print'</span> to_print<span style="color: #3a81c3; font-weight: bold;">+=</span>Expression;
 ArithExpression: Sum | Product;
-DefExpression: <span style="color: #CC9393;">'def'</span> name<span style="color: #F0DFAF; font-weight: bold;">=</span><span style="color: #7CB8BB;">ID</span> <span style="color: #CC9393;">'('</span> args<span style="color: #F0DFAF; font-weight: bold;">*=</span>Arg <span style="color: #CC9393;">')'</span> body<span style="color: #F0DFAF; font-weight: bold;">*=</span>Expression;
-ApplyExp: <span style="color: #CC9393;">'apply'</span> f_name<span style="color: #F0DFAF; font-weight: bold;">=</span><span style="color: #7CB8BB;">ID</span> f_params<span style="color: #F0DFAF; font-weight: bold;">*=</span>Expression;
-Arg: <span style="color: #7CB8BB;">ID</span>;
-Sum: (<span style="color: #CC9393;">'+'</span>|<span style="color: #CC9393;">'-'</span>) exp<span style="color: #F0DFAF; font-weight: bold;">+=</span>Expression;
-Product: <span style="color: #CC9393;">'*'</span> exp<span style="color: #F0DFAF; font-weight: bold;">+=</span>Expression;
+DefExpression: <span style="color: #2d9574;">'def'</span> name<span style="color: #3a81c3; font-weight: bold;">=</span><span style="color: #ba2f59; font-weight: bold;">ID</span> <span style="color: #2d9574;">'('</span> args<span style="color: #3a81c3; font-weight: bold;">*=</span>Arg <span style="color: #2d9574;">')'</span> body<span style="color: #3a81c3; font-weight: bold;">*=</span>Expression;
+ApplyExp: <span style="color: #2d9574;">'apply'</span> f_name<span style="color: #3a81c3; font-weight: bold;">=</span><span style="color: #ba2f59; font-weight: bold;">ID</span> f_params<span style="color: #3a81c3; font-weight: bold;">*=</span>Expression;
+Arg: <span style="color: #ba2f59; font-weight: bold;">ID</span>;
+Sum: (<span style="color: #2d9574;">'+'</span>|<span style="color: #2d9574;">'-'</span>) exp<span style="color: #3a81c3; font-weight: bold;">+=</span>Expression;
+Product: <span style="color: #2d9574;">'*'</span> exp<span style="color: #3a81c3; font-weight: bold;">+=</span>Expression;
 </pre>
 </div>
 
@@ -1099,81 +1163,81 @@ vrsta <a href="https://en.wikipedia.org/wiki/Recursion_(computer_science)#Indire
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">from</span> textx.metamodel <span style="color: #F0DFAF; font-weight: bold;">import</span> metamodel_from_file
-<span style="color: #F0DFAF; font-weight: bold;">from</span> collections <span style="color: #F0DFAF; font-weight: bold;">import</span> Iterable
-<span style="color: #F0DFAF; font-weight: bold;">from</span> functools <span style="color: #F0DFAF; font-weight: bold;">import</span> <span style="color: #DCDCCC; font-weight: bold;">reduce</span>
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">from</span> textx.metamodel <span style="color: #3a81c3; font-weight: bold;">import</span> metamodel_from_file
+<span style="color: #3a81c3; font-weight: bold;">from</span> collections <span style="color: #3a81c3; font-weight: bold;">import</span> Iterable
+<span style="color: #3a81c3; font-weight: bold;">from</span> functools <span style="color: #3a81c3; font-weight: bold;">import</span> <span style="color: #3a81c3;">reduce</span>
 
-<span style="color: #DFAF8F;">mm</span> = metamodel_from_file(<span style="color: #CC9393;">"plisp.tx"</span>)
-<span style="color: #DFAF8F;">m</span> = mm.model_from_file(<span style="color: #CC9393;">"example.plisp"</span>)
+<span style="color: #715ab1;">mm</span> = metamodel_from_file(<span style="color: #2d9574;">"plisp.tx"</span>)
+<span style="color: #715ab1;">m</span> = mm.model_from_file(<span style="color: #2d9574;">"example.plisp"</span>)
 
-<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">gn_Program</span>(e): <span style="color: #F0DFAF; font-weight: bold;">return</span> e.expressions
-<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">gn_Basic_Expression</span>(e): <span style="color: #F0DFAF; font-weight: bold;">return</span> <span style="color: #BFEBBF;">None</span>
-<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">gn_S_Expression</span>(e): <span style="color: #F0DFAF; font-weight: bold;">return</span> e.exp
-<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">gn_BindForm</span>(e): <span style="color: #F0DFAF; font-weight: bold;">return</span> e.exp
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">gn_Program</span>(e): <span style="color: #3a81c3; font-weight: bold;">return</span> e.expressions
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">gn_Basic_Expression</span>(e): <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #4e3163;">None</span>
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">gn_S_Expression</span>(e): <span style="color: #3a81c3; font-weight: bold;">return</span> e.exp
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">gn_BindForm</span>(e): <span style="color: #3a81c3; font-weight: bold;">return</span> e.exp
 
-<span style="color: #DFAF8F;">gn_options</span> = {<span style="color: #CC9393;">'Basic_Expression'</span>: gn_Basic_Expression,
-              <span style="color: #CC9393;">'S_Expression'</span>:     gn_S_Expression}
+<span style="color: #715ab1;">gn_options</span> = {<span style="color: #2d9574;">'Basic_Expression'</span>: gn_Basic_Expression,
+              <span style="color: #2d9574;">'S_Expression'</span>:     gn_S_Expression}
 
-<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">gn_LetExpression</span>(e):
-    <span style="color: #DFAF8F;">bfs</span> = [gn_BindForm(bf) <span style="color: #F0DFAF; font-weight: bold;">for</span> bf <span style="color: #F0DFAF; font-weight: bold;">in</span> e.bind_form]
-    <span style="color: #DFAF8F;">exs</span> = [gn_options[ex.__class__.<span style="color: #DCDCCC; font-weight: bold;">__name__</span>](ex) <span style="color: #F0DFAF; font-weight: bold;">for</span> ex <span style="color: #F0DFAF; font-weight: bold;">in</span> e.exp]
-    <span style="color: #F0DFAF; font-weight: bold;">return</span> bfs + exs
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">gn_LetExpression</span>(e):
+    <span style="color: #715ab1;">bfs</span> = [gn_BindForm(bf) <span style="color: #3a81c3; font-weight: bold;">for</span> bf <span style="color: #3a81c3; font-weight: bold;">in</span> e.bind_form]
+    <span style="color: #715ab1;">exs</span> = [gn_options[ex.__class__.<span style="color: #3a81c3;">__name__</span>](ex) <span style="color: #3a81c3; font-weight: bold;">for</span> ex <span style="color: #3a81c3; font-weight: bold;">in</span> e.exp]
+    <span style="color: #3a81c3; font-weight: bold;">return</span> bfs + exs
 
-<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">gn_PrintExpression</span>(e): <span style="color: #F0DFAF; font-weight: bold;">return</span> e.to_print
-<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">gn_DefExpression</span>(e): <span style="color: #F0DFAF; font-weight: bold;">return</span> e.body
-<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">gn_ApplyExp</span>(e): <span style="color: #F0DFAF; font-weight: bold;">return</span> e.f_params
-<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">gn_Sum</span>(e): <span style="color: #F0DFAF; font-weight: bold;">return</span> e.exp
-<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">gn_Product</span>(e): <span style="color: #F0DFAF; font-weight: bold;">return</span> e.exp
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">gn_PrintExpression</span>(e): <span style="color: #3a81c3; font-weight: bold;">return</span> e.to_print
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">gn_DefExpression</span>(e): <span style="color: #3a81c3; font-weight: bold;">return</span> e.body
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">gn_ApplyExp</span>(e): <span style="color: #3a81c3; font-weight: bold;">return</span> e.f_params
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">gn_Sum</span>(e): <span style="color: #3a81c3; font-weight: bold;">return</span> e.exp
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">gn_Product</span>(e): <span style="color: #3a81c3; font-weight: bold;">return</span> e.exp
 
-gn_options.update({<span style="color: #CC9393;">'Program'</span>:          gn_Program,
-                   <span style="color: #CC9393;">'LetExpression'</span>:    gn_LetExpression,
-                   <span style="color: #CC9393;">'BindForm'</span>:         gn_BindForm,
-                   <span style="color: #CC9393;">'PrintExpression'</span>:  gn_PrintExpression,
-                   <span style="color: #CC9393;">'DefExpression'</span>:    gn_DefExpression,
-                   <span style="color: #CC9393;">'ApplyExp'</span>:         gn_ApplyExp,
-                   <span style="color: #CC9393;">'Sum'</span>:              gn_Sum,
-                   <span style="color: #CC9393;">'Product'</span>:          gn_Product})
+gn_options.update({<span style="color: #2d9574;">'Program'</span>:          gn_Program,
+                   <span style="color: #2d9574;">'LetExpression'</span>:    gn_LetExpression,
+                   <span style="color: #2d9574;">'BindForm'</span>:         gn_BindForm,
+                   <span style="color: #2d9574;">'PrintExpression'</span>:  gn_PrintExpression,
+                   <span style="color: #2d9574;">'DefExpression'</span>:    gn_DefExpression,
+                   <span style="color: #2d9574;">'ApplyExp'</span>:         gn_ApplyExp,
+                   <span style="color: #2d9574;">'Sum'</span>:              gn_Sum,
+                   <span style="color: #2d9574;">'Product'</span>:          gn_Product})
 
-<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">get_next_exps</span>(e):
-    <span style="color: #9FC59F;">"""Return all successor expressions of a given expression."""</span>
-    <span style="color: #F0DFAF; font-weight: bold;">return</span> gn_options[e.__class__.<span style="color: #DCDCCC; font-weight: bold;">__name__</span>](e)
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">get_next_exps</span>(e):
+    <span style="color: #da8b55;">"""Return all successor expressions of a given expression."""</span>
+    <span style="color: #3a81c3; font-weight: bold;">return</span> gn_options[e.__class__.<span style="color: #3a81c3;">__name__</span>](e)
 
-<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">is_let</span>(exp):
-    <span style="color: #F0DFAF; font-weight: bold;">return</span> exp.__class__.<span style="color: #DCDCCC; font-weight: bold;">__name__</span> == <span style="color: #CC9393;">'LetExpression'</span>
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">is_let</span>(exp):
+    <span style="color: #3a81c3; font-weight: bold;">return</span> exp.__class__.<span style="color: #3a81c3;">__name__</span> == <span style="color: #2d9574;">'LetExpression'</span>
 
-<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">get_all_let_bindings</span>(l):
-    <span style="color: #9FC59F;">"""Extract all bindings from let."""</span>
-    <span style="color: #F0DFAF; font-weight: bold;">return</span> [b.name <span style="color: #F0DFAF; font-weight: bold;">for</span> b <span style="color: #F0DFAF; font-weight: bold;">in</span> l.bind_form]
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">get_all_let_bindings</span>(l):
+    <span style="color: #da8b55;">"""Extract all bindings from let."""</span>
+    <span style="color: #3a81c3; font-weight: bold;">return</span> [b.name <span style="color: #3a81c3; font-weight: bold;">for</span> b <span style="color: #3a81c3; font-weight: bold;">in</span> l.bind_form]
 
-<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">spot_lets_single_exp</span>(e, lets=[]):
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">spot_lets_single_exp</span>(e, lets=[]):
 
-    <span style="color: #F0DFAF; font-weight: bold;">if</span> <span style="color: #F0DFAF; font-weight: bold;">not</span> e: <span style="color: #F0DFAF; font-weight: bold;">return</span> lets
+    <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3; font-weight: bold;">not</span> e: <span style="color: #3a81c3; font-weight: bold;">return</span> lets
 
-    <span style="color: #F0DFAF; font-weight: bold;">if</span> is_let(e):
-        <span style="color: #DFAF8F;">pos</span> =  mm.parser.pos_to_linecol(e._tx_position)
-        <span style="color: #F0DFAF; font-weight: bold;">return</span> spot_lets(get_next_exps(e), \
+    <span style="color: #3a81c3; font-weight: bold;">if</span> is_let(e):
+        <span style="color: #715ab1;">pos</span> =  mm.parser.pos_to_linecol(e._tx_position)
+        <span style="color: #3a81c3; font-weight: bold;">return</span> spot_lets(get_next_exps(e), \
                          lets + [(get_all_let_bindings(e), pos)])
-    <span style="color: #F0DFAF; font-weight: bold;">else</span>:
-        <span style="color: #F0DFAF; font-weight: bold;">return</span> spot_lets(get_next_exps(e), lets)
+    <span style="color: #3a81c3; font-weight: bold;">else</span>:
+        <span style="color: #3a81c3; font-weight: bold;">return</span> spot_lets(get_next_exps(e), lets)
 
-<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">spot_lets</span>(e, lets=[]):
-    <span style="color: #9FC59F;">"""Spot all the let expressions in the program. Return list of tuples</span>
-<span style="color: #9FC59F;">       ([bind_variable+], position_of_let_expression). """</span>
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">spot_lets</span>(e, lets=[]):
+    <span style="color: #da8b55;">"""Spot all the let expressions in the program. Return list of tuples</span>
+<span style="color: #da8b55;">       ([bind_variable+], position_of_let_expression). """</span>
 
-    <span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">reducer</span>(ls, ex):
-        <span style="color: #F0DFAF; font-weight: bold;">return</span> ls + (spot_lets_single_exp(ex) <span style="color: #F0DFAF; font-weight: bold;">or</span> [])
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">reducer</span>(ls, ex):
+        <span style="color: #3a81c3; font-weight: bold;">return</span> ls + (spot_lets_single_exp(ex) <span style="color: #3a81c3; font-weight: bold;">or</span> [])
 
-    <span style="color: #F0DFAF; font-weight: bold;">if</span> <span style="color: #DCDCCC; font-weight: bold;">isinstance</span>(e, Iterable):
-        <span style="color: #F0DFAF; font-weight: bold;">return</span> <span style="color: #DCDCCC; font-weight: bold;">reduce</span>(reducer, e, lets)
-    <span style="color: #F0DFAF; font-weight: bold;">else</span>:
-        <span style="color: #F0DFAF; font-weight: bold;">return</span> spot_lets_single_exp(e, lets)
+    <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3;">isinstance</span>(e, Iterable):
+        <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #3a81c3;">reduce</span>(reducer, e, lets)
+    <span style="color: #3a81c3; font-weight: bold;">else</span>:
+        <span style="color: #3a81c3; font-weight: bold;">return</span> spot_lets_single_exp(e, lets)
 
-<span style="color: #F0DFAF; font-weight: bold;">print</span>(spot_lets(m))
-<span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">[(['v'], (2, 4)),</span>
-<span style="color: #5F7F5F;">#  </span><span style="color: #7F9F7F;">(['a'], (2, 15)),</span>
-<span style="color: #5F7F5F;">#  </span><span style="color: #7F9F7F;">(['a', 'b'], (15, 9)),</span>
-<span style="color: #5F7F5F;">#  </span><span style="color: #7F9F7F;">(['s'], (17, 15)),</span>
-<span style="color: #5F7F5F;">#  </span><span style="color: #7F9F7F;">(['m', 'n'], (24, 2))]</span>
+<span style="color: #3a81c3; font-weight: bold;">print</span>(spot_lets(m))
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">[(['v'], (2, 4)),</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">#  </span><span style="color: #2aa1ae; background-color: #ecf3ec;">(['a'], (2, 15)),</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">#  </span><span style="color: #2aa1ae; background-color: #ecf3ec;">(['a', 'b'], (15, 9)),</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">#  </span><span style="color: #2aa1ae; background-color: #ecf3ec;">(['s'], (17, 15)),</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">#  </span><span style="color: #2aa1ae; background-color: #ecf3ec;">(['m', 'n'], (24, 2))]</span>
 </pre>
 </div>
 
@@ -1201,29 +1265,29 @@ obišao.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">from</span> textx.metamodel <span style="color: #F0DFAF; font-weight: bold;">import</span> metamodel_from_file
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">from</span> textx.metamodel <span style="color: #3a81c3; font-weight: bold;">import</span> metamodel_from_file
 
-<span style="color: #DFAF8F;">lets</span> = []
+<span style="color: #715ab1;">lets</span> = []
 
-<span style="color: #DFAF8F;">mm</span> = metamodel_from_file(<span style="color: #CC9393;">"plisp.tx"</span>)
+<span style="color: #715ab1;">mm</span> = metamodel_from_file(<span style="color: #2d9574;">"plisp.tx"</span>)
 
-<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">let_object_processor</span>(let):
-    lets.append(([b.name <span style="color: #F0DFAF; font-weight: bold;">for</span> b <span style="color: #F0DFAF; font-weight: bold;">in</span> let.bind_form],
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">let_object_processor</span>(let):
+    lets.append(([b.name <span style="color: #3a81c3; font-weight: bold;">for</span> b <span style="color: #3a81c3; font-weight: bold;">in</span> let.bind_form],
                  mm.parser.pos_to_linecol(let._tx_position)))
 
-mm.register_obj_processors({<span style="color: #CC9393;">'LetExpression'</span>: let_object_processor})
+mm.register_obj_processors({<span style="color: #2d9574;">'LetExpression'</span>: let_object_processor})
 
-<span style="color: #DFAF8F;">m</span> = mm.model_from_file(<span style="color: #CC9393;">"example.plisp"</span>)
+<span style="color: #715ab1;">m</span> = mm.model_from_file(<span style="color: #2d9574;">"example.plisp"</span>)
 
-<span style="color: #F0DFAF; font-weight: bold;">def</span> <span style="color: #93E0E3;">spot_lets</span>():
-    <span style="color: #F0DFAF; font-weight: bold;">return</span> lets
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">spot_lets</span>():
+    <span style="color: #3a81c3; font-weight: bold;">return</span> lets
 
-<span style="color: #F0DFAF; font-weight: bold;">print</span>(spot_lets())
-<span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">[(['a'], (2, 15)),</span>
-<span style="color: #5F7F5F;">#  </span><span style="color: #7F9F7F;">(['v'], (2, 4)),</span>
-<span style="color: #5F7F5F;">#  </span><span style="color: #7F9F7F;">(['s'], (17, 15)),</span>
-<span style="color: #5F7F5F;">#  </span><span style="color: #7F9F7F;">(['a', 'b'], (15, 9)),</span>
-<span style="color: #5F7F5F;">#  </span><span style="color: #7F9F7F;">(['m', 'n'], (24, 2))]</span>
+<span style="color: #3a81c3; font-weight: bold;">print</span>(spot_lets())
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">[(['a'], (2, 15)),</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">#  </span><span style="color: #2aa1ae; background-color: #ecf3ec;">(['v'], (2, 4)),</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">#  </span><span style="color: #2aa1ae; background-color: #ecf3ec;">(['s'], (17, 15)),</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">#  </span><span style="color: #2aa1ae; background-color: #ecf3ec;">(['a', 'b'], (15, 9)),</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">#  </span><span style="color: #2aa1ae; background-color: #ecf3ec;">(['m', 'n'], (24, 2))]</span>
 </pre>
 </div>
 
@@ -1243,7 +1307,7 @@ ilustruje opšti pristup.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Novak Boškov</p>
-<p class="date">Created: 2017-04-04 уто 12:48</p>
+<p class="date">Created: 2018-03-08 Thu 10:37</p>
 <p class="validation"></p>
 </div>
 </body>
