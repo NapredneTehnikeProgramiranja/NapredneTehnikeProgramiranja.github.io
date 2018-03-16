@@ -559,12 +559,62 @@ integrate systems more effectively.
    9. =itertools.cycle=
 
 * Parsiranje
-  [[https://en.wikipedia.org/wiki/Parsing][Parsiranje]] je proces analize teksta (jezika) prema formalnim
-  pravilima (gramatikama) koje za rezultat ima jedno ili više [[https://en.wikipedia.org/wiki/Parse_tree][stabala
-  parsiranja]] koja predstavljaju sintaktičke strukture analiziranog
-  teksta.
+  Kako bismo razumeli kontekst parsiranja i njegov značaj nije zgoreg
+  podsetiti se šta čini *jezik*. Pojam *jezika* uzmimo generalno i
+  intuitivno, bez definicije. Formalno određenje pojma jezika duboko
+  je u realmu lingvistike, a ne čini se sasvim prosto.
+
+  Jezik je sačinjen iz delova:
+
+  - /Fonologija/, sistem zvukova koji čine jezik
+  - /Morfologija/, struktura rači
+  - *Sintaksa*, struktura rečenice
+  - /Semantika/, značenje jezika
+  - /Pragmatika/, pravilno korišćenje jezika u različitim kontekstima
+
+  Kada govorimo o programskim jezicima Fonologiju možemo zanemariti
+  (neka svako čita kod na glas kako mu je volja). Ako snažno zažmurimo
+  na jedno oko možemo zanemariti i Morfologiju (neki jezici koriste
+  =def= kao ključnu reč za funkciju, neki =defn=, neki =def=, neki
+  ništa, recimo da je sve to OK).
+
+  Međutim, ako bismo hteli da zanemarimo sintaksu programskog jezika
+  morali bismo prilično snažno da žmurimo na oba oka.
+
+  [[https://en.wikipedia.org/wiki/Parsing][Parsiranje]] je proces analize jezika (kao teksta) prema formalnim
+  sintaksnim pravilima (gramatikama, kada su u putanju programski
+  jezici ova dva termina se često koriste u istom značenju) koje za
+  rezultat ima jedno ili više [[https://en.wikipedia.org/wiki/Parse_tree][stabala parsiranja]] koja predstavljaju
+  sintaktičke strukture analiziranog jezika.
 
   [[file:images/parser.jpg]]
+
+*** Semantika i pragmatika
+
+    #+BEGIN_QUOTE
+    *Semantika* je značenje jezika.
+    #+END_QUOTE
+
+    Prosto, postoje objašnjenja koja su kratka i genijalna!
+
+    /Ali ovo objašnjenje je samo kratko./
+
+    Ako obratite pažnju, videćete da pojam *značenje* u rečenici
+    "semantika je značenje jezika" ne znači mnogo. Programski jezik
+    /znači nešto programeru/ i /znači nešto mašini/. Ta dva značenja
+    se bitno razlikuju jer se misaoni procesi bliski čoveku i oni
+    bliski mašini razlikuju. Vrlo grubo rečeno:
+
+    - [[https://en.wikipedia.org/wiki/Operational_semantics][Operaciona semantika]] je značenje pri izvršavanju
+    - [[https://en.wikipedia.org/wiki/Denotational_semantics][Denotaciona semantika]] je značenje u apstraktnom modelu koji
+      usvaja čovek kao alat za rešavanje problema koji je pred
+      njim. Taj apstraktni model se opisuje striktno matematički.
+
+    Pragmatika, na kraju, se brine koliko je izražavanje čoveka
+    (programera u našem slučaju) prirodno u odnosu na preslikavanje
+    prirode u apstrakti model koji se koristi. Kada je program izražen
+    prirodno, u skladu sa apstraktnim modelom, kažemo da je
+    /idiomatičan/.
 
 ** TextX
    [[https://github.com/igordejanovic/textX][TextX]] (pogledati primire) je Python meta jezik za definisanje
