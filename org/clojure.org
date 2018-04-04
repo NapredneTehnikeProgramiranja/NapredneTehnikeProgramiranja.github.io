@@ -612,52 +612,52 @@ system that ensure clean, correct, multithreaded designs.
    2. Napisati funkciju =get-the-caps= koja prima string engleskih
       slova a vraća samo njegova velika slova.
 
-      #+INCLUDE: "clojure-ntp/src/clojure_ntp/exercises_1.clj" src clojure :lines "7-38"
+      # #+INCLUDE: "clojure-ntp/src/clojure_ntp/exercises_1.clj" src clojure :lines "7-38"
 
    3. Napisati funkciju =drop-nth= koja prima dva parametra od kojih je
       prvo vektor elemenata a drugo =n=. Funkcija vraća listu bez
       svakog =n=-tog elementa.
 
-      Eksplicitnom rekurzijom:
+      # Eksplicitnom rekurzijom:
 
-      #+INCLUDE: "clojure-ntp/src/clojure_ntp/exercises_1.clj" src clojure :lines "42-86"
+      # #+INCLUDE: "clojure-ntp/src/clojure_ntp/exercises_1.clj" src clojure :lines "42-86"
 
-      Ili koristeći =keep-indexed= funkciju:
+      # Ili koristeći =keep-indexed= funkciju:
 
-      #+INCLUDE: "clojure-ntp/src/clojure_ntp/exercises_1.clj" src clojure :lines "87-138"
+      # #+INCLUDE: "clojure-ntp/src/clojure_ntp/exercises_1.clj" src clojure :lines "87-138"
 
-      Ili uz malo skupovnih operacija:
+      # Ili uz malo skupovnih operacija:
 
-      #+INCLUDE: "clojure-ntp/src/clojure_ntp/exercises_1.clj" src clojure :lines "139-161"
+      # #+INCLUDE: "clojure-ntp/src/clojure_ntp/exercises_1.clj" src clojure :lines "139-161"
 
    4. Napravite =flip= funkciju višeg reda koja invertuje parametre
       prosleđene funkcije.
 
-      #+BEGIN_SRC clojure
-        ((flip -) 1 2)
-        ;; => 1
-      #+END_SRC
+      # #+BEGIN_SRC clojure
+      #   ((flip -) 1 2)
+      #   ;; => 1
+      # #+END_SRC
 
-      #+INCLUDE: "clojure-ntp/src/clojure_ntp/exercises_1.clj" src clojure :lines "162-187"
+      # #+INCLUDE: "clojure-ntp/src/clojure_ntp/exercises_1.clj" src clojure :lines "162-187"
 
    5. Napisati funkciju =b-tree?= koja proverava da li je neka
       sekvenca binarno stablo.
 
-      #+BEGIN_SRC clojure
-        (b-tree? [1 [2 [3 [4 false nil] nil] nil] nil])
-        ;; => true
+      # #+BEGIN_SRC clojure
+      #   (b-tree? [1 [2 [3 [4 false nil] nil] nil] nil])
+      #   ;; => true
 
-        (b-tree? '(:a nil ()))
-        ;; => false
+      #   (b-tree? '(:a nil ()))
+      #   ;; => false
 
-        (b-tree? [1 [2 nil nil] [3 nil nil] [4 nil nil]])
-        ;; => false
+      #   (b-tree? [1 [2 nil nil] [3 nil nil] [4 nil nil]])
+      #   ;; => false
 
-        (b-tree? '(:a (:b nil nil) nil))
-        ;; => true
-      #+END_SRC
+      #   (b-tree? '(:a (:b nil nil) nil))
+      #   ;; => true
+      # #+END_SRC
 
-      #+INCLUDE: "clojure-ntp/src/clojure_ntp/exercises_1.clj" src clojure :lines "188-208"
+      # #+INCLUDE: "clojure-ntp/src/clojure_ntp/exercises_1.clj" src clojure :lines "188-208"
 
    6. Lepota je u simetriji. Napišite predikat =beauty-tree?= koji
       proverava da li je binarno stablo simetrično. Stablo je
