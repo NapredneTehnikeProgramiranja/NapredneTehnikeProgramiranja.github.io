@@ -358,7 +358,7 @@ system that ensure clean, correct, multithreaded designs.
    pozove sa =trampoline=. To nije baš divno. Pa preformulišimo to još
    malo:
 
-   #+INCLUDE: "clojure-ntp/src/clojure_ntp/core.clj" :src clojure :lines "141-172"
+   #+INCLUDE: "clojure-ntp/src/clojure_ntp/core.clj" :src clojure :lines "141-175"
 
    Sada je već bolje. A najbolje je što sada *nema nepotrebnih
    alokacija steka*.
