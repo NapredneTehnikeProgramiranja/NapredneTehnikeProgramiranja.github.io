@@ -1040,6 +1040,9 @@ language.
   - [[http://book.realworldhaskell.org/][Real World Haskell]] (odlična knjiga ali nije davno ažurirana)
   - [[http://www.seas.upenn.edu/~cis194/][Kursevi na Pensilvanija univerzitetu]] (/spring13/, /fall16/ ili
     bilo koji drugi po izboru.)
+** Teorija kategorija i programiranje
+   - [[https://github.com/hmemcpy/milewski-ctfp-pdf][Category Theory for Programmers]] (knjiga)
+   - [[https://www.youtube.com/watch?v=I8LbkfSSR58&list=PLbgaMIhjbmEnaH_LTkxLI7FMa2HsnawM_][Category Theory predavanja Bartoša Milevskog]]
 
 * Footnotes
 
