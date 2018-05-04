@@ -846,6 +846,7 @@ language.
 * Funktori
 * Aplikativni funktori
 * Monade
+** Kleisli kategorija
 ** IO
 * Profiling
 
