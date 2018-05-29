@@ -16,7 +16,7 @@ njihovim radom.
 
 # Rezultati kolokvijuma iz Clojure-a
 Rezultate kolokvijuma možete pogledati na
-[enastavi](https://enastava.ftninformatika.com/files/68003/download?download_frd=1).
+[enastavi](https://enastava.ftninformatika.com/files/68025/download?download_frd=1).
 
 # Kolokvijum Pharo-a
 Ove nedelje je kolokvijum iz Pharo-a. Na kolokvijum dolazi materijal
