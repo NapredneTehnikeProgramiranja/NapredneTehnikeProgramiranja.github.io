@@ -6,7 +6,7 @@
 [[file:images/pharo.png]]
 
 * Linkovi
-  Ovaj deo kursa izvodi se po ugledu na [[http://files.pharo.org/mooc/][Pharo MOOC]] (tu se nalaze
+  Ovaj deo kursa izvodi se po ugledu na [[https://mooc.pharo.org/][Pharo MOOC]] (tu se nalazei
   kompletni materijali na francuskom i engleskom jeziku).
 
   - Slajdove sa predavanja profesora možete naći na [[http://www.igordejanovic.net/courses/tech/pharo.html#1][njegovom sajtu]].
