@@ -100,7 +100,7 @@
 #+TBLFM: @2$6..@87$6='(ntp/mul-const $6 1.15)
 
 *Napomena*: Rezultati Clojure-a skalirani za *15%*. Kolona sa Clojure
-rezultatima se je dobijena pomoću =(ntp/mul-const $6 1.15)=
+rezultatima je dobijena pomoću =(ntp/mul-const $6 1.15)=
 
 #+BEGIN_SRC elisp :results output silent
   (defun ntp/mul-const (column factor)
