@@ -851,10 +851,182 @@ language.
    - [[http://www.seas.upenn.edu/~cis194/spring13/extras/02-ADTs/sample.log][sample.log]]
    - [[http://www.seas.upenn.edu/~cis194/spring13/extras/02-ADTs/Log.hs][Log.hs]]
 
-* Monoidi
-* Funktori
+* Monoidi[fn:6]
+  Monoid je veoma jednostavan a moćan koncept koji je obično veoma
+  prirodan svakome od nas samo se u programiranju često ne
+  koncentrišemo na njega. Sabiranje brojeva čini monoid, Množenje čini
+  monoid, Konkatenacija stringova čini Monoid, /future/-i u
+  konkurentnom programiranju čine Monoid, događaji (/events/) u
+  Functional Reactional Programming čine monoid... Definicija sa
+  osloncem na teoriju skupova bi bila:
+
+  #+BEGIN_QUOTE
+  Monoid je set sa binarnom operacijom. Operacija mora da bude
+  asocijativn i da ima neutralni element (/unit/) u skupu.
+  #+END_QUOTE
+
+  Na primer, $\mathbb{N}$ (sa nulom) pri sabiranju čini monoid:
+
+  (a + b) + c = a + (b + c)
+
+  Dakle važi asocijativnost. Važi i:
+
+  a + 0 = a
+
+  Dakle nula je neutralni element.
+
+  *[Napomena]* Obratite pažnju da komutativnost nije zahtevana za
+  monoid iako za sabiranje (množenje) važi *i* komutativnost.
+
+  Za stringove i konkatenaciju važi:
+
+  #+BEGIN_SRC haskell
+    ("danas" ++ "sutra") ++ "prekosutra" == "danas" ++ ("sutra" ++ "prekosutra")
+  #+END_SRC
+
+  Prazan string je /unit/:
+
+  #+BEGIN_SRC haskell
+    "nesto" ++ "" == "nesto"
+  #+END_SRC
+
+  Dakle, monoid u Haskell-u bi mogao da bude:
+
+  #+BEGIN_SRC haskell
+    class Monoid m where
+      mempty :: m
+      mappend :: m -> m -> m
+  #+END_SRC
+
+  Pa bismo rekli da je String monoid sa konkatenacijom ovako:
+
+  #+BEGIN_SRC haskell
+    instance Monoid String where
+      mempty = ""
+      mappend = (++)
+  #+END_SRC
+
+** Monoid u teoriji kategorija
+   Monoid je kategorija sa jednim objektom sa mnogo morfizama (i
+   svakako /id/ morfizmom kao neutralnim elementom).
+
+   [[file:images/monoid_pig.png]]
+
+   Da li od svakog kategoričkog monoida (monoida u teoriji kategorija)
+   može da se napravi skup (matematički skup) sa pridruženom binarnom
+   operacijom i da to čini monoid (sada u teoriji skupova)?
+
+   Znamo da skup morfizama između dva objekta zovemo *Hom-set*. U
+   njemu morfizmi čine elemente. Rezultati monoidalnog produkta
+   (binarne operacije iz monoida) između elemenata seta odgovaraju
+   kompoziciji morfizama u originalnoj kategoriji. Operacija je u toj
+   kategoriji asocijativna jer je kompozicija asocijativna. Neutralni
+   element je /id/ morfizam.
+
+   [[file:images/monoid_set_and_cat.png]]
+
+   Istini za volju (i matematici), morfizmi ne formiraju uvek skup. Za
+   one kategorije kod kojih za svaka dva objekta morfizmi čine skup
+   kažemo da su /lokalno male/ (/locally small/). Taj skup onda zovemo
+   Hom-set.
+
+* Funktori[fn:6]
+  Ako posmatramo iz ugla teorije kategorija onda je Funktor takođe
+  prost koncept:
+
+  #+BEGIN_QUOTE
+  Funktor je morfizam između kategorija.
+  #+END_QUOTE
+
+  Ako imamo dve kategorije $C$ i $D$, onda funktor $F$ preslikava sve
+  objekte i morfizme iz $C$ u $D$ na takav način da održava strukturu
+  koja postoji u originalnoj kategoriji.
+
+  Ako postoji morfizam $f$ u $C$ takav da $$f :: a \rightarrow b$$
+  onda u kategoriji $D$ pod dejstvoj funktora $F$ postoji $$Ff :: Fa
+  \rightarrow Fb$$.
+
+  [[file:images/functor.png]]
+
+  Očuvati strukturu znači takođe i da sve što je bilo kompozicija u
+  izvornoj kategoriji ostaje kompozivija i u drugoj kategoriji (na
+  drugom kraju funktora). Dakle ako je postojao neki morfizam $h$
+  takav da je $$h = g \circ f$$ onda u kategoriji $D$, pod dejstvom
+  funktora $F$, mora postojati morfizam $Fh$ takav da važi $$Fh = Fg
+  \circ Ff$$.
+
+  [[file:images/functor_2.png]]
+
+  Na kraju, bitno je da /id/ morfizmi iz $C$ budu mapirani u /id/
+  morfizme u $D$ tako da važi $$Fid_a = id_{F_a}$$.
+
+  [[file:images/funct_ids.png]]
+
+  Obratite pažnju da za funktore *nije neophodno* da $C$ i $D$
+  kategorije budu razaličite. Funktori koji rade nad jednom istom
+  kategorjom se zovu *endofunktori*.
+
+** Primeri funktora u programiranju
+   Primeri u Haskell-u predstavljaju endofunktore jer rade na jednom
+   kategorijom (*Hask* - *Type* kategorija sa pridruženim /računanjima
+   koja se nikada ne završavaju/ - /bottom/s).
+
+*** Maybe funktor
+    #+BEGIN_SRC haskell
+      data Maybe a = Nothing | Just a
+    #+END_SRC
+
+    Kako bismo ispoštovali zahtev da funktor očuvava strukturu ("radi"
+    i nad morfizmima, funkcijama) moramo za svaku funkciju koja ima
+    potpis:
+
+    #+BEGIN_SRC haskell
+      f :: a -> b
+    #+END_SRC
+
+    imati mehanizam koji će nam napraviti funkciju sa potpisom:
+
+    #+BEGIN_SRC haskell
+      f' :: Maybe a -> Maybe b
+    #+END_SRC
+
+    koja će predstavljati morfizam $f$ u kategoriji $D$.
+
+    Haskell-ov mehanizam za dobijanje takve funkcije je funkcija višeg
+    reda koja se zove =fmap= i ima potpis:
+
+    #+BEGIN_SRC haskell
+      fmap :: (a -> b) -> (Maybe a -> Maybe b)
+    #+END_SRC
+
+    [[file:images/fmap.png]]
+
+    =fmap= zbog /Curry/-inga možemo posmatrati i kao funkciju dva
+    parametra od kojih je prvi funkcija. Tako bismo za /Maybe/ mogli
+    da implementiramo =fmap= ovako:
+
+    #+BEGIN_SRC haskell
+      fmap _ Nothing = Nothing
+      fmap f (Just x) = Just (f x)
+    #+END_SRC
+
+    [[http://learnyouahaskell.com/][Learn Some Haskell For The Great Good]] funktore objašnjava
+    analogijom kutije za pakovanje, a =fmap= kao funkciju koja se
+    primenjuje samo na sadržaj i onda novi sadržaj upakuje u istu
+    kutiju.
+
+    #+BEGIN_QUOTE
+    Da li Vam ta analogija deluje prirodno?
+    #+END_QUOTE
+
+    Studentima se za vežbu ostavlja da odgovore:
+    - Da li je lista funktor?
+    - Napišite instancu =Functor=-a za listu.
+    - Zašto Haskelleri insistiraju na =fmap= pre nego na =map= (iako
+      postoji u Haskell-u), odakle im to?
+
 * Aplikativni funktori
-* Monade
+* Monade[fn:6]
 ** Kleisli kategorija
 ** IO
 * Profiling
@@ -1054,6 +1226,8 @@ language.
    - [[https://www.youtube.com/watch?v=I8LbkfSSR58&list=PLbgaMIhjbmEnaH_LTkxLI7FMa2HsnawM_][Category Theory predavanja Bartoša Milevskog]]
 
 * Footnotes
+
+[fn:6] Iz /Category Theory for Programmers, Bartosz Milewski/
 
 [fn:5] Dokazivost se komplikuje kada se u obzir uzima lenje
 izvršavanje i [[https://wiki.haskell.org/Bottom]["bottom"-i]].
