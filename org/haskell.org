@@ -867,11 +867,11 @@ language.
 
   Na primer, $\mathbb{N}$ (sa nulom) pri sabiranju čini monoid:
 
-  (a + b) + c = a + (b + c)
+  $$(a + b) + c = a + (b + c)$$
 
   Dakle važi asocijativnost. Važi i:
 
-  a + 0 = a
+  $$a + 0 = a$$
 
   Dakle nula je neutralni element.
 
