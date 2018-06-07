@@ -969,7 +969,7 @@ language.
 ** Primeri funktora u programiranju
    Primeri u Haskell-u predstavljaju endofunktore jer rade na jednom
    kategorijom (*Hask* - *Type* kategorija sa pridruženim /računanjima
-   koja se nikada ne završavaju/ - /bottom/s).
+   koja se nikada ne završavaju/ - /bottoms/).
 
 *** Maybe funktor
     #+BEGIN_SRC haskell
