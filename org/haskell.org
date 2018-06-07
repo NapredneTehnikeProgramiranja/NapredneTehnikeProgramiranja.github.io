@@ -1028,7 +1028,6 @@ language.
 * Aplikativni funktori
 * Monade[fn:6]
 ** Kleisli kategorija
-** IO
 * Profiling
 
   *Zašto je ovaj program spor?*
